@@ -321,58 +321,66 @@ ul,ol{list-style:none}
 .hero-feat-tx strong{display:block;color:var(--ink);font-weight:700;margin-bottom:2px;font-size:.94rem}
 .hero-feat-tx span{color:var(--muted)}
 
-/* ── ORBIT CAROUSEL ──────────────────────────────── */
+/* ── ORBIT CAROUSEL (pétalos rotando al centro) ──── */
 .hero-orbit{
-  position:relative;width:100%;height:640px;
+  position:relative;width:100%;height:660px;
   cursor:grab;user-select:none;-webkit-user-select:none;touch-action:pan-y;
+  display:flex;align-items:center;justify-content:center;
+  perspective:1600px;
 }
 .hero-orbit.dragging{cursor:grabbing}
 
 .orbit-ring{
   position:absolute;
-  width:680px;height:680px;border-radius:50%;
+  width:520px;height:520px;border-radius:50%;
   border:1.5px dashed rgba(192,20,26,.18);
-  top:50%;right:-60px;
-  transform:translate(0,-50%);pointer-events:none;
-  animation:orbit-ring-spin 60s linear infinite;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);pointer-events:none;
+  animation:orbit-ring-spin 80s linear infinite;
 }
 .orbit-ring::before{
-  content:'';position:absolute;inset:30px;border-radius:50%;
+  content:'';position:absolute;inset:44px;border-radius:50%;
   border:1px solid rgba(192,20,26,.08);
 }
-@keyframes orbit-ring-spin{to{transform:translate(0,-50%) rotate(360deg)}}
+.orbit-ring::after{
+  content:'';position:absolute;inset:-40px;border-radius:50%;
+  border:1px solid rgba(192,20,26,.05);
+}
+@keyframes orbit-ring-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
 
 .orbit-center{
-  position:absolute;right:-60px;top:50%;
+  position:absolute;left:50%;top:50%;
   width:0;height:0;z-index:5;
 }
 
 .orb-item{
   position:absolute;left:0;top:0;
-  width:240px;height:300px;
-  margin:-150px 0 0 -120px;
-  border-radius:24px;overflow:hidden;
+  width:150px;height:190px;
+  margin:-95px 0 0 -75px;
+  border-radius:18px;overflow:hidden;
   box-shadow:var(--sh-2);background:#222;cursor:pointer;
-  transition:width .7s cubic-bezier(.4,0,.2,1),
-             height .7s cubic-bezier(.4,0,.2,1),
-             margin .7s cubic-bezier(.4,0,.2,1),
-             box-shadow .5s ease,border-radius .5s ease;
-  will-change:transform,opacity,filter;
+  transition:transform .8s cubic-bezier(.4,0,.2,1),
+             opacity .6s ease,
+             width .8s cubic-bezier(.4,0,.2,1),
+             height .8s cubic-bezier(.4,0,.2,1),
+             margin .8s cubic-bezier(.4,0,.2,1),
+             box-shadow .5s ease,
+             border-radius .5s ease,
+             filter .5s ease;
+  will-change:transform,opacity;
 }
-.orb-item:hover{box-shadow:var(--sh-3)}
-.orb-item img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform 7s ease-out;
-}
-.orb-item img{animation:orb-kb 12s ease-in-out infinite alternate;transform-origin:center}
+.orb-item:hover{box-shadow:var(--sh-3);filter:brightness(1.1)}
+.orb-item img{width:100%;height:100%;object-fit:cover}
+.orb-item.front img{animation:orb-kb 14s ease-in-out infinite alternate;transform-origin:center}
 @keyframes orb-kb{
   from{transform:scale(1) translate(0,0)}
-  to{transform:scale(1.12) translate(-1.5%,-1%)}
+  to{transform:scale(1.1) translate(-1.2%,-.8%)}
 }
 .orb-item.front{
-  width:380px;height:480px;
-  margin:-240px 0 0 -190px;
-  box-shadow:var(--sh-3);border-radius:28px;
+  width:360px;height:460px;
+  margin:-230px 0 0 -180px;
+  box-shadow:0 30px 80px rgba(24,16,14,.35);
+  border-radius:28px;
 }
 .orb-stat-chip{
   position:absolute;top:14px;left:14px;z-index:3;
@@ -464,7 +472,7 @@ ul,ol{list-style:none}
 .orbit-dot:hover:not(.active){background:var(--muted);transform:scale(1.15)}
 
 .orbit-badge{
-  position:absolute;top:8%;left:-12px;z-index:10;
+  position:absolute;top:6%;left:4%;z-index:10;
   background:#fff;border-radius:18px;
   padding:13px 18px;display:flex;align-items:center;gap:12px;
   box-shadow:var(--sh-3);border:1px solid var(--line);
@@ -485,7 +493,7 @@ ul,ol{list-style:none}
 .orbit-badge-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;font-weight:600;margin-top:2px}
 
 .orbit-live{
-  position:absolute;top:42%;left:8px;z-index:10;
+  position:absolute;bottom:20%;right:4%;z-index:10;
   background:var(--ink);color:#fff;
   border-radius:16px;padding:11px 15px;
   display:flex;align-items:center;gap:10px;
@@ -506,22 +514,21 @@ ul,ol{list-style:none}
 
 @media(max-width:960px){
   .hero-grid{grid-template-columns:1fr;gap:48px}
-  .hero-orbit{height:560px}
-  .orbit-center{right:-30px}
-  .orbit-ring{width:560px;height:560px;right:-30px}
-  .orb-item{width:200px;height:250px;margin:-125px 0 0 -100px}
-  .orb-item.front{width:320px;height:400px;margin:-200px 0 0 -160px}
+  .hero-orbit{height:600px}
+  .orbit-ring{width:460px;height:460px}
+  .orb-item{width:130px;height:165px;margin:-82px 0 0 -65px}
+  .orb-item.front{width:320px;height:410px;margin:-205px 0 0 -160px}
   .orb-title{font-size:1.2rem}
 }
 @media(max-width:520px){
-  .hero-orbit{height:480px}
-  .orbit-ring{width:440px;height:440px}
-  .orb-item{width:160px;height:200px;margin:-100px 0 0 -80px}
-  .orb-item.front{width:260px;height:330px;margin:-165px 0 0 -130px}
+  .hero-orbit{height:500px}
+  .orbit-ring{width:380px;height:380px}
+  .orb-item{width:100px;height:130px;margin:-65px 0 0 -50px}
+  .orb-item.front{width:250px;height:320px;margin:-160px 0 0 -125px}
   .hero-feats{grid-template-columns:1fr;gap:16px}
-  .orbit-badge{padding:10px 14px;top:4%}
+  .orbit-badge{padding:10px 14px;top:4%;left:2%}
   .orbit-badge-num{font-size:1.25rem}
-  .orbit-live{left:0;padding:9px 12px}
+  .orbit-live{right:2%;padding:9px 12px}
 }
 
 /* ════════════════════════════════════════════════════════
@@ -2284,7 +2291,8 @@ const orbitEl=document.getElementById('orbit');
 const N=HERO_ORB.length;
 progTot.textContent=N;
 let front=0,paused=false,timer=null;
-const R=260,items=[];
+const items=[];
+function radius(){return window.innerWidth<=520?140:window.innerWidth<=960?175:215}
 
 HERO_ORB.forEach((it,i)=>{
   const el=document.createElement('div');
@@ -2312,30 +2320,36 @@ HERO_ORB.forEach((it,i)=>{
 });
 
 function layout(){
+  const R=radius();
+  const petals=N-1;
+  const angleStep=360/petals;
   items.forEach((el,i)=>{
-    let off=i-front;
-    if(off<-N/2)off+=N;if(off>N/2)off-=N;
-    const isFront=off===0;
-    const totalOff=N-1;
-    const angleStep=180/totalOff;
-    let angle;
-    if(off===0){angle=180}
-    else if(off>0){angle=180+angleStep*off}
-    else{angle=180+angleStep*off}
-    const rad=(angle-90)*Math.PI/180;
-    const x=Math.cos(rad)*R,y=Math.sin(rad)*R;
-    const dist=Math.abs(off);
-    const scale=isFront?1:Math.max(.55,.85-dist*.12);
-    const opacity=isFront?1:Math.max(.35,.75-dist*.15);
-    const z=100-dist;
-    el.style.transform=`translate(${x}px,${y}px) scale(${scale})`;
-    el.style.opacity=opacity;
-    el.style.zIndex=z;
+    const isFront=i===front;
+    if(isFront){
+      el.style.transform=`translate(0,0) rotate(0deg) scale(1)`;
+      el.style.opacity=1;
+      el.style.zIndex=100;
+    }else{
+      // orden entre los petalos: 0..petals-1 relativo al frontal
+      let rel=i-front;if(rel<0)rel+=N;
+      const idx=rel-1; // 0..petals-1
+      // arrancar en la parte superior y girar
+      const angle=idx*angleStep-90;
+      const rad=angle*Math.PI/180;
+      const x=Math.cos(rad)*R;
+      const y=Math.sin(rad)*R;
+      // rotacion sutil hacia el centro (efecto petalo)
+      const rot=angle+90;
+      el.style.transform=`translate(${x}px,${y}px) rotate(${rot*.15}deg) scale(1)`;
+      el.style.opacity=.72;
+      el.style.zIndex=50-idx;
+    }
     el.classList.toggle('front',isFront);
   });
   progCur.textContent=front+1;
   document.querySelectorAll('.orbit-dot').forEach((d,i)=>d.classList.toggle('active',i===front));
 }
+window.addEventListener('resize',layout);
 function setFront(i){front=((i%N)+N)%N;layout()}
 function nextFront(){setFront(front+1)}
 function startTimer(){if(timer)clearInterval(timer);timer=setInterval(()=>{if(!paused)nextFront()},4200)}
