@@ -1,0 +1,2644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#C0141A">
+<meta name="description" content="MFD Marketing & Eventos — Agencia integral con 15 años creando experiencias emocionales que conectan marcas con personas. Marketing, ferias, activaciones, producción de eventos.">
+<title>MFD Marketing & Eventos · Hacemos Marcas de Corazón</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --r:       #C0141A;
+  --r-v:     #D91E25;
+  --r-d:     #8B0000;
+  --r-deep:  #6B0F1A;
+  --r-soft:  #FCEFEE;
+  --r-tint:  #FDF7F6;
+
+  --ink:     #1A0F0D;
+  --ink-2:   #2A1B18;
+  --slate:   #4A3A3E;
+  --muted:   #7A6A70;
+  --line:    #EEE2E0;
+  --line-2:  #DFD1CD;
+
+  --bg:      #FAF7F5;
+  --surface: #FFFFFF;
+  --cream:   #F8F4F2;
+  --gc:      #EDE8E5;
+
+  --dark:    #18100E;
+  --dark-2:  #241518;
+
+  --gold:    #C9A961;
+  --gold-d:  #A8854D;
+
+  --grad-dark: linear-gradient(135deg,#18100E 0%,#3B0E14 45%,#6B0F1A 100%);
+  --grad-red:  linear-gradient(135deg,#D91E25 0%,#8B0000 100%);
+  --grad-cream:linear-gradient(180deg,#FAF7F5 0%,#F8F4F2 100%);
+
+  --sh-1: 0 1px 2px rgba(24,16,14,.05), 0 4px 12px rgba(24,16,14,.07);
+  --sh-2: 0 4px 16px rgba(24,16,14,.09), 0 12px 32px rgba(24,16,14,.11);
+  --sh-3: 0 16px 48px rgba(24,16,14,.16);
+  --sh-r: 0 12px 32px rgba(192,20,26,.32);
+
+  --t1: .25s cubic-bezier(.4,0,.2,1);
+  --t2: .5s cubic-bezier(.4,0,.2,1);
+  --bounce: .45s cubic-bezier(.34,1.56,.64,1);
+
+  --r-s: 10px;
+  --r-m: 16px;
+  --r-l: 24px;
+  --r-xl: 32px;
+
+  --display: 'Fraunces','Times New Roman',serif;
+  --sans: 'Barlow',-apple-system,BlinkMacSystemFont,sans-serif;
+  --cond: 'Barlow Condensed','Barlow',sans-serif;
+  --bebas: 'Bebas Neue','Barlow Condensed',sans-serif;
+}
+
+/* ── BASE ────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--sans);background:var(--bg);color:var(--ink);
+  line-height:1.6;overflow-x:hidden;font-weight:400;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;outline:none;background:none;color:inherit}
+ul,ol{list-style:none}
+::selection{background:var(--r);color:#fff}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-thumb{background:var(--r);border-radius:8px}
+::-webkit-scrollbar-track{background:var(--cream)}
+
+/* ── LAYOUT ──────────────────────────────────────── */
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.wrap-sm{max-width:960px;margin:0 auto;padding:0 32px}
+.sec{padding:120px 0}
+@media(max-width:768px){
+  .sec{padding:80px 0}
+  .wrap,.wrap-sm{padding:0 22px}
+}
+
+/* ── TYPOGRAPHY ──────────────────────────────────── */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--cond);font-size:.78rem;font-weight:700;
+  letter-spacing:3.5px;text-transform:uppercase;color:var(--r);
+}
+.eyebrow::before{content:'';width:28px;height:1.5px;background:var(--r)}
+.eyebrow-w{color:rgba(255,255,255,.72)}
+.eyebrow-w::before{background:rgba(255,255,255,.5)}
+
+.h-display{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(2.6rem,6vw,5rem);line-height:1;
+  letter-spacing:-.028em;color:var(--ink);
+}
+.h-display em{font-style:italic;font-weight:600;color:var(--r)}
+
+.h-section{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.08;
+  letter-spacing:-.024em;color:var(--ink);margin-bottom:20px;
+}
+.h-section em{font-style:italic;color:var(--r);font-weight:600}
+.h-section-w{color:#fff}
+.h-section-w em{color:var(--r-v)}
+
+.lead{font-size:1.06rem;color:var(--slate);line-height:1.75;max-width:620px;font-weight:400}
+.lead-w{color:rgba(255,255,255,.62)}
+
+/* Sub-brand accent */
+.mfd-mark{
+  font-family:var(--bebas);font-weight:400;
+  letter-spacing:.03em;color:var(--r);
+}
+
+/* ── BRAND LOGO ──────────────────────────────────── */
+.brand{display:flex;align-items:center;gap:12px;user-select:none}
+.brand-mark{
+  width:46px;height:46px;flex-shrink:0;
+  background:var(--grad-red);border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--sh-r);position:relative;overflow:hidden;
+}
+.brand-mark::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.22),transparent 60%);
+}
+.brand-mark span{
+  font-family:var(--bebas);font-size:1.15rem;
+  letter-spacing:1.5px;color:#fff;position:relative;z-index:1;
+}
+.brand-txt{display:flex;flex-direction:column;line-height:1}
+.brand-name{
+  font-family:var(--bebas);font-size:1.4rem;
+  letter-spacing:.18em;color:var(--ink);line-height:.9;
+}
+.brand-sub{
+  font-family:var(--cond);font-weight:600;font-size:.62rem;
+  letter-spacing:2.6px;color:var(--muted);
+  text-transform:uppercase;margin-top:3px;
+}
+
+/* ── NAV ─────────────────────────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(250,247,245,.85);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid transparent;
+  transition:border-color var(--t1),background var(--t1);
+}
+#nav.scrolled{border-bottom-color:var(--line);background:rgba(255,255,255,.94)}
+.nav-inner{
+  max-width:1280px;margin:0 auto;padding:0 32px;height:74px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{
+  padding:9px 14px;font-size:.88rem;font-weight:500;color:var(--slate);
+  border-radius:9px;transition:background var(--t1),color var(--t1);position:relative;
+}
+.nav-links a:hover{color:var(--r);background:var(--r-tint)}
+.nav-cta{
+  margin-left:10px;
+  background:var(--r) !important;color:#fff !important;
+  padding:10px 20px !important;border-radius:10px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:600 !important;
+  transition:transform var(--bounce),background var(--t1),box-shadow var(--t1) !important;
+  box-shadow:var(--sh-r);
+}
+.nav-cta:hover{transform:translateY(-2px);background:var(--r-d) !important;box-shadow:0 16px 40px rgba(192,20,26,.42)}
+.nav-cta svg{width:13px;height:13px}
+
+.burger{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.nav-mob{display:none;flex-direction:column;gap:4px;padding:18px 24px 24px;border-top:1px solid var(--line);background:#fff}
+.nav-mob.open{display:flex}
+.nav-mob a{padding:12px 16px;font-size:.95rem;font-weight:500;color:var(--slate);border-radius:10px}
+.nav-mob a:hover{background:var(--r-tint);color:var(--r)}
+.nav-mob .nav-cta{margin-top:8px;text-align:center;justify-content:center}
+
+@media(max-width:960px){
+  .nav-links{display:none}
+  .burger{display:flex}
+}
+
+/* ── ANIMATIONS ──────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.08s}
+.reveal-d2{transition-delay:.16s}
+.reveal-d3{transition-delay:.24s}
+.reveal-d4{transition-delay:.32s}
+.reveal-d5{transition-delay:.4s}
+
+@keyframes float-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.15)}}
+@keyframes ping{
+  0%{transform:scale(1);opacity:.8}
+  100%{transform:scale(2.2);opacity:0}
+}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes badge-in{
+  from{transform:scale(0) rotate(-20deg);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* ════════════════════════════════════════════════════════
+   HERO con ORBIT CAROUSEL
+═══════════════════════════════════════════════════════ */
+#hero{
+  min-height:100vh;position:relative;overflow:hidden;
+  padding:130px 0 90px;background:var(--bg);display:flex;align-items:center;
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(192,20,26,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(192,20,26,.045) 1px,transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;
+  mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+}
+.hero-glow{
+  position:absolute;top:-160px;right:-120px;
+  width:680px;height:680px;border-radius:50%;
+  background:radial-gradient(circle,rgba(192,20,26,.18) 0%,transparent 65%);
+  filter:blur(24px);pointer-events:none;
+}
+.hero-glow-2{
+  position:absolute;bottom:-120px;left:-80px;
+  width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(107,15,26,.14) 0%,transparent 65%);
+  filter:blur(30px);pointer-events:none;
+}
+.hero-bg-text{
+  position:absolute;right:-2vw;bottom:-8vh;
+  font-family:var(--bebas);font-size:clamp(180px,32vw,460px);
+  letter-spacing:-.05em;color:transparent;
+  -webkit-text-stroke:1.5px rgba(192,20,26,.09);
+  pointer-events:none;user-select:none;line-height:.82;
+}
+.hero-grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.05fr 1fr;
+  gap:60px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;border:1px solid var(--line);
+  border-radius:30px;padding:7px 16px 7px 8px;
+  margin-bottom:26px;box-shadow:var(--sh-1);
+  font-size:.82rem;font-weight:600;color:var(--slate);
+}
+.hero-tag-dot{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--r);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.62rem;font-weight:800;flex-shrink:0;
+  font-family:var(--bebas);letter-spacing:.5px;
+}
+.hero-tag strong{color:var(--r);font-weight:700}
+
+.hero-h1{margin-bottom:24px}
+.hero-h1 em{position:relative;display:inline-block;color:var(--r)}
+.hero-h1 em::after{
+  content:'';position:absolute;left:0;right:0;bottom:.05em;height:.16em;
+  background:var(--r);opacity:.18;border-radius:8px;z-index:-1;
+}
+.hero-p{
+  font-size:1.1rem;color:var(--slate);line-height:1.75;
+  max-width:540px;margin-bottom:34px;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.btn-pri{
+  display:inline-flex;align-items:center;gap:11px;
+  padding:16px 30px;background:var(--r);color:#fff;
+  border-radius:12px;font-weight:600;font-size:1rem;
+  transition:transform var(--bounce),background var(--t1),box-shadow var(--t1);
+  box-shadow:var(--sh-r);
+}
+.btn-pri:hover{transform:translateY(-3px);background:var(--r-d);box-shadow:0 20px 44px rgba(192,20,26,.44)}
+.btn-pri svg{width:16px;height:16px}
+
+.btn-sec{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:16px 26px;
+  border:1.5px solid var(--line-2);color:var(--ink);
+  border-radius:12px;font-weight:600;font-size:.98rem;background:#fff;
+  transition:border-color var(--t1),color var(--t1),transform var(--t1);
+}
+.btn-sec:hover{border-color:var(--r);color:var(--r);transform:translateY(-2px)}
+.btn-sec svg{width:15px;height:15px}
+
+.hero-feats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  padding-top:32px;border-top:1px solid var(--line);
+}
+.hero-feat{display:flex;align-items:flex-start;gap:12px}
+.hero-feat-ico{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--r-soft);color:var(--r);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.hero-feat-ico svg{width:18px;height:18px}
+.hero-feat-tx{font-size:.82rem;line-height:1.5}
+.hero-feat-tx strong{display:block;color:var(--ink);font-weight:700;margin-bottom:2px;font-size:.94rem}
+.hero-feat-tx span{color:var(--muted)}
+
+/* ── ORBIT CAROUSEL ──────────────────────────────── */
+.hero-orbit{
+  position:relative;width:100%;height:640px;
+  cursor:grab;user-select:none;-webkit-user-select:none;touch-action:pan-y;
+}
+.hero-orbit.dragging{cursor:grabbing}
+
+.orbit-ring{
+  position:absolute;
+  width:680px;height:680px;border-radius:50%;
+  border:1.5px dashed rgba(192,20,26,.18);
+  top:50%;right:-60px;
+  transform:translate(0,-50%);pointer-events:none;
+  animation:orbit-ring-spin 60s linear infinite;
+}
+.orbit-ring::before{
+  content:'';position:absolute;inset:30px;border-radius:50%;
+  border:1px solid rgba(192,20,26,.08);
+}
+@keyframes orbit-ring-spin{to{transform:translate(0,-50%) rotate(360deg)}}
+
+.orbit-center{
+  position:absolute;right:-60px;top:50%;
+  width:0;height:0;z-index:5;
+}
+
+.orb-item{
+  position:absolute;left:0;top:0;
+  width:240px;height:300px;
+  margin:-150px 0 0 -120px;
+  border-radius:24px;overflow:hidden;
+  box-shadow:var(--sh-2);background:#222;cursor:pointer;
+  transition:width .7s cubic-bezier(.4,0,.2,1),
+             height .7s cubic-bezier(.4,0,.2,1),
+             margin .7s cubic-bezier(.4,0,.2,1),
+             box-shadow .5s ease,border-radius .5s ease;
+  will-change:transform,opacity,filter;
+}
+.orb-item:hover{box-shadow:var(--sh-3)}
+.orb-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 7s ease-out;
+}
+.orb-item img{animation:orb-kb 12s ease-in-out infinite alternate;transform-origin:center}
+@keyframes orb-kb{
+  from{transform:scale(1) translate(0,0)}
+  to{transform:scale(1.12) translate(-1.5%,-1%)}
+}
+.orb-item.front{
+  width:380px;height:480px;
+  margin:-240px 0 0 -190px;
+  box-shadow:var(--sh-3);border-radius:28px;
+}
+.orb-stat-chip{
+  position:absolute;top:14px;left:14px;z-index:3;
+  background:var(--grad-red);color:#fff;
+  border-radius:100px;padding:5px 12px;
+  font-family:var(--cond);font-size:.66rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  opacity:0;transform:translateY(-4px);
+  transition:opacity .5s ease .2s,transform .5s ease .2s;
+  box-shadow:0 8px 20px rgba(192,20,26,.4);
+}
+.orb-item.front .orb-stat-chip{opacity:1;transform:none}
+.orb-client{
+  font-family:var(--cond);font-size:.7rem;font-weight:700;
+  letter-spacing:2.6px;color:rgba(255,255,255,.7);
+  text-transform:uppercase;margin-bottom:8px;
+}
+.orb-info{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:26px;color:#fff;z-index:2;pointer-events:none;
+  opacity:0;transform:translateY(10px);
+  transition:opacity .5s ease .25s,transform .5s ease .25s;
+}
+.orb-info::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,transparent 30%,rgba(24,16,14,.9));
+}
+.orb-item.front .orb-info{opacity:1;transform:none}
+.orb-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(192,20,26,.95);
+  border-radius:30px;padding:5px 13px;
+  font-family:var(--cond);font-size:.7rem;font-weight:700;
+  letter-spacing:2.2px;text-transform:uppercase;color:#fff;
+  margin-bottom:12px;
+}
+.orb-tag svg{width:11px;height:11px}
+.orb-title{
+  font-family:var(--display);font-weight:700;font-style:italic;
+  font-size:1.5rem;line-height:1.22;letter-spacing:-.012em;color:#fff;
+}
+
+.orb-num{
+  position:absolute;top:14px;right:14px;z-index:3;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(8px);
+  border-radius:30px;padding:4px 12px;
+  font-family:var(--bebas);font-size:.86rem;
+  letter-spacing:1.8px;color:var(--ink);
+  opacity:0;transition:opacity .5s ease .15s;
+}
+.orb-item.front .orb-num{opacity:1}
+
+.orbit-tray{
+  position:absolute;bottom:14px;left:14px;z-index:20;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(10px);
+  border:1px solid var(--line);
+  border-radius:50px;padding:6px 6px 6px 14px;
+  box-shadow:var(--sh-2);
+}
+.orbit-tray-ctrl{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background var(--t1),transform var(--t1);
+}
+.orbit-tray-ctrl:hover{background:var(--r);transform:scale(1.05)}
+.orbit-tray-ctrl svg{width:14px;height:14px}
+.orbit-tray-ctrl.pp svg.ic-pause,
+.orbit-tray-ctrl.pp.paused svg.ic-play{display:block}
+.orbit-tray-ctrl.pp svg.ic-play,
+.orbit-tray-ctrl.pp.paused svg.ic-pause{display:none}
+
+.orbit-progress{display:flex;align-items:center;gap:6px;padding:0 6px}
+.orbit-prog-cur{
+  font-family:var(--display);font-weight:700;font-size:1rem;
+  color:var(--ink);min-width:18px;text-align:center;
+  font-variant-numeric:tabular-nums;
+}
+.orbit-prog-sep{color:var(--line-2);font-weight:300;font-size:1.05rem}
+.orbit-prog-tot{font-family:var(--display);font-size:.86rem;color:var(--muted)}
+.orbit-dots{display:flex;gap:5px;padding:0 6px 0 4px}
+.orbit-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--line-2);border:none;cursor:pointer;
+  transition:background var(--t1),width var(--t1),transform var(--t1);
+}
+.orbit-dot.active{background:var(--r);width:22px;border-radius:4px}
+.orbit-dot:hover:not(.active){background:var(--muted);transform:scale(1.15)}
+
+.orbit-badge{
+  position:absolute;top:8%;left:-12px;z-index:10;
+  background:#fff;border-radius:18px;
+  padding:13px 18px;display:flex;align-items:center;gap:12px;
+  box-shadow:var(--sh-3);border:1px solid var(--line);
+  animation:float-slow 5s ease-in-out infinite;
+}
+.orbit-badge-ic{
+  width:42px;height:42px;border-radius:12px;
+  background:var(--grad-red);color:#fff;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.orbit-badge-ic svg{width:18px;height:18px}
+.orbit-badge-tx{line-height:1.2}
+.orbit-badge-num{
+  font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--ink);
+  letter-spacing:-.02em;
+}
+.orbit-badge-num sup{font-size:.95rem;color:var(--r);margin-left:1px;font-weight:600}
+.orbit-badge-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;font-weight:600;margin-top:2px}
+
+.orbit-live{
+  position:absolute;top:42%;left:8px;z-index:10;
+  background:var(--ink);color:#fff;
+  border-radius:16px;padding:11px 15px;
+  display:flex;align-items:center;gap:10px;
+  box-shadow:var(--sh-3);
+  animation:float-slow 5.5s ease-in-out -2s infinite;
+}
+.orbit-live-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--r-v);
+  position:relative;flex-shrink:0;
+}
+.orbit-live-dot::after{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  border:1.5px solid var(--r-v);
+  animation:ping 1.8s ease-out infinite;
+}
+.orbit-live-tx{font-size:.76rem;font-weight:600;line-height:1.2}
+.orbit-live-tx em{display:block;font-style:normal;font-size:.66rem;font-weight:400;color:rgba(255,255,255,.55);margin-top:2px;letter-spacing:.3px}
+
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-orbit{height:560px}
+  .orbit-center{right:-30px}
+  .orbit-ring{width:560px;height:560px;right:-30px}
+  .orb-item{width:200px;height:250px;margin:-125px 0 0 -100px}
+  .orb-item.front{width:320px;height:400px;margin:-200px 0 0 -160px}
+  .orb-title{font-size:1.2rem}
+}
+@media(max-width:520px){
+  .hero-orbit{height:480px}
+  .orbit-ring{width:440px;height:440px}
+  .orb-item{width:160px;height:200px;margin:-100px 0 0 -80px}
+  .orb-item.front{width:260px;height:330px;margin:-165px 0 0 -130px}
+  .hero-feats{grid-template-columns:1fr;gap:16px}
+  .orbit-badge{padding:10px 14px;top:4%}
+  .orbit-badge-num{font-size:1.25rem}
+  .orbit-live{left:0;padding:9px 12px}
+}
+
+/* ════════════════════════════════════════════════════════
+   STATS MARQUEE
+═══════════════════════════════════════════════════════ */
+#stats-strip{
+  background:var(--dark);color:#fff;padding:20px 0;overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(192,20,26,.15);
+}
+.marquee-track{
+  display:flex;gap:42px;animation:marquee 32s linear infinite;white-space:nowrap;
+}
+.marquee-item{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--cond);font-size:.94rem;font-weight:600;
+  letter-spacing:2.2px;text-transform:uppercase;color:rgba(255,255,255,.75);
+}
+.marquee-item svg{width:16px;height:16px;color:var(--r-v)}
+.marquee-item strong{color:#fff;font-weight:700}
+.marquee-item em{
+  font-family:var(--bebas);font-style:normal;color:var(--r-v);
+  font-size:1.05rem;letter-spacing:2px;
+}
+.marquee-dot{
+  width:5px;height:5px;border-radius:50%;background:var(--r);
+  align-self:center;flex-shrink:0;
+}
+
+/* ════════════════════════════════════════════════════════
+   NOSOTROS
+═══════════════════════════════════════════════════════ */
+#nosotros{background:var(--surface)}
+.nos-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.nos-card{
+  background:var(--grad-dark);border-radius:var(--r-xl);
+  padding:56px 48px;position:relative;overflow:hidden;color:#fff;
+}
+.nos-card::before{
+  content:'MFD';position:absolute;
+  font-family:var(--bebas);font-size:180px;letter-spacing:-6px;
+  color:transparent;-webkit-text-stroke:1.5px rgba(192,20,26,.22);
+  bottom:-30px;right:-14px;pointer-events:none;line-height:1;
+}
+.nos-card::after{
+  content:'';position:absolute;
+  width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(192,20,26,.3) 0%,transparent 70%);
+  top:-80px;left:-80px;pointer-events:none;
+}
+.nos-mfd{
+  font-family:var(--bebas);font-size:5.5rem;letter-spacing:.05em;
+  color:var(--r-v);line-height:1;position:relative;z-index:2;
+}
+.nos-lbl{
+  font-family:var(--cond);font-size:.7rem;font-weight:600;
+  letter-spacing:3.5px;color:rgba(255,255,255,.42);
+  text-transform:uppercase;display:block;margin-bottom:26px;
+  position:relative;z-index:2;
+}
+.nos-p{
+  font-size:1.02rem;font-weight:300;line-height:1.75;
+  color:rgba(255,255,255,.78);position:relative;z-index:2;margin-bottom:22px;
+}
+.nos-quote{
+  font-family:var(--display);font-style:italic;font-weight:500;
+  color:var(--r-v);border-left:2px solid var(--r-v);padding-left:20px;
+  font-size:1.1rem;line-height:1.5;position:relative;z-index:2;margin-bottom:26px;
+}
+.chips{display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:2}
+.chip{
+  background:rgba(192,20,26,.16);border:1px solid rgba(192,20,26,.32);
+  border-radius:100px;padding:6px 14px;
+  font-family:var(--cond);font-size:.7rem;font-weight:700;
+  letter-spacing:2px;color:rgba(255,255,255,.78);text-transform:uppercase;
+}
+
+.nos-text .h-section{margin-bottom:22px}
+
+@media(max-width:960px){
+  .nos-grid{grid-template-columns:1fr;gap:48px}
+}
+
+/* ════════════════════════════════════════════════════════
+   EPECAR — Filosofía interactiva
+═══════════════════════════════════════════════════════ */
+#epecar{
+  background:var(--grad-dark);padding:120px 0;position:relative;overflow:hidden;color:#fff;
+}
+#epecar::before{
+  content:'EPECAR';position:absolute;
+  font-family:var(--bebas);font-size:clamp(140px,22vw,320px);
+  letter-spacing:-.05em;color:transparent;
+  -webkit-text-stroke:1.5px rgba(192,20,26,.09);
+  top:5%;left:50%;transform:translate(-50%,0);
+  pointer-events:none;user-select:none;white-space:nowrap;line-height:1;
+}
+.ep-head{text-align:center;margin-bottom:56px;position:relative;z-index:2}
+.ep-head .eyebrow{justify-content:center;color:rgba(255,255,255,.72);margin-bottom:16px}
+.ep-head .eyebrow::before{background:rgba(255,255,255,.5)}
+.ep-head .lead{margin:14px auto 0;text-align:center;max-width:640px;color:rgba(255,255,255,.62)}
+
+/* -- Progress rail on top of tabs -- */
+.ep-progress{
+  position:relative;height:3px;background:rgba(255,255,255,.06);
+  border-radius:3px;margin-bottom:36px;overflow:hidden;
+  max-width:1080px;margin-left:auto;margin-right:auto;
+}
+.ep-progress-bar{
+  position:absolute;left:0;top:0;height:100%;
+  background:var(--grad-red);border-radius:3px;
+  transition:width .1s linear;box-shadow:0 0 12px rgba(217,30,37,.55);
+}
+
+/* -- Steps rail (letters as tabs) -- */
+.ep-tabs{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:10px;
+  margin-bottom:44px;position:relative;z-index:2;
+  max-width:1080px;margin-left:auto;margin-right:auto;
+}
+.ep-tab{
+  position:relative;cursor:pointer;text-align:center;
+  padding:22px 12px 20px;border-radius:16px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+  transition:all .35s ease;overflow:hidden;
+}
+.ep-tab::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:0;height:2px;background:var(--r-v);
+  transition:width .3s ease;
+}
+.ep-tab:hover{background:rgba(255,255,255,.06);transform:translateY(-3px)}
+.ep-tab:hover::before{width:60%}
+.ep-tab.active{
+  background:linear-gradient(180deg,rgba(217,30,37,.22),rgba(139,0,0,.08));
+  border-color:rgba(217,30,37,.5);
+  box-shadow:0 12px 30px rgba(217,30,37,.28);
+  transform:translateY(-4px);
+}
+.ep-tab.active::before{width:70%;height:3px}
+.ep-tab-num{
+  font-family:var(--cond);font-size:.62rem;font-weight:700;
+  letter-spacing:2.4px;color:rgba(255,255,255,.42);
+  text-transform:uppercase;display:block;margin-bottom:2px;
+}
+.ep-tab-letter{
+  font-family:var(--bebas);font-size:3.4rem;
+  color:var(--r-v);line-height:1;display:block;
+  letter-spacing:.03em;text-shadow:0 0 24px rgba(217,30,37,.35);
+  transition:transform .3s ease;
+}
+.ep-tab.active .ep-tab-letter{transform:scale(1.08)}
+.ep-tab-word{
+  font-family:var(--cond);font-size:.82rem;font-weight:700;
+  letter-spacing:2px;color:#fff;
+  text-transform:uppercase;display:block;margin-top:4px;
+}
+
+/* -- Content stage: image + info -- */
+.ep-stage{
+  display:grid;grid-template-columns:1.15fr 1fr;gap:52px;
+  align-items:stretch;position:relative;z-index:2;
+  max-width:1180px;margin:0 auto;
+}
+.ep-visual{
+  position:relative;border-radius:24px;overflow:hidden;
+  background:#0f0708;border:1px solid rgba(255,255,255,.06);
+  min-height:440px;box-shadow:0 30px 80px rgba(0,0,0,.55);
+}
+.ep-slide{
+  position:absolute;inset:0;opacity:0;
+  transition:opacity .55s ease;
+}
+.ep-slide.on{opacity:1;z-index:2}
+.ep-slide img{
+  width:100%;height:100%;object-fit:cover;
+  animation:ep-kb 14s ease-out infinite alternate;
+}
+@keyframes ep-kb{
+  from{transform:scale(1) translate(0,0)}
+  to{transform:scale(1.12) translate(-1.5%,-1%)}
+}
+.ep-slide::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(24,16,14,.45) 0%,transparent 40%,rgba(24,16,14,.85) 100%);
+}
+.ep-slide-badge{
+  position:absolute;top:22px;left:22px;z-index:3;
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+  border-radius:100px;padding:8px 16px;
+  font-family:var(--cond);font-size:.74rem;font-weight:700;
+  letter-spacing:2.4px;text-transform:uppercase;color:var(--r-deep);
+}
+.ep-slide-badge-num{
+  font-family:var(--bebas);font-size:.88rem;
+  color:var(--r);letter-spacing:1px;
+}
+.ep-slide-icon{
+  position:absolute;bottom:22px;right:22px;z-index:3;
+  width:60px;height:60px;border-radius:16px;
+  background:var(--grad-red);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 30px rgba(217,30,37,.55);
+  animation:float-slow 4s ease-in-out infinite;
+}
+.ep-slide-icon svg{width:26px;height:26px;color:#fff;stroke-width:1.8}
+
+/* -- Right info column -- */
+.ep-info-col{display:flex;flex-direction:column;justify-content:center}
+.ep-info-panel{
+  display:none;animation:fup .6s ease both;
+}
+.ep-info-panel.on{display:block}
+.ep-info-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:3px;color:var(--r-v);text-transform:uppercase;
+  margin-bottom:14px;
+}
+.ep-info-eyebrow::before{content:'';width:22px;height:1.5px;background:var(--r-v)}
+.ep-info-title{
+  font-family:var(--display);font-weight:700;font-size:2.2rem;
+  letter-spacing:-.02em;color:#fff;line-height:1.08;margin-bottom:18px;
+}
+.ep-info-title em{font-style:italic;color:var(--r-v);font-weight:600}
+.ep-info-desc{
+  font-size:1rem;line-height:1.7;color:rgba(255,255,255,.68);
+  margin-bottom:26px;
+}
+.ep-kpi-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  margin-bottom:28px;
+}
+.ep-kpi{
+  padding:14px 16px;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;transition:border-color var(--t1),background var(--t1);
+}
+.ep-kpi:hover{border-color:rgba(217,30,37,.4);background:rgba(217,30,37,.08)}
+.ep-kpi-num{
+  font-family:var(--display);font-weight:700;font-size:1.5rem;
+  letter-spacing:-.02em;color:#fff;line-height:1;
+}
+.ep-kpi-num em{color:var(--r-v);font-style:normal}
+.ep-kpi-lbl{
+  font-family:var(--cond);font-size:.66rem;font-weight:600;
+  letter-spacing:1.8px;color:rgba(255,255,255,.5);
+  text-transform:uppercase;margin-top:6px;
+}
+.ep-features{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ep-features li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:.94rem;color:rgba(255,255,255,.78);line-height:1.5;
+}
+.ep-features li svg{
+  width:16px;height:16px;flex-shrink:0;margin-top:.24em;
+  color:var(--r-v);stroke-width:2.5;
+}
+
+/* -- Tab-controls (prev/next + play) -- */
+.ep-ctrls{
+  display:flex;align-items:center;gap:12px;
+  margin-top:32px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.ep-ctrl-btn{
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all var(--t1);
+}
+.ep-ctrl-btn:hover{background:var(--r);border-color:var(--r);transform:scale(1.05)}
+.ep-ctrl-btn svg{width:15px;height:15px;stroke-width:2.2}
+.ep-ctrl-btn.pp svg.play,.ep-ctrl-btn.pp.paused svg.pause{display:none}
+.ep-ctrl-btn.pp svg.pause,.ep-ctrl-btn.pp.paused svg.play{display:block}
+.ep-ctrl-lbl{
+  margin-left:auto;
+  font-family:var(--cond);font-size:.72rem;font-weight:600;
+  letter-spacing:2.2px;color:rgba(255,255,255,.42);
+  text-transform:uppercase;
+}
+.ep-ctrl-lbl em{color:var(--r-v);font-style:normal;font-family:var(--bebas);font-size:1rem}
+
+@media(max-width:960px){
+  .ep-tabs{grid-template-columns:repeat(3,1fr)}
+  .ep-stage{grid-template-columns:1fr;gap:32px}
+  .ep-visual{min-height:340px}
+  .ep-tab-letter{font-size:2.6rem}
+}
+@media(max-width:520px){
+  .ep-tabs{grid-template-columns:repeat(2,1fr);gap:8px}
+  .ep-tab{padding:16px 8px 14px}
+  .ep-tab-letter{font-size:2.2rem}
+  .ep-info-title{font-size:1.6rem}
+  .ep-kpi-row{grid-template-columns:1fr 1fr}
+}
+
+/* ════════════════════════════════════════════════════════
+   SERVICIOS
+═══════════════════════════════════════════════════════ */
+#servicios{background:var(--cream)}
+.srv-intro{
+  display:grid;grid-template-columns:1fr 1.4fr;gap:60px;
+  margin-bottom:64px;align-items:end;
+}
+.srv-intro-aside{font-size:.98rem;color:var(--slate);line-height:1.75}
+.srv-intro-aside p+p{margin-top:12px}
+
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.sc{
+  border-radius:20px;overflow:hidden;background:#fff;
+  border:1px solid var(--line);
+  transition:transform var(--t2),box-shadow var(--t2),border-color var(--t2);
+  display:flex;flex-direction:column;
+}
+.sc:hover{transform:translateY(-8px);box-shadow:var(--sh-3);border-color:transparent}
+.sc-top{
+  background:var(--grad-dark);padding:38px 32px 32px;
+  position:relative;overflow:hidden;min-height:190px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.sc-top::after{
+  content:'';position:absolute;right:-20px;top:-20px;
+  width:140px;height:140px;border-radius:50%;
+  background:radial-gradient(circle,rgba(192,20,26,.32) 0%,transparent 70%);
+  pointer-events:none;
+}
+.sc-num{
+  font-family:var(--bebas);font-size:5rem;
+  color:rgba(255,255,255,.06);line-height:1;
+  position:absolute;top:14px;right:22px;letter-spacing:-.03em;
+}
+.sc-ico{
+  width:52px;height:52px;border-radius:13px;
+  background:rgba(192,20,26,.28);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;position:relative;z-index:1;
+  border:1px solid rgba(192,20,26,.35);
+}
+.sc-ico svg{width:24px;height:24px;color:#fff;stroke-width:1.7}
+.sc-name{
+  font-family:var(--display);font-weight:700;font-size:1.55rem;
+  letter-spacing:-.015em;color:#fff;position:relative;z-index:1;
+  line-height:1.1;margin-bottom:5px;
+}
+.sc-name em{font-style:italic;color:var(--r-v);font-weight:600}
+.sc-sub{
+  font-family:var(--cond);font-size:.7rem;font-weight:700;
+  letter-spacing:2.6px;color:rgba(255,255,255,.42);
+  text-transform:uppercase;position:relative;z-index:1;
+}
+.sc-body{padding:28px 30px 30px;flex:1;display:flex;flex-direction:column}
+.sc-list{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1}
+.sc-list li{
+  font-size:.92rem;font-weight:400;color:var(--slate);
+  display:flex;align-items:flex-start;gap:10px;line-height:1.5;
+}
+.sc-list li::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--r);flex-shrink:0;margin-top:.55em;
+}
+
+@media(max-width:960px){
+  .srv-intro{grid-template-columns:1fr;gap:22px;margin-bottom:44px}
+  .srv-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){.srv-grid{grid-template-columns:1fr}}
+
+/* ════════════════════════════════════════════════════════
+   PORTAFOLIO
+═══════════════════════════════════════════════════════ */
+#portafolio{background:var(--dark);color:#fff;padding:120px 0;position:relative;overflow:hidden}
+#portafolio::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.012) 80px);
+  pointer-events:none;
+}
+.port-head{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  margin-bottom:44px;align-items:end;position:relative;z-index:2;
+}
+.port-head .lead-w{max-width:420px}
+
+.port-filters{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px;
+  position:relative;z-index:2;align-items:center;
+}
+.pf{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.6);padding:9px 18px;border-radius:100px;
+  font-family:var(--cond);font-size:.76rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;transition:all .25s;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.pf:hover{background:rgba(192,20,26,.18);color:rgba(255,255,255,.95);border-color:rgba(192,20,26,.35)}
+.pf.on{background:var(--grad-red);color:#fff;border-color:transparent;box-shadow:0 6px 22px rgba(192,20,26,.42)}
+.pf-count{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:22px;height:20px;padding:0 6px;
+  background:rgba(255,255,255,.12);border-radius:100px;
+  font-family:var(--bebas);font-size:.78rem;letter-spacing:1px;
+  color:rgba(255,255,255,.85);
+}
+.pf.on .pf-count{background:rgba(0,0,0,.28);color:#fff}
+.pf-total-tag{
+  margin-left:auto;
+  font-family:var(--cond);font-size:.72rem;font-weight:600;
+  letter-spacing:2.4px;color:rgba(255,255,255,.4);
+  text-transform:uppercase;
+}
+.pf-total-tag em{color:var(--r-v);font-style:normal;font-family:var(--bebas);font-size:1rem}
+
+.p-carousel{position:relative;overflow:hidden;z-index:2;border-radius:20px}
+.p-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
+.p-item{flex:0 0 calc(33.333% - 15px);margin-right:22px;min-width:0}
+.p-card{
+  border-radius:18px;overflow:hidden;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  transition:transform var(--t1),box-shadow var(--t1),border-color var(--t1);
+  cursor:pointer;position:relative;
+}
+.p-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,.55);border-color:rgba(192,20,26,.4)}
+.p-img{aspect-ratio:4/3;overflow:hidden;position:relative;background:rgba(255,255,255,.04)}
+.p-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .8s cubic-bezier(.4,0,.2,1),filter var(--t1);
+  display:block;
+}
+.p-card:hover .p-img img{transform:scale(1.09);filter:brightness(.85)}
+.p-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55));
+  pointer-events:none;
+}
+.p-badge{
+  position:absolute;top:14px;left:14px;z-index:3;
+  background:var(--grad-red);color:#fff;
+  padding:5px 13px;border-radius:100px;
+  font-family:var(--cond);font-size:.7rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  box-shadow:0 6px 18px rgba(192,20,26,.35);
+}
+.p-badge svg{width:11px;height:11px;margin-right:5px;vertical-align:-2px}
+
+/* Hover CTA overlay */
+.p-hover{
+  position:absolute;inset:0;z-index:4;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity var(--t1);pointer-events:none;
+}
+.p-card:hover .p-hover{opacity:1}
+.p-hover-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 22px;background:#fff;color:var(--ink);
+  border-radius:100px;font-family:var(--cond);font-size:.8rem;
+  font-weight:700;letter-spacing:2.4px;text-transform:uppercase;
+  box-shadow:0 12px 30px rgba(0,0,0,.5);
+  transform:translateY(10px);transition:transform .35s ease;
+}
+.p-card:hover .p-hover-btn{transform:translateY(0)}
+.p-hover-btn svg{width:14px;height:14px;stroke-width:2.4}
+
+.p-info{padding:22px 24px 24px;position:relative}
+.p-meta{
+  display:flex;align-items:center;gap:12px;margin-bottom:10px;
+  font-family:var(--cond);font-size:.68rem;font-weight:700;
+  letter-spacing:2.4px;text-transform:uppercase;
+}
+.p-meta-cat{color:var(--r-v)}
+.p-meta-dot{
+  width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3);
+}
+.p-meta-year{color:rgba(255,255,255,.45)}
+.p-client{
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:2.5px;color:var(--r-v);text-transform:uppercase;margin-bottom:8px;
+}
+.p-title{
+  font-family:var(--display);font-weight:700;font-size:1.15rem;
+  letter-spacing:-.012em;color:#fff;margin-bottom:8px;line-height:1.25;
+}
+.p-desc{
+  font-size:.84rem;font-weight:300;color:rgba(255,255,255,.55);line-height:1.55;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.p-tags{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;
+  padding-top:14px;border-top:1px solid rgba(255,255,255,.08);
+}
+.p-tag{
+  padding:3px 10px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);border-radius:100px;
+  font-family:var(--cond);font-size:.66rem;font-weight:600;
+  letter-spacing:1.6px;color:rgba(255,255,255,.6);text-transform:uppercase;
+}
+
+/* -- PORT DETAIL MODAL -- */
+.pd-modal{
+  position:fixed;inset:0;z-index:3000;
+  background:rgba(24,16,14,.78);backdrop-filter:blur(14px);
+  display:none;align-items:center;justify-content:center;padding:24px;
+  opacity:0;transition:opacity .3s ease;
+}
+.pd-modal.open{display:flex;opacity:1}
+.pd-box{
+  background:#0f0708;color:#fff;
+  border-radius:var(--r-xl);width:100%;max-width:900px;max-height:92vh;
+  overflow-y:auto;overflow-x:hidden;
+  box-shadow:var(--sh-3);border:1px solid rgba(192,20,26,.22);
+  transform:scale(.95);opacity:0;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .25s ease;
+}
+.pd-modal.open .pd-box{transform:scale(1);opacity:1}
+.pd-hero{
+  position:relative;aspect-ratio:16/8;overflow:hidden;
+  border-radius:var(--r-xl) var(--r-xl) 0 0;background:#111;
+}
+.pd-hero img{width:100%;height:100%;object-fit:cover;animation:ep-kb 12s ease-out infinite alternate}
+.pd-hero::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(15,7,8,.15) 0%,transparent 30%,rgba(15,7,8,.9) 100%);
+}
+.pd-hero-badge{
+  position:absolute;top:22px;left:22px;z-index:2;
+  background:var(--grad-red);color:#fff;
+  padding:6px 16px;border-radius:100px;
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:2.4px;text-transform:uppercase;
+  box-shadow:0 10px 26px rgba(192,20,26,.5);
+}
+.pd-close{
+  position:absolute;top:22px;right:22px;z-index:3;
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(255,255,255,.9);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:transform var(--t1);
+}
+.pd-close:hover{transform:rotate(90deg)}
+.pd-close svg{width:16px;height:16px}
+.pd-hero-title{
+  position:absolute;bottom:26px;left:32px;right:32px;z-index:2;
+}
+.pd-hero-client{
+  font-family:var(--cond);font-size:.78rem;font-weight:700;
+  letter-spacing:3px;color:var(--r-v);
+  text-transform:uppercase;margin-bottom:8px;
+}
+.pd-hero-h{
+  font-family:var(--display);font-weight:700;font-size:2rem;
+  letter-spacing:-.018em;line-height:1.1;color:#fff;
+}
+.pd-hero-h em{font-style:italic;color:var(--r-v);font-weight:600}
+
+.pd-body{padding:34px 36px 40px}
+.pd-lead{
+  font-size:1.02rem;line-height:1.7;color:rgba(255,255,255,.78);
+  margin-bottom:26px;
+}
+.pd-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin-bottom:28px;
+}
+.pd-stat{
+  padding:16px;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);border-radius:14px;
+}
+.pd-stat-n{
+  font-family:var(--display);font-weight:700;font-size:1.5rem;
+  color:#fff;letter-spacing:-.02em;line-height:1;
+}
+.pd-stat-n em{color:var(--r-v);font-style:normal}
+.pd-stat-l{
+  font-family:var(--cond);font-size:.66rem;font-weight:600;
+  letter-spacing:1.8px;color:rgba(255,255,255,.5);
+  text-transform:uppercase;margin-top:6px;
+}
+.pd-section-title{
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:14px;
+  padding-top:20px;border-top:1px solid rgba(255,255,255,.08);
+}
+.pd-features{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pd-features li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.92rem;color:rgba(255,255,255,.72);line-height:1.5;
+}
+.pd-features li svg{
+  width:15px;height:15px;flex-shrink:0;margin-top:.24em;
+  color:var(--r-v);stroke-width:2.5;
+}
+.pd-cta{
+  display:inline-flex;align-items:center;gap:11px;margin-top:26px;
+  padding:15px 26px;background:var(--r);color:#fff;
+  border-radius:12px;font-weight:600;font-size:.98rem;
+  transition:transform var(--bounce),background var(--t1),box-shadow var(--t1);
+  box-shadow:var(--sh-r);
+}
+.pd-cta:hover{transform:translateY(-2px);background:var(--r-d);box-shadow:0 16px 40px rgba(192,20,26,.5)}
+.pd-cta svg{width:16px;height:16px}
+
+@media(max-width:640px){
+  .pd-hero-h{font-size:1.4rem}
+  .pd-body{padding:24px 22px 28px}
+  .pd-stats{grid-template-columns:1fr 1fr}
+  .pd-features{grid-template-columns:1fr}
+}
+.c-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:32px;position:relative;z-index:2;
+}
+.c-arrows{display:flex;gap:12px}
+.carr{
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);
+  color:rgba(255,255,255,.75);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .25s;
+}
+.carr:hover{background:var(--r);border-color:var(--r);color:#fff;transform:scale(1.05)}
+.carr svg{width:19px;height:19px;stroke-width:2}
+.cdots{display:flex;gap:8px;align-items:center}
+.cdot{
+  width:7px;height:7px;border-radius:50%;
+  background:rgba(255,255,255,.18);border:none;cursor:pointer;
+  transition:all .28s;padding:0;
+}
+.cdot.on{background:var(--r-v);width:26px;border-radius:4px}
+.p-empty{
+  display:none;flex-direction:column;align-items:center;gap:14px;
+  padding:80px 0;color:rgba(255,255,255,.25);
+  font-family:var(--cond);font-size:.86rem;letter-spacing:2px;
+  text-transform:uppercase;position:relative;z-index:2;
+}
+.p-empty.show{display:flex}
+.p-empty svg{width:44px;height:44px;opacity:.4}
+
+@media(max-width:960px){
+  .port-head{grid-template-columns:1fr;gap:22px}
+  .p-item{flex:0 0 calc(50% - 11px)}
+}
+@media(max-width:640px){.p-item{flex:0 0 calc(100% - 11px)}}
+
+/* ════════════════════════════════════════════════════════
+   CLIENTES — cinta infinita de logos
+═══════════════════════════════════════════════════════ */
+#clientes{background:var(--cream);padding:110px 0 90px;overflow:hidden}
+.cli-head{text-align:center;margin-bottom:52px;padding:0 32px}
+.cli-head .eyebrow{justify-content:center}
+.cli-head .lead{margin:14px auto 0;text-align:center}
+
+.cli-stats{
+  display:flex;justify-content:center;gap:44px;
+  margin-top:26px;flex-wrap:wrap;
+}
+.cli-stat{display:flex;flex-direction:column;align-items:center}
+.cli-stat-n{
+  font-family:var(--display);font-weight:700;font-size:2rem;
+  color:var(--r);letter-spacing:-.02em;line-height:1;
+}
+.cli-stat-n em{color:var(--r-deep);font-style:italic}
+.cli-stat-l{
+  font-family:var(--cond);font-size:.7rem;font-weight:600;
+  letter-spacing:2.4px;color:var(--muted);
+  text-transform:uppercase;margin-top:6px;
+}
+
+.cli-belt-wrap{
+  position:relative;padding:20px 0;
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.cli-belt-wrap + .cli-belt-wrap{margin-top:14px}
+.cli-belt{
+  display:flex;gap:26px;
+  animation:cli-scroll 55s linear infinite;
+  width:max-content;
+}
+.cli-belt-r{animation:cli-scroll-r 55s linear infinite}
+@keyframes cli-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@keyframes cli-scroll-r{
+  from{transform:translateX(-50%)}
+  to{transform:translateX(0)}
+}
+.cli-belt-wrap:hover .cli-belt{animation-play-state:paused}
+
+.cli-card{
+  flex-shrink:0;
+  width:220px;height:120px;
+  background:#fff;border:1px solid var(--line);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  padding:22px 26px;position:relative;overflow:hidden;
+  transition:all var(--t2);cursor:default;
+}
+.cli-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--grad-red);transform:scaleX(0);transform-origin:left;
+  transition:transform var(--t2);
+}
+.cli-card:hover{
+  border-color:transparent;box-shadow:var(--sh-3);
+  transform:translateY(-6px);
+}
+.cli-card:hover::before{transform:scaleX(1)}
+.cli-card:hover .cli-svg{filter:none;opacity:1}
+.cli-svg{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  filter:grayscale(1) contrast(.85);opacity:.55;
+  transition:filter var(--t2),opacity var(--t2);
+}
+.cli-svg svg{max-width:100%;max-height:100%;height:auto;width:auto}
+
+@media(max-width:640px){
+  .cli-card{width:170px;height:95px;padding:16px 20px}
+  .cli-stats{gap:20px}
+  .cli-stat-n{font-size:1.6rem}
+}
+
+/* ════════════════════════════════════════════════════════
+   IDENTIFICA
+═══════════════════════════════════════════════════════ */
+#identifica{background:var(--surface)}
+.id-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.id-c{
+  background:var(--cream);border-radius:22px;padding:44px 38px;
+  border:1.5px solid var(--line);
+  transition:transform var(--t2),box-shadow var(--t2),border-color var(--t2);
+  position:relative;overflow:hidden;
+}
+.id-c:hover{transform:translateY(-8px);box-shadow:var(--sh-3);border-color:transparent;background:#fff}
+.id-c::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--grad-red);transform:scaleX(0);
+  transform-origin:left;transition:transform var(--t2);
+}
+.id-c:hover::after{transform:scaleX(1)}
+.id-ico{
+  width:60px;height:60px;border-radius:15px;
+  background:var(--r-soft);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--r);margin-bottom:24px;
+}
+.id-ico svg{width:28px;height:28px;stroke-width:1.7}
+.id-t{
+  font-family:var(--display);font-weight:700;font-size:1.5rem;
+  letter-spacing:-.014em;color:var(--ink);margin-bottom:14px;
+}
+.id-t em{font-style:italic;color:var(--r);font-weight:600}
+.id-p{font-size:.98rem;font-weight:400;line-height:1.72;color:var(--slate)}
+
+@media(max-width:960px){.id-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.id-grid{grid-template-columns:1fr}}
+
+/* ════════════════════════════════════════════════════════
+   VALORES
+═══════════════════════════════════════════════════════ */
+#valores{background:var(--cream)}
+.val-head{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:60px;
+  align-items:end;margin-bottom:56px;
+}
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.vc{
+  background:#fff;border-radius:18px;padding:32px 28px;
+  border:1.5px solid var(--line);
+  transition:border-color var(--t2),transform var(--t2),box-shadow var(--t2);
+  position:relative;overflow:hidden;
+}
+.vc:hover{border-color:var(--r);transform:translateY(-6px);box-shadow:var(--sh-2)}
+.vc::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--grad-red);transform:scaleX(0);transform-origin:left;
+  transition:transform var(--t2);
+}
+.vc:hover::after{transform:scaleX(1)}
+.vc-ico{
+  width:46px;height:46px;background:var(--r-soft);
+  border-radius:12px;display:flex;align-items:center;justify-content:center;
+  color:var(--r);margin-bottom:18px;
+}
+.vc-ico svg{width:22px;height:22px;stroke-width:1.7}
+.vc-n{
+  font-family:var(--display);font-weight:700;font-size:1.2rem;
+  letter-spacing:-.014em;color:var(--ink);margin-bottom:10px;
+}
+.vc-d{font-size:.9rem;font-weight:400;line-height:1.68;color:var(--slate)}
+
+@media(max-width:960px){
+  .val-head{grid-template-columns:1fr;gap:26px}
+  .val-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){.val-grid{grid-template-columns:1fr}}
+
+/* ════════════════════════════════════════════════════════
+   PROCESO
+═══════════════════════════════════════════════════════ */
+#proceso{background:var(--surface)}
+.proc-head{text-align:center;margin-bottom:68px}
+.proc-head .eyebrow{justify-content:center}
+.proc-head .lead{margin:14px auto 0}
+.proc-flow{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  position:relative;max-width:1080px;margin:0 auto;
+}
+.proc-flow::before{
+  content:'';position:absolute;top:38px;left:12.5%;right:12.5%;
+  height:2px;background:linear-gradient(90deg,var(--r),var(--r-deep));
+  z-index:0;
+}
+.proc-step{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding:0 18px;position:relative;z-index:1;
+}
+.proc-node{
+  width:80px;height:80px;border-radius:50%;background:var(--grad-red);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;box-shadow:var(--sh-r);flex-shrink:0;position:relative;
+}
+.proc-node svg{width:32px;height:32px;color:#fff;stroke-width:1.8}
+.proc-nn{
+  position:absolute;top:-6px;right:-6px;width:26px;height:26px;
+  border-radius:50%;background:var(--ink);border:2px solid var(--surface);
+  font-family:var(--bebas);font-size:.9rem;color:var(--r-v);
+  display:flex;align-items:center;justify-content:center;line-height:1;
+}
+.proc-t{
+  font-family:var(--display);font-weight:700;font-size:1.15rem;
+  letter-spacing:-.012em;color:var(--ink);margin-bottom:10px;
+}
+.proc-d{font-size:.9rem;font-weight:400;line-height:1.65;color:var(--slate)}
+
+@media(max-width:960px){
+  .proc-flow{grid-template-columns:1fr 1fr;gap:36px}
+  .proc-flow::before{display:none}
+}
+@media(max-width:520px){.proc-flow{grid-template-columns:1fr}}
+
+/* ════════════════════════════════════════════════════════
+   CONTACTO
+═══════════════════════════════════════════════════════ */
+#contacto{
+  background:var(--grad-dark);padding:120px 0;
+  position:relative;overflow:hidden;color:#fff;
+}
+#contacto::before{
+  content:'';position:absolute;right:-18vw;top:50%;
+  transform:translateY(-50%);width:60vw;height:60vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(192,20,26,.2) 0%,transparent 72%);
+  pointer-events:none;
+}
+#contacto::after{
+  content:'CONTACTO';position:absolute;
+  font-family:var(--bebas);font-size:clamp(140px,20vw,280px);
+  letter-spacing:-.05em;color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,255,255,.05);
+  bottom:-5vh;left:-2vw;pointer-events:none;user-select:none;
+  line-height:.82;
+}
+.ct-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  align-items:center;position:relative;z-index:2;
+}
+.ct-left .h-section{margin-bottom:22px;font-size:clamp(2.2rem,4.5vw,3.6rem);color:#fff}
+.ct-left .h-section em{color:var(--r-v)}
+.ct-left .lead{color:rgba(255,255,255,.65);margin-bottom:44px}
+.ct-items{display:flex;flex-direction:column;gap:22px}
+.ct-item{display:flex;align-items:center;gap:18px}
+.ct-ico{
+  width:56px;height:56px;border-radius:14px;
+  background:rgba(192,20,26,.2);border:1px solid rgba(192,20,26,.35);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;flex-shrink:0;transition:background var(--t1);
+}
+.ct-item:hover .ct-ico{background:rgba(192,20,26,.35)}
+.ct-ico svg{width:22px;height:22px;stroke-width:1.7}
+.ct-info{display:flex;flex-direction:column;gap:4px}
+.ct-lbl{
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:3px;color:rgba(255,255,255,.4);text-transform:uppercase;
+}
+.ct-val{
+  font-family:var(--display);font-size:1.1rem;font-weight:600;
+  color:rgba(255,255,255,.9);letter-spacing:-.01em;line-height:1.3;
+}
+.ct-right{
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:26px;padding:44px 40px;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.ct-right-title{
+  font-family:var(--display);font-weight:700;font-size:1.6rem;
+  letter-spacing:-.015em;color:#fff;margin-bottom:8px;
+}
+.ct-right-title em{font-style:italic;color:var(--r-v);font-weight:600}
+.ct-right-sub{
+  font-size:.9rem;color:rgba(255,255,255,.55);
+  margin-bottom:26px;
+}
+.ct-links{display:flex;flex-direction:column;gap:12px}
+.ct-link{
+  display:flex;align-items:center;gap:14px;padding:18px 22px;
+  border-radius:14px;font-weight:600;font-size:.94rem;
+  color:#fff;transition:all var(--t1);
+  border:1px solid rgba(255,255,255,.1);
+}
+.ct-link:hover{transform:translateX(6px)}
+.ct-link.red{background:var(--grad-red);border-color:transparent;box-shadow:var(--sh-r)}
+.ct-link.red:hover{box-shadow:0 16px 40px rgba(192,20,26,.5)}
+.ct-link.out{background:rgba(255,255,255,.05)}
+.ct-link.out:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.ct-link svg{width:20px;height:20px;stroke-width:2;flex-shrink:0}
+.ct-link span{flex:1}
+.ct-link-arrow{opacity:.5;transition:opacity var(--t1)}
+.ct-link:hover .ct-link-arrow{opacity:1}
+
+.ct-name-box{
+  margin-top:28px;padding:24px;
+  background:rgba(192,20,26,.14);border:1px solid rgba(192,20,26,.28);
+  border-radius:14px;text-align:center;
+}
+.ct-name{
+  font-family:var(--display);font-weight:700;font-style:italic;
+  font-size:1.35rem;color:#fff;display:block;letter-spacing:-.015em;margin-bottom:6px;
+}
+.ct-name-sub{
+  font-family:var(--cond);font-size:.72rem;font-weight:600;
+  letter-spacing:2.5px;color:rgba(255,255,255,.42);text-transform:uppercase;
+}
+
+@media(max-width:960px){.ct-grid{grid-template-columns:1fr;gap:44px}}
+
+/* ════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════ */
+footer{
+  background:#0C0809;padding:44px 0;
+  border-top:1px solid rgba(192,20,26,.18);color:#fff;
+}
+.f-inner{
+  max-width:1280px;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;
+}
+.f-brand{
+  display:flex;align-items:center;gap:14px;
+}
+.f-brand-mfd{
+  font-family:var(--bebas);font-size:1.7rem;letter-spacing:.18em;
+  color:#fff;line-height:1;
+}
+.f-brand-mfd em{color:var(--r-v);font-style:normal}
+.f-tagline{
+  font-family:var(--display);font-style:italic;font-size:.94rem;
+  font-weight:400;color:rgba(255,255,255,.45);
+}
+.f-copy{
+  font-family:var(--cond);font-size:.75rem;letter-spacing:1.8px;
+  color:rgba(255,255,255,.32);text-transform:uppercase;
+}
+
+/* ════════════════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════════════ */
+.modal{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(24,16,14,.68);backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;padding:24px;
+  opacity:0;transition:opacity .25s ease;
+}
+.modal.open{display:flex;opacity:1}
+.modal-box{
+  background:var(--surface);border-radius:var(--r-xl);
+  width:100%;max-width:600px;max-height:92vh;
+  overflow-y:auto;display:flex;flex-direction:column;
+  box-shadow:var(--sh-3);position:relative;
+  transform:scale(.95);opacity:0;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .25s ease;
+}
+.modal.open .modal-box{transform:scale(1);opacity:1}
+.modal-close{
+  position:absolute;top:18px;right:18px;z-index:10;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.9);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border:1px solid var(--line);
+  transition:transform var(--t1);
+}
+.modal-close:hover{transform:rotate(90deg)}
+.modal-close svg{width:16px;height:16px}
+
+.m-hero{
+  padding:34px;background:linear-gradient(135deg,var(--r-tint),var(--r-soft));
+  border-bottom:1px solid var(--line);
+}
+.m-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--r);color:#fff;
+  padding:5px 13px;border-radius:30px;
+  font-family:var(--cond);font-size:.7rem;font-weight:700;
+  letter-spacing:2.2px;text-transform:uppercase;margin-bottom:14px;
+}
+.m-title{
+  font-family:var(--display);font-weight:700;font-size:1.7rem;
+  color:var(--ink);line-height:1.18;letter-spacing:-.018em;
+}
+.m-title em{font-style:italic;color:var(--r);font-weight:600}
+
+.m-body{padding:30px 34px 34px}
+.m-form-field{margin-bottom:16px}
+.m-form-field label{
+  display:block;font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:1.8px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:7px;
+}
+.m-form-field input,
+.m-form-field textarea{
+  width:100%;padding:13px 16px;
+  background:var(--cream);border:1.5px solid var(--line);
+  border-radius:12px;font-size:.95rem;color:var(--ink);
+  font-family:inherit;outline:none;resize:vertical;
+  transition:border-color var(--t1),box-shadow var(--t1),background var(--t1);
+}
+.m-form-field input:focus,
+.m-form-field textarea:focus{
+  border-color:var(--r);background:#fff;
+  box-shadow:0 0 0 4px rgba(192,20,26,.1);
+}
+.m-form-field textarea{min-height:100px}
+.m-btn{
+  width:100%;padding:15px;margin-top:6px;
+  background:var(--r);color:#fff;border-radius:12px;
+  font-weight:600;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:transform var(--bounce),background var(--t1);
+  box-shadow:var(--sh-r);
+}
+.m-btn:hover{transform:translateY(-2px);background:var(--r-d)}
+.m-btn svg{width:16px;height:16px}
+
+.m-success{text-align:center;padding:14px 6px 6px}
+.m-success-ic{
+  width:78px;height:78px;margin:0 auto 20px;
+  background:var(--grad-red);border-radius:22px;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--sh-r);
+  animation:badge-in .6s cubic-bezier(.34,1.56,.64,1);
+}
+.m-success-ic svg{width:38px;height:38px}
+.m-success h4{
+  font-family:var(--display);font-weight:700;font-size:1.5rem;
+  color:var(--ink);margin-bottom:10px;letter-spacing:-.015em;
+}
+.m-success h4 em{font-style:italic;color:var(--r);font-weight:600}
+.m-success p{font-size:.95rem;color:var(--slate);line-height:1.65}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="brand">
+      <div class="brand-mark"><span>MFD</span></div>
+      <div class="brand-txt">
+        <span class="brand-name">MFD</span>
+        <span class="brand-sub">Marketing &amp; Eventos</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#epecar">Filosofía</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#contacto" class="nav-cta">
+        Contáctenos
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+    <button class="burger" onclick="toggleMenu()" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-mob" id="navMob">
+    <a href="#nosotros" onclick="toggleMenu()">Nosotros</a>
+    <a href="#epecar" onclick="toggleMenu()">Filosofía</a>
+    <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+    <a href="#portafolio" onclick="toggleMenu()">Portafolio</a>
+    <a href="#clientes" onclick="toggleMenu()">Clientes</a>
+    <a href="#contacto" class="nav-cta" onclick="toggleMenu()">Contáctenos</a>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-bg-text">MFD</div>
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <div class="hero-left">
+        <div class="hero-tag reveal">
+          <span class="hero-tag-dot">15</span>
+          <span>Agencia integral · <strong>15 años</strong> creando marcas</span>
+        </div>
+
+        <h1 class="h-display hero-h1 reveal reveal-d1">
+          Hacemos<br>
+          Marcas de<br>
+          <em>Corazón</em>.
+        </h1>
+
+        <p class="hero-p reveal reveal-d2">
+          Somos el aliado estratégico que conecta marcas con personas a través de <strong>experiencias emocionales</strong> que cumplen objetivos comerciales reales. Marketing, eventos, activaciones y producción de principio a fin.
+        </p>
+
+        <div class="hero-actions reveal reveal-d3">
+          <a href="#servicios" class="btn-pri">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Ver Servicios
+          </a>
+          <a href="#portafolio" class="btn-sec">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9l4-4 4 4 4-5 4 5"/><circle cx="8.5" cy="14" r="1.5"/></svg>
+            Nuestro Portafolio
+          </a>
+        </div>
+
+        <div class="hero-feats reveal reveal-d4">
+          <div class="hero-feat">
+            <div class="hero-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div class="hero-feat-tx">
+              <strong>100% efectividad</strong>
+              <span>En cada activación</span>
+            </div>
+          </div>
+          <div class="hero-feat">
+            <div class="hero-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="hero-feat-tx">
+              <strong>50+ clientes</strong>
+              <span>Nacionales e internacionales</span>
+            </div>
+          </div>
+          <div class="hero-feat">
+            <div class="hero-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="hero-feat-tx">
+              <strong>6 líneas de trabajo</strong>
+              <span>Solución integral 360°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right reveal reveal-d2">
+        <div class="hero-orbit" id="orbit">
+          <div class="orbit-ring"></div>
+
+          <div class="orbit-badge">
+            <div class="orbit-badge-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div class="orbit-badge-tx">
+              <div class="orbit-badge-num">100<sup>%</sup></div>
+              <div class="orbit-badge-lbl">Efectividad</div>
+            </div>
+          </div>
+
+          <div class="orbit-live">
+            <span class="orbit-live-dot"></span>
+            <div class="orbit-live-tx">
+              Activación en curso
+              <em>Bogotá · en vivo</em>
+            </div>
+          </div>
+
+          <div class="orbit-center" id="orbitCenter"></div>
+
+          <div class="orbit-tray">
+            <button class="orbit-tray-ctrl pp" id="ppBtn" aria-label="Pausar">
+              <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+              <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+            </button>
+            <div class="orbit-progress">
+              <span class="orbit-prog-cur" id="progCur">1</span>
+              <span class="orbit-prog-sep">/</span>
+              <span class="orbit-prog-tot" id="progTot">5</span>
+            </div>
+            <div class="orbit-dots" id="orbitDots"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ STATS MARQUEE ═══════ -->
+<section id="stats-strip">
+  <div class="marquee-track" id="marquee"></div>
+</section>
+
+<!-- ═══════ NOSOTROS ═══════ -->
+<section id="nosotros" class="sec">
+  <div class="wrap">
+    <div class="nos-grid">
+      <div class="nos-text reveal">
+        <div class="eyebrow">Quiénes somos</div>
+        <h2 class="h-section">Aliado <em>estratégico</em><br>de marca desde <em>2010</em>.</h2>
+        <p class="lead" style="margin-bottom:18px">
+          <strong style="color:var(--ink)">MFD Marketing &amp; Eventos</strong> es una empresa con experiencia en las distintas áreas del posicionamiento y gestión de marcas. Somos el aliado estratégico de cada uno de nuestros clientes.
+        </p>
+        <p class="lead">
+          En cada campaña formamos parte del crecimiento de la marca, manteniendo siempre un espíritu proactivo para responder a las necesidades del negocio.
+        </p>
+      </div>
+
+      <div class="nos-card reveal reveal-d2">
+        <span class="nos-mfd">MFD</span>
+        <span class="nos-lbl">Marketing &amp; Eventos · Cali, Colombia</span>
+        <p class="nos-p">
+          Contribuimos y apoyamos en las experiencias de conexión entre marca y público a través de la <em style="color:var(--r-v);font-style:italic">planeación integral</em> y ejecución efectiva de los eventos, participando en el cumplimiento de los objetivos comerciales de nuestros clientes.
+        </p>
+        <blockquote class="nos-quote">« Nuestra experiencia — tu mejor garantía. »</blockquote>
+        <div class="chips">
+          <span class="chip">Responsabilidad</span>
+          <span class="chip">Creatividad</span>
+          <span class="chip">Innovación</span>
+          <span class="chip">Liderazgo</span>
+          <span class="chip">Investigación</span>
+          <span class="chip">Compromiso</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ EPECAR interactivo ═══════ -->
+<section id="epecar">
+  <div class="wrap">
+    <div class="ep-head reveal">
+      <div class="eyebrow eyebrow-w" style="justify-content:center">Nuestra filosofía</div>
+      <h2 class="h-section h-section-w">La metodología <em>EPECAR</em></h2>
+      <p class="lead lead-w">6 pasos que estructuran cada proyecto — desde la <strong style="color:#fff">evaluación inicial</strong> hasta la <strong style="color:#fff">medición de resultados</strong>.</p>
+    </div>
+
+    <div class="ep-progress reveal reveal-d1"><div class="ep-progress-bar" id="epBar"></div></div>
+
+    <div class="ep-tabs reveal reveal-d2" id="epTabs"></div>
+
+    <div class="ep-stage reveal reveal-d3">
+      <div class="ep-visual" id="epVisual"></div>
+      <div class="ep-info-col" id="epInfo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SERVICIOS ═══════ -->
+<section id="servicios" class="sec">
+  <div class="wrap">
+    <div class="srv-intro">
+      <div class="reveal">
+        <div class="eyebrow">Líneas de trabajo</div>
+        <h2 class="h-section">Qué <em>hacemos</em></h2>
+      </div>
+      <div class="srv-intro-aside reveal reveal-d2">
+        <p>15 años ejecutando eventos temáticos, ferias empresariales, inauguraciones, lanzamientos, seminarios, congresos y convenciones a nivel nacional.</p>
+        <p>Somos una <strong style="color:var(--ink)">agencia integral 360°</strong> — con nosotros encuentra todo lo que su marca necesita en un solo lugar.</p>
+      </div>
+    </div>
+
+    <div class="srv-grid">
+
+      <div class="sc reveal">
+        <div class="sc-top">
+          <span class="sc-num">01</span>
+          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="sc-name">Personal &amp; <em>Logística</em></div>
+          <div class="sc-sub">Línea 01</div>
+        </div>
+        <div class="sc-body">
+          <ul class="sc-list">
+            <li>Promotores e impulsadoras</li>
+            <li>Logísticos y modelos</li>
+            <li>Anfitriones y actores</li>
+            <li>Chefs y volanteadores</li>
+            <li>Casting y registro de personal</li>
+            <li>Bases de datos y encuestas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sc reveal reveal-d1">
+        <div class="sc-top">
+          <span class="sc-num">02</span>
+          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="sc-name">Producción <em>Técnica</em></div>
+          <div class="sc-sub">Línea 02</div>
+        </div>
+        <div class="sc-body">
+          <ul class="sc-list">
+            <li>Pantallas LED y pista LED</li>
+            <li>Sonido profesional e iluminación</li>
+            <li>Video, streaming y fotografía</li>
+            <li>Estructuras, tarima y carpas</li>
+            <li>Fiestas empresariales y corporativas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sc reveal reveal-d2">
+        <div class="sc-top">
+          <span class="sc-num">03</span>
+          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="sc-name">Activación <em>de Marca</em></div>
+          <div class="sc-sub">Línea 03</div>
+        </div>
+        <div class="sc-body">
+          <ul class="sc-list">
+            <li>Lanzamientos y activaciones</li>
+            <li>Sampling de producto</li>
+            <li>Street marketing &amp; guerrilla</li>
+            <li>Marketing promocional</li>
+            <li>Valla móvil, BiciValla, Carro Pantalla</li>
+            <li>Tótem pantalla y displays PDV</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sc reveal">
+        <div class="sc-top">
+          <span class="sc-num">04</span>
+          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+          <div class="sc-name">Mobiliario <em>&amp; Stands</em></div>
+          <div class="sc-sub">Línea 04</div>
+        </div>
+        <div class="sc-body">
+          <ul class="sc-list">
+            <li>Mesas y sillas</li>
+            <li>Counter y salas lounge</li>
+            <li>Puff LED</li>
+            <li>Exhibidores y móviles PDV</li>
+            <li>Vallas y escenografía</li>
+            <li>Stands para ferias</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sc reveal reveal-d1">
+        <div class="sc-top">
+          <span class="sc-num">05</span>
+          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+          <div class="sc-name"><em>Catering</em> Corporativo</div>
+          <div class="sc-sub">Línea 05</div>
+        </div>
+        <div class="sc-body">
+          <ul class="sc-list">
+            <li>Servicio de alimentación completo</li>
+            <li>Refrigerios corporativos</li>
+            <li>Pasabocas y cocteles</li>
+            <li>Personal de servicio especializado</li>
+            <li>Montaje y decoración de mesa</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sc reveal reveal-d2">
+        <div class="sc-top">
+          <span class="sc-num">06</span>
+          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <div class="sc-name">Admin <em>&amp; Gestión</em></div>
+          <div class="sc-sub">Línea 06</div>
+        </div>
+        <div class="sc-body">
+          <ul class="sc-list">
+            <li>Solicitud y gestión de permisos</li>
+            <li>Coordinación de pagos a terceros</li>
+            <li>Endomarketing</li>
+            <li>Investigación de mercados</li>
+            <li>Estudios cualitativos y cuantitativos</li>
+            <li>Relaciones públicas</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PORTAFOLIO ═══════ -->
+<section id="portafolio">
+  <div class="wrap">
+    <div class="port-head reveal">
+      <div>
+        <div class="eyebrow eyebrow-w">Portafolio fotográfico</div>
+        <h2 class="h-section h-section-w">Nuestros <em>proyectos</em>.</h2>
+      </div>
+      <p class="lead lead-w">Experiencias emocionales que fortalecen la relación de las marcas con cada uno de sus clientes — en toda Colombia.</p>
+    </div>
+
+    <div class="port-filters reveal reveal-d1" id="pfilters">
+      <!-- filtros generados por JS con contadores -->
+      <div class="pf-total-tag" id="pfTotal">Mostrando <em>26</em> proyectos</div>
+    </div>
+
+    <div class="p-carousel reveal reveal-d2">
+      <div class="p-track" id="ptrack"></div>
+    </div>
+    <div class="p-empty" id="pempty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9l4-4 4 4 4-5 4 5"/><circle cx="8.5" cy="14" r="1.5"/></svg>
+      <span>Sin proyectos en esta categoría</span>
+    </div>
+    <div class="c-nav" id="pnav">
+      <div class="c-arrows">
+        <button class="carr" onclick="prevP()" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="carr" onclick="nextP()" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <div class="cdots" id="pdots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CLIENTES ═══════ -->
+<section id="clientes">
+  <div class="wrap">
+    <div class="cli-head reveal">
+      <div class="eyebrow" style="justify-content:center">Nuestros clientes</div>
+      <h2 class="h-section">Marcas que <em>confían</em> en nosotros.</h2>
+      <p class="lead">15 años siendo el aliado estratégico de empresas nacionales e internacionales — desde grandes multinacionales hasta marcas locales líderes.</p>
+      <div class="cli-stats">
+        <div class="cli-stat"><span class="cli-stat-n">50<em>+</em></span><span class="cli-stat-l">Marcas atendidas</span></div>
+        <div class="cli-stat"><span class="cli-stat-n">32</span><span class="cli-stat-l">Ciudades cubiertas</span></div>
+        <div class="cli-stat"><span class="cli-stat-n">100<em>%</em></span><span class="cli-stat-l">Efectividad</span></div>
+        <div class="cli-stat"><span class="cli-stat-n">15<em>+</em></span><span class="cli-stat-l">Años de trayectoria</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cli-belt-wrap reveal reveal-d1">
+    <div class="cli-belt" id="cliBelt1"></div>
+  </div>
+  <div class="cli-belt-wrap reveal reveal-d2">
+    <div class="cli-belt cli-belt-r" id="cliBelt2"></div>
+  </div>
+</section>
+
+<!-- ═══════ IDENTIFICA ═══════ -->
+<section id="identifica" class="sec">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:720px;margin:0 auto">
+      <div class="eyebrow" style="justify-content:center">Lo que nos identifica</div>
+      <h2 class="h-section">Suministramos. <em>Ofrecemos.</em><br>Cumplimos.</h2>
+      <p class="lead" style="margin:14px auto 0;text-align:center">Tres pilares que nos definen — y que respaldan nuestro <strong style="color:var(--r)">100% de efectividad</strong>.</p>
+    </div>
+    <div class="id-grid">
+      <div class="id-c reveal">
+        <div class="id-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="id-t"><em>Suministramos</em></div>
+        <p class="id-p">Los equipos necesarios y personal idóneo para la excelente ejecución del evento o actividad. Contamos con todo lo que su marca necesita para brillar.</p>
+      </div>
+      <div class="id-c reveal reveal-d2">
+        <div class="id-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <div class="id-t"><em>Ofrecemos</em></div>
+        <p class="id-p">Soluciones integrales — con nosotros encuentra todo lo que busca para su actividad o evento. Una sola agencia para todas sus necesidades.</p>
+      </div>
+      <div class="id-c reveal reveal-d3">
+        <div class="id-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="id-t"><em>Cumplimos</em></div>
+        <p class="id-p">A nuestros clientes con seguridad, dando tranquilidad en la ejecución de los eventos y actividades. Nuestro 100% de efectividad lo respalda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ VALORES ═══════ -->
+<section id="valores" class="sec">
+  <div class="wrap">
+    <div class="val-head">
+      <div class="reveal">
+        <div class="eyebrow">Nuestros valores</div>
+        <h2 class="h-section">Lo que nos hace <em>únicos</em>.</h2>
+      </div>
+      <p class="lead reveal reveal-d2" style="margin-top:auto">
+        La <strong style="color:var(--r)">creatividad, innovación, investigación, liderazgo y responsabilidad</strong> son las virtudes que nos identifican. Siempre manteniendo un espíritu proactivo para responder a las necesidades del negocio y las marcas.
+      </p>
+    </div>
+    <div class="val-grid">
+      <div class="vc reveal"><div class="vc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div><div class="vc-n">Responsabilidad</div><p class="vc-d">Cumplimos con cada compromiso adquirido, entregando resultados que superan expectativas.</p></div>
+      <div class="vc reveal reveal-d1"><div class="vc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="vc-n">Creatividad</div><p class="vc-d">Creamos experiencias únicas que conectan emocionalmente a las marcas con su público objetivo.</p></div>
+      <div class="vc reveal reveal-d2"><div class="vc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="vc-n">Innovación</div><p class="vc-d">Adoptamos las últimas tendencias en marketing para ofrecer soluciones vanguardistas.</p></div>
+      <div class="vc reveal reveal-d1"><div class="vc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><div class="vc-n">Investigación</div><p class="vc-d">Sustentamos cada estrategia en datos reales del mercado y comportamiento del consumidor.</p></div>
+      <div class="vc reveal reveal-d2"><div class="vc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="vc-n">Liderazgo</div><p class="vc-d">Dirigimos cada proyecto con visión estratégica, inspirando a los equipos hacia resultados excepcionales.</p></div>
+      <div class="vc reveal reveal-d3"><div class="vc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="vc-n">Compromiso</div><p class="vc-d">Hacemos marcas de corazón — nos comprometemos con cada cliente como si fuera nuestro propio negocio.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROCESO ═══════ -->
+<section id="proceso" class="sec">
+  <div class="wrap">
+    <div class="proc-head reveal">
+      <div class="eyebrow" style="justify-content:center">Modelo de atención</div>
+      <h2 class="h-section">Diseñamos una <em>operación eficiente</em><br>para su negocio.</h2>
+      <p class="lead">Implementamos estrategias comerciales con cubrimiento, eficiencia y seguimiento constante.</p>
+    </div>
+    <div class="proc-flow">
+      <div class="proc-step reveal">
+        <div class="proc-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><span class="proc-nn">1</span></div>
+        <div class="proc-t">Cubrimiento PDV</div>
+        <p class="proc-d">Atención al canal asegurando el cumplimiento de visita en puntos de venta según segmentación.</p>
+      </div>
+      <div class="proc-step reveal reveal-d2">
+        <div class="proc-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="proc-nn">2</span></div>
+        <div class="proc-t">Costo-Eficiente</div>
+        <p class="proc-d">Asignación de recursos humanos y físicos de acuerdo con los requerimientos del cliente.</p>
+      </div>
+      <div class="proc-step reveal reveal-d3">
+        <div class="proc-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="proc-nn">3</span></div>
+        <div class="proc-t">Seguimiento</div>
+        <p class="proc-d">Reportes customizados: métricas de cobertura, impactos, ventas y feedback por zona.</p>
+      </div>
+      <div class="proc-step reveal reveal-d4">
+        <div class="proc-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span class="proc-nn">4</span></div>
+        <div class="proc-t">Impulso PDV</div>
+        <p class="proc-d">Personal especializado para activar la marca en el punto de venta y generar conversión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CONTACTO ═══════ -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="ct-grid">
+      <div class="ct-left reveal">
+        <div class="eyebrow eyebrow-w">Contáctenos</div>
+        <h2 class="h-section h-section-w">Hagamos algo<br><em>grande</em> juntos.</h2>
+        <p class="lead lead-w">¿Tiene un proyecto en mente? Somos el equipo que necesita. Cuéntanos su idea y la convertimos en una experiencia memorable.</p>
+        <div class="ct-items">
+          <div class="ct-item">
+            <div class="ct-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.7a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div class="ct-info">
+              <span class="ct-lbl">Teléfono / WhatsApp</span>
+              <span class="ct-val">300 735 3188</span>
+            </div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="ct-info">
+              <span class="ct-lbl">Email</span>
+              <span class="ct-val">mafrada@hotmail.com</span>
+            </div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="ct-info">
+              <span class="ct-lbl">Dirección</span>
+              <span class="ct-val">Calle 54A Norte No. 3BN-78<br>La Flora, Cali — Colombia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2">
+        <div class="ct-right">
+          <div class="ct-right-title">Escríbenos <em>ahora</em></div>
+          <div class="ct-right-sub">Recibirás respuesta en menos de 24 horas.</div>
+          <div class="ct-links">
+            <a href="tel:3007353188" class="ct-link red">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.7a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Llamar: 300 735 3188</span>
+              <svg class="ct-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="mailto:mafrada@hotmail.com" class="ct-link out">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>mafrada@hotmail.com</span>
+              <svg class="ct-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="https://wa.me/573007353188" class="ct-link out" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span>Escribir por WhatsApp</span>
+              <svg class="ct-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <button class="ct-link out" onclick="openBrief()" style="cursor:pointer;font-family:inherit;width:100%;text-align:left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>Enviar brief del proyecto</span>
+              <svg class="ct-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+          <div class="ct-name-box">
+            <span class="ct-name">Marie France Daccach</span>
+            <span class="ct-name-sub">Directora — MFD Marketing &amp; Eventos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="f-inner">
+    <div class="f-brand">
+      <span class="f-brand-mfd"><em>MFD</em> — Marketing &amp; Eventos</span>
+    </div>
+    <div class="f-tagline">« Hacemos Marcas de Corazón »</div>
+    <div class="f-copy">Cali, Colombia · © 2025</div>
+  </div>
+</footer>
+
+<!-- ═══════ MODAL DETALLE PROYECTO ═══════ -->
+<div class="pd-modal" id="pdModal">
+  <div class="pd-box" id="pdBox"></div>
+</div>
+
+<!-- ═══════ MODAL BRIEF ═══════ -->
+<div class="modal" id="briefModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeBrief()" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="m-hero" id="mHero">
+      <div class="m-tag">Brief del proyecto</div>
+      <div class="m-title">Cuéntanos tu <em>idea</em>.</div>
+    </div>
+    <div class="m-body" id="mBody">
+      <form onsubmit="submitBrief(event)">
+        <div class="m-form-field">
+          <label>Nombre &amp; Empresa</label>
+          <input type="text" required placeholder="Ej. María López · Marca X">
+        </div>
+        <div class="m-form-field">
+          <label>Correo o WhatsApp</label>
+          <input type="text" required placeholder="tu@correo.com">
+        </div>
+        <div class="m-form-field">
+          <label>Tipo de proyecto</label>
+          <input type="text" required placeholder="Ej. Lanzamiento, feria, activación PDV...">
+        </div>
+        <div class="m-form-field">
+          <label>Cuéntanos más</label>
+          <textarea placeholder="Objetivos, público, fecha estimada, ciudad..."></textarea>
+        </div>
+        <button type="submit" class="m-btn">
+          Enviar brief
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════ DATA ══════ */
+const HERO_ORB = [
+  {img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=75',tag:'Ferias & Eventos',client:'Multi-cliente',title:'Producción integral para <em>marcas líderes</em>',stat:'150+ eventos'},
+  {img:'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=75',tag:'Activación PDV',client:'Bavaria',title:'Impulso &amp; <em>sampling</em> en punto de venta',stat:'8 ciudades'},
+  {img:'https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=900&q=75',tag:'Lanzamientos',client:'P&G · Neutrogena',title:'Experiencias de marca que <em>conectan</em>',stat:'100% éxito'},
+  {img:'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=75',tag:'Producción Técnica',client:'FLA · MasterCard',title:'LED, <em>sonido</em> &amp; escenografía',stat:'HD Streaming'},
+  {img:'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=900&q=75',tag:'Trade Marketing',client:'Tecnoquímicas',title:'Cubrimiento <em>nacional</em> en canales',stat:'20k tiendas'},
+];
+
+const PORT = [
+  {cat:'activacion',catLabel:'Activación',year:'2024',client:'Gatorade · Neutrogena',title:'Activaciones · Lanzamientos · Sampling',desc:'Experiencias que conectan marca y consumidor en toda Colombia',img:'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=75',tags:['Sampling','Impulso','Nacional'],stats:[{n:'7',l:'Ciudades'},{n:'100<em>%</em>',l:'Cobertura'},{n:'40k',l:'Impactos'},{n:'6m',l:'Duración'}],features:['Casting y capacitación de personal impulsador','Producción de material POP en 7 ciudades','Coordinación integral en punto de venta','Reporte diario con métricas y feedback']},
+  {cat:'activacion',catLabel:'Activación',year:'2023',client:'Publicidad Exterior',title:'Carro Valla · Pantalla LED · BiciValla',desc:'Tu marca en movimiento — publicidad exterior innovadora',img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=75',tags:['OOH','Innovación','Mobile'],stats:[{n:'12',l:'Vehículos'},{n:'8',l:'Ciudades'},{n:'200k',l:'Impactos/mes'},{n:'LED',l:'Formato'}],features:['Flota completa de carros valla y BiciValla','Pantallas LED de alta resolución','Rutas estratégicas por zonas de alto tráfico','Reporte de audiencia y GPS en tiempo real']},
+  {cat:'produccion',catLabel:'Producción',year:'2024',client:'Producción Técnica',title:'Pantalla LED · Sonido · Iluminación',desc:'Estructuras, tarimas, carpas y producción audiovisual completa',img:'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1200&q=75',tags:['LED','Audio','Estructuras'],stats:[{n:'150+',l:'Eventos'},{n:'8x4m',l:'Panel LED'},{n:'HD',l:'Streaming'},{n:'24/7',l:'Soporte'}],features:['Pantallas LED indoor y outdoor','Sistema de sonido profesional D&B','Iluminación robótica e intelligent','Streaming multi-cámara HD']},
+  {cat:'personal',catLabel:'Personal & Logística',year:'2024',client:'Personal & Logística',title:'Modelos · Logísticos · Anfitriones',desc:'Volanteadores, casting y personal de protocolo para eventos',img:'https://images.unsplash.com/photo-1560439514-4e9645039924?auto=format&fit=crop&w=1200&q=75',tags:['Casting','Modelos','Protocolo'],stats:[{n:'2.5k+',l:'Base activa'},{n:'32',l:'Ciudades'},{n:'48h',l:'Respuesta'},{n:'ISO',l:'Casting'}],features:['Base de datos con más de 2.500 personas','Casting y selección por perfil de marca','Capacitación específica por proyecto','Uniformes y protocolo bajo estándar']},
+  {cat:'mobiliario',catLabel:'Mobiliario',year:'2023',client:'Stand & Mobiliario',title:'Ferias · Stands · Salas Lounge',desc:'Producción especializada de stands y exhibiciones para ferias',img:'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1200&q=75',tags:['Stands','Ferias','Lounge'],stats:[{n:'80+',l:'Stands/año'},{n:'6x3m',l:'Modular'},{n:'48h',l:'Montaje'},{n:'A+',l:'Acabados'}],features:['Diseño 3D y renderizado antes del montaje','Sistemas modulares reutilizables','Mobiliario Puff LED y salas lounge','Ambientación y decoración personalizada']},
+  {cat:'catering',catLabel:'Catering',year:'2024',client:'Catering Corporativo',title:'Alimentación · Refrigerios · Pasabocas',desc:'Servicio integral de catering para eventos empresariales',img:'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=75',tags:['Menús','Coctelería','Servicio'],stats:[{n:'5k+',l:'Comensales'},{n:'Chef',l:'Ejecutivo'},{n:'12',l:'Tipos menú'},{n:'ISO',l:'Sanitario'}],features:['Menús personalizados por evento','Chefs especializados y personal de servicio','Coctelería premium y estación de bebidas','Montaje y decoración de mesa incluida']},
+  {cat:'food',catLabel:'Alimentos',year:'2023',client:'Bavaria',title:'Sampling Club Colombia',desc:'Impulso en almacenes de cadena con dinámicas de atracción — Cobertura 100%',img:'https://images.unsplash.com/photo-1436076863939-06870fe779c2?auto=format&fit=crop&w=1200&q=75',tags:['Sampling','Cadena','Colombia'],stats:[{n:'100<em>%</em>',l:'Cobertura'},{n:'8',l:'Ciudades'},{n:'25k',l:'Muestras'},{n:'320',l:'Turnos'}],features:['Impulso en almacenes de cadena tipo A y B','Dinámicas de atracción y sampling','Uniformes y kit de marca completo','Reporte por PDV y feedback diario']},
+  {cat:'food',catLabel:'Alimentos',year:'2023',client:'Bavaria — Poker',title:'Carnavales Blancos y Negros',desc:'Pasto — Campaña de gran expectativa con cobertura total del evento',img:'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=75',tags:['Carnaval','Pasto','Evento'],stats:[{n:'6d',l:'Duración'},{n:'80+',l:'Impulsadoras'},{n:'12',l:'Puntos activos'},{n:'100k',l:'Impactos'}],features:['Producción y coordinación de todo el evento','Personal de impulso y activación en calle','Material POP y merchandising exclusivo','Logística y transporte incluidos']},
+  {cat:'food',catLabel:'Alimentos',year:'2022',client:'Bavaria',title:'Premios Orgullo de mi Región',desc:'Ambientación, producción, diseño de artes e imagen — 100% efectividad',img:'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=75',tags:['Premios','Producción','Imagen'],stats:[{n:'100<em>%</em>',l:'Efectividad'},{n:'400',l:'Invitados'},{n:'1',l:'Noche'},{n:'HD',l:'Video'}],features:['Diseño de artes e identidad del evento','Ambientación y montaje de escenario','Producción técnica LED y sonido','Coordinación de invitados y protocolo']},
+  {cat:'food',catLabel:'Alimentos',year:'2023',client:'Procter & Gamble',title:'Montaje Material POP Nacional',desc:'Gillette, Ariel, Pantene, H&S — supermercados tipo A y B en todo Colombia',img:'https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=1200&q=75',tags:['POP','P&G','Nacional'],stats:[{n:'4',l:'Marcas'},{n:'Tipo A/B',l:'Supermercados'},{n:'20',l:'Ciudades'},{n:'100<em>%</em>',l:'Instalado'}],features:['Coordinación con 4 marcas de P&G','Montaje en supermercados tipo A y B','Reporte fotográfico por PDV','Auditoría de instalación posterior']},
+  {cat:'food',catLabel:'Alimentos',year:'2022',client:'Parmalat Zymil',title:'Relanzamiento Zymil',desc:'6 ciudades, material POP para tenderos — Ejecución 100%',img:'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=1200&q=75',tags:['Relanzamiento','Tenderos','POP'],stats:[{n:'6',l:'Ciudades'},{n:'2k+',l:'Tenderos'},{n:'100<em>%</em>',l:'Ejecución'},{n:'30d',l:'Duración'}],features:['Cobertura en 6 ciudades principales','Material POP diseñado para tenderos','Impulso directo y visita a canal','Capacitación al canal tradicional']},
+  {cat:'food',catLabel:'Alimentos',year:'2023',client:'Alival — 220 Voltios',title:'Caravana Nacional',desc:'Logística y supervisión en toda Colombia — uniformes y transporte',img:'https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=75',tags:['Caravana','Nacional','Logística'],stats:[{n:'32',l:'Ciudades'},{n:'6m',l:'Ruta'},{n:'25',l:'Vehículos'},{n:'100+',l:'Personal'}],features:['Ruta nacional coordinada por regiones','Vehículos brandeados de la marca','Uniformes y kits para el personal','Supervisión y logística de transporte']},
+  {cat:'tech',catLabel:'Tecnología',year:'2024',client:'Honor',title:'Activación Honor Colombia',desc:'Protocolo, impulso y mercadeo en 7 ciudades — Cubrimiento 100%',img:'https://images.unsplash.com/photo-1592286927505-1def25115558?auto=format&fit=crop&w=1200&q=75',tags:['Tech','Honor','Protocolo'],stats:[{n:'7',l:'Ciudades'},{n:'100<em>%</em>',l:'Cubrimiento'},{n:'50+',l:'Puntos'},{n:'3m',l:'Duración'}],features:['Coordinación con la marca Honor','Impulso especializado en puntos tech','Mercadeo y protocolo de marca','Reporte semanal de ventas por PDV']},
+  {cat:'tech',catLabel:'Tecnología',year:'2023',client:'UNE Telecomunicaciones',title:'Eventos Barriales',desc:'Montaje de infraestructura, realización, coordinación y logística',img:'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=75',tags:['Barrios','Telecom','Comunidad'],stats:[{n:'40+',l:'Barrios'},{n:'Cali',l:'Ciudad'},{n:'800',l:'Asistentes/evt'},{n:'12',l:'Fines de semana'}],features:['Circuito de eventos barriales','Montaje modular replicable','Actividades para familias y niños','Coordinación con comunidad local']},
+  {cat:'health',catLabel:'Salud',year:'2024',client:'Bivien',title:'Campaña Marca Bivien',desc:'Solar care — 6 ciudades con estrategias y dinámicas de venta',img:'https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=1200&q=75',tags:['Solar Care','Salud','Venta'],stats:[{n:'6',l:'Ciudades'},{n:'Solar',l:'Nicho'},{n:'2m',l:'Campaña'},{n:'+18%',l:'Conversión'}],features:['Estrategia de venta con demostradores','Dinámicas de sampling en cadena','Material educativo sobre solar care','Reporte de conversión por PDV']},
+  {cat:'health',catLabel:'Salud',year:'2023',client:'Violife',title:'Activación Violife Vegan',desc:'Lanzamiento en Bogotá para todos los estilos — 100% expectativas cumplidas',img:'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=75',tags:['Vegan','Lanzamiento','Bogotá'],stats:[{n:'100<em>%</em>',l:'Expectativas'},{n:'Bogotá',l:'Ciudad'},{n:'5',l:'Puntos activos'},{n:'2k',l:'Degustaciones'}],features:['Lanzamiento en 5 puntos estratégicos','Degustación y sampling controlado','Contenido para redes sociales','Colaboración con influencers vegan']},
+  {cat:'health',catLabel:'Salud',year:'2022',client:'Tecnoquímicas',title:'Colocación POP Nacional',desc:'Noraver, Ibuflash, Bonfiest — 20.000 tiendas en todo Colombia',img:'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1200&q=75',tags:['POP','20k Tiendas','Nacional'],stats:[{n:'20k',l:'Tiendas'},{n:'3',l:'Marcas'},{n:'Nacional',l:'Cobertura'},{n:'100<em>%</em>',l:'Instalado'}],features:['Ruta nacional para 20.000 puntos','3 marcas coordinadas simultáneamente','Personal de instalación especializado','Reporte fotográfico digital por PDV']},
+  {cat:'health',catLabel:'Salud',year:'2023',client:'Alquería',title:'Activación Alquería',desc:'Mercadeo e impulso en cadenas — Bogotá, Medellín, Cali — 100%',img:'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=1200&q=75',tags:['Cadenas','Impulso','3 Ciudades'],stats:[{n:'3',l:'Ciudades'},{n:'100<em>%</em>',l:'Cobertura'},{n:'80+',l:'PDV'},{n:'2m',l:'Duración'}],features:['Cobertura en Bogotá, Medellín y Cali','Impulso en cadenas tipo A','Sampling con productos lácteos','Reporte de ventas por punto']},
+  {cat:'eventos',catLabel:'Eventos',year:'2024',client:'Inveroccidente FLA',title:'Primera Cata de Aguardientes',desc:'Hotel Spiwak Cali — producción y logística completa del evento',img:'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=75',tags:['Cata','Premium','Hotel'],stats:[{n:'250',l:'Invitados'},{n:'Spiwak',l:'Sede'},{n:'8',l:'Referencias'},{n:'1',l:'Noche premium'}],features:['Producción integral del evento','Coordinación con sommelier','Menú maridaje personalizado','Registro fotográfico y video']},
+  {cat:'eventos',catLabel:'Eventos',year:'2023',client:'FLA Antioquia',title:'Supervisión y Auditoría PDV',desc:'Coordinación en almacenes de cadena, mayoristas y discotecas',img:'https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=75',tags:['Auditoría','Cadenas','PDV'],stats:[{n:'Antioquia',l:'Región'},{n:'200+',l:'PDV'},{n:'3',l:'Canales'},{n:'6m',l:'Duración'}],features:['Auditoría en canal cadena y mayorista','Supervisión en canal on-trade','Reportes de merchandising','Alertas de faltantes en tiempo real']},
+  {cat:'eventos',catLabel:'Eventos',year:'2022',client:'Industria Licores Valle',title:'Reinado Nacional de Belleza',desc:'Toma de calles y activación en Cartagena',img:'https://images.unsplash.com/photo-1522158637959-30385a09e0da?auto=format&fit=crop&w=1200&q=75',tags:['Reinado','Cartagena','Calles'],stats:[{n:'Cartagena',l:'Ciudad'},{n:'10d',l:'Duración'},{n:'40+',l:'Personal'},{n:'Miles',l:'Impactos'}],features:['Toma de calles principales','Activación durante el desfile','Sampling en zonas turísticas','Coordinación con organización oficial']},
+  {cat:'eventos',catLabel:'Eventos',year:'2023',client:'MasterCard',title:'Activaciones Nacionales',desc:'Principales centros comerciales del país — coordinación total',img:'https://images.unsplash.com/photo-1567521464027-f127ff144326?auto=format&fit=crop&w=1200&q=75',tags:['CC','MasterCard','Nacional'],stats:[{n:'12',l:'CC'},{n:'6',l:'Ciudades'},{n:'100k',l:'Impactos'},{n:'Alto',l:'ROI'}],features:['Circuito en centros comerciales top','Activación con promotores y hostess','Dinámica de canje con la tarjeta','Reporte diario de conversión']},
+  {cat:'retail',catLabel:'Retail',year:'2024',client:'Casa Grajales',title:'Lanzamiento Crema de Whisky',desc:'Toma supermercados Bogotá y Cali — cobertura 100%',img:'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1200&q=75',tags:['Lanzamiento','Whisky','Toma'],stats:[{n:'100<em>%</em>',l:'Cobertura'},{n:'2',l:'Ciudades'},{n:'40+',l:'Supermercados'},{n:'Premium',l:'Segmento'}],features:['Toma de supermercados tipo A','Impulso con degustación controlada','Material POP premium para lineal','Reporte de rotación por punto']},
+  {cat:'retail',catLabel:'Retail',year:'2023',client:'Studio F',title:'Activaciones en Grandes Eventos',desc:'Feria Flores Medellín, Cali Exposhow, Reinado Nacional Belleza',img:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=75',tags:['Fashion','Ferias','Belleza'],stats:[{n:'3',l:'Grandes eventos'},{n:'HD',l:'Fashion'},{n:'50k',l:'Asistentes'},{n:'Alto',l:'Awareness'}],features:['Presencia en 3 grandes eventos anuales','Stand con concepto fashion premium','Modelos y anfitriones de marca','Contenido para redes de la marca']},
+  {cat:'retail',catLabel:'Retail',year:'2022',client:'Philip Morris — Coltabaco',title:'Arma y Gana — Boston Nacional',desc:'Planeación, coordinación y ejecución a nivel nacional',img:'https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1200&q=75',tags:['Nacional','Boston','Promoción'],stats:[{n:'Nacional',l:'Cobertura'},{n:'3m',l:'Duración'},{n:'Planea',l:'/ Ejecuta'},{n:'Alto',l:'Cumplimiento'}],features:['Planeación nacional completa','Coordinación con canal off-trade','Mecánica de premios y canjes','Ejecución multi-ciudad simultánea']},
+  {cat:'retail',catLabel:'Retail',year:'2023',client:'Azteca',title:'Campaña Catrinas',desc:'Bogotá, Medellín, Cali, Barranquilla — campaña exitosa 100%',img:'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=75',tags:['Catrinas','4 Ciudades','Cultura'],stats:[{n:'100<em>%</em>',l:'Éxito'},{n:'4',l:'Ciudades'},{n:'Mx',l:'Temática'},{n:'20k',l:'Impactos'}],features:['Concepto creativo Día de Muertos','Maquillaje profesional en punto','Fotografía instantánea para el cliente','Contenido shareable para redes']},
+];
+
+const EPECAR=[
+  {letter:'E',word:'Evaluamos',title:'Evaluamos el <em>terreno</em>',desc:'Analizamos necesidades, objetivos comerciales y contexto de cada proyecto antes de proponer una sola idea. La estrategia parte del diagnóstico.',ico:'M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM3 21v-2a4 4 0 0 1 4-4h1M17 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 21v-2a4 4 0 0 0-4-4h-1',img:'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=75',kpi:[{n:'360<em>°</em>',l:'Diagnóstico'},{n:'48h',l:'Propuesta'},{n:'ROI',l:'Enfoque'}],feats:['Análisis del público objetivo y contexto competitivo','Definición de objetivos SMART y KPIs medibles','Auditoría rápida del canal y puntos de venta','Diagnóstico de recursos y presupuesto disponibles']},
+  {letter:'P',word:'Planeamos',title:'Planeamos la <em>estrategia</em>',desc:'Diseñamos cronogramas, recursos y metas claras. Cada acción tiene responsable, fecha y métrica — nada queda al azar.',ico:'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM16 2v4M8 2v4M3 10h18',img:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=75',kpi:[{n:'Gantt',l:'Cronograma'},{n:'RACI',l:'Roles'},{n:'KPI',l:'Métricas'}],feats:['Cronograma detallado con responsables y entregables','Presupuesto desglosado por línea de trabajo','Plan de contingencias y protocolos de emergencia','Alineación con stakeholders y aprobación formal']},
+  {letter:'E',word:'Ejecutamos',title:'Ejecutamos con <em>precisión</em>',desc:'Personal altamente capacitado para cada rol, materiales de primera y protocolo de calidad — desde el primer al último minuto.',ico:'M13 2L3 14h9l-1 8 10-12h-9l1-8z',img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=75',kpi:[{n:'2.5k<em>+</em>',l:'Personal base'},{n:'ISO',l:'Estándar'},{n:'24/7',l:'Operación'}],feats:['Casting y capacitación específica por proyecto','Materiales y equipos técnicos de grado profesional','Supervisión in-situ del equipo directivo','Uniformes y protocolo de marca implementados']},
+  {letter:'C',word:'Coordinamos',title:'Coordinamos cada <em>detalle</em>',desc:'Supervisamos en tiempo real, resolvemos incidencias antes de que escalen y aseguramos la calidad de la ejecución de principio a fin.',ico:'M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.66 0 3.22.45 4.56 1.24',img:'https://images.unsplash.com/photo-1552664688-cf412ec27db2?auto=format&fit=crop&w=1200&q=75',kpi:[{n:'Live',l:'Supervisión'},{n:'GPS',l:'Tracking'},{n:'<15m',l:'Reacción'}],feats:['Supervisión y control de calidad en tiempo real','Gestión centralizada de incidencias por WhatsApp','Tracking GPS de personal y activos móviles','Comunicación permanente con el cliente']},
+  {letter:'A',word:'Acompañamos',title:'Acompañamos como <em>aliado</em>',desc:'Estamos presentes en cada fase — no somos solo un proveedor, somos parte de tu equipo. Tu marca se convierte en la nuestra.',ico:'M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z',img:'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=75',kpi:[{n:'1<em>a</em>1',l:'Atención'},{n:'24/7',l:'Disponibilidad'},{n:'15<em>+</em>',l:'Años juntos'}],feats:['Directora asignada como punto único de contacto','Reuniones semanales de seguimiento','Ajustes ágiles según feedback del cliente','Cultura de aliado — no de proveedor']},
+  {letter:'R',word:'Resultados',title:'Medimos los <em>resultados</em>',desc:'Reportamos con datos claros: cobertura, impactos, conversión, feedback. Sabemos lo que funcionó — y lo que hay que mejorar.',ico:'M22 12h-4l-3 9L9 3l-3 9H2',img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=75',kpi:[{n:'100<em>%</em>',l:'Efectividad'},{n:'Data',l:'Driven'},{n:'PDF',l:'Reporte'}],feats:['Reporte ejecutivo con métricas y visualización','Análisis de cobertura, impactos y conversión','Feedback cualitativo por zona y canal','Recomendaciones para próxima campaña']},
+];
+
+const LOGOS=[
+  {n:'Bavaria',s:'CERVECERÍA · 1889',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#C0141A" stroke-width="1.5"><circle cx="30" cy="30" r="16"/><path d="M22 30 L30 22 L38 30 L30 38 Z" fill="#C0141A"/></g><text x="60" y="34" font-family="Fraunces,serif" font-weight="700" font-size="22" fill="#1A0F0D" letter-spacing=".5">BAVARIA</text><text x="60" y="47" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="3">CERVECERÍA</text></svg>`},
+  {n:'Poker',s:'CLUB COLOMBIA',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="14" width="34" height="34" rx="4" fill="#0F1A2A"/><path d="M20 25 L27 20 L34 25 L27 32 Z M22 33 L27 30 L32 33 L32 40 L22 40 Z" fill="#C9A961"/><text x="55" y="32" font-family="Bebas Neue,sans-serif" font-size="24" fill="#0F1A2A" letter-spacing="3">POKER</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="8" fill="#7A6A70" letter-spacing="2.5">CERVEZA · 1929</text></svg>`},
+  {n:'P&G',s:'PROCTER & GAMBLE',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><circle cx="34" cy="30" r="20" fill="none" stroke="#003DA5" stroke-width="2"/><text x="34" y="37" text-anchor="middle" font-family="Fraunces,serif" font-weight="800" font-size="16" fill="#003DA5">P&amp;G</text><text x="70" y="28" font-family="Barlow,sans-serif" font-weight="700" font-size="12" fill="#1A0F0D" letter-spacing=".5">Procter &amp; Gamble</text><text x="70" y="42" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">CONSUMO MASIVO</text></svg>`},
+  {n:'Nestlé',s:'GOOD FOOD · GOOD LIFE',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><g transform="translate(18 12)"><circle cx="12" cy="20" r="4" fill="#41474D"/><path d="M12 24 Q6 30 6 36 Q6 42 12 42 Q18 42 18 36 Q18 30 12 24 M4 32 Q0 34 0 38 M20 32 Q24 34 24 38" fill="none" stroke="#41474D" stroke-width="2"/></g><text x="60" y="30" font-family="Fraunces,serif" font-style="italic" font-weight="700" font-size="24" fill="#41474D">Nestl<tspan font-style="italic">é</tspan></text><text x="60" y="45" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">GOOD FOOD, GOOD LIFE</text></svg>`},
+  {n:'MasterCard',s:'PRICELESS',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><circle cx="35" cy="30" r="16" fill="#EB001B"/><circle cx="55" cy="30" r="16" fill="#F79E1B" opacity=".92"/><text x="90" y="28" font-family="Barlow,sans-serif" font-weight="700" font-size="13" fill="#1A0F0D" letter-spacing=".3">mastercard</text><text x="90" y="42" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">PRICELESS</text></svg>`},
+  {n:'Honor',s:'GO BEYOND',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M14 18 L14 42 M14 30 L34 30 M34 18 L34 42" stroke="#0F1A2A" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="46" cy="30" r="4" fill="#C0141A"/><text x="60" y="32" font-family="Barlow,sans-serif" font-weight="800" font-size="20" fill="#0F1A2A" letter-spacing="4">HONOR</text><text x="60" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">GO BEYOND</text></svg>`},
+  {n:'UNE',s:'TELECOMUNICACIONES',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M14 20 Q14 40 34 40 M20 20 Q20 34 34 34" fill="none" stroke="#00B4C8" stroke-width="3" stroke-linecap="round"/><text x="55" y="32" font-family="Barlow,sans-serif" font-weight="800" font-size="24" fill="#00355C" letter-spacing="2">une</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">TELECOMUNICACIONES</text></svg>`},
+  {n:'Parmalat',s:'LÁCTEOS · ITALIA',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M14 40 Q18 20 30 20 Q42 20 46 40" fill="none" stroke="#0064B0" stroke-width="3" stroke-linecap="round"/><circle cx="30" cy="26" r="3" fill="#C0141A"/><text x="60" y="32" font-family="Fraunces,serif" font-weight="700" font-style="italic" font-size="22" fill="#0064B0" letter-spacing=".5">Parmalat</text><text x="60" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">LÁCTEOS ITALIA</text></svg>`},
+  {n:'Alquería',s:'LÁCTEOS COLOMBIA',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="18" width="24" height="24" rx="3" fill="#005A9E"/><path d="M20 30 L26 24 L32 30 L26 36 Z" fill="#fff"/><text x="50" y="32" font-family="Fraunces,serif" font-weight="700" font-size="22" fill="#005A9E" letter-spacing=".2">Alquería</text><text x="50" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">LÁCTEOS COLOMBIA</text></svg>`},
+  {n:'Tecnoquímicas',s:'SALUD · CALI',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M20 20 L20 40 M14 30 L26 30 M32 20 L32 40 M32 20 L44 40 M44 20 L44 40" stroke="#008E5A" stroke-width="3" fill="none"/><text x="60" y="30" font-family="Barlow,sans-serif" font-weight="700" font-size="12" fill="#1A0F0D" letter-spacing=".3">TECNOQUÍMICAS</text><text x="60" y="44" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">SALUD · CALI · 1934</text></svg>`},
+  {n:'Neutrogena',s:'DERMATÓLOGA',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="16" fill="none" stroke="#0067B1" stroke-width="1.5"/><path d="M22 30 Q30 20 38 30 Q30 40 22 30" fill="#0067B1" opacity=".85"/><text x="55" y="32" font-family="Fraunces,serif" font-weight="700" font-size="16" fill="#0067B1" letter-spacing=".3">Neutrogena</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">DERMATOLOGISTA</text></svg>`},
+  {n:'Gatorade',s:'FUEL TOMORROW',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M22 20 Q30 14 38 20 Q38 30 30 42 Q22 30 22 20 Z" fill="#F86E1F"/><path d="M28 22 Q30 26 32 22" fill="none" stroke="#fff" stroke-width="1.5"/><text x="55" y="30" font-family="Barlow,sans-serif" font-weight="800" font-size="22" fill="#F86E1F" font-style="italic" letter-spacing=".3">Gatorade</text><text x="55" y="45" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">FUEL TOMORROW</text></svg>`},
+  {n:'Studio F',s:'FASHION · COLOMBIA',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="16" width="30" height="30" rx="2" fill="#1A0F0D"/><text x="18" y="38" font-family="Fraunces,serif" font-weight="700" font-size="18" fill="#C9A961">SF</text><text x="55" y="32" font-family="Fraunces,serif" font-weight="700" font-style="italic" font-size="20" fill="#1A0F0D">Studio F</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">FASHION · COLOMBIA</text></svg>`},
+  {n:'Bivien',s:'SOLAR CARE',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="10" fill="#F5B300"/><g stroke="#F5B300" stroke-width="2" stroke-linecap="round"><path d="M30 12 L30 16 M30 44 L30 48 M12 30 L16 30 M44 30 L48 30 M17 17 L20 20 M40 40 L43 43 M17 43 L20 40 M40 20 L43 17"/></g><text x="60" y="32" font-family="Fraunces,serif" font-weight="700" font-size="20" fill="#F5B300" letter-spacing=".5">Bivien</text><text x="60" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">SOLAR CARE</text></svg>`},
+  {n:'Casa Grajales',s:'LICORES · 1934',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M24 14 L36 14 L36 22 L38 24 L38 44 L22 44 L22 24 L24 22 Z" fill="none" stroke="#5B0A11" stroke-width="2"/><rect x="26" y="30" width="8" height="4" fill="#5B0A11"/><text x="50" y="30" font-family="Fraunces,serif" font-weight="700" font-style="italic" font-size="14" fill="#5B0A11">Casa Grajales</text><text x="50" y="44" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">LICORES · 1934</text></svg>`},
+  {n:'Alival',s:'ALIMENTOS',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M20 20 Q30 12 40 20 Q42 30 30 42 Q18 30 20 20 Z" fill="#66A02A"/><path d="M28 30 L32 26 M28 26 L32 30" stroke="#fff" stroke-width="2"/><text x="55" y="32" font-family="Fraunces,serif" font-weight="700" font-size="22" fill="#66A02A" letter-spacing=".3">Alival</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">ALIMENTOS</text></svg>`},
+  {n:'Violife',s:'PLANT BASED',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 18 Q22 24 22 32 Q22 40 30 42 Q38 40 38 32 Q38 24 30 18 Z" fill="#8BC34A"/><path d="M30 22 Q30 32 30 42" stroke="#fff" stroke-width="1.5" fill="none"/><text x="55" y="32" font-family="Fraunces,serif" font-weight="700" font-style="italic" font-size="20" fill="#4A7D1E">Violife</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">PLANT-BASED · VEGAN</text></svg>`},
+  {n:'FLA',s:'LICORES DE ANTIOQUIA',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="16" width="34" height="30" rx="4" fill="#0F5E3E"/><text x="18" y="38" font-family="Bebas Neue,sans-serif" font-size="18" fill="#F5D466">FLA</text><text x="55" y="30" font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="#0F5E3E" letter-spacing=".5">FÁBRICA DE LICORES</text><text x="55" y="44" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">ANTIOQUIA</text></svg>`},
+  {n:'Ariel',s:'P&G · DETERGENTE',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="16" fill="#005DAA"/><path d="M23 25 Q30 30 37 25 M23 30 Q30 35 37 30 M23 35 Q30 40 37 35" stroke="#fff" stroke-width="1.5" fill="none"/><text x="55" y="32" font-family="Fraunces,serif" font-weight="700" font-style="italic" font-size="22" fill="#005DAA">Ariel</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">P&amp;G · DETERGENTE</text></svg>`},
+  {n:'Pantene',s:'P&G · CUIDADO CAPILAR',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M20 20 L26 20 L26 44 L20 44 Z M28 18 Q34 20 34 30 Q34 40 28 42 Q22 40 22 30 Q22 20 28 18 Z" fill="#8B4A9F"/><text x="55" y="32" font-family="Fraunces,serif" font-weight="700" font-size="18" fill="#8B4A9F" letter-spacing=".2">PANTENE</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">CUIDADO CAPILAR</text></svg>`},
+  {n:'Gillette',s:'THE BEST A MAN CAN GET',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M14 22 Q30 14 46 22 L44 30 Q30 24 16 30 Z" fill="#0067B1"/><text x="18" y="42" font-family="Barlow,sans-serif" font-weight="800" font-size="12" fill="#0067B1" font-style="italic">GILLETTE</text><text x="90" y="32" font-family="Fraunces,serif" font-weight="700" font-size="14" fill="#0067B1" font-style="italic">The Best</text><text x="90" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">A MAN CAN GET</text></svg>`},
+  {n:'Philip Morris',s:'PMI · TABACO',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="16" width="34" height="30" rx="2" fill="none" stroke="#1A0F0D" stroke-width="2"/><text x="17" y="38" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#1A0F0D">PMI</text><text x="55" y="30" font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="#1A0F0D" letter-spacing=".5">Philip Morris</text><text x="55" y="44" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">INTERNATIONAL</text></svg>`},
+  {n:'Azteca',s:'MEDIOS · MÉXICO',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 14 L40 24 L36 34 L44 44 L30 44 L16 44 L24 34 L20 24 Z" fill="#D91B23"/><path d="M30 22 L34 28 L30 34 L26 28 Z" fill="#F5D466"/><text x="55" y="32" font-family="Fraunces,serif" font-weight="700" font-size="22" fill="#D91B23" letter-spacing=".3">Azteca</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">MEDIOS · MÉXICO</text></svg>`},
+  {n:'Inveroccidente',s:'INDUSTRIA · VALLE',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M14 42 L26 18 L38 42 Z" fill="#C0141A"/><path d="M20 34 L32 34" stroke="#fff" stroke-width="2"/><text x="50" y="30" font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="#C0141A" letter-spacing=".3">INVEROCCIDENTE</text><text x="50" y="44" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">INDUSTRIA · VALLE</text></svg>`},
+];
+
+/* ══════ NAV ══════ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+});
+function toggleMenu(){
+  document.getElementById('navMob').classList.toggle('open');
+  document.querySelector('.burger').classList.toggle('open');
+}
+
+/* ══════ REVEAL ══════ */
+const ro=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})
+},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ══════ ORBIT CAROUSEL ══════ */
+const orbitCenter=document.getElementById('orbitCenter');
+const orbitDots=document.getElementById('orbitDots');
+const progCur=document.getElementById('progCur');
+const progTot=document.getElementById('progTot');
+const ppBtn=document.getElementById('ppBtn');
+const orbitEl=document.getElementById('orbit');
+
+const N=HERO_ORB.length;
+progTot.textContent=N;
+let front=0,paused=false,timer=null;
+const R=260,items=[];
+
+HERO_ORB.forEach((it,i)=>{
+  const el=document.createElement('div');
+  el.className='orb-item';
+  el.innerHTML=`
+    <img src="${it.img}" alt="${it.tag}" loading="${i===0?'eager':'lazy'}"/>
+    <div class="orb-num">0${i+1} / 05</div>
+    <div class="orb-stat-chip">${it.stat}</div>
+    <div class="orb-info">
+      <div class="orb-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        ${it.tag}
+      </div>
+      <div class="orb-client">${it.client}</div>
+      <div class="orb-title">${it.title}</div>
+    </div>`;
+  el.addEventListener('click',()=>{if(i!==front){setFront(i);resetTimer()}});
+  orbitCenter.appendChild(el);
+  items.push(el);
+  const dot=document.createElement('button');
+  dot.className='orbit-dot'+(i===0?' active':'');
+  dot.setAttribute('aria-label','Slide '+(i+1));
+  dot.addEventListener('click',()=>{setFront(i);resetTimer()});
+  orbitDots.appendChild(dot);
+});
+
+function layout(){
+  items.forEach((el,i)=>{
+    let off=i-front;
+    if(off<-N/2)off+=N;if(off>N/2)off-=N;
+    const isFront=off===0;
+    const totalOff=N-1;
+    const angleStep=180/totalOff;
+    let angle;
+    if(off===0){angle=180}
+    else if(off>0){angle=180+angleStep*off}
+    else{angle=180+angleStep*off}
+    const rad=(angle-90)*Math.PI/180;
+    const x=Math.cos(rad)*R,y=Math.sin(rad)*R;
+    const dist=Math.abs(off);
+    const scale=isFront?1:Math.max(.55,.85-dist*.12);
+    const opacity=isFront?1:Math.max(.35,.75-dist*.15);
+    const z=100-dist;
+    el.style.transform=`translate(${x}px,${y}px) scale(${scale})`;
+    el.style.opacity=opacity;
+    el.style.zIndex=z;
+    el.classList.toggle('front',isFront);
+  });
+  progCur.textContent=front+1;
+  document.querySelectorAll('.orbit-dot').forEach((d,i)=>d.classList.toggle('active',i===front));
+}
+function setFront(i){front=((i%N)+N)%N;layout()}
+function nextFront(){setFront(front+1)}
+function startTimer(){if(timer)clearInterval(timer);timer=setInterval(()=>{if(!paused)nextFront()},4200)}
+function resetTimer(){startTimer()}
+ppBtn.addEventListener('click',()=>{paused=!paused;ppBtn.classList.toggle('paused',paused);ppBtn.setAttribute('aria-label',paused?'Reproducir':'Pausar')});
+
+let dragX=null;
+orbitEl.addEventListener('pointerdown',e=>{dragX=e.clientX;orbitEl.classList.add('dragging')});
+orbitEl.addEventListener('pointerup',e=>{
+  if(dragX===null)return;
+  const dx=e.clientX-dragX;dragX=null;orbitEl.classList.remove('dragging');
+  if(Math.abs(dx)>50){setFront(front+(dx<0?1:-1));resetTimer()}
+});
+orbitEl.addEventListener('pointerleave',()=>{dragX=null;orbitEl.classList.remove('dragging')});
+
+layout();startTimer();
+
+/* ══════ MARQUEE ══════ */
+const MITEMS=[
+  {ico:'M13 2L3 14h9l-1 8 10-12h-9l1-8z',tx:'<em>15+</em> Años creando <strong>marcas</strong>'},
+  {ico:'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',tx:'<em>50+</em> Clientes <strong>nacionales &amp; internacionales</strong>'},
+  {ico:'M22 11.08V12a10 10 0 1 1-5.93-9.14',tx:'<em>100%</em> Efectividad garantizada'},
+  {ico:'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2',tx:'<strong>Cobertura</strong> nacional en Colombia'},
+  {ico:'M3 11l19-9-9 19-2-8-8-2z',tx:'<em>6</em> Líneas de <strong>trabajo integral</strong>'},
+  {ico:'M22 12h-4l-3 9L9 3l-3 9H2',tx:'Marketing <strong>eventos</strong> · Activaciones · <strong>Producción</strong>'},
+];
+const mq=document.getElementById('marquee');
+const block=MITEMS.map(it=>`
+  <div class="marquee-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="${it.ico}"/></svg>
+    <span>${it.tx}</span>
+    <span class="marquee-dot"></span>
+  </div>
+`).join('');
+mq.innerHTML=block+block;
+
+/* ══════ EPECAR interactivo ══════ */
+const epTabs=document.getElementById('epTabs');
+const epVisual=document.getElementById('epVisual');
+const epInfo=document.getElementById('epInfo');
+const epBar=document.getElementById('epBar');
+let epCurrent=0,epPaused=false,epTick=0,epTimer=null;
+const EP_DUR=6000;
+
+EPECAR.forEach((s,i)=>{
+  const tab=document.createElement('button');
+  tab.className='ep-tab'+(i===0?' active':'');
+  tab.innerHTML=`
+    <span class="ep-tab-num">Paso 0${i+1}</span>
+    <span class="ep-tab-letter">${s.letter}</span>
+    <span class="ep-tab-word">${s.word}</span>`;
+  tab.addEventListener('click',()=>{epGo(i);epResetTimer()});
+  epTabs.appendChild(tab);
+
+  const slide=document.createElement('div');
+  slide.className='ep-slide'+(i===0?' on':'');
+  slide.innerHTML=`
+    <img src="${s.img}" alt="${s.word}" loading="${i===0?'eager':'lazy'}"/>
+    <div class="ep-slide-badge">
+      <span class="ep-slide-badge-num">0${i+1} / 06</span>
+      <span>${s.word}</span>
+    </div>
+    <div class="ep-slide-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="${s.ico}"/></svg>
+    </div>`;
+  epVisual.appendChild(slide);
+
+  const panel=document.createElement('div');
+  panel.className='ep-info-panel'+(i===0?' on':'');
+  panel.innerHTML=`
+    <div class="ep-info-eyebrow">Paso 0${i+1} · ${s.letter} · ${s.word}</div>
+    <h3 class="ep-info-title">${s.title}</h3>
+    <p class="ep-info-desc">${s.desc}</p>
+    <div class="ep-kpi-row">
+      ${s.kpi.map(k=>`
+        <div class="ep-kpi">
+          <div class="ep-kpi-num">${k.n}</div>
+          <div class="ep-kpi-lbl">${k.l}</div>
+        </div>`).join('')}
+    </div>
+    <ul class="ep-features">
+      ${s.feats.map(f=>`
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+          ${f}
+        </li>`).join('')}
+    </ul>`;
+  epInfo.appendChild(panel);
+});
+
+const epCtrls=document.createElement('div');
+epCtrls.className='ep-ctrls';
+epCtrls.innerHTML=`
+  <button class="ep-ctrl-btn" id="epPrev" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="ep-ctrl-btn pp" id="epPP" aria-label="Pausar">
+    <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+    <svg class="play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+  </button>
+  <button class="ep-ctrl-btn" id="epNext" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <span class="ep-ctrl-lbl">Paso <em id="epNum">01</em> de 06</span>`;
+epInfo.appendChild(epCtrls);
+document.getElementById('epPrev').addEventListener('click',()=>{epGo(epCurrent-1);epResetTimer()});
+document.getElementById('epNext').addEventListener('click',()=>{epGo(epCurrent+1);epResetTimer()});
+const epPP=document.getElementById('epPP');
+epPP.addEventListener('click',()=>{epPaused=!epPaused;epPP.classList.toggle('paused',epPaused)});
+
+function epGo(i){
+  const N=EPECAR.length;
+  epCurrent=((i%N)+N)%N;epTick=0;
+  document.querySelectorAll('.ep-tab').forEach((t,k)=>t.classList.toggle('active',k===epCurrent));
+  document.querySelectorAll('.ep-slide').forEach((s,k)=>s.classList.toggle('on',k===epCurrent));
+  document.querySelectorAll('.ep-info-panel').forEach((p,k)=>p.classList.toggle('on',k===epCurrent));
+  document.getElementById('epNum').textContent='0'+(epCurrent+1);
+}
+function epStartTimer(){
+  if(epTimer)clearInterval(epTimer);
+  epTimer=setInterval(()=>{
+    if(epPaused)return;
+    epTick+=50;
+    epBar.style.width=(epTick/EP_DUR*100)+'%';
+    if(epTick>=EP_DUR){epGo(epCurrent+1);epBar.style.width='0%';epTick=0}
+  },50);
+}
+function epResetTimer(){epTick=0;epBar.style.width='0%'}
+epStartTimer();
+
+/* ══════ CINTA DE LOGOS ══════ */
+const belt1=document.getElementById('cliBelt1');
+const belt2=document.getElementById('cliBelt2');
+const half1=LOGOS.slice(0,12),half2=LOGOS.slice(12);
+const buildBelt=(arr,el)=>{
+  const items=arr.map(L=>`<div class="cli-card" title="${L.n}"><div class="cli-svg">${L.svg}</div></div>`).join('');
+  el.innerHTML=items+items;
+};
+buildBelt(half1,belt1);
+buildBelt(half2,belt2);
+
+/* ══════ PORTAFOLIO ══════ */
+const CATS=[
+  {id:'all',lbl:'Todos'},
+  {id:'activacion',lbl:'Activaciones'},
+  {id:'produccion',lbl:'Producción'},
+  {id:'personal',lbl:'Personal & Logística'},
+  {id:'mobiliario',lbl:'Mobiliario'},
+  {id:'catering',lbl:'Catering'},
+  {id:'food',lbl:'Alimentos'},
+  {id:'tech',lbl:'Tecnología'},
+  {id:'health',lbl:'Salud'},
+  {id:'eventos',lbl:'Eventos'},
+  {id:'retail',lbl:'Retail'},
+];
+const pfContainer=document.getElementById('pfilters');
+const pfTotal=document.getElementById('pfTotal');
+CATS.forEach((c,i)=>{
+  const btn=document.createElement('button');
+  btn.className='pf'+(c.id==='all'?' on':'');
+  btn.dataset.cat=c.id;
+  const count=c.id==='all'?PORT.length:PORT.filter(p=>p.cat===c.id).length;
+  btn.innerHTML=`${c.lbl}<span class="pf-count">${count}</span>`;
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.pf').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    pFilter=c.id;pSlide=0;renderP();
+  });
+  pfContainer.insertBefore(btn,pfTotal);
+});
+
+let pFilter='all',pSlide=0,pItems=[];
+function ipp(){return window.innerWidth<=640?1:window.innerWidth<=960?2:3}
+function renderP(){
+  pItems=pFilter==='all'?[...PORT]:PORT.filter(d=>d.cat===pFilter);
+  const track=document.getElementById('ptrack');
+  const empty=document.getElementById('pempty');
+  const nav=document.getElementById('pnav');
+  const dots=document.getElementById('pdots');
+  pfTotal.innerHTML=`Mostrando <em>${pItems.length}</em> proyecto${pItems.length===1?'':'s'}`;
+  if(!pItems.length){track.innerHTML='';empty.classList.add('show');nav.style.display='none';return}
+  empty.classList.remove('show');nav.style.display='flex';
+  const pp=ipp(),pages=Math.ceil(pItems.length/pp);
+  if(pSlide>=pages)pSlide=0;
+  track.innerHTML=pItems.map((item,idx)=>`
+    <div class="p-item">
+      <div class="p-card" data-idx="${PORT.indexOf(item)}">
+        <div class="p-img">
+          <img src="${item.img}" alt="${item.title}" loading="lazy"/>
+          <div class="p-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            ${item.client}
+          </div>
+          <div class="p-hover">
+            <div class="p-hover-btn">
+              Ver caso
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="p-info">
+          <div class="p-meta">
+            <span class="p-meta-cat">${item.catLabel}</span>
+            <span class="p-meta-dot"></span>
+            <span class="p-meta-year">${item.year}</span>
+          </div>
+          <div class="p-title">${item.title}</div>
+          <div class="p-desc">${item.desc}</div>
+          <div class="p-tags">
+            ${item.tags.map(t=>`<span class="p-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+  document.querySelectorAll('.p-card').forEach(c=>c.addEventListener('click',()=>openPd(+c.dataset.idx)));
+  dots.innerHTML=Array.from({length:pages},(_,i)=>
+    `<button class="cdot${i===pSlide?' on':''}" onclick="goP(${i})" aria-label="Página ${i+1}"></button>`
+  ).join('');
+  updP();
+}
+function updP(){
+  const pp=ipp();
+  document.getElementById('ptrack').style.transform=`translateX(-${(100/pp)*pSlide}%)`;
+}
+function goP(n){
+  const pages=Math.ceil(pItems.length/ipp());
+  pSlide=Math.max(0,Math.min(n,pages-1));
+  document.querySelectorAll('.cdot').forEach((d,i)=>d.classList.toggle('on',i===pSlide));
+  updP();
+}
+function nextP(){const p=Math.ceil(pItems.length/ipp());goP(pSlide+1>=p?0:pSlide+1)}
+function prevP(){const p=Math.ceil(pItems.length/ipp());goP(pSlide-1<0?p-1:pSlide-1)}
+window.addEventListener('resize',()=>{pSlide=0;renderP();layout()});
+renderP();
+
+/* ══════ MODAL DETALLE PROYECTO ══════ */
+const pdModal=document.getElementById('pdModal');
+const pdBox=document.getElementById('pdBox');
+function openPd(idx){
+  const p=PORT[idx];if(!p)return;
+  pdBox.innerHTML=`
+    <div class="pd-hero">
+      <img src="${p.img}" alt="${p.title}"/>
+      <button class="pd-close" onclick="closePd()" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="pd-hero-badge">${p.catLabel} · ${p.year}</div>
+      <div class="pd-hero-title">
+        <div class="pd-hero-client">${p.client}</div>
+        <div class="pd-hero-h">${p.title.replace(/·/g,'<em>·</em>')}</div>
+      </div>
+    </div>
+    <div class="pd-body">
+      <p class="pd-lead">${p.desc}. Un proyecto que MFD ejecutó con estándares de calidad y cobertura garantizada — sumando a los <strong style="color:#fff">15 años</strong> de experiencia con marcas líderes.</p>
+      <div class="pd-stats">
+        ${p.stats.map(s=>`
+          <div class="pd-stat">
+            <div class="pd-stat-n">${s.n}</div>
+            <div class="pd-stat-l">${s.l}</div>
+          </div>`).join('')}
+      </div>
+      <div class="pd-section-title">Qué incluyó este proyecto</div>
+      <ul class="pd-features">
+        ${p.features.map(f=>`
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            ${f}
+          </li>`).join('')}
+      </ul>
+      <a href="#contacto" class="pd-cta" onclick="closePd()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.7a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Quiero un proyecto así
+      </a>
+    </div>`;
+  pdModal.classList.add('open');document.body.style.overflow='hidden';
+}
+function closePd(){pdModal.classList.remove('open');document.body.style.overflow=''}
+pdModal.addEventListener('click',e=>{if(e.target===pdModal)closePd()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePd();closeBrief()}});
+
+/* ══════ TOUCH ══════ */
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+
+/* ══════ MODAL ══════ */
+function openBrief(){document.getElementById('briefModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeBrief(){document.getElementById('briefModal').classList.remove('open');document.body.style.overflow='';setTimeout(()=>{document.getElementById('mHero').style.display='block';document.getElementById('mBody').innerHTML=originalForm;bindForm()},400)}
+document.getElementById('briefModal').addEventListener('click',e=>{if(e.target.id==='briefModal')closeBrief()});
+
+const originalForm=document.getElementById('mBody').innerHTML;
+function bindForm(){document.querySelector('#mBody form').addEventListener('submit',submitBrief)}
+function submitBrief(e){
+  e.preventDefault();
+  document.getElementById('mHero').style.display='none';
+  document.getElementById('mBody').innerHTML=`
+    <div class="m-success">
+      <div class="m-success-ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h4>¡Gracias! Tu brief está <em>en camino</em>.</h4>
+      <p>Marie France se pondrá en contacto contigo en las próximas <strong>24 horas</strong> para conversar sobre tu proyecto.</p>
+    </div>`;
+}
+</script>
+</body>
+</html>
