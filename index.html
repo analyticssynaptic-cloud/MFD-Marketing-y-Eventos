@@ -690,144 +690,148 @@ ul,ol{list-style:none}
   text-transform:uppercase;display:block;margin-top:4px;
 }
 
-/* -- Content stage: image + info -- */
-.ep-stage{
-  display:grid;grid-template-columns:1.15fr 1fr;gap:52px;
-  align-items:stretch;position:relative;z-index:2;
-  max-width:1180px;margin:0 auto;
-}
-.ep-visual{
-  position:relative;border-radius:24px;overflow:hidden;
-  background:#0f0708;border:1px solid rgba(255,255,255,.06);
-  min-height:440px;box-shadow:0 30px 80px rgba(0,0,0,.55);
-}
-.ep-slide{
-  position:absolute;inset:0;opacity:0;
-  transition:opacity .55s ease;
-}
-.ep-slide.on{opacity:1;z-index:2}
-.ep-slide img{
-  width:100%;height:100%;object-fit:cover;
-  animation:ep-kb 14s ease-out infinite alternate;
-}
+/* -- ANILLO 3D EPECAR -- */
 @keyframes ep-kb{
   from{transform:scale(1) translate(0,0)}
   to{transform:scale(1.12) translate(-1.5%,-1%)}
 }
-.ep-slide::after{
+.ep3d-wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto}
+.ep3d-stage{
+  position:relative;height:625px;
+  perspective:1700px;perspective-origin:50% 40%;
+  cursor:grab;touch-action:pan-y;
+}
+.ep3d-stage.dragging{cursor:grabbing}
+.ep3d-ring{
+  position:absolute;inset:0;
+  transform-style:preserve-3d;
+  transition:transform 1.15s cubic-bezier(.22,1,.36,1);
+  will-change:transform;
+}
+.ep3d-card{
+  position:absolute;left:50%;top:50%;
+  width:340px;height:560px;margin:-280px 0 0 -170px;
+  border-radius:26px;overflow:hidden;
+  background:linear-gradient(168deg,rgba(48,28,30,.96),rgba(24,16,14,.98) 60%);
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 30px 70px rgba(0,0,0,.5);
+  transition:filter .9s ease,border-color .9s ease,box-shadow .9s ease;
+  cursor:pointer;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+}
+.ep3d-card:not(.front){filter:brightness(.52) saturate(.65)}
+.ep3d-card.front{
+  border-color:rgba(217,30,37,.55);
+  box-shadow:0 40px 100px rgba(0,0,0,.65),0 0 70px rgba(217,30,37,.2);
+  cursor:default;
+}
+.ep3d-media{position:relative;height:158px;overflow:hidden;flex-shrink:0}
+.ep3d-media img{width:100%;height:100%;object-fit:cover}
+.ep3d-card.front .ep3d-media img{animation:ep-kb 14s ease-out infinite alternate}
+.ep3d-media::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(24,16,14,.45) 0%,transparent 40%,rgba(24,16,14,.85) 100%);
+  background:linear-gradient(180deg,rgba(15,7,8,.2) 0%,transparent 40%,rgba(15,7,8,.92) 100%);
 }
-.ep-slide-badge{
-  position:absolute;top:22px;left:22px;z-index:3;
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
-  border-radius:100px;padding:8px 16px;
-  font-family:var(--cond);font-size:.74rem;font-weight:700;
-  letter-spacing:2.4px;text-transform:uppercase;color:var(--r-deep);
+.ep3d-letter{
+  position:absolute;top:2px;right:12px;z-index:2;
+  font-family:var(--bebas);font-size:6.4rem;line-height:1;
+  color:transparent;-webkit-text-stroke:1.5px rgba(217,30,37,.7);
+  text-shadow:0 0 34px rgba(217,30,37,.3);
+  pointer-events:none;
 }
-.ep-slide-badge-num{
-  font-family:var(--bebas);font-size:.88rem;
-  color:var(--r);letter-spacing:1px;
+.ep3d-step{
+  position:absolute;top:14px;left:16px;z-index:2;
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(24,16,14,.75);backdrop-filter:blur(6px);
+  border:1px solid rgba(217,30,37,.4);
+  border-radius:100px;padding:5px 13px;
+  font-family:var(--cond);font-size:.64rem;font-weight:700;
+  letter-spacing:2px;color:#fff;text-transform:uppercase;
 }
-.ep-slide-icon{
-  position:absolute;bottom:22px;right:22px;z-index:3;
-  width:60px;height:60px;border-radius:16px;
+.ep3d-ico{
+  position:absolute;bottom:-24px;left:20px;z-index:3;
+  width:50px;height:50px;border-radius:14px;
   background:var(--grad-red);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 12px 30px rgba(217,30,37,.55);
-  animation:float-slow 4s ease-in-out infinite;
+  box-shadow:0 12px 28px rgba(217,30,37,.55);
 }
-.ep-slide-icon svg{width:26px;height:26px;color:#fff;stroke-width:1.8}
+.ep3d-ico svg{width:23px;height:23px;color:#fff;stroke-width:1.8}
+.ep3d-body{
+  padding:38px 22px 22px;
+  display:flex;flex-direction:column;
+  height:calc(100% - 158px);
+}
+.ep3d-title{
+  font-family:var(--display);font-weight:700;font-size:1.4rem;
+  letter-spacing:-.016em;color:#fff;line-height:1.14;margin-bottom:10px;
+}
+.ep3d-title em{font-style:italic;color:var(--r-v);font-weight:600}
+.ep3d-desc{
+  font-size:.83rem;line-height:1.58;color:rgba(255,255,255,.62);margin-bottom:14px;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.ep3d-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.ep3d-kpi{
+  padding:9px 6px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:11px;text-align:center;
+}
+.ep3d-kpi b{
+  display:block;font-family:var(--display);font-weight:700;
+  font-size:1.02rem;color:#fff;letter-spacing:-.01em;line-height:1.1;
+}
+.ep3d-kpi b em{color:var(--r-v);font-style:normal}
+.ep3d-kpi span{
+  font-family:var(--cond);font-size:.56rem;font-weight:600;
+  letter-spacing:1.3px;color:rgba(255,255,255,.5);text-transform:uppercase;
+}
+.ep3d-feats{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:auto}
+.ep3d-feats li{display:flex;gap:8px;font-size:.78rem;color:rgba(255,255,255,.74);line-height:1.45}
+.ep3d-feats svg{width:13px;height:13px;flex-shrink:0;margin-top:.2em;color:var(--r-v);stroke-width:2.6}
 
-/* -- Right info column -- */
-.ep-info-col{display:flex;flex-direction:column;justify-content:center}
-.ep-info-panel{
-  display:none;animation:fup .6s ease both;
-}
-.ep-info-panel.on{display:block}
-.ep-info-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--cond);font-size:.72rem;font-weight:700;
-  letter-spacing:3px;color:var(--r-v);text-transform:uppercase;
-  margin-bottom:14px;
-}
-.ep-info-eyebrow::before{content:'';width:22px;height:1.5px;background:var(--r-v)}
-.ep-info-title{
-  font-family:var(--display);font-weight:700;font-size:2.2rem;
-  letter-spacing:-.02em;color:#fff;line-height:1.08;margin-bottom:18px;
-}
-.ep-info-title em{font-style:italic;color:var(--r-v);font-weight:600}
-.ep-info-desc{
-  font-size:1rem;line-height:1.7;color:rgba(255,255,255,.68);
-  margin-bottom:26px;
-}
-.ep-kpi-row{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-  margin-bottom:28px;
-}
-.ep-kpi{
-  padding:14px 16px;background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:14px;transition:border-color var(--t1),background var(--t1);
-}
-.ep-kpi:hover{border-color:rgba(217,30,37,.4);background:rgba(217,30,37,.08)}
-.ep-kpi-num{
-  font-family:var(--display);font-weight:700;font-size:1.5rem;
-  letter-spacing:-.02em;color:#fff;line-height:1;
-}
-.ep-kpi-num em{color:var(--r-v);font-style:normal}
-.ep-kpi-lbl{
-  font-family:var(--cond);font-size:.66rem;font-weight:600;
-  letter-spacing:1.8px;color:rgba(255,255,255,.5);
-  text-transform:uppercase;margin-top:6px;
-}
-.ep-features{list-style:none;display:flex;flex-direction:column;gap:10px}
-.ep-features li{
-  display:flex;align-items:flex-start;gap:12px;
-  font-size:.94rem;color:rgba(255,255,255,.78);line-height:1.5;
-}
-.ep-features li svg{
-  width:16px;height:16px;flex-shrink:0;margin-top:.24em;
-  color:var(--r-v);stroke-width:2.5;
+.ep3d-floor{
+  position:relative;height:50px;margin-top:-30px;
+  background:radial-gradient(ellipse 46% 100% at 50% 0%,rgba(217,30,37,.16),transparent 70%);
+  filter:blur(6px);pointer-events:none;z-index:1;
 }
 
-/* -- Tab-controls (prev/next + play) -- */
-.ep-ctrls{
-  display:flex;align-items:center;gap:12px;
-  margin-top:32px;padding-top:24px;
-  border-top:1px solid rgba(255,255,255,.08);
+.ep3d-ctrls{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin-top:10px;position:relative;z-index:2;
 }
 .ep-ctrl-btn{
-  width:42px;height:42px;border-radius:50%;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);
   color:#fff;display:flex;align-items:center;justify-content:center;
   cursor:pointer;transition:all var(--t1);
+  backdrop-filter:blur(8px);
 }
-.ep-ctrl-btn:hover{background:var(--r);border-color:var(--r);transform:scale(1.05)}
-.ep-ctrl-btn svg{width:15px;height:15px;stroke-width:2.2}
+.ep-ctrl-btn:hover{background:var(--r);border-color:var(--r);transform:scale(1.07)}
+.ep-ctrl-btn svg{width:16px;height:16px;stroke-width:2.2}
 .ep-ctrl-btn.pp svg.play,.ep-ctrl-btn.pp.paused svg.pause{display:none}
 .ep-ctrl-btn.pp svg.pause,.ep-ctrl-btn.pp.paused svg.play{display:block}
 .ep-ctrl-lbl{
-  margin-left:auto;
-  font-family:var(--cond);font-size:.72rem;font-weight:600;
-  letter-spacing:2.2px;color:rgba(255,255,255,.42);
+  margin-left:14px;
+  font-family:var(--cond);font-size:.74rem;font-weight:600;
+  letter-spacing:2.4px;color:rgba(255,255,255,.5);
   text-transform:uppercase;
 }
-.ep-ctrl-lbl em{color:var(--r-v);font-style:normal;font-family:var(--bebas);font-size:1rem}
+.ep-ctrl-lbl em{color:var(--r-v);font-style:normal;font-family:var(--bebas);font-size:1.05rem}
+.ep-ctrl-lbl b{color:#fff;font-weight:700}
 
 @media(max-width:960px){
   .ep-tabs{grid-template-columns:repeat(3,1fr)}
-  .ep-stage{grid-template-columns:1fr;gap:32px}
-  .ep-visual{min-height:340px}
   .ep-tab-letter{font-size:2.6rem}
+  .ep3d-stage{height:600px}
+  .ep3d-card{width:300px;height:545px;margin:-272px 0 0 -150px}
 }
 @media(max-width:520px){
   .ep-tabs{grid-template-columns:repeat(2,1fr);gap:8px}
   .ep-tab{padding:16px 8px 14px}
   .ep-tab-letter{font-size:2.2rem}
-  .ep-info-title{font-size:1.6rem}
-  .ep-kpi-row{grid-template-columns:1fr 1fr}
+  .ep3d-stage{height:580px;perspective:1200px}
+  .ep3d-card{width:265px;height:530px;margin:-265px 0 0 -132px}
+  .ep-ctrl-lbl{display:none}
 }
 
 /* ════════════════════════════════════════════════════════
@@ -843,57 +847,111 @@ ul,ol{list-style:none}
 
 .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .sc{
-  border-radius:20px;overflow:hidden;background:#fff;
-  border:1px solid var(--line);
-  transition:transform var(--t2),box-shadow var(--t2),border-color var(--t2);
-  display:flex;flex-direction:column;
+  position:relative;height:430px;
+  perspective:1300px;background:transparent;
 }
-.sc:hover{transform:translateY(-8px);box-shadow:var(--sh-3);border-color:transparent}
-.sc-top{
-  background:var(--grad-dark);padding:38px 32px 32px;
-  position:relative;overflow:hidden;min-height:190px;
+.sc-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .9s cubic-bezier(.4,0,.2,1);
+}
+.sc:hover .sc-inner{transform:rotateY(180deg)}
+.sc-face{
+  position:absolute;inset:0;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:22px;overflow:hidden;
+}
+.sc-front{
+  background:var(--grad-dark);
+  padding:38px 32px 34px;
   display:flex;flex-direction:column;justify-content:flex-end;
+  border:1px solid rgba(192,20,26,.2);
 }
-.sc-top::after{
-  content:'';position:absolute;right:-20px;top:-20px;
-  width:140px;height:140px;border-radius:50%;
-  background:radial-gradient(circle,rgba(192,20,26,.32) 0%,transparent 70%);
+.sc-front::after{
+  content:'';position:absolute;right:-30px;top:-30px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(192,20,26,.35) 0%,transparent 70%);
+  pointer-events:none;
+}
+.sc-front::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.015) 60px);
   pointer-events:none;
 }
 .sc-num{
-  font-family:var(--bebas);font-size:5rem;
-  color:rgba(255,255,255,.06);line-height:1;
-  position:absolute;top:14px;right:22px;letter-spacing:-.03em;
+  font-family:var(--bebas);font-size:6.5rem;
+  color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.1);
+  line-height:1;position:absolute;top:16px;right:22px;letter-spacing:-.03em;
 }
 .sc-ico{
-  width:52px;height:52px;border-radius:13px;
+  width:56px;height:56px;border-radius:15px;
   background:rgba(192,20,26,.28);
   display:flex;align-items:center;justify-content:center;
-  margin-bottom:16px;position:relative;z-index:1;
-  border:1px solid rgba(192,20,26,.35);
+  margin-bottom:18px;position:relative;z-index:1;
+  border:1px solid rgba(192,20,26,.4);
+  backdrop-filter:blur(6px);
 }
-.sc-ico svg{width:24px;height:24px;color:#fff;stroke-width:1.7}
+.sc-ico svg{width:26px;height:26px;color:#fff;stroke-width:1.7}
 .sc-name{
-  font-family:var(--display);font-weight:700;font-size:1.55rem;
+  font-family:var(--display);font-weight:700;font-size:1.6rem;
   letter-spacing:-.015em;color:#fff;position:relative;z-index:1;
-  line-height:1.1;margin-bottom:5px;
+  line-height:1.1;margin-bottom:6px;
 }
 .sc-name em{font-style:italic;color:var(--r-v);font-weight:600}
 .sc-sub{
   font-family:var(--cond);font-size:.7rem;font-weight:700;
-  letter-spacing:2.6px;color:rgba(255,255,255,.42);
+  letter-spacing:2.6px;color:rgba(255,255,255,.45);
   text-transform:uppercase;position:relative;z-index:1;
 }
-.sc-body{padding:28px 30px 30px;flex:1;display:flex;flex-direction:column}
+.sc-flip-hint{
+  position:relative;z-index:1;margin-top:20px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--cond);font-size:.68rem;font-weight:700;
+  letter-spacing:2.2px;color:rgba(255,255,255,.55);text-transform:uppercase;
+}
+.sc-flip-hint svg{
+  width:14px;height:14px;color:var(--r-v);
+  animation:sc-spin-hint 3s linear infinite;
+}
+@keyframes sc-spin-hint{to{transform:rotate(360deg)}}
+.sc-back{
+  transform:rotateY(180deg);
+  background:#fff;border:1px solid var(--line);
+  padding:32px 30px 28px;
+  display:flex;flex-direction:column;
+}
+.sc-back::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--grad-red);
+}
+.sc-back-eyebrow{
+  font-family:var(--cond);font-size:.66rem;font-weight:700;
+  letter-spacing:2.6px;color:var(--r);text-transform:uppercase;
+  margin-bottom:8px;
+}
+.sc-back-name{
+  font-family:var(--display);font-weight:700;font-size:1.3rem;
+  letter-spacing:-.014em;color:var(--ink);margin-bottom:16px;line-height:1.15;
+}
 .sc-list{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1}
 .sc-list li{
-  font-size:.92rem;font-weight:400;color:var(--slate);
-  display:flex;align-items:flex-start;gap:10px;line-height:1.5;
+  font-size:.9rem;font-weight:400;color:var(--slate);
+  display:flex;align-items:flex-start;gap:10px;line-height:1.45;
 }
 .sc-list li::before{
   content:'';width:5px;height:5px;border-radius:50%;
-  background:var(--r);flex-shrink:0;margin-top:.55em;
+  background:var(--r);flex-shrink:0;margin-top:.5em;
 }
+.sc-back-cta{
+  margin-top:16px;padding-top:16px;
+  border-top:1px solid var(--line);
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--cond);font-size:.76rem;font-weight:700;
+  letter-spacing:2.2px;color:var(--r);text-transform:uppercase;
+  transition:gap var(--t1);
+}
+.sc-back-cta:hover{gap:13px}
+.sc-back-cta svg{width:14px;height:14px;stroke-width:2.4}
 
 @media(max-width:960px){
   .srv-intro{grid-template-columns:1fr;gap:22px;margin-bottom:44px}
@@ -1209,19 +1267,20 @@ ul,ol{list-style:none}
 .cli-belt-wrap + .cli-belt-wrap{margin-top:14px}
 .cli-belt{
   display:flex;gap:26px;
-  animation:cli-scroll 55s linear infinite;
-  width:max-content;
+  animation:cli-scroll 38s linear infinite;
+  width:max-content;will-change:transform;
 }
-.cli-belt-r{animation:cli-scroll-r 55s linear infinite}
+.cli-belt-r{animation:cli-scroll-r 42s linear infinite}
 @keyframes cli-scroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(-50%,0,0)}
 }
 @keyframes cli-scroll-r{
-  from{transform:translateX(-50%)}
-  to{transform:translateX(0)}
+  from{transform:translate3d(-50%,0,0)}
+  to{transform:translate3d(0,0,0)}
 }
-.cli-belt-wrap:hover .cli-belt{animation-play-state:paused}
+/* pausa SOLO cuando el cursor está sobre una card, no sobre toda la franja */
+.cli-belt-wrap:has(.cli-card:hover) .cli-belt{animation-play-state:paused}
 
 .cli-card{
   flex-shrink:0;
@@ -1498,6 +1557,15 @@ footer{
   font-family:var(--cond);font-size:.75rem;letter-spacing:1.8px;
   color:rgba(255,255,255,.32);text-transform:uppercase;
 }
+.f-linkedin{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:9px 18px;border-radius:100px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  font-family:var(--cond);font-size:.74rem;font-weight:700;
+  letter-spacing:2.2px;color:rgba(255,255,255,.75);text-transform:uppercase;
+  transition:all var(--t1);
+}
+.f-linkedin:hover{background:#0A66C2;border-color:#0A66C2;color:#fff;transform:translateY(-2px)}
 
 /* ════════════════════════════════════════════════════════
    MODAL
@@ -1594,9 +1662,442 @@ footer{
 .m-success h4 em{font-style:italic;color:var(--r);font-weight:600}
 .m-success p{font-size:.95rem;color:var(--slate);line-height:1.65}
 
+/* ════════════════════════════════════════════════════════
+   PRELOADER
+═══════════════════════════════════════════════════════ */
+#loader{
+  position:fixed;inset:0;z-index:10000;
+  background:var(--dark);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .9s cubic-bezier(.76,0,.24,1);
+}
+#loader.done{transform:translateY(-100%)}
+#loader::after{
+  content:'';position:absolute;left:0;right:0;bottom:-60px;height:60px;
+  background:var(--r);filter:blur(30px);opacity:.4;
+}
+.ld-inner{text-align:center;position:relative}
+.ld-logo{
+  font-family:var(--bebas);font-size:5rem;letter-spacing:.2em;
+  color:#fff;line-height:1;margin-bottom:8px;
+  animation:ld-pulse 1.6s ease-in-out infinite;
+}
+.ld-logo em{color:var(--r-v);font-style:normal}
+@keyframes ld-pulse{0%,100%{opacity:1}50%{opacity:.72}}
+.ld-tag{
+  font-family:var(--display);font-style:italic;font-size:.92rem;
+  color:rgba(255,255,255,.45);margin-bottom:34px;
+}
+.ld-bar{
+  width:240px;height:2px;margin:0 auto 14px;
+  background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;
+}
+.ld-bar span{
+  display:block;height:100%;width:0;
+  background:var(--grad-red);border-radius:2px;
+  box-shadow:0 0 16px rgba(217,30,37,.8);
+  transition:width .12s ease;
+}
+.ld-pct{
+  font-family:var(--bebas);font-size:1.1rem;letter-spacing:.18em;
+  color:var(--r-v);
+}
+
+/* ── SCROLL PROGRESS ── */
+#scrollbar{
+  position:fixed;top:0;left:0;height:3px;width:0;z-index:1200;
+  background:var(--grad-red);
+  box-shadow:0 0 12px rgba(217,30,37,.6);
+  pointer-events:none;
+}
+
+/* ── CUSTOM CURSOR ── */
+#cur-dot,#cur-ring{
+  position:fixed;top:0;left:0;pointer-events:none;z-index:12000;
+  border-radius:50%;
+  opacity:0;transition:opacity .3s ease;
+}
+#cur-dot{
+  width:8px;height:8px;background:var(--r-v);
+  transform:translate(-50%,-50%);
+}
+#cur-ring{
+  width:38px;height:38px;
+  border:1.5px solid rgba(192,20,26,.55);
+  transform:translate(-50%,-50%);
+  transition:width .3s ease,height .3s ease,opacity .3s ease,border-color .3s ease,background .3s ease;
+}
+#cur-ring.grow{
+  width:66px;height:66px;
+  background:rgba(192,20,26,.08);
+  border-color:rgba(192,20,26,.9);
+}
+html.has-cursor,html.has-cursor body,html.has-cursor a,html.has-cursor button{cursor:none}
+html.has-cursor input,html.has-cursor textarea,html.has-cursor select{cursor:text}
+
+/* ════════════════════════════════════════════════════════
+   SHOWREEL
+═══════════════════════════════════════════════════════ */
+#showreel{
+  position:relative;height:88vh;min-height:560px;
+  overflow:hidden;background:var(--dark);
+  display:flex;align-items:center;justify-content:center;
+}
+.sr-video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;opacity:.55;
+}
+.sr-overlay{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at center,transparent 0%,rgba(24,16,14,.55) 78%),
+    linear-gradient(180deg,rgba(24,16,14,.85) 0%,transparent 22%,transparent 78%,rgba(24,16,14,.9) 100%);
+}
+.sr-marquee{
+  position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);
+  overflow:hidden;pointer-events:none;opacity:.9;
+}
+.sr-m-track{
+  display:flex;white-space:nowrap;width:max-content;
+  animation:marquee 26s linear infinite;
+  font-family:var(--bebas);
+  font-size:clamp(90px,15vw,220px);
+  line-height:1;letter-spacing:.02em;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,255,255,.34);
+}
+.sr-m-track em{
+  font-style:normal;color:var(--r-v);
+  -webkit-text-stroke:0;
+  text-shadow:0 0 60px rgba(217,30,37,.5);
+}
+.sr-m-track span{padding:0 30px}
+.sr-center{
+  position:relative;z-index:5;text-align:center;
+}
+.sr-play{
+  position:relative;width:150px;height:150px;margin:0 auto 22px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.sr-play:hover{transform:scale(1.1)}
+.sr-rot{
+  position:absolute;inset:0;
+  animation:sr-spin 16s linear infinite;
+}
+@keyframes sr-spin{to{transform:rotate(360deg)}}
+.sr-rot text{
+  font-family:var(--cond);font-size:8px;font-weight:700;
+  letter-spacing:2.6px;fill:rgba(255,255,255,.85);
+  text-transform:uppercase;
+}
+.sr-tri{
+  width:78px;height:78px;border-radius:50%;
+  background:var(--grad-red);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 0 rgba(217,30,37,.5);
+  animation:sr-pulse 2.2s ease-out infinite;
+}
+@keyframes sr-pulse{
+  0%{box-shadow:0 0 0 0 rgba(217,30,37,.5)}
+  70%{box-shadow:0 0 0 26px rgba(217,30,37,0)}
+  100%{box-shadow:0 0 0 0 rgba(217,30,37,0)}
+}
+.sr-tri svg{width:26px;height:26px;color:#fff;margin-left:4px}
+.sr-lbl{
+  font-family:var(--cond);font-size:.8rem;font-weight:700;
+  letter-spacing:3.5px;color:rgba(255,255,255,.75);text-transform:uppercase;
+}
+.sr-lbl em{color:var(--r-v);font-style:normal}
+.sr-chips{
+  position:absolute;bottom:34px;left:0;right:0;z-index:5;
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:0 22px;
+}
+.sr-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:100px;padding:8px 18px;
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:2.2px;color:rgba(255,255,255,.85);text-transform:uppercase;
+}
+.sr-chip svg{width:13px;height:13px;color:var(--r-v)}
+
+/* ── VIDEO LIGHTBOX ── */
+.vid-modal{
+  position:fixed;inset:0;z-index:5000;
+  background:rgba(10,5,6,.94);backdrop-filter:blur(16px);
+  display:none;align-items:center;justify-content:center;padding:4vw;
+  opacity:0;transition:opacity .3s ease;
+}
+.vid-modal.open{display:flex;opacity:1}
+.vid-box{
+  width:100%;max-width:1080px;position:relative;
+  transform:scale(.94);opacity:0;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s ease;
+}
+.vid-modal.open .vid-box{transform:scale(1);opacity:1}
+.vid-box video{
+  width:100%;border-radius:20px;display:block;
+  box-shadow:0 40px 120px rgba(0,0,0,.8);
+  border:1px solid rgba(192,20,26,.3);
+  aspect-ratio:16/9;object-fit:cover;background:#000;
+}
+.vid-close{
+  position:absolute;top:-54px;right:0;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:transform var(--t1),background var(--t1);
+}
+.vid-close:hover{transform:rotate(90deg);background:var(--r)}
+.vid-close svg{width:17px;height:17px}
+.vid-cap{
+  margin-top:16px;text-align:center;
+  font-family:var(--cond);font-size:.74rem;font-weight:600;
+  letter-spacing:2.6px;color:rgba(255,255,255,.5);text-transform:uppercase;
+}
+
+/* ════════════════════════════════════════════════════════
+   KINETIC TEXT
+═══════════════════════════════════════════════════════ */
+#kinetic{
+  background:var(--surface);padding:70px 0;overflow:hidden;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.kin-row{overflow:hidden;white-space:nowrap}
+.kin-row+.kin-row{margin-top:6px}
+.kin-track{
+  display:inline-flex;width:max-content;
+  animation:marquee 30s linear infinite;
+  font-family:var(--bebas);
+  font-size:clamp(56px,8vw,110px);
+  line-height:1.02;letter-spacing:.02em;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(26,15,13,.28);
+  transition:-webkit-text-stroke .3s;
+}
+.kin-rev .kin-track{animation:kin-rev 34s linear infinite}
+@keyframes kin-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.kin-track span{padding:0 24px}
+.kin-track em{
+  font-style:normal;color:var(--r);-webkit-text-stroke:0;
+}
+.kin-row:hover .kin-track{animation-play-state:paused}
+
+/* ════════════════════════════════════════════════════════
+   FABS (WhatsApp + top)
+═══════════════════════════════════════════════════════ */
+.fabs{
+  position:fixed;right:22px;bottom:22px;z-index:1500;
+  display:flex;flex-direction:column;gap:12px;align-items:center;
+}
+.fab{
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:transform var(--bounce),box-shadow var(--t1),opacity .3s,visibility .3s;
+  box-shadow:0 10px 30px rgba(24,16,14,.25);
+}
+.fab:hover{transform:translateY(-4px) scale(1.06)}
+.fab svg{width:24px;height:24px}
+.fab-wa{
+  background:#25D366;color:#fff;position:relative;
+}
+.fab-wa::after{
+  content:'';position:absolute;inset:-5px;border-radius:50%;
+  border:2px solid rgba(37,211,102,.55);
+  animation:ping 2s ease-out infinite;
+}
+.fab-top{
+  background:var(--ink);color:#fff;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+}
+.fab-top.show{opacity:1;visibility:visible;transform:none}
+.fab-top:hover{background:var(--r)}
+
+/* ── HERO LINE REVEAL ── */
+.hl-line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.hl-line>span{
+  display:inline-block;
+  transform:translateY(118%);
+  transition:transform 1s cubic-bezier(.22,1,.36,1);
+}
+.hl-line:nth-child(2)>span{transition-delay:.09s}
+.hl-line:nth-child(3)>span{transition-delay:.18s}
+body.ready .hl-line>span{transform:none}
+
+/* orbit video */
+.orb-item video{width:100%;height:100%;object-fit:cover;display:block}
+.orb-reel-chip{
+  position:absolute;bottom:14px;right:14px;z-index:3;
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(24,16,14,.82);backdrop-filter:blur(6px);
+  border-radius:100px;padding:5px 12px;
+  font-family:var(--cond);font-size:.62rem;font-weight:700;
+  letter-spacing:2px;color:#fff;text-transform:uppercase;
+  opacity:0;transition:opacity .5s ease .2s;
+}
+.orb-item.front .orb-reel-chip{opacity:1}
+.orb-reel-chip .rec{
+  width:7px;height:7px;border-radius:50%;background:var(--r-v);
+  animation:pulse 1.4s ease-in-out infinite;
+}
+
+@media(max-width:768px){
+  #cur-dot,#cur-ring{display:none}
+  .sr-play{width:120px;height:120px}
+  .sr-tri{width:62px;height:62px}
+  #showreel{height:72vh;min-height:460px}
+  .fabs{right:14px;bottom:14px}
+  .fab{width:50px;height:50px}
+}
+/* ════════════════════════════════════════════════════════
+   FX PACK: grain, partículas, shine, gradientes
+═══════════════════════════════════════════════════════ */
+.grain{
+  position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.7;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Partículas hero (CSS puro) */
+.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-particles span{
+  position:absolute;bottom:-24px;border-radius:50%;
+  background:rgba(192,20,26,.3);
+  animation:part-rise linear infinite;
+}
+@keyframes part-rise{
+  0%{transform:translateY(0) translateX(0) scale(1);opacity:0}
+  8%{opacity:.9}
+  90%{opacity:.15}
+  100%{transform:translateY(-105vh) translateX(30px) scale(.4);opacity:0}
+}
+.hero-particles span:nth-child(1){left:6%;width:7px;height:7px;animation-duration:13s;animation-delay:0s}
+.hero-particles span:nth-child(2){left:16%;width:5px;height:5px;animation-duration:17s;animation-delay:2.4s;background:rgba(201,169,97,.35)}
+.hero-particles span:nth-child(3){left:26%;width:9px;height:9px;animation-duration:15s;animation-delay:5s}
+.hero-particles span:nth-child(4){left:38%;width:4px;height:4px;animation-duration:19s;animation-delay:1.2s}
+.hero-particles span:nth-child(5){left:47%;width:6px;height:6px;animation-duration:14s;animation-delay:7.5s;background:rgba(201,169,97,.3)}
+.hero-particles span:nth-child(6){left:58%;width:8px;height:8px;animation-duration:16s;animation-delay:3.2s}
+.hero-particles span:nth-child(7){left:67%;width:5px;height:5px;animation-duration:18s;animation-delay:9s}
+.hero-particles span:nth-child(8){left:76%;width:7px;height:7px;animation-duration:13.5s;animation-delay:4.4s}
+.hero-particles span:nth-child(9){left:85%;width:4px;height:4px;animation-duration:20s;animation-delay:6.6s;background:rgba(201,169,97,.35)}
+.hero-particles span:nth-child(10){left:92%;width:6px;height:6px;animation-duration:15.5s;animation-delay:.8s}
+.hero-particles span:nth-child(11){left:33%;width:5px;height:5px;animation-duration:21s;animation-delay:11s}
+.hero-particles span:nth-child(12){left:71%;width:9px;height:9px;animation-duration:17.5s;animation-delay:8.2s}
+
+/* Shine sweep en CTAs */
+.btn-pri,.nav-cta,.pd-cta,.m-btn,.cal-add{position:relative;overflow:hidden}
+.btn-pri::before,.nav-cta::before,.pd-cta::before,.m-btn::before{
+  content:'';position:absolute;top:0;left:-90%;width:55%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.4),transparent);
+  transform:skewX(-22deg);transition:left .65s ease;pointer-events:none;
+}
+.btn-pri:hover::before,.nav-cta:hover::before,.pd-cta:hover::before,.m-btn:hover::before{left:135%}
+
+/* Titular hero: gradiente animado en el acento */
+.hero-h1 em{
+  background:linear-gradient(100deg,var(--r-v) 0%,var(--r-d) 45%,var(--r-v) 90%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  animation:grad-move 5.5s ease-in-out infinite;
+}
+@keyframes grad-move{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+/* ── VIDEO WALL (showreel tiles) ── */
+.sr-tiles{
+  position:absolute;bottom:30px;left:0;right:0;z-index:6;
+  display:flex;justify-content:center;gap:16px;padding:0 22px;
+}
+.sr-tile{
+  position:relative;width:230px;height:130px;
+  border-radius:16px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06);backdrop-filter:blur(10px);
+  cursor:pointer;flex-shrink:0;
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1),border-color var(--t1),box-shadow var(--t1);
+}
+.sr-tile:hover{
+  transform:translateY(-8px) scale(1.04);
+  border-color:rgba(217,30,37,.65);
+  box-shadow:0 24px 50px rgba(0,0,0,.55),0 0 40px rgba(217,30,37,.2);
+}
+.sr-tile video{
+  width:100%;height:100%;object-fit:cover;display:block;
+  opacity:.85;transition:opacity var(--t1),transform .6s ease;
+}
+.sr-tile:hover video{opacity:1;transform:scale(1.06)}
+.sr-tile::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(15,7,8,.88));
+  pointer-events:none;
+}
+.sr-tile-info{
+  position:absolute;left:14px;right:14px;bottom:11px;z-index:2;
+  text-align:left;pointer-events:none;
+}
+.sr-tile-tag{
+  display:block;
+  font-family:var(--cond);font-size:.58rem;font-weight:700;
+  letter-spacing:2px;color:var(--r-v);text-transform:uppercase;
+  margin-bottom:3px;
+}
+.sr-tile-t{
+  display:block;
+  font-family:var(--display);font-weight:700;font-style:italic;
+  font-size:.98rem;color:#fff;letter-spacing:-.01em;line-height:1.15;
+}
+.sr-tile-play{
+  position:absolute;top:10px;right:10px;z-index:2;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(24,16,14,.7);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.25);
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--t1),transform var(--t1);
+  pointer-events:none;
+}
+.sr-tile:hover .sr-tile-play{background:var(--r);transform:scale(1.12)}
+.sr-tile-play svg{width:11px;height:11px;color:#fff;margin-left:2px}
+
+@media(max-width:768px){
+  .sr-tiles{gap:10px;bottom:20px}
+  .sr-tile{width:150px;height:92px}
+  .sr-tile-t{font-size:.78rem}
+}
+@media(max-width:520px){
+  .sr-tiles{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .sr-tiles::-webkit-scrollbar{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
 </style>
 </head>
 <body>
+
+<!-- ═══════ PRELOADER ═══════ -->
+<div id="loader">
+  <div class="ld-inner">
+    <div class="ld-logo">M<em>F</em>D</div>
+    <div class="ld-tag">« Hacemos Marcas de Corazón »</div>
+    <div class="ld-bar"><span id="ldBar"></span></div>
+    <div class="ld-pct" id="ldPct">0%</div>
+  </div>
+</div>
+
+<!-- ═══════ SCROLL PROGRESS + CURSOR ═══════ -->
+<div id="scrollbar"></div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
 
 <!-- ═══════ NAV ═══════ -->
 <nav id="nav">
@@ -1637,6 +2138,7 @@ footer{
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
   <div class="hero-bg-text">MFD</div>
+  <div class="hero-particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <div class="wrap">
     <div class="hero-grid">
 
@@ -1646,10 +2148,10 @@ footer{
           <span>Agencia integral · <strong>15 años</strong> creando marcas</span>
         </div>
 
-        <h1 class="h-display hero-h1 reveal reveal-d1">
-          Hacemos<br>
-          Marcas de<br>
-          <em>Corazón</em>.
+        <h1 class="h-display hero-h1">
+          <span class="hl-line"><span>Hacemos</span></span>
+          <span class="hl-line"><span>Marcas de</span></span>
+          <span class="hl-line"><span><em>Corazón</em>.</span></span>
         </h1>
 
         <p class="hero-p reveal reveal-d2">
@@ -1665,6 +2167,10 @@ footer{
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9l4-4 4 4 4-5 4 5"/><circle cx="8.5" cy="14" r="1.5"/></svg>
             Nuestro Portafolio
           </a>
+          <button class="btn-sec" onclick="openReel()" style="font-family:inherit">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="7,4 21,12 7,20"/></svg>
+            Showreel
+          </button>
         </div>
 
         <div class="hero-feats reveal reveal-d4">
@@ -1701,7 +2207,7 @@ footer{
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
             <div class="orbit-badge-tx">
-              <div class="orbit-badge-num">100<sup>%</sup></div>
+              <div class="orbit-badge-num"><span data-count="100">0</span><sup>%</sup></div>
               <div class="orbit-badge-lbl">Efectividad</div>
             </div>
           </div>
@@ -1738,6 +2244,62 @@ footer{
 <!-- ═══════ STATS MARQUEE ═══════ -->
 <section id="stats-strip">
   <div class="marquee-track" id="marquee"></div>
+</section>
+
+<!-- ═══════ SHOWREEL ═══════ -->
+<section id="showreel">
+  <video class="sr-video" autoplay muted loop playsinline preload="metadata"
+    poster="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=70">
+    <source src="https://videos.pexels.com/video-files/1580455/1580455-hd_1920_1080_30fps.mp4" type="video/mp4">
+  </video>
+  <div class="sr-overlay"></div>
+
+  <div class="sr-marquee">
+    <div class="sr-m-track">
+      <span>MARKETING</span><span>·</span><span><em>EVENTOS</em></span><span>·</span><span>ACTIVACIONES</span><span>·</span><span><em>PRODUCCIÓN</em></span><span>·</span>
+      <span>MARKETING</span><span>·</span><span><em>EVENTOS</em></span><span>·</span><span>ACTIVACIONES</span><span>·</span><span><em>PRODUCCIÓN</em></span><span>·</span>
+    </div>
+  </div>
+
+  <div class="sr-center reveal">
+    <button class="sr-play" onclick="openReel()" aria-label="Ver showreel">
+      <svg class="sr-rot" viewBox="0 0 100 100">
+        <defs><path id="srCirc" d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"/></defs>
+        <text><textPath href="#srCirc">VER SHOWREEL · MFD EVENTOS · VER SHOWREEL · MFD EVENTOS ·</textPath></text>
+      </svg>
+      <span class="sr-tri">
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+      </span>
+    </button>
+    <div class="sr-lbl">Showreel <em>·</em> 15 años en 90 segundos</div>
+  </div>
+
+  <div class="sr-tiles">
+    <button class="sr-tile" data-src="https://videos.pexels.com/video-files/3252919/3252919-hd_1920_1080_25fps.mp4" data-cap="Eventos en vivo · Así se vive un evento MFD">
+      <video src="https://videos.pexels.com/video-files/3252919/3252919-hd_1920_1080_25fps.mp4" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=70"></video>
+      <div class="sr-tile-info">
+        <span class="sr-tile-tag">Línea 02 · Eventos</span>
+        <span class="sr-tile-t">Eventos en vivo</span>
+      </div>
+      <span class="sr-tile-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span>
+    </button>
+    <button class="sr-tile" data-src="https://videos.pexels.com/video-files/6774633/6774633-hd_1920_1080_30fps.mp4" data-cap="Producción técnica · LED, sonido e iluminación MFD">
+      <video src="https://videos.pexels.com/video-files/6774633/6774633-hd_1920_1080_30fps.mp4" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=600&q=70"></video>
+      <div class="sr-tile-info">
+        <span class="sr-tile-tag">Línea 02 · Producción</span>
+        <span class="sr-tile-t">Producción técnica</span>
+      </div>
+      <span class="sr-tile-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span>
+    </button>
+    <button class="sr-tile" data-src="https://videos.pexels.com/video-files/2890196/2890196-hd_1920_1080_30fps.mp4" data-cap="Experiencias de marca · Conexión emocional con el público">
+      <video src="https://videos.pexels.com/video-files/2890196/2890196-hd_1920_1080_30fps.mp4" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=600&q=70"></video>
+      <div class="sr-tile-info">
+        <span class="sr-tile-tag">Línea 03 · Activación</span>
+        <span class="sr-tile-t">Experiencias de marca</span>
+      </div>
+      <span class="sr-tile-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span>
+    </button>
+  </div>
 </section>
 
 <!-- ═══════ NOSOTROS ═══════ -->
@@ -1777,6 +2339,7 @@ footer{
 
 <!-- ═══════ EPECAR interactivo ═══════ -->
 <section id="epecar">
+  <div class="grain" aria-hidden="true"></div>
   <div class="wrap">
     <div class="ep-head reveal">
       <div class="eyebrow eyebrow-w" style="justify-content:center">Nuestra filosofía</div>
@@ -1788,9 +2351,24 @@ footer{
 
     <div class="ep-tabs reveal reveal-d2" id="epTabs"></div>
 
-    <div class="ep-stage reveal reveal-d3">
-      <div class="ep-visual" id="epVisual"></div>
-      <div class="ep-info-col" id="epInfo"></div>
+    <div class="ep3d-wrap reveal reveal-d3">
+      <div class="ep3d-stage" id="ep3dStage">
+        <div class="ep3d-ring" id="ep3dRing"></div>
+      </div>
+      <div class="ep3d-floor" aria-hidden="true"></div>
+      <div class="ep3d-ctrls">
+        <button class="ep-ctrl-btn" id="epPrev" aria-label="Paso anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="ep-ctrl-btn pp" id="epPP" aria-label="Pausar rotación">
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+        </button>
+        <button class="ep-ctrl-btn" id="epNext" aria-label="Paso siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <span class="ep-ctrl-lbl">Paso <em id="epNum">01</em> / 06 · <b id="epWord">Evaluamos</b> · Arrastra para girar</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1809,126 +2387,29 @@ footer{
       </div>
     </div>
 
-    <div class="srv-grid">
+    <div class="srv-grid" id="srvGrid"></div>
+  </div>
+</section>
 
-      <div class="sc reveal">
-        <div class="sc-top">
-          <span class="sc-num">01</span>
-          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <div class="sc-name">Personal &amp; <em>Logística</em></div>
-          <div class="sc-sub">Línea 01</div>
-        </div>
-        <div class="sc-body">
-          <ul class="sc-list">
-            <li>Promotores e impulsadoras</li>
-            <li>Logísticos y modelos</li>
-            <li>Anfitriones y actores</li>
-            <li>Chefs y volanteadores</li>
-            <li>Casting y registro de personal</li>
-            <li>Bases de datos y encuestas</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="sc reveal reveal-d1">
-        <div class="sc-top">
-          <span class="sc-num">02</span>
-          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-          <div class="sc-name">Producción <em>Técnica</em></div>
-          <div class="sc-sub">Línea 02</div>
-        </div>
-        <div class="sc-body">
-          <ul class="sc-list">
-            <li>Pantallas LED y pista LED</li>
-            <li>Sonido profesional e iluminación</li>
-            <li>Video, streaming y fotografía</li>
-            <li>Estructuras, tarima y carpas</li>
-            <li>Fiestas empresariales y corporativas</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="sc reveal reveal-d2">
-        <div class="sc-top">
-          <span class="sc-num">03</span>
-          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <div class="sc-name">Activación <em>de Marca</em></div>
-          <div class="sc-sub">Línea 03</div>
-        </div>
-        <div class="sc-body">
-          <ul class="sc-list">
-            <li>Lanzamientos y activaciones</li>
-            <li>Sampling de producto</li>
-            <li>Street marketing &amp; guerrilla</li>
-            <li>Marketing promocional</li>
-            <li>Valla móvil, BiciValla, Carro Pantalla</li>
-            <li>Tótem pantalla y displays PDV</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="sc reveal">
-        <div class="sc-top">
-          <span class="sc-num">04</span>
-          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
-          <div class="sc-name">Mobiliario <em>&amp; Stands</em></div>
-          <div class="sc-sub">Línea 04</div>
-        </div>
-        <div class="sc-body">
-          <ul class="sc-list">
-            <li>Mesas y sillas</li>
-            <li>Counter y salas lounge</li>
-            <li>Puff LED</li>
-            <li>Exhibidores y móviles PDV</li>
-            <li>Vallas y escenografía</li>
-            <li>Stands para ferias</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="sc reveal reveal-d1">
-        <div class="sc-top">
-          <span class="sc-num">05</span>
-          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
-          <div class="sc-name"><em>Catering</em> Corporativo</div>
-          <div class="sc-sub">Línea 05</div>
-        </div>
-        <div class="sc-body">
-          <ul class="sc-list">
-            <li>Servicio de alimentación completo</li>
-            <li>Refrigerios corporativos</li>
-            <li>Pasabocas y cocteles</li>
-            <li>Personal de servicio especializado</li>
-            <li>Montaje y decoración de mesa</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="sc reveal reveal-d2">
-        <div class="sc-top">
-          <span class="sc-num">06</span>
-          <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <div class="sc-name">Admin <em>&amp; Gestión</em></div>
-          <div class="sc-sub">Línea 06</div>
-        </div>
-        <div class="sc-body">
-          <ul class="sc-list">
-            <li>Solicitud y gestión de permisos</li>
-            <li>Coordinación de pagos a terceros</li>
-            <li>Endomarketing</li>
-            <li>Investigación de mercados</li>
-            <li>Estudios cualitativos y cuantitativos</li>
-            <li>Relaciones públicas</li>
-          </ul>
-        </div>
-      </div>
-
+<!-- ═══════ KINETIC TEXT ═══════ -->
+<section id="kinetic" aria-hidden="true">
+  <div class="kin-row">
+    <div class="kin-track">
+      <span>EVENTOS</span><span>—</span><span><em>ACTIVACIONES</em></span><span>—</span><span>FERIAS</span><span>—</span><span><em>LANZAMIENTOS</em></span><span>—</span>
+      <span>EVENTOS</span><span>—</span><span><em>ACTIVACIONES</em></span><span>—</span><span>FERIAS</span><span>—</span><span><em>LANZAMIENTOS</em></span><span>—</span>
+    </div>
+  </div>
+  <div class="kin-row kin-rev">
+    <div class="kin-track">
+      <span><em>TRADE MARKETING</em></span><span>—</span><span>BTL</span><span>—</span><span><em>SAMPLING</em></span><span>—</span><span>PRODUCCIÓN</span><span>—</span>
+      <span><em>TRADE MARKETING</em></span><span>—</span><span>BTL</span><span>—</span><span><em>SAMPLING</em></span><span>—</span><span>PRODUCCIÓN</span><span>—</span>
     </div>
   </div>
 </section>
 
 <!-- ═══════ PORTAFOLIO ═══════ -->
 <section id="portafolio">
+  <div class="grain" aria-hidden="true"></div>
   <div class="wrap">
     <div class="port-head reveal">
       <div>
@@ -1968,10 +2449,10 @@ footer{
       <h2 class="h-section">Marcas que <em>confían</em> en nosotros.</h2>
       <p class="lead">15 años siendo el aliado estratégico de empresas nacionales e internacionales — desde grandes multinacionales hasta marcas locales líderes.</p>
       <div class="cli-stats">
-        <div class="cli-stat"><span class="cli-stat-n">50<em>+</em></span><span class="cli-stat-l">Marcas atendidas</span></div>
-        <div class="cli-stat"><span class="cli-stat-n">32</span><span class="cli-stat-l">Ciudades cubiertas</span></div>
-        <div class="cli-stat"><span class="cli-stat-n">100<em>%</em></span><span class="cli-stat-l">Efectividad</span></div>
-        <div class="cli-stat"><span class="cli-stat-n">15<em>+</em></span><span class="cli-stat-l">Años de trayectoria</span></div>
+        <div class="cli-stat"><span class="cli-stat-n"><span data-count="50">0</span><em>+</em></span><span class="cli-stat-l">Marcas atendidas</span></div>
+        <div class="cli-stat"><span class="cli-stat-n"><span data-count="32">0</span></span><span class="cli-stat-l">Ciudades cubiertas</span></div>
+        <div class="cli-stat"><span class="cli-stat-n"><span data-count="100">0</span><em>%</em></span><span class="cli-stat-l">Efectividad</span></div>
+        <div class="cli-stat"><span class="cli-stat-n"><span data-count="15">0</span><em>+</em></span><span class="cli-stat-l">Años de trayectoria</span></div>
       </div>
     </div>
   </div>
@@ -2070,6 +2551,7 @@ footer{
 
 <!-- ═══════ CONTACTO ═══════ -->
 <section id="contacto">
+  <div class="grain" aria-hidden="true"></div>
   <div class="wrap">
     <div class="ct-grid">
       <div class="ct-left reveal">
@@ -2121,6 +2603,11 @@ footer{
               <span>Escribir por WhatsApp</span>
               <svg class="ct-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
+            <a href="https://www.linkedin.com/company/mfd-marketing-y-eventos/posts/?feedView=all" class="ct-link out" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>Síguenos en LinkedIn</span>
+              <svg class="ct-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
             <button class="ct-link out" onclick="openBrief()" style="cursor:pointer;font-family:inherit;width:100%;text-align:left">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
               <span>Enviar brief del proyecto</span>
@@ -2144,9 +2631,37 @@ footer{
       <span class="f-brand-mfd"><em>MFD</em> — Marketing &amp; Eventos</span>
     </div>
     <div class="f-tagline">« Hacemos Marcas de Corazón »</div>
+    <a class="f-linkedin" href="https://www.linkedin.com/company/mfd-marketing-y-eventos/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn MFD">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <span>LinkedIn</span>
+    </a>
     <div class="f-copy">Cali, Colombia · © 2025</div>
   </div>
 </footer>
+
+<!-- ═══════ FABS ═══════ -->
+<div class="fabs">
+  <button class="fab fab-top" id="fabTop" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+  <a class="fab fab-wa" href="https://wa.me/573007353188" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<!-- ═══════ VIDEO LIGHTBOX ═══════ -->
+<div class="vid-modal" id="vidModal">
+  <div class="vid-box">
+    <button class="vid-close" onclick="closeReel()" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <video id="reelVideo" controls playsinline preload="none"
+      poster="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1400&q=70">
+      <source src="https://videos.pexels.com/video-files/852421/852421-hd_1920_1080_30fps.mp4" type="video/mp4">
+    </video>
+    <div class="vid-cap">MFD Showreel · Marketing &amp; Eventos · Cali, Colombia</div>
+  </div>
+</div>
 
 <!-- ═══════ MODAL DETALLE PROYECTO ═══════ -->
 <div class="pd-modal" id="pdModal">
@@ -2191,9 +2706,80 @@ footer{
 </div>
 
 <script>
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  📊 CONFIGURACIÓN ANALYTICS — GOOGLE SHEETS                    ║
+   ║                                                                ║
+   ║  1. Abre tu Google Sheet                                       ║
+   ║  2. Extensiones → Apps Script                                  ║
+   ║  3. Pega el código del archivo  mfd_analytics.gs               ║
+   ║  4. Implementar → Nueva implementación → App web               ║
+   ║     · Ejecutar como: Tú                                        ║
+   ║     · Acceso: Cualquier persona                                ║
+   ║  5. Copia la URL que termina en  /exec                         ║
+   ║  6. Pégala aquí abajo entre las comillas:                      ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+const MFD_ANALYTICS_URL = 'https://script.google.com/macros/s/AKfycbx3w7mdR5AXRphqVZWSf23nISx2ANLlTycLioCDkqIvRj54rCTvUPTjt85X8F8UCi9B/exec';
+/* ════════════════════════════════════════════════════════════════ */
+
+/* ══════ MOTOR DE TRACKING ══════ */
+const MFD_SESSION = Math.random().toString(36).slice(2,10).toUpperCase();
+function mfdTrack(evento, detalle){
+  if(!MFD_ANALYTICS_URL || MFD_ANALYTICS_URL.indexOf('PEGA_AQUI')===0) return;
+  const qs = new URLSearchParams(location.search);
+  const payload = JSON.stringify({
+    evento:   evento,
+    detalle:  detalle||'',
+    sesion:   MFD_SESSION,
+    referido: document.referrer||'directo',
+    utm_source:   qs.get('utm_source')||'',
+    utm_medium:   qs.get('utm_medium')||'',
+    utm_campaign: qs.get('utm_campaign')||'',
+    dispositivo:  /Mobi|Android/i.test(navigator.userAgent)?'móvil':'escritorio',
+    pantalla:  screen.width+'x'+screen.height,
+    idioma:    navigator.language,
+    pagina:    location.pathname
+  });
+  try{
+    if(navigator.sendBeacon){
+      navigator.sendBeacon(MFD_ANALYTICS_URL, new Blob([payload],{type:'text/plain'}));
+    }else{
+      fetch(MFD_ANALYTICS_URL,{method:'POST',mode:'no-cors',body:payload,keepalive:true});
+    }
+  }catch(e){}
+}
+
+/* visita de página */
+mfdTrack('page_view');
+
+/* qué secciones ven más (una vez por sesión por sección) */
+window.addEventListener('DOMContentLoaded',()=>{
+  const vistos={};
+  const secIO=new IntersectionObserver(es=>{
+    es.forEach(en=>{
+      if(en.isIntersecting && !vistos[en.target.id]){
+        vistos[en.target.id]=true;
+        mfdTrack('seccion_vista', en.target.id);
+        secIO.unobserve(en.target);
+      }
+    });
+  },{threshold:.35});
+  document.querySelectorAll('section[id]').forEach(s=>secIO.observe(s));
+});
+
+/* clicks en canales de contacto y redes */
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href]');
+  if(!a)return;
+  const h=a.href;
+  if(h.includes('wa.me'))            mfdTrack('click_whatsapp');
+  else if(h.startsWith('tel:'))      mfdTrack('click_llamada');
+  else if(h.startsWith('mailto:'))   mfdTrack('click_email');
+  else if(h.includes('linkedin.com'))mfdTrack('click_linkedin');
+},{passive:true});
+
 /* ══════ DATA ══════ */
 const HERO_ORB = [
-  {img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=75',tag:'Ferias & Eventos',client:'Multi-cliente',title:'Producción integral para <em>marcas líderes</em>',stat:'150+ eventos'},
+  {img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=75',vid:'https://videos.pexels.com/video-files/2361938/2361938-hd_1920_1080_30fps.mp4',tag:'Ferias & Eventos',client:'Multi-cliente',title:'Producción integral para <em>marcas líderes</em>',stat:'150+ eventos'},
   {img:'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=75',tag:'Activación PDV',client:'Bavaria',title:'Impulso &amp; <em>sampling</em> en punto de venta',stat:'8 ciudades'},
   {img:'https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=900&q=75',tag:'Lanzamientos',client:'P&G · Neutrogena',title:'Experiencias de marca que <em>conectan</em>',stat:'100% éxito'},
   {img:'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=75',tag:'Producción Técnica',client:'FLA · MasterCard',title:'LED, <em>sonido</em> &amp; escenografía',stat:'HD Streaming'},
@@ -2298,7 +2884,10 @@ HERO_ORB.forEach((it,i)=>{
   const el=document.createElement('div');
   el.className='orb-item';
   el.innerHTML=`
-    <img src="${it.img}" alt="${it.tag}" loading="${i===0?'eager':'lazy'}"/>
+    ${it.vid
+      ?`<video src="${it.vid}" autoplay muted loop playsinline preload="metadata" poster="${it.img}"></video>
+        <div class="orb-reel-chip"><span class="rec"></span>Reel en vivo</div>`
+      :`<img src="${it.img}" alt="${it.tag}" loading="${i===0?'eager':'lazy'}"/>`}
     <div class="orb-num">0${i+1} / 05</div>
     <div class="orb-stat-chip">${it.stat}</div>
     <div class="orb-info">
@@ -2386,13 +2975,14 @@ const block=MITEMS.map(it=>`
 `).join('');
 mq.innerHTML=block+block;
 
-/* ══════ EPECAR interactivo ══════ */
+/* ══════ EPECAR 3D RING ══════ */
 const epTabs=document.getElementById('epTabs');
-const epVisual=document.getElementById('epVisual');
-const epInfo=document.getElementById('epInfo');
+const ep3dRing=document.getElementById('ep3dRing');
+const ep3dStage=document.getElementById('ep3dStage');
 const epBar=document.getElementById('epBar');
-let epCurrent=0,epPaused=false,epTick=0,epTimer=null;
-const EP_DUR=6000;
+const EP_N=EPECAR.length,EP_STEP=360/EP_N,EP_DUR=13000;
+let epIdx=0,epPaused=false,epHover=false,epTick=0,epDragged=false;
+function epR(){return innerWidth<=520?235:innerWidth<=960?275:345}
 
 EPECAR.forEach((s,i)=>{
   const tab=document.createElement('button');
@@ -2401,84 +2991,84 @@ EPECAR.forEach((s,i)=>{
     <span class="ep-tab-num">Paso 0${i+1}</span>
     <span class="ep-tab-letter">${s.letter}</span>
     <span class="ep-tab-word">${s.word}</span>`;
-  tab.addEventListener('click',()=>{epGo(i);epResetTimer()});
+  tab.addEventListener('click',()=>epGo(i));
   epTabs.appendChild(tab);
 
-  const slide=document.createElement('div');
-  slide.className='ep-slide'+(i===0?' on':'');
-  slide.innerHTML=`
-    <img src="${s.img}" alt="${s.word}" loading="${i===0?'eager':'lazy'}"/>
-    <div class="ep-slide-badge">
-      <span class="ep-slide-badge-num">0${i+1} / 06</span>
-      <span>${s.word}</span>
+  const card=document.createElement('div');
+  card.className='ep3d-card'+(i===0?' front':'');
+  card.innerHTML=`
+    <div class="ep3d-media">
+      <img src="${s.img}" alt="${s.word}" loading="lazy"/>
+      <span class="ep3d-letter">${s.letter}</span>
+      <span class="ep3d-step">Paso 0${i+1} / 06 · ${s.word}</span>
+      <span class="ep3d-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="${s.ico}"/></svg></span>
     </div>
-    <div class="ep-slide-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="${s.ico}"/></svg>
+    <div class="ep3d-body">
+      <h3 class="ep3d-title">${s.title}</h3>
+      <p class="ep3d-desc">${s.desc}</p>
+      <div class="ep3d-kpis">
+        ${s.kpi.map(k=>`<div class="ep3d-kpi"><b>${k.n}</b><span>${k.l}</span></div>`).join('')}
+      </div>
+      <ul class="ep3d-feats">
+        ${s.feats.slice(0,3).map(f=>`
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>${f}</li>`).join('')}
+      </ul>
     </div>`;
-  epVisual.appendChild(slide);
-
-  const panel=document.createElement('div');
-  panel.className='ep-info-panel'+(i===0?' on':'');
-  panel.innerHTML=`
-    <div class="ep-info-eyebrow">Paso 0${i+1} · ${s.letter} · ${s.word}</div>
-    <h3 class="ep-info-title">${s.title}</h3>
-    <p class="ep-info-desc">${s.desc}</p>
-    <div class="ep-kpi-row">
-      ${s.kpi.map(k=>`
-        <div class="ep-kpi">
-          <div class="ep-kpi-num">${k.n}</div>
-          <div class="ep-kpi-lbl">${k.l}</div>
-        </div>`).join('')}
-    </div>
-    <ul class="ep-features">
-      ${s.feats.map(f=>`
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-          ${f}
-        </li>`).join('')}
-    </ul>`;
-  epInfo.appendChild(panel);
+  card.addEventListener('click',()=>{if(!epDragged&&i!==epIdx)epGo(i)});
+  ep3dRing.appendChild(card);
 });
 
-const epCtrls=document.createElement('div');
-epCtrls.className='ep-ctrls';
-epCtrls.innerHTML=`
-  <button class="ep-ctrl-btn" id="epPrev" aria-label="Anterior">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>
-  </button>
-  <button class="ep-ctrl-btn pp" id="epPP" aria-label="Pausar">
-    <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
-    <svg class="play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
-  </button>
-  <button class="ep-ctrl-btn" id="epNext" aria-label="Siguiente">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
-  </button>
-  <span class="ep-ctrl-lbl">Paso <em id="epNum">01</em> de 06</span>`;
-epInfo.appendChild(epCtrls);
-document.getElementById('epPrev').addEventListener('click',()=>{epGo(epCurrent-1);epResetTimer()});
-document.getElementById('epNext').addEventListener('click',()=>{epGo(epCurrent+1);epResetTimer()});
+function epPlace(){
+  const R=epR();
+  document.querySelectorAll('.ep3d-card').forEach((c,i)=>{
+    c.style.transform=`rotateY(${i*EP_STEP}deg) translateZ(${R}px)`;
+    c.classList.toggle('front',i===epIdx);
+  });
+  ep3dRing.style.transform=`rotateY(${-epIdx*EP_STEP}deg)`;
+}
+function epGo(i){
+  epIdx=((i%EP_N)+EP_N)%EP_N;epTick=0;epBar.style.width='0%';
+  ep3dRing.style.transition='transform 1.15s cubic-bezier(.22,1,.36,1)';
+  epPlace();
+  document.querySelectorAll('.ep-tab').forEach((t,k)=>t.classList.toggle('active',k===epIdx));
+  document.getElementById('epNum').textContent='0'+(epIdx+1);
+  document.getElementById('epWord').textContent=EPECAR[epIdx].word;
+}
+document.getElementById('epPrev').addEventListener('click',()=>epGo(epIdx-1));
+document.getElementById('epNext').addEventListener('click',()=>epGo(epIdx+1));
 const epPP=document.getElementById('epPP');
 epPP.addEventListener('click',()=>{epPaused=!epPaused;epPP.classList.toggle('paused',epPaused)});
+setInterval(()=>{
+  if(epPaused||epDX!==null)return;
+  epTick+=50;
+  epBar.style.width=Math.min(100,epTick/EP_DUR*100)+'%';
+  if(epTick>=EP_DUR)epGo(epIdx+1);
+},50);
 
-function epGo(i){
-  const N=EPECAR.length;
-  epCurrent=((i%N)+N)%N;epTick=0;
-  document.querySelectorAll('.ep-tab').forEach((t,k)=>t.classList.toggle('active',k===epCurrent));
-  document.querySelectorAll('.ep-slide').forEach((s,k)=>s.classList.toggle('on',k===epCurrent));
-  document.querySelectorAll('.ep-info-panel').forEach((p,k)=>p.classList.toggle('on',k===epCurrent));
-  document.getElementById('epNum').textContent='0'+(epCurrent+1);
+/* drag para girar el anillo */
+let epDX=null,epRot=0;
+ep3dStage.addEventListener('pointerdown',e=>{
+  epDX=e.clientX;epRot=0;epDragged=false;
+  ep3dStage.classList.add('dragging');
+});
+ep3dStage.addEventListener('pointermove',e=>{
+  if(epDX===null)return;
+  epRot=(e.clientX-epDX)*.18;
+  if(Math.abs(e.clientX-epDX)>8)epDragged=true;
+  ep3dRing.style.transition='none';
+  ep3dRing.style.transform=`rotateY(${-epIdx*EP_STEP+epRot}deg)`;
+});
+function epDrop(){
+  if(epDX===null)return;
+  epDX=null;ep3dStage.classList.remove('dragging');
+  const steps=Math.round(-epRot/EP_STEP);
+  epGo(epIdx+steps);
+  setTimeout(()=>epDragged=false,80);
 }
-function epStartTimer(){
-  if(epTimer)clearInterval(epTimer);
-  epTimer=setInterval(()=>{
-    if(epPaused)return;
-    epTick+=50;
-    epBar.style.width=(epTick/EP_DUR*100)+'%';
-    if(epTick>=EP_DUR){epGo(epCurrent+1);epBar.style.width='0%';epTick=0}
-  },50);
-}
-function epResetTimer(){epTick=0;epBar.style.width='0%'}
-epStartTimer();
+ep3dStage.addEventListener('pointerup',epDrop);
+ep3dStage.addEventListener('pointerleave',epDrop);
+window.addEventListener('resize',()=>{ep3dRing.style.transition='none';epPlace()});
+epPlace();
 
 /* ══════ CINTA DE LOGOS ══════ */
 const belt1=document.getElementById('cliBelt1');
@@ -2490,6 +3080,41 @@ const buildBelt=(arr,el)=>{
 };
 buildBelt(half1,belt1);
 buildBelt(half2,belt2);
+
+/* ══════ SERVICIOS FLIP CARDS ══════ */
+const SERVICES=[
+  {num:'01',name:'Personal &amp; <em>Logística</em>',plain:'Personal &amp; Logística',ico:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',items:['Promotores e impulsadoras','Logísticos y modelos','Anfitriones y actores','Chefs y volanteadores','Casting y registro de personal','Bases de datos y encuestas']},
+  {num:'02',name:'Producción <em>Técnica</em>',plain:'Producción Técnica',ico:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',items:['Pantallas LED y pista LED','Sonido profesional e iluminación','Video, streaming y fotografía','Estructuras, tarima y carpas','Fiestas empresariales y corporativas']},
+  {num:'03',name:'Activación <em>de Marca</em>',plain:'Activación de Marca',ico:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',items:['Lanzamientos y activaciones','Sampling de producto','Street marketing &amp; guerrilla','Marketing promocional','Valla móvil, BiciValla, Carro Pantalla','Tótem pantalla y displays PDV']},
+  {num:'04',name:'Mobiliario <em>&amp; Stands</em>',plain:'Mobiliario &amp; Stands',ico:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>',items:['Mesas y sillas','Counter y salas lounge','Puff LED','Exhibidores y móviles PDV','Vallas y escenografía','Stands para ferias']},
+  {num:'05',name:'<em>Catering</em> Corporativo',plain:'Catering Corporativo',ico:'<path d="M3 11l19-9-9 19-2-8-8-2z"/>',items:['Servicio de alimentación completo','Refrigerios corporativos','Pasabocas y cocteles','Personal de servicio especializado','Montaje y decoración de mesa']},
+  {num:'06',name:'Admin <em>&amp; Gestión</em>',plain:'Admin &amp; Gestión',ico:'<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>',items:['Solicitud y gestión de permisos','Coordinación de pagos a terceros','Endomarketing','Investigación de mercados','Estudios cualitativos y cuantitativos','Relaciones públicas']},
+];
+document.getElementById('srvGrid').innerHTML=SERVICES.map((s,i)=>`
+  <div class="sc reveal${i%3===1?' reveal-d1':i%3===2?' reveal-d2':''}">
+    <div class="sc-inner">
+      <div class="sc-face sc-front">
+        <span class="sc-num">${s.num}</span>
+        <div class="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">${s.ico}</svg></div>
+        <div class="sc-name">${s.name}</div>
+        <div class="sc-sub">Línea ${s.num} · ${s.items.length} servicios</div>
+        <div class="sc-flip-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Gira para ver el detalle
+        </div>
+      </div>
+      <div class="sc-face sc-back">
+        <div class="sc-back-eyebrow">Línea ${s.num} · MFD</div>
+        <div class="sc-back-name">${s.plain}</div>
+        <ul class="sc-list">${s.items.map(it=>`<li>${it}</li>`).join('')}</ul>
+        <a href="#contacto" class="sc-back-cta">
+          Cotizar esta línea
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>`).join('');
+document.querySelectorAll('#srvGrid .reveal').forEach(el=>ro.observe(el));
 
 /* ══════ PORTAFOLIO ══════ */
 const CATS=[
@@ -2564,7 +3189,7 @@ function renderP(){
         </div>
       </div>
     </div>`).join('');
-  document.querySelectorAll('.p-card').forEach(c=>c.addEventListener('click',()=>openPd(+c.dataset.idx)));
+  document.querySelectorAll('.p-card').forEach(c=>c.addEventListener('click',()=>{if(pMoved)return;openPd(+c.dataset.idx)}));
   dots.innerHTML=Array.from({length:pages},(_,i)=>
     `<button class="cdot${i===pSlide?' on':''}" onclick="goP(${i})" aria-label="Página ${i+1}"></button>`
   ).join('');
@@ -2590,6 +3215,7 @@ const pdModal=document.getElementById('pdModal');
 const pdBox=document.getElementById('pdBox');
 function openPd(idx){
   const p=PORT[idx];if(!p)return;
+  mfdTrack('proyecto_visto', p.client+' — '+p.title);
   pdBox.innerHTML=`
     <div class="pd-hero">
       <img src="${p.img}" alt="${p.title}"/>
@@ -2639,10 +3265,185 @@ function openBrief(){document.getElementById('briefModal').classList.add('open')
 function closeBrief(){document.getElementById('briefModal').classList.remove('open');document.body.style.overflow='';setTimeout(()=>{document.getElementById('mHero').style.display='block';document.getElementById('mBody').innerHTML=originalForm;bindForm()},400)}
 document.getElementById('briefModal').addEventListener('click',e=>{if(e.target.id==='briefModal')closeBrief()});
 
+/* ══════ PRELOADER ══════ */
+(function(){
+  const loader=document.getElementById('loader');
+  const bar=document.getElementById('ldBar');
+  const pct=document.getElementById('ldPct');
+  let p=0;
+  const t=setInterval(()=>{
+    p+=Math.random()*16+7;
+    if(p>=100){
+      p=100;clearInterval(t);
+      setTimeout(()=>{
+        loader.classList.add('done');
+        document.body.classList.add('ready');
+        setTimeout(()=>loader.remove(),1000);
+      },220);
+    }
+    bar.style.width=p+'%';
+    pct.textContent=Math.round(p)+'%';
+  },95);
+})();
+
+/* ══════ SCROLL PROGRESS + FAB TOP ══════ */
+const sbEl=document.getElementById('scrollbar');
+const fabTop=document.getElementById('fabTop');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  sbEl.style.width=(h>0?window.scrollY/h*100:0)+'%';
+  fabTop.classList.toggle('show',window.scrollY>600);
+},{passive:true});
+fabTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ══════ CUSTOM CURSOR ══════ */
+if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.documentElement.classList.add('has-cursor');
+  const dot=document.getElementById('cur-dot');
+  const ring=document.getElementById('cur-ring');
+  let mx=-100,my=-100,rx=-100,ry=-100,shown=false;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    if(!shown){shown=true;dot.style.opacity=1;ring.style.opacity=1}
+    dot.style.left=mx+'px';dot.style.top=my+'px';
+  });
+  document.addEventListener('mouseleave',()=>{shown=false;dot.style.opacity=0;ring.style.opacity=0});
+  (function ringLoop(){
+    rx+=(mx-rx)*.16;ry+=(my-ry)*.16;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(ringLoop);
+  })();
+  const growSel='a,button,.p-card,.orb-item,.ep-tab,.cli-card,.cal-event,.pf';
+  document.addEventListener('mouseover',e=>{if(e.target.closest(growSel))ring.classList.add('grow')});
+  document.addEventListener('mouseout',e=>{if(e.target.closest(growSel))ring.classList.remove('grow')});
+}
+
+/* ══════ CONTADORES ANIMADOS ══════ */
+const cntIO=new IntersectionObserver(es=>{
+  es.forEach(en=>{
+    if(!en.isIntersecting)return;
+    cntIO.unobserve(en.target);
+    const el=en.target,to=+el.dataset.count,dur=1400,t0=performance.now();
+    (function tick(now){
+      const k=Math.min(1,(now-t0)/dur);
+      el.textContent=Math.round(to*(1-Math.pow(1-k,3)));
+      if(k<1)requestAnimationFrame(tick);
+    })(t0);
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cntIO.observe(el));
+
+/* ══════ BOTONES MAGNÉTICOS ══════ */
+if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.querySelectorAll('.btn-pri,.btn-sec,.nav-cta,.sr-play,.cal-arrow,.carr').forEach(el=>{
+    el.addEventListener('mousemove',e=>{
+      const r=el.getBoundingClientRect();
+      const dx=(e.clientX-r.left-r.width/2)*.22;
+      const dy=(e.clientY-r.top-r.height/2)*.22;
+      el.style.transform=`translate(${dx}px,${dy}px)`;
+    });
+    el.addEventListener('mouseleave',()=>{el.style.transform=''});
+  });
+}
+
+/* ══════ TILT 3D ══════ */
+function bindTilt(el,max=7){
+  el.style.transformStyle='preserve-3d';
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width-.5;
+    const py=(e.clientY-r.top)/r.height-.5;
+    el.style.transform=`perspective(900px) rotateX(${-py*max}deg) rotateY(${px*max}deg) translateY(-4px)`;
+  });
+  el.addEventListener('mouseleave',()=>{el.style.transform=''});
+}
+if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.querySelectorAll('.nos-card,.id-c').forEach(el=>bindTilt(el,5));
+  document.getElementById('ptrack').addEventListener('mousemove',e=>{
+    const c=e.target.closest('.p-card');if(!c)return;
+    const r=c.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width-.5;
+    const py=(e.clientY-r.top)/r.height-.5;
+    c.style.transform=`perspective(900px) rotateX(${-py*6}deg) rotateY(${px*6}deg) translateY(-6px)`;
+  });
+  document.getElementById('ptrack').addEventListener('mouseout',e=>{
+    const c=e.target.closest('.p-card');if(c)c.style.transform='';
+  });
+}
+
+/* ══════ SHOWREEL LIGHTBOX ══════ */
+const vidModal=document.getElementById('vidModal');
+const reelVideo=document.getElementById('reelVideo');
+const REEL_DEFAULT='https://videos.pexels.com/video-files/852421/852421-hd_1920_1080_30fps.mp4';
+const CAP_DEFAULT='MFD Showreel · Marketing & Eventos · Cali, Colombia';
+function openReel(src,cap){
+  mfdTrack('video_reproducido', cap||'Showreel principal');
+  reelVideo.src=src||REEL_DEFAULT;
+  document.querySelector('.vid-cap').textContent=cap||CAP_DEFAULT;
+  vidModal.classList.add('open');document.body.style.overflow='hidden';
+  reelVideo.play().catch(()=>{});
+}
+function closeReel(){
+  vidModal.classList.remove('open');document.body.style.overflow='';
+  reelVideo.pause();
+}
+vidModal.addEventListener('click',e=>{if(e.target===vidModal)closeReel()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeReel()});
+
+/* ══════ VIDEO WALL: hover-play + click ══════ */
+document.querySelectorAll('.sr-tile').forEach(t=>{
+  const v=t.querySelector('video');
+  t.addEventListener('mouseenter',()=>v.play().catch(()=>{}));
+  t.addEventListener('mouseleave',()=>v.pause());
+  t.addEventListener('click',()=>openReel(t.dataset.src,t.dataset.cap));
+});
+
+/* ══════ PORTAFOLIO: auto-advance + drag ══════ */
+let pMoved=false,pDragX=null;
+let pAuto=setInterval(()=>nextP(),6500);
+const pcarEl=document.querySelector('.p-carousel');
+pcarEl.addEventListener('mouseenter',()=>clearInterval(pAuto));
+pcarEl.addEventListener('mouseleave',()=>{clearInterval(pAuto);pAuto=setInterval(()=>nextP(),6500)});
+pcarEl.addEventListener('pointerdown',e=>{pDragX=e.clientX});
+pcarEl.addEventListener('pointerup',e=>{
+  if(pDragX===null)return;
+  const dx=e.clientX-pDragX;pDragX=null;
+  if(Math.abs(dx)>55){
+    pMoved=true;
+    dx<0?nextP():prevP();
+    setTimeout(()=>pMoved=false,120);
+  }
+});
+
+/* ══════ PARALLAX SUAVE ══════ */
+let pxPending=false;
+window.addEventListener('scroll',()=>{
+  if(pxPending)return;pxPending=true;
+  requestAnimationFrame(()=>{
+    pxPending=false;
+    const sy=window.scrollY;
+    if(sy<1000){
+      const g1=document.querySelector('.hero-glow');
+      const g2=document.querySelector('.hero-glow-2');
+      if(g1)g1.style.transform=`translateY(${sy*.16}px)`;
+      if(g2)g2.style.transform=`translateY(${-sy*.1}px)`;
+    }
+    const sr=document.getElementById('showreel');
+    if(sr){
+      const r=sr.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight){
+        document.querySelector('.sr-video').style.transform=`translateY(${r.top*-.09}px) scale(1.12)`;
+      }
+    }
+  });
+},{passive:true});
+
 const originalForm=document.getElementById('mBody').innerHTML;
 function bindForm(){document.querySelector('#mBody form').addEventListener('submit',submitBrief)}
 function submitBrief(e){
   e.preventDefault();
+  const inputs=[...document.querySelectorAll('#mBody input')].map(i=>i.value).join(' · ');
+  mfdTrack('brief_enviado', inputs.slice(0,180));
   document.getElementById('mHero').style.display='none';
   document.getElementById('mBody').innerHTML=`
     <div class="m-success">
