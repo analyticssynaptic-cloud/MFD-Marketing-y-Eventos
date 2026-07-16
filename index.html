@@ -1273,17 +1273,20 @@ ul,ol{list-style:none}
 
 .rs-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;position:relative;z-index:2}
 
-.rs-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;position:relative;z-index:2}
+.rs-carousel{position:relative;overflow:hidden;z-index:2;border-radius:20px}
+.rs-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
+.rs-item{flex:0 0 calc(33.333% - 15px);margin-right:22px;min-width:0}
 .rs-card{
-  flex:0 1 calc(33.333% - 15px);
+  height:100%;
   background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
   border-radius:20px;padding:28px 26px;cursor:pointer;
   display:flex;flex-direction:column;
-  transition:transform var(--t1),box-shadow var(--t1),border-color var(--t1),background var(--t1);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow var(--t1),border-color var(--t1),background var(--t1),z-index 0s;
 }
 .rs-card:hover{
-  transform:translateY(-8px);border-color:rgba(192,20,26,.4);
-  background:rgba(255,255,255,.06);box-shadow:0 26px 56px rgba(0,0,0,.45);
+  transform:translateY(-8px) scale(1.045);border-color:rgba(192,20,26,.45);
+  background:rgba(255,255,255,.07);box-shadow:0 30px 64px rgba(0,0,0,.5);
+  position:relative;z-index:5;
 }
 .rs-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
 .rs-ico{
@@ -1331,11 +1334,11 @@ ul,ol{list-style:none}
 @media(max-width:960px){
   .rs-head{grid-template-columns:1fr;gap:22px}
   .rs-summary{grid-template-columns:1fr 1fr}
-  .rs-card{flex-basis:calc(50% - 11px)}
+  .rs-item{flex:0 0 calc(50% - 11px)}
 }
 @media(max-width:640px){
   .rs-summary{grid-template-columns:1fr 1fr}
-  .rs-card{flex-basis:100%}
+  .rs-item{flex:0 0 calc(100% - 11px)}
 }
 
 /* -- MODAL DE RESULTADOS -- */
@@ -1755,42 +1758,103 @@ ul,ol{list-style:none}
 @media(max-width:960px){.ct-grid{grid-template-columns:1fr;gap:44px}}
 
 /* ════════════════════════════════════════════════════════
-   FOOTER
+   FOOTER — profesional multi-columna
 ═══════════════════════════════════════════════════════ */
 footer{
-  background:#0C0809;padding:44px 0;
-  border-top:1px solid rgba(192,20,26,.18);color:#fff;
+  background:#0C0809;color:#fff;position:relative;overflow:hidden;
+  border-top:1px solid rgba(192,20,26,.18);
 }
-.f-inner{
-  max-width:1280px;margin:0 auto;padding:0 32px;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:20px;
+footer::before{
+  content:'';position:absolute;top:-120px;right:-100px;
+  width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(192,20,26,.16) 0%,transparent 70%);
+  pointer-events:none;
 }
-.f-brand{
-  display:flex;align-items:center;gap:14px;
+.f-top{
+  max-width:1280px;margin:0 auto;padding:80px 32px 50px;
+  display:grid;grid-template-columns:1.3fr 1fr 1fr 1.1fr;gap:50px;
+  position:relative;z-index:1;
 }
-.f-brand-mfd{
-  font-family:var(--bebas);font-size:1.7rem;letter-spacing:.18em;
-  color:#fff;line-height:1;
+.f-brand-mark{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+.f-brand-ico{
+  width:46px;height:46px;border-radius:11px;flex-shrink:0;
+  background:var(--grad-red);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(192,20,26,.35);
 }
+.f-brand-ico span{font-family:var(--bebas);font-size:1.15rem;letter-spacing:1.5px;color:#fff}
+.f-brand-mfd{font-family:var(--bebas);font-size:1.5rem;letter-spacing:.16em;color:#fff;line-height:1}
 .f-brand-mfd em{color:var(--r-v);font-style:normal}
-.f-tagline{
-  font-family:var(--display);font-style:italic;font-size:.94rem;
-  font-weight:400;color:rgba(255,255,255,.45);
+.f-brand-sub{
+  font-family:var(--cond);font-size:.64rem;font-weight:600;letter-spacing:2.4px;
+  color:rgba(255,255,255,.4);text-transform:uppercase;margin-top:3px;
 }
-.f-copy{
-  font-family:var(--cond);font-size:.75rem;letter-spacing:1.8px;
-  color:rgba(255,255,255,.32);text-transform:uppercase;
+.f-blurb{
+  font-size:.9rem;line-height:1.7;color:rgba(255,255,255,.55);
+  max-width:320px;margin-bottom:24px;
 }
-.f-linkedin{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:9px 18px;border-radius:100px;
+.f-social{display:flex;gap:10px}
+.f-soc-btn{
+  width:40px;height:40px;border-radius:50%;
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
-  font-family:var(--cond);font-size:.74rem;font-weight:700;
-  letter-spacing:2.2px;color:rgba(255,255,255,.75);text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);
   transition:all var(--t1);
 }
-.f-linkedin:hover{background:#0A66C2;border-color:#0A66C2;color:#fff;transform:translateY(-2px)}
+.f-soc-btn svg{width:17px;height:17px}
+.f-soc-btn:hover{background:var(--r);border-color:var(--r);color:#fff;transform:translateY(-3px)}
+.f-soc-btn.wa:hover{background:#25D366;border-color:#25D366}
+.f-soc-btn.li:hover{background:#0A66C2;border-color:#0A66C2}
+
+.f-col-h{
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:2.4px;color:#fff;text-transform:uppercase;margin-bottom:20px;
+}
+.f-links{display:flex;flex-direction:column;gap:12px}
+.f-links a{
+  font-size:.88rem;color:rgba(255,255,255,.55);
+  transition:color var(--t1),transform var(--t1);width:fit-content;
+}
+.f-links a:hover{color:var(--r-v);transform:translateX(4px)}
+
+.f-contact-item{margin-bottom:16px}
+.f-contact-lbl{
+  font-family:var(--cond);font-size:.62rem;font-weight:700;
+  letter-spacing:1.8px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px;
+}
+.f-contact-val{font-size:.9rem;color:rgba(255,255,255,.8);font-weight:500}
+.f-contact-val a{color:inherit;transition:color var(--t1)}
+.f-contact-val a:hover{color:var(--r-v)}
+.f-cta-btn{
+  display:inline-flex;align-items:center;gap:9px;margin-top:8px;
+  padding:11px 20px;background:var(--r);color:#fff;
+  border-radius:10px;font-weight:600;font-size:.86rem;
+  transition:transform var(--bounce),background var(--t1);
+  box-shadow:var(--sh-r);
+}
+.f-cta-btn:hover{transform:translateY(-2px);background:var(--r-d)}
+.f-cta-btn svg{width:14px;height:14px}
+
+.f-bottom{
+  border-top:1px solid rgba(255,255,255,.08);
+  max-width:1280px;margin:0 auto;padding:24px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:14px;position:relative;z-index:1;
+}
+.f-copy{
+  font-family:var(--cond);font-size:.75rem;letter-spacing:1.6px;
+  color:rgba(255,255,255,.35);text-transform:uppercase;
+}
+.f-tagline-sm{
+  font-family:var(--display);font-style:italic;font-size:.86rem;
+  font-weight:400;color:rgba(255,255,255,.4);
+}
+
+@media(max-width:960px){
+  .f-top{grid-template-columns:1fr 1fr;gap:40px 30px;padding:64px 28px 40px}
+}
+@media(max-width:640px){
+  .f-top{grid-template-columns:1fr;gap:34px;padding:56px 24px 36px}
+  .f-bottom{flex-direction:column;align-items:flex-start;padding:20px 24px}
+}
 
 /* ════════════════════════════════════════════════════════
    MODAL
@@ -2299,11 +2363,7 @@ body.ready .hl-line>span{transform:none}
 }
 
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important;
-  }
+  .reveal{transition-duration:.2s!important}
 }
 </style>
 </head>
@@ -2483,8 +2543,8 @@ body.ready .hl-line>span{transform:none}
 <!-- ═══════ SHOWREEL ═══════ -->
 <section id="showreel">
   <video class="sr-video" autoplay muted loop playsinline preload="metadata"
-    poster="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=70">
-    <source src="https://videos.pexels.com/video-files/1580455/1580455-hd_1920_1080_30fps.mp4" type="video/mp4">
+    poster="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=70">
+    <source src="https://videos.pexels.com/video-files/8040193/8040193-uhd_2732_1440_25fps.mp4" type="video/mp4">
   </video>
   <div class="sr-overlay"></div>
 
@@ -2509,16 +2569,16 @@ body.ready .hl-line>span{transform:none}
   </div>
 
   <div class="sr-tiles">
-    <button class="sr-tile" data-src="https://videos.pexels.com/video-files/3252919/3252919-hd_1920_1080_25fps.mp4" data-cap="Eventos en vivo · Así se vive un evento MFD">
-      <video src="https://videos.pexels.com/video-files/3252919/3252919-hd_1920_1080_25fps.mp4" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=70"></video>
+    <button class="sr-tile" data-src="https://videos.pexels.com/video-files/3941289/3941289-hd_1920_1080_30fps.mp4" data-cap="Eventos en vivo · Así se vive un evento MFD">
+      <video src="https://videos.pexels.com/video-files/3941289/3941289-hd_1920_1080_30fps.mp4" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=70"></video>
       <div class="sr-tile-info">
         <span class="sr-tile-tag">Línea 02 · Eventos</span>
         <span class="sr-tile-t">Eventos en vivo</span>
       </div>
       <span class="sr-tile-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></span>
     </button>
-    <button class="sr-tile" data-src="https://videos.pexels.com/video-files/6774633/6774633-hd_1920_1080_30fps.mp4" data-cap="Producción técnica · LED, sonido e iluminación MFD">
-      <video src="https://videos.pexels.com/video-files/6774633/6774633-hd_1920_1080_30fps.mp4" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=600&q=70"></video>
+    <button class="sr-tile" data-src="https://videos.pexels.com/video-files/2531140/2531140-hd_1920_1080_24fps.mp4" data-cap="Producción técnica · LED, sonido e iluminación MFD">
+      <video src="https://videos.pexels.com/video-files/2531140/2531140-hd_1920_1080_24fps.mp4" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=600&q=70"></video>
       <div class="sr-tile-info">
         <span class="sr-tile-tag">Línea 02 · Producción</span>
         <span class="sr-tile-t">Producción técnica</span>
@@ -2690,7 +2750,16 @@ body.ready .hl-line>span{transform:none}
 
     <div class="rs-filters reveal reveal-d1" id="rsFilters"></div>
 
-    <div class="rs-grid reveal reveal-d2" id="rsGrid"></div>
+    <div class="rs-carousel reveal reveal-d2">
+      <div class="rs-track" id="rsGrid"></div>
+    </div>
+    <div class="c-nav" id="rsNav">
+      <div class="c-arrows">
+        <button class="carr" onclick="prevRs()" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="carr" onclick="nextRs()" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <div class="cdots" id="rsDots"></div>
+    </div>
   </div>
 </section>
 
@@ -2826,13 +2895,6 @@ body.ready .hl-line>span{transform:none}
               <span class="ct-val">comercial@marketingyeventosmfd.com</span>
             </div>
           </div>
-          <div class="ct-item">
-            <div class="ct-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div class="ct-info">
-              <span class="ct-lbl">Dirección</span>
-              <span class="ct-val">Calle 54A Norte No. 3BN-78<br>La Flora, Cali — Colombia</span>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -2879,16 +2941,70 @@ body.ready .hl-line>span{transform:none}
 
 <!-- ═══════ FOOTER ═══════ -->
 <footer>
-  <div class="f-inner">
-    <div class="f-brand">
-      <span class="f-brand-mfd"><em>MFD</em> — Marketing &amp; Eventos</span>
+  <div class="f-top">
+    <div>
+      <div class="f-brand-mark">
+        <div class="f-brand-ico"><span>MFD</span></div>
+        <div>
+          <div class="f-brand-mfd">MFD</div>
+          <div class="f-brand-sub">Marketing &amp; Eventos</div>
+        </div>
+      </div>
+      <p class="f-blurb">Agencia integral con 15 años de experiencia conectando marcas con personas a través de experiencias emocionales que cumplen objetivos comerciales reales.</p>
+      <div class="f-social">
+        <a class="f-soc-btn li" href="https://www.linkedin.com/company/mfd-marketing-y-eventos/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a class="f-soc-btn wa wa-cta" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
     </div>
-    <div class="f-tagline">« Hacemos Marcas de Corazón »</div>
-    <a class="f-linkedin" href="https://www.linkedin.com/company/mfd-marketing-y-eventos/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn MFD">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      <span>LinkedIn</span>
-    </a>
-    <div class="f-copy">Cali, Colombia · © 2025</div>
+
+    <div>
+      <div class="f-col-h">Navegación</div>
+      <div class="f-links">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#epecar">Filosofía EPECAR</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#clientes">Clientes</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="f-col-h">Líneas de Servicio</div>
+      <div class="f-links">
+        <a href="#servicios">Personal &amp; Logística</a>
+        <a href="#servicios">Producción Técnica</a>
+        <a href="#servicios">Activación de Marca</a>
+        <a href="#servicios">Mobiliario &amp; Stands</a>
+        <a href="#servicios">Catering Corporativo</a>
+        <a href="#servicios">Analítica de Datos</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="f-col-h">Contáctenos</div>
+      <div class="f-contact-item">
+        <div class="f-contact-lbl">Teléfono / WhatsApp</div>
+        <div class="f-contact-val"><a href="tel:3007353188">300 735 3188</a></div>
+      </div>
+      <div class="f-contact-item">
+        <div class="f-contact-lbl">Email</div>
+        <div class="f-contact-val"><a href="mailto:comercial@marketingyeventosmfd.com">comercial@marketingyeventosmfd.com</a></div>
+      </div>
+      <a class="f-cta-btn wa-cta" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.7a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Escríbenos ahora
+      </a>
+    </div>
+  </div>
+
+  <div class="f-bottom">
+    <div class="f-copy">Cali, Colombia · © <span id="fYear"></span> MFD Marketing &amp; Eventos</div>
+    <div class="f-tagline-sm">« Hacemos Marcas de Corazón »</div>
   </div>
 </footer>
 
@@ -2909,8 +3025,8 @@ body.ready .hl-line>span{transform:none}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <video id="reelVideo" controls playsinline preload="none"
-      poster="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1400&q=70">
-      <source src="https://videos.pexels.com/video-files/852421/852421-hd_1920_1080_30fps.mp4" type="video/mp4">
+      poster="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1400&q=70">
+      <source src="https://videos.pexels.com/video-files/8040193/8040193-uhd_2732_1440_25fps.mp4" type="video/mp4">
     </video>
     <div class="vid-cap">MFD Showreel · Marketing &amp; Eventos · Cali, Colombia</div>
   </div>
@@ -3062,7 +3178,7 @@ const PORT = [
   {cat:'personal',catLabel:'Personal & Logística',year:'2024',client:'Personal & Logística',title:'Modelos · Logísticos · Anfitriones',desc:'Volanteadores, casting y personal de protocolo para eventos',img:'https://images.unsplash.com/photo-1560439514-4e9645039924?auto=format&fit=crop&w=1200&q=75',tags:['Casting','Modelos','Protocolo'],stats:[{n:'2.5k+',l:'Base activa'},{n:'32',l:'Ciudades'},{n:'48h',l:'Respuesta'},{n:'ISO',l:'Casting'}],features:['Base de datos con más de 2.500 personas','Casting y selección por perfil de marca','Capacitación específica por proyecto','Uniformes y protocolo bajo estándar']},
   {cat:'personal',catLabel:'Personal & Logística',year:'2023',client:'Diageo — a través de Meico',title:'Impulso y Protocolo en Licores Premium',desc:'Personal capacitado para marcas como Johnnie Walker, Smirnoff y Buchanan\'s — canal on-trade y off-trade a nivel nacional',img:'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=1200&q=75',tags:['Licores Premium','Meico','Nacional'],stats:[{n:'Nacional',l:'Cobertura'},{n:'3+',l:'Marcas Diageo'},{n:'100<em>%</em>',l:'Capacitación'},{n:'On/Off',l:'Trade'}],features:['Selección y capacitación de personal para marcas premium','Protocolo de servicio y degustación en punto de venta','Coordinación logística con el distribuidor Meico','Cobertura en canal on-trade y off-trade a nivel nacional']},
   {cat:'mobiliario',catLabel:'Mobiliario',year:'2023',client:'Stand & Mobiliario',title:'Ferias · Stands · Salas Lounge',desc:'Producción especializada de stands y exhibiciones para ferias',img:'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1200&q=75',tags:['Stands','Ferias','Lounge'],stats:[{n:'80+',l:'Stands/año'},{n:'6x3m',l:'Modular'},{n:'48h',l:'Montaje'},{n:'A+',l:'Acabados'}],features:['Diseño 3D y renderizado antes del montaje','Sistemas modulares reutilizables','Mobiliario Puff LED y salas lounge','Ambientación y decoración personalizada']},
-  {cat:'mobiliario',catLabel:'Mobiliario',year:'2023',client:'Suerox — Postobón',title:'Exhibición y Activación en la Costa Caribe',desc:'Neveras, exhibidores y material POP para cobertura en Barranquilla, Cartagena, Santa Marta y toda la Costa',img:'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=75',tags:['Costa Caribe','Exhibidores','Hidratación'],stats:[{n:'11.5k',l:'Impactos'},{n:'1.6k',l:'Ventas'},{n:'5,998',l:'Muestras'},{n:'6d',l:'Duración'}],features:['Instalación de neveras y exhibidores de marca','Cobertura en Barranquilla, Cartagena y Santa Marta','Sampling masivo en frío — 5.998 muestras entregadas','Conversión directa: 1.649 ventas en 6 días']},
+  {cat:'mobiliario',catLabel:'Mobiliario',year:'2023',client:'Suerox',title:'Exhibición y Activación en la Costa Caribe',desc:'Neveras, exhibidores y material POP para cobertura en Barranquilla, Cartagena, Santa Marta y toda la Costa',img:'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=75',tags:['Costa Caribe','Exhibidores','Hidratación'],stats:[{n:'11.5k',l:'Impactos'},{n:'1.6k',l:'Ventas'},{n:'5,998',l:'Muestras'},{n:'6d',l:'Duración'}],features:['Instalación de neveras y exhibidores de marca','Cobertura en Barranquilla, Cartagena y Santa Marta','Sampling masivo en frío — 5.998 muestras entregadas','Conversión directa: 1.649 ventas en 6 días']},
   {cat:'catering',catLabel:'Catering',year:'2024',client:'Catering Corporativo',title:'Alimentación · Refrigerios · Pasabocas',desc:'Servicio integral de catering para eventos empresariales',img:'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=75',tags:['Menús','Coctelería','Servicio'],stats:[{n:'5k+',l:'Comensales'},{n:'Chef',l:'Ejecutivo'},{n:'12',l:'Tipos menú'},{n:'ISO',l:'Sanitario'}],features:['Menús personalizados por evento','Chefs especializados y personal de servicio','Coctelería premium y estación de bebidas','Montaje y decoración de mesa incluida']},
   {cat:'catering',catLabel:'Catering',year:'2023',client:'Desayunos & Coffee Break',title:'Catering Ejecutivo para Convenciones',desc:'Servicio de desayunos, coffee breaks y almuerzos para congresos y seminarios',img:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=75',tags:['Coffee Break','Congresos','Ejecutivo'],stats:[{n:'800+',l:'Asistentes'},{n:'3',l:'Turnos/día'},{n:'Gluten',l:'Free opción'},{n:'ISO',l:'Sanitario'}],features:['Estaciones de coffee break y desayuno continental','Opciones saludables, veganas y sin gluten','Rotación de menú para eventos multi-día','Personal de servicio uniformado incluido']},
   {cat:'food',catLabel:'Alimentos',year:'2023',client:'Bavaria',title:'Sampling Club Colombia',desc:'Impulso en almacenes de cadena con dinámicas de atracción — Cobertura 100%',img:'https://images.unsplash.com/photo-1436076863939-06870fe779c2?auto=format&fit=crop&w=1200&q=75',tags:['Sampling','Cadena','Colombia'],stats:[{n:'100<em>%</em>',l:'Cobertura'},{n:'8',l:'Ciudades'},{n:'25k',l:'Muestras'},{n:'320',l:'Turnos'}],features:['Impulso en almacenes de cadena tipo A y B','Dinámicas de atracción y sampling','Uniformes y kit de marca completo','Reporte por PDV y feedback diario']},
@@ -3663,6 +3779,30 @@ const RESULTS=[
      {t:'Valor Añadido',q:'45% compra motivado por el obsequio premium, anulando los ataques de precio de la competencia.',ico:'<rect x="3" y="8" width="18" height="13" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M12 8c0-2 2-4 4-4s2 2 0 4"/><path d="M12 8c0-2-2-4-4-4s-2 2 0 4"/>'},
      {t:'Top of Mind',q:'98% de reconocimiento pre-existente. La activación física cerró el vínculo emocional con el shopper local.',ico:'<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>'}
    ]},
+
+  {cat:'lic',catLabel:'Licores',brand:'Diageo — a través de Meico',tag:'Impulso y Protocolo en Licores Premium',
+   ico:'<path d="M12 2L21 9L12 22L3 9Z"/><path d="M3 9h18"/><path d="M9 2l3 7 3-7"/>',
+   objetivo:'Fortalecer el recall de marca y cerrar ventas en el canal on-trade y off-trade mediante personal capacitado en protocolo de whisky y vodka premium.',
+   canal:'On-Trade y Off-Trade — Distribución Meico a nivel nacional',
+   narrative:'Ejecución al 100% en la coordinación logística y de personal para marcas como Johnnie Walker, Smirnoff y Buchanan\'s a través del distribuidor Meico. El programa de capacitación en protocolo de servicio elevó la percepción premium de la marca en bares y restaurantes de las principales ciudades. La rotación en licoreras de cadena creció de forma sostenida gracias a la degustación guiada y el material POP en punto de venta, mientras el impulso en supermercados aseguró visibilidad constante en fechas de alta demanda como fin de año y San Valentín.',
+   kCard:[{n:'Nacional',l:'Cobertura'},{n:'92<em>%</em>',l:'Satisfacción Bares'}],
+   kModal:[{n:'Nacional',l:'Cobertura'},{n:'92%',l:'Satisfacción Bares'},{n:'+18<em>%</em>',l:'Rotación PDV'},{n:'100%',l:'Personal Capacitado'}],
+   insights:[
+     {t:'Protocolo que Vende',q:'La capacitación en servicio y maridaje elevó la percepción premium en el 92% de los bares visitados.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'},
+     {t:'Estacionalidad Bajo Control',q:'El impulso en fechas clave (fin de año, San Valentín) mantuvo la marca visible frente a la competencia en el lineal.',ico:'<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 11 18 16 13"/>'}
+   ]},
+
+  {cat:'mas',catLabel:'Consumo Masivo',brand:'Alquería',tag:'Impulso y Mercadeo en Cadenas',
+   ico:'<path d="M8 2h8v4l2 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9l2-3V2z"/><path d="M6 9h12"/>',
+   objetivo:'Sostener la rotación de la línea de lácteos y fortalecer la relación con el shopper en las principales ciudades del país.',
+   canal:'Moderno (Cadenas) — Bogotá, Medellín y Cali',
+   narrative:'Ejecución al 100% en impulso y mercadeo en punto de venta para la línea completa de Alquería. La estrategia se enfocó en degustaciones dirigidas al shopper familiar y en el control de frescura y rotación del lineal refrigerado. La coordinación con las cadenas permitió mantener exhibiciones adicionales en fechas de alto tráfico, mientras el equipo de impulso resolvió agotados en tiempo real, protegiendo la disponibilidad de producto en el 100% de los puntos asignados.',
+   kCard:[{n:'3',l:'Ciudades'},{n:'100<em>%</em>',l:'Cobertura'}],
+   kModal:[{n:'3',l:'Ciudades'},{n:'100%',l:'Cobertura'},{n:'+12<em>%</em>',l:'Rotación Lineal'},{n:'0',l:'Agotados Críticos'}],
+   insights:[
+     {t:'Frescura Garantizada',q:'El control diario de fechas y rotación redujo a cero los agotados críticos en el lineal refrigerado.',ico:'<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 11 18 16 13"/>'},
+     {t:'Shopper Familiar',q:'Las degustaciones dirigidas al núcleo familiar reforzaron la preferencia de marca en el canal moderno.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'}
+   ]},
 ];
 
 const RS_CATS=[
@@ -3679,7 +3819,9 @@ document.getElementById('rsSummary').innerHTML=`
   <div class="rs-stat"><div class="rs-stat-n"><em>100%</em></div><div class="rs-stat-l">Ejecución garantizada</div></div>`;
 
 const rsFiltersEl=document.getElementById('rsFilters');
-let rsFilter='all';
+let rsFilter='all',rsSlide=0,rsMoved=false;
+function rsIpp(){return window.innerWidth<=640?1:window.innerWidth<=960?2:3}
+
 RS_CATS.forEach(c=>{
   const count=c.id==='all'?RESULTS.length:RESULTS.filter(r=>r.cat===c.id).length;
   const btn=document.createElement('button');
@@ -3688,36 +3830,79 @@ RS_CATS.forEach(c=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('#rsFilters .pf').forEach(b=>b.classList.remove('on'));
     btn.classList.add('on');
-    rsFilter=c.id;renderRs();
+    rsFilter=c.id;rsSlide=0;renderRs();
   });
   rsFiltersEl.appendChild(btn);
 });
 
+let rsItems=[];
 function renderRs(){
-  const items=rsFilter==='all'?RESULTS:RESULTS.filter(r=>r.cat===rsFilter);
-  document.getElementById('rsGrid').innerHTML=items.map(r=>{
+  rsItems=rsFilter==='all'?RESULTS:RESULTS.filter(r=>r.cat===rsFilter);
+  const track=document.getElementById('rsGrid');
+  const nav=document.getElementById('rsNav');
+  const dots=document.getElementById('rsDots');
+  const pp=rsIpp(),pages=Math.ceil(rsItems.length/pp);
+  if(rsSlide>=pages)rsSlide=0;
+  track.innerHTML=rsItems.map(r=>{
     const idx=RESULTS.indexOf(r);
     return `
-    <div class="rs-card" data-idx="${idx}">
-      <div class="rs-card-top">
-        <div class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${r.ico}</svg></div>
-        <div class="rs-cat">${r.catLabel}</div>
-      </div>
-      <div class="rs-tag">${r.tag}</div>
-      <div class="rs-brand">${r.brand}</div>
-      <p class="rs-obj">${r.objetivo}</p>
-      <div class="rs-kpis">
-        ${r.kCard.map(k=>`<div class="rs-kpi"><b>${k.n}</b><span>${k.l}</span></div>`).join('')}
-      </div>
-      <div class="rs-more">
-        Ver informe completo
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+    <div class="rs-item">
+      <div class="rs-card" data-idx="${idx}">
+        <div class="rs-card-top">
+          <div class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${r.ico}</svg></div>
+          <div class="rs-cat">${r.catLabel}</div>
+        </div>
+        <div class="rs-tag">${r.tag}</div>
+        <div class="rs-brand">${r.brand}</div>
+        <p class="rs-obj">${r.objetivo}</p>
+        <div class="rs-kpis">
+          ${r.kCard.map(k=>`<div class="rs-kpi"><b>${k.n}</b><span>${k.l}</span></div>`).join('')}
+        </div>
+        <div class="rs-more">
+          Ver informe completo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
       </div>
     </div>`;
   }).join('');
-  document.querySelectorAll('.rs-card').forEach(c=>c.addEventListener('click',()=>openRs(+c.dataset.idx)));
+  document.querySelectorAll('#rsGrid .rs-card').forEach(c=>c.addEventListener('click',()=>{if(rsMoved)return;openRs(+c.dataset.idx)}));
+  nav.style.display=rsItems.length?'flex':'none';
+  dots.innerHTML=Array.from({length:pages},(_,i)=>
+    `<button class="cdot${i===rsSlide?' on':''}" onclick="goRs(${i})" aria-label="Página ${i+1}"></button>`
+  ).join('');
+  updRs();
 }
+function updRs(){
+  const pp=rsIpp();
+  document.getElementById('rsGrid').style.transform=`translateX(-${(100/pp)*rsSlide}%)`;
+}
+function goRs(n){
+  const pages=Math.ceil(rsItems.length/rsIpp());
+  rsSlide=Math.max(0,Math.min(n,pages-1));
+  document.querySelectorAll('#rsDots .cdot').forEach((d,i)=>d.classList.toggle('on',i===rsSlide));
+  updRs();
+}
+function nextRs(){const p=Math.ceil(rsItems.length/rsIpp());goRs(rsSlide+1>=p?0:rsSlide+1)}
+function prevRs(){const p=Math.ceil(rsItems.length/rsIpp());goRs(rsSlide-1<0?p-1:rsSlide-1)}
 renderRs();
+window.addEventListener('resize',()=>{rsSlide=0;renderRs()});
+
+/* auto-advance + drag, igual que el carrusel de Portafolio */
+let rsAuto=setInterval(()=>nextRs(),6800);
+let rsDragX=null;
+const rsCarEl=document.querySelector('.rs-carousel');
+rsCarEl.addEventListener('mouseenter',()=>clearInterval(rsAuto));
+rsCarEl.addEventListener('mouseleave',()=>{clearInterval(rsAuto);rsAuto=setInterval(()=>nextRs(),6800)});
+rsCarEl.addEventListener('pointerdown',e=>{rsDragX=e.clientX});
+rsCarEl.addEventListener('pointerup',e=>{
+  if(rsDragX===null)return;
+  const dx=e.clientX-rsDragX;rsDragX=null;
+  if(Math.abs(dx)>55){
+    rsMoved=true;
+    dx<0?nextRs():prevRs();
+    setTimeout(()=>rsMoved=false,120);
+  }
+});
 
 const rsModal=document.getElementById('rsModal');
 const rsBox=document.getElementById('rsBox');
@@ -3773,6 +3958,9 @@ document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:tru
 function openBrief(){document.getElementById('briefModal').classList.add('open');document.body.style.overflow='hidden'}
 function closeBrief(){document.getElementById('briefModal').classList.remove('open');document.body.style.overflow='';setTimeout(()=>{document.getElementById('mHero').style.display='block';document.getElementById('mBody').innerHTML=originalForm;bindForm()},400)}
 document.getElementById('briefModal').addEventListener('click',e=>{if(e.target.id==='briefModal')closeBrief()});
+
+/* ══════ AÑO DINÁMICO EN EL FOOTER ══════ */
+document.getElementById('fYear').textContent = new Date().getFullYear();
 
 /* ══════ WHATSAPP: mensaje preestablecido con menú de servicios ══════ */
 (function(){
@@ -3900,7 +4088,7 @@ if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
 /* ══════ SHOWREEL LIGHTBOX ══════ */
 const vidModal=document.getElementById('vidModal');
 const reelVideo=document.getElementById('reelVideo');
-const REEL_DEFAULT='https://videos.pexels.com/video-files/852421/852421-hd_1920_1080_30fps.mp4';
+const REEL_DEFAULT='https://videos.pexels.com/video-files/8040193/8040193-uhd_2732_1440_25fps.mp4';
 const CAP_DEFAULT='MFD Showreel · Marketing & Eventos · Cali, Colombia';
 function openReel(src,cap){
   mfdTrack('video_reproducido', cap||'Showreel principal');
