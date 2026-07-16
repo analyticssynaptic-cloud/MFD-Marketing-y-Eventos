@@ -307,7 +307,7 @@ ul,ol{list-style:none}
 .btn-sec svg{width:15px;height:15px}
 
 .hero-feats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:22px 26px;
   padding-top:32px;border-top:1px solid var(--line);
 }
 .hero-feat{display:flex;align-items:flex-start;gap:12px}
@@ -845,9 +845,9 @@ ul,ol{list-style:none}
 .srv-intro-aside{font-size:.98rem;color:var(--slate);line-height:1.75}
 .srv-intro-aside p+p{margin-top:12px}
 
-.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.srv-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:26px}
 .sc{
-  position:relative;height:430px;
+  position:relative;height:430px;flex:0 1 calc(33.333% - 17.4px);
   perspective:1300px;background:transparent;
 }
 .sc-inner{
@@ -955,9 +955,9 @@ ul,ol{list-style:none}
 
 @media(max-width:960px){
   .srv-intro{grid-template-columns:1fr;gap:22px;margin-bottom:44px}
-  .srv-grid{grid-template-columns:1fr 1fr}
+  .sc{flex-basis:calc(50% - 13px)}
 }
-@media(max-width:640px){.srv-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.sc{flex-basis:100%}}
 
 /* ════════════════════════════════════════════════════════
    PORTAFOLIO
@@ -2182,6 +2182,13 @@ body.ready .hl-line>span{transform:none}
             </div>
           </div>
           <div class="hero-feat">
+            <div class="hero-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="hero-feat-tx">
+              <strong>Cobertura 100%</strong>
+              <span>Nacional en Colombia</span>
+            </div>
+          </div>
+          <div class="hero-feat">
             <div class="hero-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
             <div class="hero-feat-tx">
               <strong>50+ clientes</strong>
@@ -2191,7 +2198,7 @@ body.ready .hl-line>span{transform:none}
           <div class="hero-feat">
             <div class="hero-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <div class="hero-feat-tx">
-              <strong>6 líneas de trabajo</strong>
+              <strong>7 líneas de trabajo</strong>
               <span>Solución integral 360°</span>
             </div>
           </div>
@@ -2421,7 +2428,7 @@ body.ready .hl-line>span{transform:none}
 
     <div class="port-filters reveal reveal-d1" id="pfilters">
       <!-- filtros generados por JS con contadores -->
-      <div class="pf-total-tag" id="pfTotal">Mostrando <em>26</em> proyectos</div>
+      <div class="pf-total-tag" id="pfTotal">Mostrando <em>30</em> proyectos</div>
     </div>
 
     <div class="p-carousel reveal reveal-d2">
@@ -2573,6 +2580,15 @@ body.ready .hl-line>span{transform:none}
               <span class="ct-val">comercial@marketingyeventosmfd.com</span>
             </div>
           </div>
+          <div class="ct-item">
+            <div class="ct-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="ct-info">
+              <span class="ct-lbl">Dirección</span>
+              <span class="ct-val">Calle 54A Norte No. 3BN-78<br>La Flora, Cali — Colombia</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="reveal reveal-d2">
         <div class="ct-right">
@@ -2584,12 +2600,12 @@ body.ready .hl-line>span{transform:none}
               <span>Llamar: 300 735 3188</span>
               <svg class="ct-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
-            <a href="comercial@marketingyeventosmfd.com" class="ct-link out">
+            <a href="mailto:comercial@marketingyeventosmfd.com" class="ct-link out">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               <span>comercial@marketingyeventosmfd.com</span>
               <svg class="ct-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
-            <a href="https://wa.me/573007353188" class="ct-link out" target="_blank" rel="noopener">
+            <a href="#" class="ct-link out wa-cta" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
               <span>Escribir por WhatsApp</span>
               <svg class="ct-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
@@ -2635,7 +2651,7 @@ body.ready .hl-line>span{transform:none}
   <button class="fab fab-top" id="fabTop" aria-label="Volver arriba">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
-  <a class="fab fab-wa" href="https://wa.me/573007353188" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <a class="fab fab-wa wa-cta" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 </div>
@@ -2713,14 +2729,24 @@ const MFD_ANALYTICS_URL = 'https://script.google.com/macros/s/AKfycbx3w7mdR5AXRp
 /* ════════════════════════════════════════════════════════════════ */
 
 /* ══════ MOTOR DE TRACKING ══════ */
-const MFD_SESSION = Math.random().toString(36).slice(2,10).toUpperCase();
+/* ID persistente: la misma persona = la misma fila en el Sheet */
+const MFD_UID=(function(){
+  try{
+    let u=localStorage.getItem('mfd_uid');
+    if(!u){
+      u='V-'+Date.now().toString(36).toUpperCase().slice(-5)+Math.random().toString(36).slice(2,6).toUpperCase();
+      localStorage.setItem('mfd_uid',u);
+    }
+    return u;
+  }catch(e){return 'V-'+Math.random().toString(36).slice(2,11).toUpperCase()}
+})();
 function mfdTrack(evento, detalle){
   if(!MFD_ANALYTICS_URL || MFD_ANALYTICS_URL.indexOf('PEGA_AQUI')===0) return;
   const qs = new URLSearchParams(location.search);
   const payload = JSON.stringify({
     evento:   evento,
     detalle:  detalle||'',
-    sesion:   MFD_SESSION,
+    visitante:MFD_UID,
     referido: document.referrer||'directo',
     utm_source:   qs.get('utm_source')||'',
     utm_medium:   qs.get('utm_medium')||'',
@@ -2781,9 +2807,13 @@ const PORT = [
   {cat:'activacion',catLabel:'Activación',year:'2024',client:'Gatorade · Neutrogena',title:'Activaciones · Lanzamientos · Sampling',desc:'Experiencias que conectan marca y consumidor en toda Colombia',img:'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=75',tags:['Sampling','Impulso','Nacional'],stats:[{n:'7',l:'Ciudades'},{n:'100<em>%</em>',l:'Cobertura'},{n:'40k',l:'Impactos'},{n:'6m',l:'Duración'}],features:['Casting y capacitación de personal impulsador','Producción de material POP en 7 ciudades','Coordinación integral en punto de venta','Reporte diario con métricas y feedback']},
   {cat:'activacion',catLabel:'Activación',year:'2023',client:'Publicidad Exterior',title:'Carro Valla · Pantalla LED · BiciValla',desc:'Tu marca en movimiento — publicidad exterior innovadora',img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=75',tags:['OOH','Innovación','Mobile'],stats:[{n:'12',l:'Vehículos'},{n:'8',l:'Ciudades'},{n:'200k',l:'Impactos/mes'},{n:'LED',l:'Formato'}],features:['Flota completa de carros valla y BiciValla','Pantallas LED de alta resolución','Rutas estratégicas por zonas de alto tráfico','Reporte de audiencia y GPS en tiempo real']},
   {cat:'produccion',catLabel:'Producción',year:'2024',client:'Producción Técnica',title:'Pantalla LED · Sonido · Iluminación',desc:'Estructuras, tarimas, carpas y producción audiovisual completa',img:'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1200&q=75',tags:['LED','Audio','Estructuras'],stats:[{n:'150+',l:'Eventos'},{n:'8x4m',l:'Panel LED'},{n:'HD',l:'Streaming'},{n:'24/7',l:'Soporte'}],features:['Pantallas LED indoor y outdoor','Sistema de sonido profesional D&B','Iluminación robótica e intelligent','Streaming multi-cámara HD']},
+  {cat:'produccion',catLabel:'Producción',year:'2023',client:'Streaming Corporativo',title:'Transmisión en Vivo · Multi-Cámara',desc:'Cobertura audiovisual profesional para convenciones y lanzamientos híbridos',img:'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=75',tags:['Streaming','Convenciones','Híbrido'],stats:[{n:'Multi',l:'Cámara'},{n:'HD/4K',l:'Calidad'},{n:'Live',l:'Plataformas'},{n:'100<em>%</em>',l:'Uptime'}],features:['Transmisión simultánea en múltiples plataformas','Producción multi-cámara con switching en vivo','Edición y entrega de material post-evento','Soporte técnico dedicado durante toda la transmisión']},
   {cat:'personal',catLabel:'Personal & Logística',year:'2024',client:'Personal & Logística',title:'Modelos · Logísticos · Anfitriones',desc:'Volanteadores, casting y personal de protocolo para eventos',img:'https://images.unsplash.com/photo-1560439514-4e9645039924?auto=format&fit=crop&w=1200&q=75',tags:['Casting','Modelos','Protocolo'],stats:[{n:'2.5k+',l:'Base activa'},{n:'32',l:'Ciudades'},{n:'48h',l:'Respuesta'},{n:'ISO',l:'Casting'}],features:['Base de datos con más de 2.500 personas','Casting y selección por perfil de marca','Capacitación específica por proyecto','Uniformes y protocolo bajo estándar']},
+  {cat:'personal',catLabel:'Personal & Logística',year:'2023',client:'Diageo — a través de Meico',title:'Impulso y Protocolo en Licores Premium',desc:'Personal capacitado para marcas como Johnnie Walker, Smirnoff y Buchanan\'s — canal on-trade y off-trade a nivel nacional',img:'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=1200&q=75',tags:['Licores Premium','Meico','Nacional'],stats:[{n:'Nacional',l:'Cobertura'},{n:'3+',l:'Marcas Diageo'},{n:'100<em>%</em>',l:'Capacitación'},{n:'On/Off',l:'Trade'}],features:['Selección y capacitación de personal para marcas premium','Protocolo de servicio y degustación en punto de venta','Coordinación logística con el distribuidor Meico','Cobertura en canal on-trade y off-trade a nivel nacional']},
   {cat:'mobiliario',catLabel:'Mobiliario',year:'2023',client:'Stand & Mobiliario',title:'Ferias · Stands · Salas Lounge',desc:'Producción especializada de stands y exhibiciones para ferias',img:'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1200&q=75',tags:['Stands','Ferias','Lounge'],stats:[{n:'80+',l:'Stands/año'},{n:'6x3m',l:'Modular'},{n:'48h',l:'Montaje'},{n:'A+',l:'Acabados'}],features:['Diseño 3D y renderizado antes del montaje','Sistemas modulares reutilizables','Mobiliario Puff LED y salas lounge','Ambientación y decoración personalizada']},
+  {cat:'mobiliario',catLabel:'Mobiliario',year:'2023',client:'Suerox — Postobón',title:'Exhibición y Activación en la Costa Caribe',desc:'Neveras, exhibidores y material POP para cobertura en Barranquilla, Cartagena, Santa Marta y toda la Costa',img:'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=75',tags:['Costa Caribe','Exhibidores','Hidratación'],stats:[{n:'Costa',l:'Región'},{n:'3+',l:'Ciudades'},{n:'PDV',l:'Exhibidores'},{n:'100<em>%</em>',l:'Instalado'}],features:['Instalación de neveras y exhibidores de marca','Cobertura en Barranquilla, Cartagena y Santa Marta','Material POP resistente al clima costero','Reporte fotográfico de instalación por PDV']},
   {cat:'catering',catLabel:'Catering',year:'2024',client:'Catering Corporativo',title:'Alimentación · Refrigerios · Pasabocas',desc:'Servicio integral de catering para eventos empresariales',img:'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=75',tags:['Menús','Coctelería','Servicio'],stats:[{n:'5k+',l:'Comensales'},{n:'Chef',l:'Ejecutivo'},{n:'12',l:'Tipos menú'},{n:'ISO',l:'Sanitario'}],features:['Menús personalizados por evento','Chefs especializados y personal de servicio','Coctelería premium y estación de bebidas','Montaje y decoración de mesa incluida']},
+  {cat:'catering',catLabel:'Catering',year:'2023',client:'Desayunos & Coffee Break',title:'Catering Ejecutivo para Convenciones',desc:'Servicio de desayunos, coffee breaks y almuerzos para congresos y seminarios',img:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=75',tags:['Coffee Break','Congresos','Ejecutivo'],stats:[{n:'800+',l:'Asistentes'},{n:'3',l:'Turnos/día'},{n:'Gluten',l:'Free opción'},{n:'ISO',l:'Sanitario'}],features:['Estaciones de coffee break y desayuno continental','Opciones saludables, veganas y sin gluten','Rotación de menú para eventos multi-día','Personal de servicio uniformado incluido']},
   {cat:'food',catLabel:'Alimentos',year:'2023',client:'Bavaria',title:'Sampling Club Colombia',desc:'Impulso en almacenes de cadena con dinámicas de atracción — Cobertura 100%',img:'https://images.unsplash.com/photo-1436076863939-06870fe779c2?auto=format&fit=crop&w=1200&q=75',tags:['Sampling','Cadena','Colombia'],stats:[{n:'100<em>%</em>',l:'Cobertura'},{n:'8',l:'Ciudades'},{n:'25k',l:'Muestras'},{n:'320',l:'Turnos'}],features:['Impulso en almacenes de cadena tipo A y B','Dinámicas de atracción y sampling','Uniformes y kit de marca completo','Reporte por PDV y feedback diario']},
   {cat:'food',catLabel:'Alimentos',year:'2023',client:'Bavaria — Poker',title:'Carnavales Blancos y Negros',desc:'Pasto — Campaña de gran expectativa con cobertura total del evento',img:'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=75',tags:['Carnaval','Pasto','Evento'],stats:[{n:'6d',l:'Duración'},{n:'80+',l:'Impulsadoras'},{n:'12',l:'Puntos activos'},{n:'100k',l:'Impactos'}],features:['Producción y coordinación de todo el evento','Personal de impulso y activación en calle','Material POP y merchandising exclusivo','Logística y transporte incluidos']},
   {cat:'food',catLabel:'Alimentos',year:'2022',client:'Bavaria',title:'Premios Orgullo de mi Región',desc:'Ambientación, producción, diseño de artes e imagen — 100% efectividad',img:'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=75',tags:['Premios','Producción','Imagen'],stats:[{n:'100<em>%</em>',l:'Efectividad'},{n:'400',l:'Invitados'},{n:'1',l:'Noche'},{n:'HD',l:'Video'}],features:['Diseño de artes e identidad del evento','Ambientación y montaje de escenario','Producción técnica LED y sonido','Coordinación de invitados y protocolo']},
@@ -2840,6 +2870,8 @@ const LOGOS=[
   {n:'Philip Morris',s:'PMI · TABACO',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="16" width="34" height="30" rx="2" fill="none" stroke="#1A0F0D" stroke-width="2"/><text x="17" y="38" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#1A0F0D">PMI</text><text x="55" y="30" font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="#1A0F0D" letter-spacing=".5">Philip Morris</text><text x="55" y="44" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">INTERNATIONAL</text></svg>`},
   {n:'Azteca',s:'MEDIOS · MÉXICO',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 14 L40 24 L36 34 L44 44 L30 44 L16 44 L24 34 L20 24 Z" fill="#D91B23"/><path d="M30 22 L34 28 L30 34 L26 28 Z" fill="#F5D466"/><text x="55" y="32" font-family="Fraunces,serif" font-weight="700" font-size="22" fill="#D91B23" letter-spacing=".3">Azteca</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">MEDIOS · MÉXICO</text></svg>`},
   {n:'Inveroccidente',s:'INDUSTRIA · VALLE',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M14 42 L26 18 L38 42 Z" fill="#C0141A"/><path d="M20 34 L32 34" stroke="#fff" stroke-width="2"/><text x="50" y="30" font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="#C0141A" letter-spacing=".3">INVEROCCIDENTE</text><text x="50" y="44" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">INDUSTRIA · VALLE</text></svg>`},
+  {n:'Diageo',s:'LICORES PREMIUM',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 14 L44 22 L44 38 L30 46 L16 38 L16 22 Z" fill="none" stroke="#0F1A3D" stroke-width="2"/><path d="M30 14 L30 46 M16 22 L44 38 M44 22 L16 38" stroke="#C9A961" stroke-width="1.2"/><text x="58" y="32" font-family="Fraunces,serif" font-weight="700" font-size="19" fill="#0F1A3D" letter-spacing=".3">Diageo</text><text x="58" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">VÍA MEICO · LICORES PREMIUM</text></svg>`},
+  {n:'Suerox',s:'HIDRATACIÓN · POSTOBÓN',svg:`<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 14 Q20 26 20 35 Q20 45 30 45 Q40 45 40 35 Q40 26 30 14 Z" fill="#00A9CE"/><path d="M26 32 Q30 38 34 32" stroke="#fff" stroke-width="2" fill="none"/><text x="55" y="32" font-family="Barlow,sans-serif" font-weight="800" font-size="21" fill="#00A9CE" letter-spacing=".3">SUEROX</text><text x="55" y="46" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="7" fill="#7A6A70" letter-spacing="2.5">HIDRATACIÓN · COSTA CARIBE</text></svg>`},
 ];
 
 /* ══════ NAV ══════ */
@@ -2952,7 +2984,7 @@ const MITEMS=[
   {ico:'M13 2L3 14h9l-1 8 10-12h-9l1-8z',tx:'<em>15+</em> Años creando <strong>marcas</strong>'},
   {ico:'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',tx:'<em>50+</em> Clientes <strong>nacionales &amp; internacionales</strong>'},
   {ico:'M22 11.08V12a10 10 0 1 1-5.93-9.14',tx:'<em>100%</em> Efectividad garantizada'},
-  {ico:'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2',tx:'<strong>Cobertura</strong> nacional en Colombia'},
+  {ico:'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2',tx:'<em>100%</em> Cobertura <strong>nacional</strong> en Colombia'},
   {ico:'M3 11l19-9-9 19-2-8-8-2z',tx:'<em>6</em> Líneas de <strong>trabajo integral</strong>'},
   {ico:'M22 12h-4l-3 9L9 3l-3 9H2',tx:'Marketing <strong>eventos</strong> · Activaciones · <strong>Producción</strong>'},
 ];
@@ -3080,6 +3112,7 @@ const SERVICES=[
   {num:'04',name:'Mobiliario <em>&amp; Stands</em>',plain:'Mobiliario &amp; Stands',ico:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>',items:['Mesas y sillas','Counter y salas lounge','Puff LED','Exhibidores y móviles PDV','Vallas y escenografía','Stands para ferias']},
   {num:'05',name:'<em>Catering</em> Corporativo',plain:'Catering Corporativo',ico:'<path d="M3 11l19-9-9 19-2-8-8-2z"/>',items:['Servicio de alimentación completo','Refrigerios corporativos','Pasabocas y cocteles','Personal de servicio especializado','Montaje y decoración de mesa']},
   {num:'06',name:'Admin <em>&amp; Gestión</em>',plain:'Admin &amp; Gestión',ico:'<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>',items:['Solicitud y gestión de permisos','Coordinación de pagos a terceros','Endomarketing','Investigación de mercados','Estudios cualitativos y cuantitativos','Relaciones públicas']},
+  {num:'07',name:'Analítica <em>de Datos</em>',plain:'Analítica de Datos',ico:'<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>',items:['Dashboard de visitas y tráfico en tiempo real','Tracking de campañas por fuente y canal (UTM)','Medición de cobertura y ejecución por PDV','Reportes de impacto, alcance y conversión','Segmentación y perfilamiento de clientes','Alertas automáticas de nuevos leads']},
 ];
 document.getElementById('srvGrid').innerHTML=SERVICES.map((s,i)=>`
   <div class="sc reveal${i%3===1?' reveal-d1':i%3===2?' reveal-d2':''}">
@@ -3255,6 +3288,23 @@ document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:tru
 function openBrief(){document.getElementById('briefModal').classList.add('open');document.body.style.overflow='hidden'}
 function closeBrief(){document.getElementById('briefModal').classList.remove('open');document.body.style.overflow='';setTimeout(()=>{document.getElementById('mHero').style.display='block';document.getElementById('mBody').innerHTML=originalForm;bindForm()},400)}
 document.getElementById('briefModal').addEventListener('click',e=>{if(e.target.id==='briefModal')closeBrief()});
+
+/* ══════ WHATSAPP: mensaje preestablecido con menú de servicios ══════ */
+(function(){
+  const mensaje =
+"¡Hola MFD! 👋 Quiero cotizar un servicio, cuéntenme más sobre:\n\n"+
+"1️⃣ Personal & Logística\n"+
+"2️⃣ Producción Técnica\n"+
+"3️⃣ Activación de Marca\n"+
+"4️⃣ Mobiliario & Stands\n"+
+"5️⃣ Catering Corporativo\n"+
+"6️⃣ Analítica de Datos\n"+
+"7️⃣ Admin & Gestión\n"+
+"8️⃣ Otro / Varios servicios\n\n"+
+"(Escribe el número o cuéntanos tu proyecto) 😊";
+  const url = 'https://wa.me/573007353188?text=' + encodeURIComponent(mensaje);
+  document.querySelectorAll('.wa-cta').forEach(a => a.href = url);
+})();
 
 /* ══════ PRELOADER ══════ */
 (function(){
