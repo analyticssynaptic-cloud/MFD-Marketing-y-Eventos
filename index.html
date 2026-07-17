@@ -1494,6 +1494,181 @@ ul,ol{list-style:none}
 }
 
 /* ════════════════════════════════════════════════════════
+   ANALÍTICA — demo interactiva en vivo
+═══════════════════════════════════════════════════════ */
+#analitica{background:var(--dark);color:#fff;padding:120px 0;position:relative;overflow:hidden}
+#analitica::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.012) 80px);
+  pointer-events:none;
+}
+.an-head{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  margin-bottom:52px;align-items:end;position:relative;z-index:2;
+}
+.an-head .lead-w{max-width:440px}
+
+.an-live-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(192,20,26,.16);border:1px solid rgba(192,20,26,.4);
+  border-radius:100px;padding:6px 14px;margin-bottom:16px;
+  font-family:var(--cond);font-size:.68rem;font-weight:700;
+  letter-spacing:2px;color:#fff;text-transform:uppercase;
+}
+.an-live-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--r-v);
+  position:relative;flex-shrink:0;
+}
+.an-live-dot::after{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  border:1.5px solid var(--r-v);animation:ping 1.8s ease-out infinite;
+}
+.an-live-dot.sm{width:6px;height:6px}
+
+.an-console{
+  display:grid;grid-template-columns:330px 1fr;gap:36px;
+  align-items:start;position:relative;z-index:2;
+}
+.an-phone-col{display:flex;flex-direction:column;align-items:center}
+.an-phone{margin-bottom:18px}
+.an-phone .rs-phone-chat{min-height:340px;max-height:340px;overflow-y:auto;scroll-behavior:smooth}
+.an-phone .rs-phone-chat::-webkit-scrollbar{width:4px}
+.an-phone .rs-phone-chat::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:3px}
+.rs-msg.typing{display:flex;gap:4px;align-items:center;padding:10px 13px}
+.rs-msg.typing span{
+  width:5px;height:5px;border-radius:50%;background:rgba(233,237,239,.6);
+  animation:an-typing 1.1s ease-in-out infinite;
+}
+.rs-msg.typing span:nth-child(2){animation-delay:.15s}
+.rs-msg.typing span:nth-child(3){animation-delay:.3s}
+@keyframes an-typing{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-3px);opacity:1}}
+
+.an-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:14px;max-width:300px}
+.an-chip{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.82);padding:8px 15px;border-radius:100px;
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  transition:all .2s;
+}
+.an-chip:hover{background:rgba(192,20,26,.22);border-color:rgba(192,20,26,.5);color:#fff;transform:translateY(-2px)}
+.an-chip:disabled{opacity:.35;cursor:default;transform:none;pointer-events:none}
+.an-reset{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--cond);font-size:.7rem;font-weight:700;
+  letter-spacing:1.6px;color:rgba(255,255,255,.4);text-transform:uppercase;
+  transition:color var(--t1);
+}
+.an-reset:hover{color:var(--r-v)}
+.an-reset svg{width:13px;height:13px}
+
+.an-panel{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  border-radius:22px;padding:30px 32px;
+}
+.an-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px}
+.an-panel-t{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.01em}
+.an-panel-live{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--cond);font-size:.64rem;font-weight:700;
+  letter-spacing:1.8px;color:rgba(255,255,255,.42);text-transform:uppercase;
+}
+
+.an-bars{display:flex;flex-direction:column;gap:13px;margin-bottom:24px}
+.an-bar-row{display:grid;grid-template-columns:130px 1fr 38px;align-items:center;gap:10px}
+.an-bar-name{
+  font-size:.78rem;color:rgba(255,255,255,.68);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.an-bar-track{height:18px;background:rgba(255,255,255,.06);border-radius:0 4px 4px 0;overflow:hidden}
+.an-bar-fill{
+  height:100%;width:0%;background:var(--grad-red);border-radius:0 4px 4px 0;
+  transition:width .6s cubic-bezier(.22,1,.36,1);
+}
+.an-bar-val{font-family:var(--cond);font-size:.78rem;font-weight:700;color:#fff}
+
+.an-insight{
+  display:flex;gap:12px;align-items:flex-start;
+  background:rgba(192,20,26,.08);border-left:3px solid var(--r-v);
+  border-radius:0 12px 12px 0;padding:14px 16px;margin-bottom:22px;
+  transition:background .3s ease;
+}
+.an-insight.flash{background:rgba(192,20,26,.18)}
+.an-insight svg{width:18px;height:18px;color:var(--r-v);flex-shrink:0;margin-top:1px}
+.an-insight span{font-size:.86rem;color:rgba(255,255,255,.8);line-height:1.5}
+.an-insight b{color:#fff}
+
+.an-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.an-kpi{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:14px 10px;text-align:center;
+}
+.an-kpi b{
+  display:block;font-family:var(--display);font-weight:700;font-size:1.5rem;
+  color:#fff;letter-spacing:-.01em;line-height:1.1;transition:transform .2s ease;
+}
+.an-kpi b.pulse{animation:an-pulse .35s ease}
+@keyframes an-pulse{50%{transform:scale(1.18);color:var(--r-v)}}
+.an-kpi span{
+  font-family:var(--cond);font-size:.6rem;font-weight:600;
+  letter-spacing:1.2px;color:rgba(255,255,255,.48);text-transform:uppercase;
+}
+
+.an-report-btn{
+  width:100%;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px;background:var(--r);color:#fff;
+  border-radius:12px;font-weight:600;font-size:.94rem;
+  transition:transform var(--bounce),background var(--t1),box-shadow var(--t1),opacity .2s;
+  box-shadow:var(--sh-r);
+}
+.an-report-btn:hover:not(:disabled){transform:translateY(-2px);background:var(--r-d);box-shadow:0 16px 40px rgba(192,20,26,.5)}
+.an-report-btn:disabled{opacity:.4;cursor:default;box-shadow:none}
+.an-report-btn svg{width:16px;height:16px}
+
+.an-report{
+  max-width:760px;margin:28px auto 0;
+  background:rgba(255,255,255,.04);border:1px solid rgba(192,20,26,.3);
+  border-radius:20px;overflow:hidden;
+  max-height:0;opacity:0;
+  transition:max-height .6s cubic-bezier(.22,1,.36,1),opacity .4s ease,margin .6s ease;
+  position:relative;z-index:2;
+}
+.an-report.show{max-height:600px;opacity:1}
+.an-report-head{
+  background:linear-gradient(135deg,rgba(192,20,26,.2),rgba(24,16,14,.4));
+  padding:22px 28px;border-bottom:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+}
+.an-report-tag{
+  font-family:var(--cond);font-size:.68rem;font-weight:700;
+  letter-spacing:2.2px;color:var(--r-v);text-transform:uppercase;margin-bottom:5px;
+}
+.an-report-title{font-family:var(--display);font-weight:700;font-size:1.3rem;color:#fff}
+.an-report-time{font-family:var(--cond);font-size:.7rem;color:rgba(255,255,255,.4);letter-spacing:1px}
+.an-report-body{padding:24px 28px 28px}
+.an-report-line{
+  display:flex;gap:11px;align-items:flex-start;margin-bottom:13px;
+  font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.55;
+}
+.an-report-line svg{width:16px;height:16px;color:var(--r-v);flex-shrink:0;margin-top:2px}
+.an-report-foot{
+  margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);
+  font-family:var(--display);font-style:italic;font-size:.92rem;color:rgba(255,255,255,.55);
+}
+
+@media(max-width:960px){
+  .an-head{grid-template-columns:1fr;gap:22px}
+  .an-console{grid-template-columns:1fr}
+  .an-phone-col{max-width:330px;margin:0 auto 32px}
+}
+@media(max-width:520px){
+  .an-panel{padding:24px 20px}
+  .an-kpis{grid-template-columns:1fr 1fr}
+  .an-kpi:last-child{grid-column:1/-1}
+  .an-bar-row{grid-template-columns:96px 1fr 34px}
+}
+
+/* ════════════════════════════════════════════════════════
    CLIENTES — cinta infinita de logos
 ═══════════════════════════════════════════════════════ */
 #clientes{background:var(--cream);padding:110px 0 90px;overflow:hidden}
@@ -2793,6 +2968,77 @@ body.ready .hl-line>span{transform:none}
   </div>
 </section>
 
+<!-- ═══════ ANALÍTICA — demo interactiva ═══════ -->
+<section id="analitica">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="an-head reveal">
+      <div>
+        <div class="eyebrow eyebrow-w">Analítica en acción</div>
+        <h2 class="h-section h-section-w">Así <em>pensamos</em><br>con datos.</h2>
+      </div>
+      <p class="lead lead-w">Interactúe con el demo — cada clic se convierte en datos, gráficas e informes en tiempo real. Así medimos cada campaña, todos los días.</p>
+    </div>
+
+    <div class="an-console reveal reveal-d1">
+
+      <div class="an-phone-col">
+        <div class="an-live-badge"><span class="an-live-dot"></span>Demo en vivo</div>
+        <div class="rs-phone an-phone">
+          <div class="rs-phone-notch"></div>
+          <div class="rs-phone-screen">
+            <div class="rs-phone-bar">
+              <div class="rs-phone-avatar">MFD</div>
+              <div>
+                <div class="rs-phone-name">MFD Marketing &amp; Eventos</div>
+                <div class="rs-phone-status" id="anStatus">en línea</div>
+              </div>
+            </div>
+            <div class="rs-phone-chat" id="anChat">
+              <div class="rs-msg bot">¡Hola! 👋 Toca una opción abajo y mira cómo se refleja en el panel de la derecha, en tiempo real.</div>
+            </div>
+          </div>
+        </div>
+        <div class="an-chips" id="anChips"></div>
+        <button class="an-reset" id="anReset">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Reiniciar demo
+        </button>
+      </div>
+
+      <div class="an-panel-col">
+        <div class="an-panel">
+          <div class="an-panel-head">
+            <span class="an-panel-t">Panel de interés en vivo</span>
+            <span class="an-panel-live"><span class="an-live-dot sm"></span>Actualizando</span>
+          </div>
+
+          <div class="an-bars" id="anBars"></div>
+
+          <div class="an-insight" id="anInsight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+            <span id="anInsightText">Esperando datos — interactúe con el chat para comenzar.</span>
+          </div>
+
+          <div class="an-kpis">
+            <div class="an-kpi"><b id="anKpiTotal">0</b><span>Interacciones</span></div>
+            <div class="an-kpi"><b id="anKpiTop">—</b><span>Línea líder</span></div>
+            <div class="an-kpi"><b id="anKpiTime">—</b><span>Respuesta simulada</span></div>
+          </div>
+
+          <button class="an-report-btn" id="anReportBtn" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Generar informe de la sesión
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="an-report" id="anReport"></div>
+  </div>
+</section>
+
 <!-- ═══════ CLIENTES ═══════ -->
 <section id="clientes">
   <div class="wrap">
@@ -3958,6 +4204,159 @@ rsCarEl.addEventListener('pointerup',e=>{
     dx<0?nextRs():prevRs();
     setTimeout(()=>rsMoved=false,120);
   }
+});
+
+/* ══════ ANALÍTICA — demo interactiva en vivo ══════ */
+const AN_OPTIONS=[
+  {key:'personal',label:'Personal & Logística',user:'Me interesa Personal & Logística',bot:'Perfecto 👥 contamos con equipo capacitado listo para tu evento.'},
+  {key:'produccion',label:'Producción Técnica',user:'Quiero cotizar Producción Técnica',bot:'Excelente elección 🎬 LED, sonido e iluminación de punta.'},
+  {key:'activacion',label:'Activación de Marca',user:'Cuéntenme de Activación de Marca',bot:'Genial 📣 activamos tu marca justo donde está tu consumidor.'},
+  {key:'mobiliario',label:'Mobiliario & Stands',user:'Necesito Mobiliario & Stands',bot:'Con gusto 🏗️ diseñamos stands que hacen destacar tu marca.'},
+  {key:'catering',label:'Catering Corporativo',user:'Quiero información de Catering',bot:'¡Claro! 🍽️ tenemos menús para cada tipo de evento.'},
+  {key:'datos',label:'Analítica de Datos',user:'Me interesa Analítica de Datos',bot:'¡Como este demo! 📊 medimos todo, en tiempo real.'},
+];
+const anCounts={};AN_OPTIONS.forEach(o=>anCounts[o.key]=0);
+let anTotal=0,anBusy=false,anLastMs=900;
+
+const anChatEl=document.getElementById('anChat');
+const anChipsEl=document.getElementById('anChips');
+const anStatusEl=document.getElementById('anStatus');
+const anBarsEl=document.getElementById('anBars');
+const anInsightEl=document.getElementById('anInsight');
+const anInsightTextEl=document.getElementById('anInsightText');
+const anKpiTotal=document.getElementById('anKpiTotal');
+const anKpiTop=document.getElementById('anKpiTop');
+const anKpiTime=document.getElementById('anKpiTime');
+const anReportBtn=document.getElementById('anReportBtn');
+const anReportEl=document.getElementById('anReport');
+
+AN_OPTIONS.forEach(o=>{
+  const chip=document.createElement('button');
+  chip.className='an-chip';
+  chip.textContent=o.label;
+  chip.addEventListener('click',()=>anSend(o));
+  anChipsEl.appendChild(chip);
+});
+
+anBarsEl.innerHTML=AN_OPTIONS.map(o=>`
+  <div class="an-bar-row" data-key="${o.key}">
+    <span class="an-bar-name">${o.label}</span>
+    <div class="an-bar-track"><div class="an-bar-fill" id="anBar-${o.key}"></div></div>
+    <span class="an-bar-val" id="anVal-${o.key}">0</span>
+  </div>`).join('');
+
+function anMsg(from,text){
+  const d=document.createElement('div');
+  d.className='rs-msg '+from;
+  d.textContent=text;
+  anChatEl.appendChild(d);
+  anChatEl.scrollTop=anChatEl.scrollHeight;
+  return d;
+}
+
+function anSend(opt){
+  if(anBusy)return;
+  anBusy=true;
+  document.querySelectorAll('.an-chip').forEach(c=>c.disabled=true);
+  anMsg('user',opt.user);
+  anStatusEl.textContent='escribiendo…';
+  const typing=document.createElement('div');
+  typing.className='rs-msg bot typing';
+  typing.innerHTML='<span></span><span></span><span></span>';
+  anChatEl.appendChild(typing);
+  anChatEl.scrollTop=anChatEl.scrollHeight;
+
+  anLastMs=650+Math.round(Math.random()*500);
+  setTimeout(()=>{
+    typing.remove();
+    anMsg('bot',opt.bot);
+    anStatusEl.textContent='en línea';
+    anCounts[opt.key]++;anTotal++;
+    anUpdatePanel(opt.key);
+    document.querySelectorAll('.an-chip').forEach(c=>c.disabled=false);
+    anReportBtn.disabled=false;
+    anBusy=false;
+  },anLastMs);
+}
+
+function anTopCategory(){
+  let top=null;
+  AN_OPTIONS.forEach(o=>{if(!top||anCounts[o.key]>anCounts[top.key])top=o});
+  return top;
+}
+
+function anPulse(el){el.classList.remove('pulse');void el.offsetWidth;el.classList.add('pulse')}
+
+function anUpdatePanel(justKey,silent){
+  AN_OPTIONS.forEach(o=>{
+    const pct=anTotal?Math.round(anCounts[o.key]/anTotal*100):0;
+    const bar=document.getElementById('anBar-'+o.key);
+    const val=document.getElementById('anVal-'+o.key);
+    bar.style.width=pct+'%';
+    val.textContent=anCounts[o.key];
+  });
+  anKpiTotal.textContent=anTotal;anPulse(anKpiTotal);
+  const top=anTopCategory();
+  const topPct=anTotal?Math.round(anCounts[top.key]/anTotal*100):0;
+  anKpiTop.textContent=anTotal?top.label.split(' ')[0]:'—';anPulse(anKpiTop);
+  anKpiTime.textContent=(anLastMs/1000).toFixed(1)+'s';anPulse(anKpiTime);
+  if(silent)return;
+
+  const justOpt=AN_OPTIONS.find(o=>o.key===justKey);
+  anInsightTextEl.innerHTML=`<b>${justOpt.label}</b> acaba de sumar un punto de interés. Ahora mismo, <b>${top.label}</b> lidera con <b>${topPct}%</b> de ${anTotal} ${anTotal===1?'interacción':'interacciones'}.`;
+  anInsightEl.classList.remove('flash');void anInsightEl.offsetWidth;anInsightEl.classList.add('flash');
+
+  mfdTrack('demo_analitica_click',justOpt.label);
+}
+
+document.getElementById('anReset').addEventListener('click',()=>{
+  AN_OPTIONS.forEach(o=>anCounts[o.key]=0);anTotal=0;
+  anChatEl.innerHTML='<div class="rs-msg bot">¡Hola! 👋 Toca una opción abajo y mira cómo se refleja en el panel de la derecha, en tiempo real.</div>';
+  anUpdatePanel(AN_OPTIONS[0].key,true);
+  anInsightTextEl.textContent='Esperando datos — interactúe con el chat para comenzar.';
+  anKpiTop.textContent='—';anKpiTime.textContent='—';
+  anReportBtn.disabled=true;
+  anReportEl.classList.remove('show');anReportEl.innerHTML='';
+});
+
+anReportBtn.addEventListener('click',()=>{
+  const top=anTopCategory();
+  const topPct=Math.round(anCounts[top.key]/anTotal*100);
+  const ranked=[...AN_OPTIONS].sort((a,b)=>anCounts[b.key]-anCounts[a.key]).filter(o=>anCounts[o.key]>0);
+  const second=ranked[1];
+  const now=new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'});
+  mfdTrack('demo_analitica_reporte',`${anTotal} interacciones · top ${top.label}`);
+
+  anReportEl.innerHTML=`
+    <div class="an-report-head">
+      <div>
+        <div class="an-report-tag">Informe automático de sesión</div>
+        <div class="an-report-title">Resumen de interés — demo en vivo</div>
+      </div>
+      <div class="an-report-time">Generado a las ${now}</div>
+    </div>
+    <div class="an-report-body">
+      <div class="an-report-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Se registraron <b style="color:#fff">${anTotal}</b> ${anTotal===1?'interacción':'interacciones'} durante esta demostración.
+      </div>
+      <div class="an-report-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        La línea con mayor interés fue <b style="color:#fff">${top.label}</b>, con el <b style="color:#fff">${topPct}%</b> del total.
+        ${second?` En segundo lugar, <b style="color:#fff">${second.label}</b>.`:''}
+      </div>
+      <div class="an-report-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Recomendación automática: reforzar presupuesto y contenido en <b style="color:#fff">${top.label}</b> durante el próximo ciclo de campaña.
+      </div>
+      <div class="an-report-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Tiempo de respuesta simulado del asistente: <b style="color:#fff">${(anLastMs/1000).toFixed(1)}s</b> por mensaje.
+      </div>
+      <div class="an-report-foot">Así de rápido —y así de claro— reportamos cada campaña real. Esto mismo, con tus datos.</div>
+    </div>`;
+  anReportEl.classList.add('show');
+  anReportEl.scrollIntoView({behavior:'smooth',block:'center'});
 });
 
 const rsModal=document.getElementById('rsModal');
