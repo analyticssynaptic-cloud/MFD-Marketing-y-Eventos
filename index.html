@@ -988,14 +988,6 @@ ul,ol{list-style:none}
 }
 .pf:hover{background:rgba(192,20,26,.18);color:rgba(255,255,255,.95);border-color:rgba(192,20,26,.35)}
 .pf.on{background:var(--grad-red);color:#fff;border-color:transparent;box-shadow:0 6px 22px rgba(192,20,26,.42)}
-.pf-count{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-width:22px;height:20px;padding:0 6px;
-  background:rgba(255,255,255,.12);border-radius:100px;
-  font-family:var(--bebas);font-size:.78rem;letter-spacing:1px;
-  color:rgba(255,255,255,.85);
-}
-.pf.on .pf-count{background:rgba(0,0,0,.28);color:#fff}
 .pf-total-tag{
   margin-left:auto;
   font-family:var(--cond);font-size:.72rem;font-weight:600;
@@ -1064,7 +1056,6 @@ ul,ol{list-style:none}
 .p-meta-dot{
   width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3);
 }
-.p-meta-year{color:rgba(255,255,255,.45)}
 .p-client{
   font-family:var(--cond);font-size:.72rem;font-weight:700;
   letter-spacing:2.5px;color:var(--r-v);text-transform:uppercase;margin-bottom:8px;
@@ -1455,6 +1446,45 @@ ul,ol{list-style:none}
 }
 .rs-cta:hover{transform:translateY(-2px);background:var(--r-d);box-shadow:0 16px 40px rgba(192,20,26,.5)}
 .rs-cta svg{width:16px;height:16px}
+
+/* -- mockup de dispositivo (chatbot) -- */
+.rs-device-wrap{display:flex;justify-content:center;margin-bottom:28px}
+.rs-phone{
+  width:250px;background:#0a0a0a;border-radius:34px;
+  padding:12px 9px;box-shadow:0 30px 60px rgba(0,0,0,.5);
+  border:2px solid rgba(255,255,255,.1);
+}
+.rs-phone-notch{width:64px;height:5px;background:rgba(255,255,255,.18);border-radius:4px;margin:0 auto 10px}
+.rs-phone-screen{
+  background:linear-gradient(180deg,#0b141a,#182229);
+  border-radius:22px;overflow:hidden;min-height:300px;
+  display:flex;flex-direction:column;
+}
+.rs-phone-bar{
+  background:#1f2c33;padding:10px 14px;
+  display:flex;align-items:center;gap:9px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.rs-phone-avatar{
+  width:26px;height:26px;border-radius:50%;
+  background:var(--grad-red);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--bebas);font-size:.6rem;color:#fff;
+}
+.rs-phone-name{font-size:.72rem;font-weight:600;color:#e9edef}
+.rs-phone-status{font-size:.6rem;color:#8ba99a}
+.rs-phone-chat{padding:14px 10px;display:flex;flex-direction:column;gap:8px;flex:1}
+.rs-msg{
+  max-width:84%;padding:8px 11px;border-radius:13px;
+  font-size:.66rem;line-height:1.45;white-space:pre-line;
+}
+.rs-msg.bot{align-self:flex-start;background:#233138;color:#e9edef;border-bottom-left-radius:3px}
+.rs-msg.user{align-self:flex-end;background:#025c4c;color:#e9edef;border-bottom-right-radius:3px}
+.rs-phone-cap{
+  text-align:center;margin-top:12px;
+  font-family:var(--cond);font-size:.66rem;font-weight:600;
+  letter-spacing:1.6px;color:rgba(255,255,255,.4);text-transform:uppercase;
+}
 
 @media(max-width:640px){
   .rs-hero{padding:30px 24px 26px}
@@ -2710,12 +2740,12 @@ body.ready .hl-line>span{transform:none}
         <div class="eyebrow eyebrow-w">Portafolio fotográfico</div>
         <h2 class="h-section h-section-w">Nuestros <em>proyectos</em>.</h2>
       </div>
-      <p class="lead lead-w">Experiencias emocionales que fortalecen la relación de las marcas con cada uno de sus clientes — en toda Colombia.</p>
+      <p class="lead lead-w">Algunos ejemplos representativos del tipo de experiencias que creamos para las marcas — en toda Colombia.</p>
     </div>
 
     <div class="port-filters reveal reveal-d1" id="pfilters">
-      <!-- filtros generados por JS con contadores -->
-      <div class="pf-total-tag" id="pfTotal">Mostrando <em>30</em> proyectos</div>
+      <!-- filtros generados por JS -->
+      <div class="pf-total-tag" id="pfTotal">Casos de ejemplo</div>
     </div>
 
     <div class="p-carousel reveal reveal-d2">
@@ -2743,7 +2773,7 @@ body.ready .hl-line>span{transform:none}
         <div class="eyebrow eyebrow-w">Informe estratégico de gestión</div>
         <h2 class="h-section h-section-w">Resultados que <em>hablan</em><br>por sí solos.</h2>
       </div>
-      <p class="lead lead-w">Campañas documentadas con datos reales de cobertura, conversión y efectividad — en licores, consumo masivo y belleza.</p>
+      <p class="lead lead-w">Ejemplos representativos de campañas con datos reales de cobertura, conversión y efectividad — en distintos sectores.</p>
     </div>
 
     <div class="rs-summary reveal reveal-d1" id="rsSummary"></div>
@@ -3479,7 +3509,7 @@ const SERVICES=[
   {num:'04',name:'Mobiliario <em>&amp; Stands</em>',plain:'Mobiliario &amp; Stands',ico:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>',items:['Mesas y sillas','Counter y salas lounge','Puff LED','Exhibidores y móviles PDV','Vallas y escenografía','Stands para ferias']},
   {num:'05',name:'<em>Catering</em> Corporativo',plain:'Catering Corporativo',ico:'<path d="M3 11l19-9-9 19-2-8-8-2z"/>',items:['Servicio de alimentación completo','Refrigerios corporativos','Pasabocas y cocteles','Personal de servicio especializado','Montaje y decoración de mesa']},
   {num:'06',name:'Admin <em>&amp; Gestión</em>',plain:'Admin &amp; Gestión',ico:'<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>',items:['Solicitud y gestión de permisos','Coordinación de pagos a terceros','Endomarketing','Investigación de mercados','Estudios cualitativos y cuantitativos','Relaciones públicas']},
-  {num:'07',name:'Analítica <em>de Datos</em>',plain:'Analítica de Datos',ico:'<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>',items:['Dashboard de visitas y tráfico en tiempo real','Tracking de campañas por fuente y canal (UTM)','Medición de cobertura y ejecución por PDV','Reportes de impacto, alcance y conversión','Segmentación y perfilamiento de clientes','Alertas automáticas de nuevos leads']},
+  {num:'07',name:'Analítica <em>de Datos</em>',plain:'Analítica de Datos',ico:'<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>',items:['Dashboard de visitas y tráfico en tiempo real','Tracking de campañas por fuente y canal (UTM)','Medición de cobertura y ejecución por PDV','Reportes de impacto, alcance y conversión','Creación de herramientas propias a la medida','Chatbots y automatización de atención al cliente','Segmentación y perfilamiento de clientes','Alertas automáticas de nuevos leads']},
 ];
 document.getElementById('srvGrid').innerHTML=SERVICES.map((s,i)=>`
   <div class="sc reveal${i%3===1?' reveal-d1':i%3===2?' reveal-d2':''}">
@@ -3527,8 +3557,7 @@ CATS.forEach((c,i)=>{
   const btn=document.createElement('button');
   btn.className='pf'+(c.id==='all'?' on':'');
   btn.dataset.cat=c.id;
-  const count=c.id==='all'?PORT.length:PORT.filter(p=>p.cat===c.id).length;
-  btn.innerHTML=`${c.lbl}<span class="pf-count">${count}</span>`;
+  btn.innerHTML=c.lbl;
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.pf').forEach(b=>b.classList.remove('on'));
     btn.classList.add('on');
@@ -3545,7 +3574,6 @@ function renderP(){
   const empty=document.getElementById('pempty');
   const nav=document.getElementById('pnav');
   const dots=document.getElementById('pdots');
-  pfTotal.innerHTML=`Mostrando <em>${pItems.length}</em> proyecto${pItems.length===1?'':'s'}`;
   if(!pItems.length){track.innerHTML='';empty.classList.add('show');nav.style.display='none';return}
   empty.classList.remove('show');nav.style.display='flex';
   const pp=ipp(),pages=Math.ceil(pItems.length/pp);
@@ -3569,8 +3597,6 @@ function renderP(){
         <div class="p-info">
           <div class="p-meta">
             <span class="p-meta-cat">${item.catLabel}</span>
-            <span class="p-meta-dot"></span>
-            <span class="p-meta-year">${item.year}</span>
           </div>
           <div class="p-title">${item.title}</div>
           <div class="p-desc">${item.desc}</div>
@@ -3613,7 +3639,7 @@ function openPd(idx){
       <button class="pd-close" onclick="closePd()" aria-label="Cerrar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <div class="pd-hero-badge">${p.catLabel} · ${p.year}</div>
+      <div class="pd-hero-badge">${p.catLabel}</div>
       <div class="pd-hero-title">
         <div class="pd-hero-client">${p.client}</div>
         <div class="pd-hero-h">${p.title.replace(/·/g,'<em>·</em>')}</div>
@@ -3803,6 +3829,36 @@ const RESULTS=[
      {t:'Frescura Garantizada',q:'El control diario de fechas y rotación redujo a cero los agotados críticos en el lineal refrigerado.',ico:'<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 11 18 16 13"/>'},
      {t:'Shopper Familiar',q:'Las degustaciones dirigidas al núcleo familiar reforzaron la preferencia de marca en el canal moderno.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'}
    ]},
+
+  {cat:'tech',catLabel:'Tecnología & Datos',brand:'Dashboard de Analítica MFD',tag:'Business Intelligence Propio',
+   ico:'<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>',
+   objetivo:'Dar a cada cliente visibilidad en tiempo real sobre el desempeño de su sitio web y sus campañas — sin depender de reportes manuales.',
+   canal:'Herramienta propia — Dashboard web conectado a hoja de cálculo en la nube',
+   narrative:'Desarrollamos una herramienta de analítica propia que registra cada visita, clic y conversión del sitio web en un panel visual con gráficas de tendencia, mapas de origen y ranking de contenido más visto. El sistema envía alertas automáticas cada vez que llega un nuevo contacto, para que el equipo comercial responda en minutos y no en días. Toda la información queda centralizada y disponible desde cualquier dispositivo, sin depender de reportes manuales ni hojas de cálculo sueltas.',
+   kCard:[{n:'Tiempo',l:'Real'},{n:'Auto',l:'Alertas'}],
+   kModal:[{n:'100%',l:'Automatizado'},{n:'0',l:'Reportes Manuales'},{n:'24/7',l:'Disponible'}],
+   insights:[
+     {t:'Decisiones con Datos',q:'Cada sección del sitio, cada clic y cada conversación queda registrada y visible en un solo panel.',ico:'<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>'},
+     {t:'Cero Fricción Comercial',q:'Una alerta automática llega al equipo apenas alguien muestra interés — nadie se pierde en el camino.',ico:'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>'}
+   ]},
+
+  {cat:'tech',catLabel:'Tecnología & Datos',brand:'Chatbot de WhatsApp para Clientes',tag:'Automatización de Atención',
+   ico:'<rect x="5" y="8" width="14" height="10" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="13" r="1.3" fill="currentColor"/><circle cx="15" cy="13" r="1.3" fill="currentColor"/><path d="M9 16.5h6"/>',
+   objetivo:'Reducir el tiempo de respuesta y guiar al cliente potencial hacia el servicio exacto que necesita, desde el primer mensaje.',
+   canal:'WhatsApp Business — Mensaje automatizado con menú de opciones',
+   narrative:'Diseñamos un flujo conversacional que recibe al visitante con un mensaje ya redactado, presentando las líneas de servicio disponibles como un menú simple de opciones. El cliente elige el número que le interesa —o escribe su propio proyecto— y el equipo comercial recibe la conversación ya contextualizada, sin necesidad de preguntas repetitivas. El resultado es una atención más rápida y una primera impresión más profesional, disponible las 24 horas desde cualquier parte del sitio.',
+   kCard:[{n:'1',l:'Toque para Iniciar'},{n:'24/7',l:'Disponible'}],
+   kModal:[{n:'24/7',l:'Disponible'},{n:'8',l:'Opciones Guiadas'},{n:'Cero',l:'Fricción Inicial'}],
+   device:{messages:[
+     {from:'user',text:'¡Hola MFD! 👋 Quiero cotizar un servicio, cuéntenme más sobre:\n1️⃣ Personal & Logística\n2️⃣ Producción Técnica\n3️⃣ Activación de Marca...'},
+     {from:'bot',text:'¡Hola! Con gusto 🙌 ¿Cuál línea te interesa? Escribe el número o cuéntanos tu proyecto.'},
+     {from:'user',text:'6️⃣ Analítica de Datos'},
+     {from:'bot',text:'Perfecto ✅ Te comparto la info y agendamos una llamada esta semana.'}
+   ]},
+   insights:[
+     {t:'Primer Contacto sin Fricción',q:'El cliente no tiene que pensar qué escribir — el mensaje ya viene listo con las opciones al alcance de un toque.',ico:'<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>'},
+     {t:'Contexto desde el Minuto Uno',q:'El equipo comercial sabe exactamente qué le interesa al cliente antes de responder el primer mensaje.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'}
+   ]},
 ];
 
 const RS_CATS=[
@@ -3810,12 +3866,13 @@ const RS_CATS=[
   {id:'lic',lbl:'Licores'},
   {id:'mas',lbl:'Consumo Masivo'},
   {id:'bel',lbl:'Belleza & Cuidado'},
+  {id:'tech',lbl:'Tecnología & Datos'},
 ];
 
 document.getElementById('rsSummary').innerHTML=`
-  <div class="rs-stat"><div class="rs-stat-n">${RESULTS.length}</div><div class="rs-stat-l">Campañas documentadas</div></div>
+  <div class="rs-stat"><div class="rs-stat-n"><em>15+</em></div><div class="rs-stat-l">Años de trayectoria</div></div>
   <div class="rs-stat"><div class="rs-stat-n"><em>94%</em></div><div class="rs-stat-l">Eficacia promedio</div></div>
-  <div class="rs-stat"><div class="rs-stat-n">3</div><div class="rs-stat-l">Sectores estratégicos</div></div>
+  <div class="rs-stat"><div class="rs-stat-n" style="font-size:1.5rem">Multisector</div><div class="rs-stat-l">Licores · Masivo · Belleza · Datos</div></div>
   <div class="rs-stat"><div class="rs-stat-n"><em>100%</em></div><div class="rs-stat-l">Ejecución garantizada</div></div>`;
 
 const rsFiltersEl=document.getElementById('rsFilters');
@@ -3823,10 +3880,9 @@ let rsFilter='all',rsSlide=0,rsMoved=false;
 function rsIpp(){return window.innerWidth<=640?1:window.innerWidth<=960?2:3}
 
 RS_CATS.forEach(c=>{
-  const count=c.id==='all'?RESULTS.length:RESULTS.filter(r=>r.cat===c.id).length;
   const btn=document.createElement('button');
   btn.className='pf'+(c.id==='all'?' on':'');
-  btn.innerHTML=`${c.lbl}<span class="pf-count">${count}</span>`;
+  btn.innerHTML=c.lbl;
   btn.addEventListener('click',()=>{
     document.querySelectorAll('#rsFilters .pf').forEach(b=>b.classList.remove('on'));
     btn.classList.add('on');
@@ -3933,6 +3989,27 @@ function openRs(idx){
       <div class="rs-kpi-grid">
         ${r.kModal.map(k=>`<div class="rs-kpi-lg"><b>${k.n}</b><span>${k.l}</span></div>`).join('')}
       </div>
+      ${r.device?`
+      <div class="rs-device-wrap">
+        <div>
+          <div class="rs-phone">
+            <div class="rs-phone-notch"></div>
+            <div class="rs-phone-screen">
+              <div class="rs-phone-bar">
+                <div class="rs-phone-avatar">MFD</div>
+                <div>
+                  <div class="rs-phone-name">MFD Marketing &amp; Eventos</div>
+                  <div class="rs-phone-status">en línea</div>
+                </div>
+              </div>
+              <div class="rs-phone-chat">
+                ${r.device.messages.map(m=>`<div class="rs-msg ${m.from}">${m.text}</div>`).join('')}
+              </div>
+            </div>
+          </div>
+          <div class="rs-phone-cap">Flujo real · WhatsApp Business</div>
+        </div>
+      </div>`:''}
       ${r.insights.map(ins=>`
         <div class="rs-insight">
           <div class="rs-insight-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${ins.ico}</svg></div>
