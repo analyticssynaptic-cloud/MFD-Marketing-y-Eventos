@@ -1577,9 +1577,36 @@ ul,ol{list-style:none}
 .an-live-dot.sm{width:6px;height:6px}
 
 /* -- consola del demo -- */
+.an-demo-cta-wrap{text-align:center;margin-bottom:24px}
+.an-demo-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:18px 34px;background:var(--r);color:#fff;
+  border-radius:100px;font-weight:600;font-size:1rem;
+  transition:transform var(--bounce),background var(--t1),box-shadow var(--t1);
+  box-shadow:var(--sh-r);cursor:pointer;
+}
+.an-demo-cta:hover{transform:translateY(-3px);background:var(--r-d);box-shadow:0 20px 44px rgba(192,20,26,.4)}
+.an-demo-cta svg{width:18px;height:18px}
+.an-demo-cta-hint{
+  display:block;margin-top:14px;
+  font-family:var(--cond);font-size:.72rem;font-weight:600;
+  letter-spacing:2px;color:var(--muted);text-transform:uppercase;
+}
+
 .an-demo-frame{
-  background:var(--surface);border:1.5px solid var(--line);border-radius:28px;
-  padding:44px;box-shadow:var(--sh-2);
+  background:var(--surface);border:1.5px solid transparent;border-radius:28px;
+  padding:0 44px;box-shadow:none;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .7s cubic-bezier(.22,1,.36,1),opacity .5s ease,padding .6s ease,border-color .4s ease,box-shadow .4s ease;
+}
+.an-demo-frame.open{max-height:2400px;opacity:1;padding:44px;border-color:var(--line);box-shadow:var(--sh-2)}
+@media(max-width:960px){
+  .an-demo-frame{padding:0 22px}
+  .an-demo-frame.open{max-height:3200px;padding:32px 22px}
+}
+@media(max-width:520px){
+  .an-demo-frame{padding:0 16px}
+  .an-demo-frame.open{padding:26px 16px;border-radius:22px}
 }
 .an-console{
   display:grid;grid-template-columns:300px 1fr;gap:40px;
@@ -1737,7 +1764,6 @@ ul,ol{list-style:none}
   .an-head{grid-template-columns:1fr;gap:22px}
   .an-benefits{grid-template-columns:1fr 1fr}
   .an-kpi-strip{grid-template-columns:1fr 1fr}
-  .an-demo-frame{padding:32px 22px}
   .an-console{grid-template-columns:1fr}
   .an-phone-col{max-width:300px;margin:0 auto 32px}
 }
@@ -1745,7 +1771,6 @@ ul,ol{list-style:none}
   .an-benefits{grid-template-columns:1fr}
 }
 @media(max-width:520px){
-  .an-demo-frame{padding:26px 16px;border-radius:22px}
   .an-panel{padding:22px 18px}
   .an-kpis{grid-template-columns:1fr 1fr}
   .an-kpi:last-child{grid-column:1/-1}
@@ -1801,41 +1826,93 @@ ul,ol{list-style:none}
 /* pausa SOLO cuando el cursor está sobre una card, no sobre toda la franja */
 .cli-belt-wrap:has(.cli-card:hover) .cli-belt{animation-play-state:paused}
 
+.cli-ally-wrap{margin-top:70px;position:relative}
+.cli-ally-eyebrow{
+  text-align:center;margin-bottom:22px;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:3px;color:var(--r);text-transform:uppercase;
+}
+.cli-ally-eyebrow::before,.cli-ally-eyebrow::after{
+  content:'';height:1px;flex:1;max-width:80px;background:linear-gradient(90deg,transparent,var(--line-2),transparent);
+}
 .cli-ally{
-  margin-top:56px;background:#fff;border:1.5px solid var(--line);
-  border-radius:24px;padding:36px 40px;
-  display:flex;gap:26px;align-items:flex-start;
-  box-shadow:var(--sh-1);position:relative;overflow:hidden;
+  background:var(--grad-dark);color:#fff;
+  border-radius:30px;padding:56px 60px;
+  display:grid;grid-template-columns:1fr 1.3fr;gap:52px;align-items:center;
+  box-shadow:0 30px 70px rgba(24,16,14,.25);
+  position:relative;overflow:hidden;
 }
 .cli-ally::before{
-  content:'';position:absolute;top:0;left:0;bottom:0;width:4px;
-  background:var(--grad-red);
+  content:'';position:absolute;top:-100px;right:-80px;
+  width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(192,20,26,.22) 0%,transparent 70%);
+  pointer-events:none;
 }
-.cli-ally-ico{
-  width:56px;height:56px;border-radius:16px;flex-shrink:0;
-  background:var(--r-soft);color:var(--r);
-  display:flex;align-items:center;justify-content:center;
+.cli-ally::after{
+  content:'';position:absolute;bottom:-80px;left:-60px;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,97,.1) 0%,transparent 70%);
+  pointer-events:none;
 }
-.cli-ally-ico svg{width:26px;height:26px;stroke-width:1.7}
+.cli-ally-logo{
+  position:relative;z-index:1;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;padding:38px 32px;
+  backdrop-filter:blur(8px);text-align:center;
+  transition:transform var(--t2),border-color var(--t2);
+}
+.cli-ally-logo:hover{transform:translateY(-4px);border-color:rgba(192,20,26,.4)}
+.cli-ally-logo svg{width:100%;max-width:230px;height:auto;display:block;margin:0 auto}
+.cli-ally-logo-cap{
+  margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);
+  font-family:var(--cond);font-size:.68rem;font-weight:700;
+  letter-spacing:2.4px;color:rgba(255,255,255,.5);text-transform:uppercase;
+}
+.cli-ally-copy{position:relative;z-index:1}
 .cli-ally-tag{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(192,20,26,.18);border:1px solid rgba(192,20,26,.4);
+  padding:6px 14px;border-radius:100px;margin-bottom:16px;
   font-family:var(--cond);font-size:.7rem;font-weight:700;
-  letter-spacing:2.2px;color:var(--r);text-transform:uppercase;margin-bottom:8px;
+  letter-spacing:2px;color:#fff;text-transform:uppercase;
 }
+.cli-ally-tag svg{width:12px;height:12px;color:var(--r-v)}
 .cli-ally-title{
-  font-family:var(--display);font-weight:700;font-size:1.35rem;
-  letter-spacing:-.012em;color:var(--ink);line-height:1.3;margin-bottom:10px;
+  font-family:var(--display);font-weight:700;font-size:1.85rem;
+  letter-spacing:-.02em;color:#fff;line-height:1.15;margin-bottom:14px;
 }
-.cli-ally-title em{font-style:italic;color:var(--r);font-weight:600}
-.cli-ally-p{font-size:.92rem;color:var(--slate);line-height:1.65;margin-bottom:16px}
-.cli-ally-stats{display:flex;flex-wrap:wrap;gap:8px}
-.cli-ally-chip{
-  background:var(--cream);border:1px solid var(--line);
-  padding:6px 14px;border-radius:100px;
-  font-family:var(--cond);font-size:.72rem;font-weight:700;
-  letter-spacing:1.2px;color:var(--slate);text-transform:uppercase;
+.cli-ally-title em{font-style:italic;color:var(--r-v);font-weight:600}
+.cli-ally-p{font-size:1rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:24px}
+.cli-ally-metrics{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+}
+.cli-ally-metric{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:16px 12px;text-align:center;
+  transition:border-color var(--t1),background var(--t1);
+}
+.cli-ally-metric:hover{border-color:rgba(192,20,26,.35);background:rgba(192,20,26,.08)}
+.cli-ally-metric b{
+  display:block;font-family:var(--display);font-weight:700;font-size:1.65rem;
+  color:#fff;letter-spacing:-.01em;line-height:1;
+}
+.cli-ally-metric b em{color:var(--r-v);font-style:normal}
+.cli-ally-metric span{
+  font-family:var(--cond);font-size:.62rem;font-weight:600;
+  letter-spacing:1.6px;color:rgba(255,255,255,.5);text-transform:uppercase;
+  display:block;margin-top:6px;
+}
+
+@media(max-width:960px){
+  .cli-ally{grid-template-columns:1fr;gap:36px;padding:44px 36px}
+  .cli-ally-logo{max-width:320px;margin:0 auto}
 }
 @media(max-width:640px){
-  .cli-ally{flex-direction:column;padding:28px 24px;margin-top:40px}
+  .cli-ally-wrap{margin-top:50px}
+  .cli-ally{padding:36px 24px;border-radius:24px}
+  .cli-ally-title{font-size:1.5rem}
+  .cli-ally-metrics{grid-template-columns:1fr;gap:10px}
 }
 
 .cli-card{
@@ -3145,10 +3222,18 @@ body.ready .hl-line>span{transform:none}
     <div class="an-demo-head reveal">
       <div class="eyebrow">Pruébelo usted mismo</div>
       <h3>¿Quiere verlo <em>en acción</em>?</h3>
-      <p>Interactúe con este mini chatbot de ejemplo y observe cómo cada mensaje se convierte en datos, gráficas e informes — en tiempo real, frente a sus ojos.</p>
+      <p>Un mini chatbot que convierte cada mensaje en datos, gráficas e informes — en tiempo real, frente a sus ojos.</p>
     </div>
 
-    <div class="an-demo-frame reveal reveal-d1">
+    <div class="an-demo-cta-wrap reveal reveal-d1">
+      <button class="an-demo-cta" id="anDemoToggle" aria-expanded="false" aria-controls="anDemoFrame">
+        <svg viewBox="0 0 24 24" fill="currentColor" id="anDemoIcon"><polygon points="7,4 21,12 7,20"/></svg>
+        <span id="anDemoToggleLabel">Iniciar demo interactivo</span>
+      </button>
+      <span class="an-demo-cta-hint">Tarda 30 segundos · 100% en vivo</span>
+    </div>
+
+    <div class="an-demo-frame" id="anDemoFrame">
       <div class="an-console">
 
         <div class="an-phone-col">
@@ -3239,19 +3324,44 @@ body.ready .hl-line>span{transform:none}
   </div>
 
   <div class="wrap">
-    <div class="cli-ally reveal reveal-d2">
-      <div class="cli-ally-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-      </div>
-      <div>
-        <div class="cli-ally-tag">Alianza estratégica</div>
-        <h3 class="cli-ally-title">Además de nuestros clientes directos, somos aliados de <em>EFICACIA</em>.</h3>
-        <p class="cli-ally-p">Junto a EFICACIA hemos ejecutado más de 30 campañas en distintos frentes — impulso, activación, logística y producción — llevando nuestra operación a nuevas marcas y regiones del país.</p>
-        <div class="cli-ally-stats">
-          <span class="cli-ally-chip">+30 campañas</span>
-          <span class="cli-ally-chip">Múltiples frentes</span>
-          <span class="cli-ally-chip">Alcance ampliado</span>
+    <div class="cli-ally-wrap reveal reveal-d2">
+      <div class="cli-ally-eyebrow">Alianza estratégica</div>
+      <div class="cli-ally">
+
+        <div class="cli-ally-logo">
+          <svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg" aria-label="EFICACIA">
+            <defs>
+              <linearGradient id="efGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="100%" stop-color="#F4EDEB"/>
+              </linearGradient>
+            </defs>
+            <g transform="translate(20 26)">
+              <rect x="0" y="0" width="66" height="66" rx="14" fill="#D91E25"/>
+              <path d="M14 24 L34 12 L54 24 L54 46 L34 58 L14 46 Z" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="34" cy="33" r="4.5" fill="#FFFFFF"/>
+              <path d="M20 33 L28 41 L48 21" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <text x="105" y="70" font-family="Bebas Neue,Barlow Condensed,sans-serif" font-size="42" font-weight="700" fill="url(#efGrad)" letter-spacing="4">EFICACIA</text>
+            <text x="106" y="92" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,.5)" letter-spacing="4">FUERZA DE VENTAS &amp; EJECUCIÓN</text>
+          </svg>
+          <div class="cli-ally-logo-cap">Nuestro socio operativo</div>
         </div>
+
+        <div class="cli-ally-copy">
+          <div class="cli-ally-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Alianza estratégica
+          </div>
+          <h3 class="cli-ally-title">Junto a <em>EFICACIA</em> multiplicamos el alcance de cada marca.</h3>
+          <p class="cli-ally-p">Más de <strong style="color:#fff">30 campañas ejecutadas en conjunto</strong> — impulso, activación, logística y producción — que nos permiten llegar a más marcas, más ciudades y más canales, con la misma calidad de siempre.</p>
+          <div class="cli-ally-metrics">
+            <div class="cli-ally-metric"><b><em>+30</em></b><span>Campañas juntos</span></div>
+            <div class="cli-ally-metric"><b><em>4</em></b><span>Frentes operativos</span></div>
+            <div class="cli-ally-metric"><b><em>100<em>%</em></em></b><span>Estándar MFD</span></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -4443,6 +4553,21 @@ AN_OPTIONS.forEach(o=>{
   chip.textContent=o.label;
   chip.addEventListener('click',()=>anSend(o));
   anChipsEl.appendChild(chip);
+});
+
+/* toggle del demo — oculto hasta el clic */
+const anDemoFrame=document.getElementById('anDemoFrame');
+const anDemoToggle=document.getElementById('anDemoToggle');
+const anDemoToggleLabel=document.getElementById('anDemoToggleLabel');
+const anDemoIcon=document.getElementById('anDemoIcon');
+anDemoToggle.addEventListener('click',()=>{
+  const open=anDemoFrame.classList.toggle('open');
+  anDemoToggle.setAttribute('aria-expanded',open?'true':'false');
+  anDemoToggleLabel.textContent=open?'Cerrar demo':'Iniciar demo interactivo';
+  anDemoIcon.innerHTML=open
+    ?'<line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>'
+    :'<polygon points="7,4 21,12 7,20"/>';
+  if(open){mfdTrack('demo_abierto');setTimeout(()=>anDemoFrame.scrollIntoView({behavior:'smooth',block:'center'}),200)}
 });
 
 const anInputEl=document.getElementById('anInput');
