@@ -942,16 +942,32 @@ ul,ol{list-style:none}
   content:'';width:5px;height:5px;border-radius:50%;
   background:var(--r);flex-shrink:0;margin-top:.5em;
 }
-.sc-back-cta{
+.sc-back-ctas{
   margin-top:16px;padding-top:16px;
   border-top:1px solid var(--line);
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--cond);font-size:.76rem;font-weight:700;
-  letter-spacing:2.2px;color:var(--r);text-transform:uppercase;
-  transition:gap var(--t1);
+  display:flex;gap:8px;
 }
-.sc-back-cta:hover{gap:13px}
-.sc-back-cta svg{width:14px;height:14px;stroke-width:2.4}
+.sc-cta-wa,.sc-cta-mail{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 14px;border-radius:100px;
+  font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:1.6px;text-transform:uppercase;
+  transition:all var(--t1);
+}
+.sc-cta-wa{
+  flex:1;background:#25D366;color:#fff;
+  box-shadow:0 6px 18px rgba(37,211,102,.28);
+}
+.sc-cta-wa:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,211,102,.42);background:#1FBB58}
+.sc-cta-wa svg{width:16px;height:16px}
+.sc-cta-mail{
+  background:var(--cream);color:var(--slate);
+  border:1px solid var(--line-2);
+}
+.sc-cta-mail:hover{background:var(--r-tint);color:var(--r);border-color:var(--r)}
+.sc-cta-mail svg{width:15px;height:15px}
+.sc-cta-mail span{display:none}
+@media(min-width:1080px){.sc-cta-mail span{display:inline}}
 
 @media(max-width:960px){
   .srv-intro{grid-template-columns:1fr;gap:22px;margin-bottom:44px}
@@ -1036,14 +1052,15 @@ ul,ol{list-style:none}
 }
 .p-card:hover .p-hover{opacity:1}
 .p-hover-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:12px 22px;background:#fff;color:var(--ink);
-  border-radius:100px;font-family:var(--cond);font-size:.8rem;
+  display:inline-flex;align-items:center;gap:11px;
+  padding:14px 26px;background:var(--r);color:#fff;
+  border-radius:100px;font-family:var(--cond);font-size:.82rem;
   font-weight:700;letter-spacing:2.4px;text-transform:uppercase;
-  box-shadow:0 12px 30px rgba(0,0,0,.5);
-  transform:translateY(10px);transition:transform .35s ease;
+  box-shadow:0 16px 36px rgba(192,20,26,.45),0 0 0 1px rgba(255,255,255,.1) inset;
+  transform:translateY(14px) scale(.92);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
 }
-.p-card:hover .p-hover-btn{transform:translateY(0)}
+.p-card:hover .p-hover-btn{transform:translateY(0) scale(1)}
 .p-hover-btn svg{width:14px;height:14px;stroke-width:2.4}
 
 .p-info{padding:22px 24px 24px;position:relative}
@@ -1270,7 +1287,7 @@ ul,ol{list-style:none}
 .rs-card{
   height:100%;
   background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
-  border-radius:20px;padding:28px 26px;cursor:pointer;
+  border-radius:20px;cursor:pointer;overflow:hidden;
   display:flex;flex-direction:column;
   transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow var(--t1),border-color var(--t1),background var(--t1),z-index 0s;
 }
@@ -1279,6 +1296,21 @@ ul,ol{list-style:none}
   background:rgba(255,255,255,.07);box-shadow:0 30px 64px rgba(0,0,0,.5);
   position:relative;z-index:5;
 }
+.rs-card-img{
+  position:relative;aspect-ratio:16/9;overflow:hidden;background:#1a0f11;
+}
+.rs-card-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .7s cubic-bezier(.22,1,.36,1),filter var(--t1);
+  filter:brightness(.75) saturate(1.05);
+}
+.rs-card:hover .rs-card-img img{transform:scale(1.08);filter:brightness(.9) saturate(1.1)}
+.rs-card-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(15,7,8,.85));
+  pointer-events:none;
+}
+.rs-card-body{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
 .rs-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
 .rs-ico{
   width:52px;height:52px;border-radius:14px;
@@ -1352,8 +1384,18 @@ ul,ol{list-style:none}
 .rs-hero{
   position:relative;padding:40px 40px 32px;
   background:linear-gradient(135deg,rgba(192,20,26,.22),rgba(24,16,14,.4));
-  border-bottom:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden;
 }
+.rs-hero-img{
+  position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;
+  filter:brightness(.35) saturate(1.1);
+}
+.rs-hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(192,20,26,.35),rgba(24,16,14,.85));
+}
+.rs-hero > *:not(.rs-hero-img){position:relative;z-index:1}
 .rs-hero::after{
   content:'';position:absolute;right:-30px;top:-30px;
   width:200px;height:200px;border-radius:50%;
@@ -1531,7 +1573,159 @@ ul,ol{list-style:none}
 .an-benefit p{font-size:.88rem;color:var(--slate);line-height:1.6}
 
 .an-kpi-strip{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:70px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:60px;
+}
+
+/* -- Mockup del dashboard -- */
+.an-dash-showcase{
+  display:grid;grid-template-columns:1fr 1.35fr;gap:44px;
+  align-items:center;margin-bottom:70px;
+}
+.an-dash-copy .eyebrow{margin-bottom:14px}
+.an-dash-copy h3{
+  font-family:var(--display);font-weight:700;font-size:1.75rem;
+  letter-spacing:-.018em;color:var(--ink);line-height:1.15;margin-bottom:14px;
+}
+.an-dash-copy h3 em{font-style:italic;color:var(--r);font-weight:600}
+.an-dash-copy p{font-size:.98rem;color:var(--slate);line-height:1.7;margin-bottom:18px}
+.an-dash-features{list-style:none;display:flex;flex-direction:column;gap:10px}
+.an-dash-features li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.9rem;color:var(--slate);line-height:1.5;
+}
+.an-dash-features svg{width:16px;height:16px;color:var(--r);stroke-width:2.5;flex-shrink:0;margin-top:.2em}
+.an-dash-features b{color:var(--ink);font-weight:600}
+
+.an-dash-mock{
+  position:relative;
+  background:linear-gradient(160deg,#1a0f11,#241518);
+  border-radius:22px;padding:22px;
+  box-shadow:0 30px 70px rgba(24,16,14,.35);
+  overflow:hidden;
+}
+.an-dash-mock::before{
+  content:'';position:absolute;top:-100px;right:-80px;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(192,20,26,.28) 0%,transparent 70%);
+  pointer-events:none;
+}
+.an-dash-window{
+  position:relative;z-index:1;
+  background:#0f0708;border-radius:14px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.06);
+}
+.an-dash-bar{
+  background:#1a0f11;padding:10px 14px;
+  display:flex;align-items:center;gap:10px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.an-dash-dots{display:flex;gap:5px}
+.an-dash-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15)}
+.an-dash-dots span:nth-child(1){background:#FF5F56}
+.an-dash-dots span:nth-child(2){background:#FFBD2E}
+.an-dash-dots span:nth-child(3){background:#27C93F}
+.an-dash-url{
+  flex:1;background:rgba(255,255,255,.05);border-radius:6px;
+  padding:4px 10px;
+  font-family:var(--cond);font-size:.66rem;font-weight:600;
+  letter-spacing:1.2px;color:rgba(255,255,255,.5);text-transform:lowercase;
+}
+.an-dash-content{padding:20px}
+.an-dash-title{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;
+}
+.an-dash-h{
+  font-family:var(--display);font-weight:700;font-size:.95rem;
+  color:#fff;letter-spacing:-.01em;
+}
+.an-dash-live{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--cond);font-size:.58rem;font-weight:700;
+  letter-spacing:1.6px;color:rgba(255,255,255,.5);text-transform:uppercase;
+}
+.an-dash-live-dot{
+  width:6px;height:6px;border-radius:50%;background:#27C93F;
+  animation:pulse 2s infinite;
+}
+.an-dash-kpis{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;
+}
+.an-dash-kpi{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+  border-radius:10px;padding:10px 8px;text-align:center;
+}
+.an-dash-kpi b{
+  display:block;font-family:var(--display);font-weight:700;font-size:1.1rem;
+  color:#fff;letter-spacing:-.01em;line-height:1;
+}
+.an-dash-kpi b em{color:var(--r-v);font-style:normal}
+.an-dash-kpi span{
+  font-family:var(--cond);font-size:.52rem;font-weight:600;
+  letter-spacing:1px;color:rgba(255,255,255,.42);text-transform:uppercase;
+  display:block;margin-top:4px;
+}
+.an-dash-chart{
+  background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);
+  border-radius:10px;padding:14px;margin-bottom:12px;
+}
+.an-dash-chart-h{
+  display:flex;justify-content:space-between;margin-bottom:8px;
+  font-family:var(--cond);font-size:.62rem;font-weight:700;
+  letter-spacing:1.4px;color:rgba(255,255,255,.5);text-transform:uppercase;
+}
+.an-dash-chart-h em{color:var(--r-v);font-style:normal}
+.an-dash-chart svg{width:100%;height:80px;display:block}
+.an-dash-bottom{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+}
+.an-dash-mini{
+  background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);
+  border-radius:10px;padding:12px;
+}
+.an-dash-mini-h{
+  font-family:var(--cond);font-size:.6rem;font-weight:700;
+  letter-spacing:1.4px;color:rgba(255,255,255,.42);text-transform:uppercase;margin-bottom:8px;
+}
+.an-dash-bars{display:flex;flex-direction:column;gap:6px}
+.an-dash-bar-row{display:grid;grid-template-columns:60px 1fr 22px;align-items:center;gap:6px}
+.an-dash-bar-lbl{
+  font-family:var(--cond);font-size:.6rem;font-weight:600;
+  color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.4px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.an-dash-bar-track{
+  height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;
+}
+.an-dash-bar-fill{
+  height:100%;background:var(--grad-red);border-radius:3px;
+  animation:an-dash-bar 2.2s ease-in-out infinite;
+}
+@keyframes an-dash-bar{
+  0%,100%{transform:scaleX(1)}
+  50%{transform:scaleX(.85)}
+}
+.an-dash-bar-val{
+  font-family:var(--display);font-weight:700;font-size:.66rem;
+  color:#fff;letter-spacing:-.01em;text-align:right;
+}
+.an-dash-donut-wrap{display:flex;align-items:center;gap:12px}
+.an-dash-donut{width:52px;height:52px;flex-shrink:0}
+.an-dash-donut circle{fill:none;stroke-width:8;stroke-linecap:round}
+.an-dash-donut-legend{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.an-dash-donut-legend div{
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--cond);font-size:.58rem;font-weight:600;
+  letter-spacing:.4px;color:rgba(255,255,255,.6);
+}
+.an-dash-donut-legend i{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.an-dash-donut-legend b{color:#fff;font-weight:700;margin-left:auto}
+
+@media(max-width:960px){
+  .an-dash-showcase{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:520px){
+  .an-dash-kpis{grid-template-columns:1fr 1fr;gap:6px}
+  .an-dash-bottom{grid-template-columns:1fr}
 }
 .an-kpi-tile{
   background:var(--grad-dark);border-radius:16px;padding:20px 16px;text-align:center;
@@ -1842,7 +2036,9 @@ ul,ol{list-style:none}
   display:grid;grid-template-columns:1fr 1.3fr;gap:52px;align-items:center;
   box-shadow:0 30px 70px rgba(24,16,14,.25);
   position:relative;overflow:hidden;
+  transition:padding-bottom .5s ease;
 }
+.cli-ally:has(.cli-ally-more.open){align-items:start}
 .cli-ally::before{
   content:'';position:absolute;top:-100px;right:-80px;
   width:360px;height:360px;border-radius:50%;
@@ -1857,17 +2053,17 @@ ul,ol{list-style:none}
 }
 .cli-ally-logo{
   position:relative;z-index:1;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  border-radius:20px;padding:38px 32px;
-  backdrop-filter:blur(8px);text-align:center;
-  transition:transform var(--t2),border-color var(--t2);
+  background:#fff;border:1px solid rgba(255,255,255,.15);
+  border-radius:20px;padding:42px 34px 30px;text-align:center;
+  transition:transform var(--t2),box-shadow var(--t2);
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
 }
-.cli-ally-logo:hover{transform:translateY(-4px);border-color:rgba(192,20,26,.4)}
+.cli-ally-logo:hover{transform:translateY(-4px);box-shadow:0 30px 70px rgba(0,0,0,.35)}
 .cli-ally-logo svg{width:100%;max-width:230px;height:auto;display:block;margin:0 auto}
 .cli-ally-logo-cap{
-  margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);
+  margin-top:22px;padding-top:18px;border-top:1px solid rgba(15,26,46,.1);
   font-family:var(--cond);font-size:.68rem;font-weight:700;
-  letter-spacing:2.4px;color:rgba(255,255,255,.5);text-transform:uppercase;
+  letter-spacing:2.4px;color:#4A5568;text-transform:uppercase;
 }
 .cli-ally-copy{position:relative;z-index:1}
 .cli-ally-tag{
@@ -1904,9 +2100,56 @@ ul,ol{list-style:none}
   display:block;margin-top:6px;
 }
 
+.cli-ally-expand-btn{
+  display:inline-flex;align-items:center;gap:10px;margin-top:22px;
+  padding:11px 22px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.15);color:#fff;
+  border-radius:100px;font-family:var(--cond);font-size:.76rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+  transition:all var(--t1);
+}
+.cli-ally-expand-btn:hover{background:rgba(192,20,26,.25);border-color:rgba(192,20,26,.5);transform:translateY(-2px)}
+.cli-ally-expand-btn svg{width:13px;height:13px;transition:transform var(--t2)}
+.cli-ally-expand-btn.open svg{transform:rotate(180deg)}
+
+.cli-ally-more{
+  grid-column:1 / -1;position:relative;z-index:1;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .7s cubic-bezier(.22,1,.36,1),opacity .5s ease .1s,margin-top .5s ease;
+  margin-top:0;
+}
+.cli-ally-more.open{max-height:1600px;opacity:1;margin-top:8px}
+.cli-ally-more-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:14px;
+  padding-top:26px;border-top:1px solid rgba(255,255,255,.08);
+}
+.cli-ally-case{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:20px 22px;
+  transition:border-color var(--t1),background var(--t1),transform var(--t1);
+}
+.cli-ally-case:hover{border-color:rgba(192,20,26,.4);background:rgba(192,20,26,.06);transform:translateY(-2px)}
+.cli-ally-case-cat{
+  font-family:var(--cond);font-size:.62rem;font-weight:700;
+  letter-spacing:2px;color:var(--r-v);text-transform:uppercase;margin-bottom:6px;
+}
+.cli-ally-case-t{
+  font-family:var(--display);font-weight:700;font-size:1.02rem;
+  color:#fff;line-height:1.25;margin-bottom:8px;letter-spacing:-.012em;
+}
+.cli-ally-case-p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:12px}
+.cli-ally-case-stats{display:flex;gap:8px;flex-wrap:wrap}
+.cli-ally-case-stat{
+  padding:3px 10px;background:rgba(255,255,255,.06);
+  border-radius:100px;
+  font-family:var(--cond);font-size:.62rem;font-weight:700;
+  letter-spacing:1.4px;color:rgba(255,255,255,.75);text-transform:uppercase;
+}
+
 @media(max-width:960px){
   .cli-ally{grid-template-columns:1fr;gap:36px;padding:44px 36px}
   .cli-ally-logo{max-width:320px;margin:0 auto}
+  .cli-ally-more-grid{grid-template-columns:1fr}
 }
 @media(max-width:640px){
   .cli-ally-wrap{margin-top:50px}
@@ -3219,6 +3462,104 @@ body.ready .hl-line>span{transform:none}
       <div class="an-kpi-tile"><b><em>Auto</em></b><span>Alertas de interés</span></div>
     </div>
 
+    <div class="an-dash-showcase">
+      <div class="an-dash-copy reveal">
+        <div class="eyebrow">Dashboard MFD Analytics</div>
+        <h3>Todos los datos <em>en un solo lugar</em>.</h3>
+        <p>Cada campaña se convierte en un panel visual: tráfico en vivo, secciones más vistas, orígenes de audiencia, conversiones y alertas — todo en tiempo real y accesible desde cualquier dispositivo.</p>
+        <ul class="an-dash-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg><b>Gráficas por día</b> — visitantes, orígenes, dispositivos.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg><b>Ranking de contenido</b> — qué secciones y proyectos ven más.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg><b>Filtros por rango</b> — 7 días, 30 días o todo el histórico.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg><b>Auto-refresh cada 60 s</b> — nada de recargar manualmente.</li>
+        </ul>
+      </div>
+
+      <div class="an-dash-mock reveal reveal-d1">
+        <div class="an-dash-window">
+          <div class="an-dash-bar">
+            <div class="an-dash-dots"><span></span><span></span><span></span></div>
+            <div class="an-dash-url">mfd.analytics/dashboard</div>
+          </div>
+          <div class="an-dash-content">
+            <div class="an-dash-title">
+              <div class="an-dash-h">MFD Analytics — Panel</div>
+              <div class="an-dash-live"><span class="an-dash-live-dot"></span>En vivo</div>
+            </div>
+
+            <div class="an-dash-kpis">
+              <div class="an-dash-kpi"><b>87</b><span>Visitantes</span></div>
+              <div class="an-dash-kpi"><b>173</b><span>Visitas</span></div>
+              <div class="an-dash-kpi"><b><em>6</em></b><span>Briefs</span></div>
+              <div class="an-dash-kpi"><b><em>53%</em></b><span>Móvil</span></div>
+            </div>
+
+            <div class="an-dash-chart">
+              <div class="an-dash-chart-h">
+                <span>Visitantes por día</span>
+                <em>Últimos 30 días</em>
+              </div>
+              <svg viewBox="0 0 300 80" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="dashArea" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#E8484E" stop-opacity=".38"/>
+                    <stop offset="100%" stop-color="#E8484E" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,70 L15,62 L30,55 L45,58 L60,48 L75,52 L90,40 L105,44 L120,32 L135,38 L150,28 L165,34 L180,22 L195,30 L210,18 L225,26 L240,14 L255,20 L270,10 L285,18 L300,8 L300,80 L0,80 Z" fill="url(#dashArea)"/>
+                <path d="M0,70 L15,62 L30,55 L45,58 L60,48 L75,52 L90,40 L105,44 L120,32 L135,38 L150,28 L165,34 L180,22 L195,30 L210,18 L225,26 L240,14 L255,20 L270,10 L285,18 L300,8" fill="none" stroke="#E8484E" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+                <circle cx="300" cy="8" r="3" fill="#E8484E"/>
+                <circle cx="300" cy="8" r="6" fill="#E8484E" opacity=".3"/>
+              </svg>
+            </div>
+
+            <div class="an-dash-bottom">
+              <div class="an-dash-mini">
+                <div class="an-dash-mini-h">Top secciones</div>
+                <div class="an-dash-bars">
+                  <div class="an-dash-bar-row">
+                    <span class="an-dash-bar-lbl">Hero</span>
+                    <div class="an-dash-bar-track"><div class="an-dash-bar-fill" style="width:100%"></div></div>
+                    <span class="an-dash-bar-val">87</span>
+                  </div>
+                  <div class="an-dash-bar-row">
+                    <span class="an-dash-bar-lbl">Servicios</span>
+                    <div class="an-dash-bar-track"><div class="an-dash-bar-fill" style="width:80%;animation-delay:.2s"></div></div>
+                    <span class="an-dash-bar-val">70</span>
+                  </div>
+                  <div class="an-dash-bar-row">
+                    <span class="an-dash-bar-lbl">Portafolio</span>
+                    <div class="an-dash-bar-track"><div class="an-dash-bar-fill" style="width:63%;animation-delay:.4s"></div></div>
+                    <span class="an-dash-bar-val">55</span>
+                  </div>
+                  <div class="an-dash-bar-row">
+                    <span class="an-dash-bar-lbl">Epecar</span>
+                    <div class="an-dash-bar-track"><div class="an-dash-bar-fill" style="width:41%;animation-delay:.6s"></div></div>
+                    <span class="an-dash-bar-val">36</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="an-dash-mini">
+                <div class="an-dash-mini-h">Dispositivos</div>
+                <div class="an-dash-donut-wrap">
+                  <svg viewBox="0 0 60 60" class="an-dash-donut">
+                    <circle cx="30" cy="30" r="22" stroke="rgba(255,255,255,.08)"/>
+                    <circle cx="30" cy="30" r="22" stroke="#E8484E" stroke-dasharray="73 65" stroke-dashoffset="-35" transform="rotate(-90 30 30)"/>
+                    <circle cx="30" cy="30" r="22" stroke="#3E86C8" stroke-dasharray="65 73" stroke-dashoffset="-108" transform="rotate(-90 30 30)"/>
+                  </svg>
+                  <div class="an-dash-donut-legend">
+                    <div><i style="background:#E8484E"></i>Móvil<b>53%</b></div>
+                    <div><i style="background:#3E86C8"></i>Escritorio<b>47%</b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="an-demo-head reveal">
       <div class="eyebrow">Pruébelo usted mismo</div>
       <h3>¿Quiere verlo <em>en acción</em>?</h3>
@@ -3329,23 +3670,48 @@ body.ready .hl-line>span{transform:none}
       <div class="cli-ally">
 
         <div class="cli-ally-logo">
-          <svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg" aria-label="EFICACIA">
+          <svg viewBox="0 0 280 250" xmlns="http://www.w3.org/2000/svg" aria-label="EFICACIA">
             <defs>
-              <linearGradient id="efGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#FFFFFF"/>
-                <stop offset="100%" stop-color="#F4EDEB"/>
+              <radialGradient id="efSphere" cx="30%" cy="28%" r="75%">
+                <stop offset="0%" stop-color="#E8F6FF"/>
+                <stop offset="25%" stop-color="#5EC0F5"/>
+                <stop offset="65%" stop-color="#0E7FC2"/>
+                <stop offset="100%" stop-color="#053A6E"/>
+              </radialGradient>
+              <radialGradient id="efHighlight" cx="30%" cy="25%" r="28%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+                <stop offset="60%" stop-color="#FFFFFF" stop-opacity=".35"/>
+                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="efRing" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#B4E3F7"/>
+                <stop offset="35%" stop-color="#2FA0DE"/>
+                <stop offset="65%" stop-color="#0B6BB5"/>
+                <stop offset="100%" stop-color="#B4E3F7"/>
+              </linearGradient>
+              <linearGradient id="efRing2" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#7FCBEA"/>
+                <stop offset="50%" stop-color="#0E7FC2"/>
+                <stop offset="100%" stop-color="#7FCBEA"/>
               </linearGradient>
             </defs>
-            <g transform="translate(20 26)">
-              <rect x="0" y="0" width="66" height="66" rx="14" fill="#D91E25"/>
-              <path d="M14 24 L34 12 L54 24 L54 46 L34 58 L14 46 Z" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
-              <circle cx="34" cy="33" r="4.5" fill="#FFFFFF"/>
-              <path d="M20 33 L28 41 L48 21" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <g transform="translate(140 100)">
+              <!-- órbita exterior gruesa -->
+              <ellipse cx="0" cy="0" rx="98" ry="34" fill="none" stroke="url(#efRing)" stroke-width="11" transform="rotate(-16)"/>
+              <!-- órbita intermedia -->
+              <ellipse cx="0" cy="0" rx="90" ry="26" fill="none" stroke="url(#efRing2)" stroke-width="4" transform="rotate(-16)"/>
+              <!-- órbita interior sutil -->
+              <ellipse cx="0" cy="0" rx="82" ry="18" fill="none" stroke="#5FB8E5" stroke-width="1.6" opacity=".55" transform="rotate(-16)"/>
+              <!-- esfera principal -->
+              <circle cx="-28" cy="-2" r="32" fill="url(#efSphere)"/>
+              <!-- highlight brillante -->
+              <ellipse cx="-38" cy="-16" rx="14" ry="9" fill="url(#efHighlight)" transform="rotate(-30 -38 -16)"/>
+              <ellipse cx="-38" cy="-16" rx="5" ry="3" fill="#FFFFFF" opacity=".85" transform="rotate(-30 -38 -16)"/>
             </g>
-            <text x="105" y="70" font-family="Bebas Neue,Barlow Condensed,sans-serif" font-size="42" font-weight="700" fill="url(#efGrad)" letter-spacing="4">EFICACIA</text>
-            <text x="106" y="92" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,.5)" letter-spacing="4">FUERZA DE VENTAS &amp; EJECUCIÓN</text>
+            <!-- texto eficacia -->
+            <text x="140" y="210" text-anchor="middle" font-family="Barlow,Arial,sans-serif" font-style="italic" font-weight="900" font-size="60" fill="#1A2332" letter-spacing="-2">eficacia</text>
           </svg>
-          <div class="cli-ally-logo-cap">Nuestro socio operativo</div>
+          <div class="cli-ally-logo-cap">Nuestro socio estratégico</div>
         </div>
 
         <div class="cli-ally-copy">
@@ -3353,12 +3719,87 @@ body.ready .hl-line>span{transform:none}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             Alianza estratégica
           </div>
-          <h3 class="cli-ally-title">Junto a <em>EFICACIA</em> multiplicamos el alcance de cada marca.</h3>
-          <p class="cli-ally-p">Más de <strong style="color:#fff">30 campañas ejecutadas en conjunto</strong> — impulso, activación, logística y producción — que nos permiten llegar a más marcas, más ciudades y más canales, con la misma calidad de siempre.</p>
+          <h3 class="cli-ally-title">Junto a <em>EFICACIA</em> ampliamos el alcance de nuestra operación.</h3>
+          <p class="cli-ally-p">Más de <strong style="color:#fff">30 campañas ejecutadas en conjunto</strong> — impulso, activación, logística y producción — donde nuestra marca opera bajo la alianza para llegar a más ciudades, más canales y más consumidores, siempre con el estándar de calidad MFD.</p>
           <div class="cli-ally-metrics">
             <div class="cli-ally-metric"><b><em>+30</em></b><span>Campañas juntos</span></div>
             <div class="cli-ally-metric"><b><em>4</em></b><span>Frentes operativos</span></div>
             <div class="cli-ally-metric"><b><em>100<em>%</em></em></b><span>Estándar MFD</span></div>
+          </div>
+
+          <button class="cli-ally-expand-btn" id="allyExpandBtn" aria-expanded="false" aria-controls="allyMore">
+            <span id="allyExpandLabel">Ver más campañas ejecutadas</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+        <div class="cli-ally-more" id="allyMore">
+          <div class="cli-ally-more-grid">
+          <div class="cli-ally-case">
+            <div class="cli-ally-case-cat">Consumo Masivo · Nacional</div>
+            <div class="cli-ally-case-t">Impulso y sampling en cadena moderna</div>
+            <p class="cli-ally-case-p">Rutas coordinadas de personal MFD sobre canal cadena, con capacitación técnica de producto y reporte diario por PDV.</p>
+            <div class="cli-ally-case-stats">
+              <span class="cli-ally-case-stat">6 marcas</span>
+              <span class="cli-ally-case-stat">Nacional</span>
+              <span class="cli-ally-case-stat">100% ejecución</span>
+            </div>
+          </div>
+
+          <div class="cli-ally-case">
+            <div class="cli-ally-case-cat">Licores · Premium</div>
+            <div class="cli-ally-case-t">Protocolo y activación on-trade</div>
+            <p class="cli-ally-case-p">Selección de personal capacitado en protocolo de servicio para bares, restaurantes y eventos de marca premium.</p>
+            <div class="cli-ally-case-stats">
+              <span class="cli-ally-case-stat">On-trade</span>
+              <span class="cli-ally-case-stat">+15 ciudades</span>
+              <span class="cli-ally-case-stat">Premium</span>
+            </div>
+          </div>
+
+          <div class="cli-ally-case">
+            <div class="cli-ally-case-cat">Belleza · Farma</div>
+            <div class="cli-ally-case-t">Asesoría técnica en droguerías</div>
+            <p class="cli-ally-case-p">Personal experto en cierre de venta con asesoría sobre uso del producto en droguerías de cadena.</p>
+            <div class="cli-ally-case-stats">
+              <span class="cli-ally-case-stat">Farma</span>
+              <span class="cli-ally-case-stat">Alto ticket</span>
+              <span class="cli-ally-case-stat">Cierre</span>
+            </div>
+          </div>
+
+          <div class="cli-ally-case">
+            <div class="cli-ally-case-cat">Trade Marketing · POP</div>
+            <div class="cli-ally-case-t">Colocación de material POP nacional</div>
+            <p class="cli-ally-case-p">Instalación y auditoría de material publicitario en punto de venta con reporte fotográfico digital por tienda.</p>
+            <div class="cli-ally-case-stats">
+              <span class="cli-ally-case-stat">+10k PDV</span>
+              <span class="cli-ally-case-stat">Auditado</span>
+              <span class="cli-ally-case-stat">Nacional</span>
+            </div>
+          </div>
+
+          <div class="cli-ally-case">
+            <div class="cli-ally-case-cat">Producción · Eventos</div>
+            <div class="cli-ally-case-t">Logística y montaje en giras</div>
+            <p class="cli-ally-case-p">Producción técnica, montaje de estructuras y coordinación logística en giras multi-ciudad de gran formato.</p>
+            <div class="cli-ally-case-stats">
+              <span class="cli-ally-case-stat">Multi-ciudad</span>
+              <span class="cli-ally-case-stat">Gran formato</span>
+              <span class="cli-ally-case-stat">Gira</span>
+            </div>
+          </div>
+
+          <div class="cli-ally-case">
+            <div class="cli-ally-case-cat">Activación · Consumidor</div>
+            <div class="cli-ally-case-t">Sampling y experiencias de marca</div>
+            <p class="cli-ally-case-p">Dinámicas de activación con sampling controlado, experiencia sensorial y captación de datos del consumidor.</p>
+            <div class="cli-ally-case-stats">
+              <span class="cli-ally-case-stat">Sampling</span>
+              <span class="cli-ally-case-stat">Experiencia</span>
+              <span class="cli-ally-case-stat">Datos</span>
+            </div>
+          </div>
           </div>
         </div>
 
@@ -4061,6 +4502,17 @@ const SERVICES=[
   {num:'06',name:'Admin <em>&amp; Gestión</em>',plain:'Admin &amp; Gestión',ico:'<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>',items:['Solicitud y gestión de permisos','Coordinación de pagos a terceros','Endomarketing','Investigación de mercados','Estudios cualitativos y cuantitativos','Relaciones públicas']},
   {num:'07',name:'Analítica <em>de Datos</em>',plain:'Analítica de Datos',ico:'<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>',items:['Dashboard de visitas y tráfico en tiempo real','Tracking de campañas por fuente y canal (UTM)','Medición de cobertura y ejecución por PDV','Reportes de impacto, alcance y conversión','Creación de herramientas propias a la medida','Chatbots y automatización de atención al cliente','Segmentación y perfilamiento de clientes','Alertas automáticas de nuevos leads']},
 ];
+function srvWaLink(s){
+  const plain=s.plain.replace(/&amp;/g,'&').replace(/<[^>]+>/g,'');
+  const msg=`¡Hola MFD! 👋 Quiero cotizar la línea *${s.num} — ${plain}*.\n\nMe interesa saber más sobre:\n• Alcance y cobertura\n• Costos y tiempos\n• Casos de éxito relacionados\n\nGracias 🙌`;
+  return 'https://wa.me/573007353188?text='+encodeURIComponent(msg);
+}
+function srvMailLink(s){
+  const plain=s.plain.replace(/&amp;/g,'&').replace(/<[^>]+>/g,'');
+  const subject=`Cotización — Línea ${s.num}: ${plain}`;
+  const body=`Hola MFD,\n\nQuiero cotizar la línea ${s.num} — ${plain}.\n\nMe gustaría recibir información sobre alcance, costos, tiempos y casos relacionados.\n\nGracias.`;
+  return `mailto:comercial@marketingyeventosmfd.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 document.getElementById('srvGrid').innerHTML=SERVICES.map((s,i)=>`
   <div class="sc reveal${i%3===1?' reveal-d1':i%3===2?' reveal-d2':''}">
     <div class="sc-inner">
@@ -4078,14 +4530,26 @@ document.getElementById('srvGrid').innerHTML=SERVICES.map((s,i)=>`
         <div class="sc-back-eyebrow">Línea ${s.num} · MFD</div>
         <div class="sc-back-name">${s.plain}</div>
         <ul class="sc-list">${s.items.map(it=>`<li>${it}</li>`).join('')}</ul>
-        <a href="#contacto" class="sc-back-cta">
-          Cotizar esta línea
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        <div class="sc-back-ctas">
+          <a href="${srvWaLink(s)}" target="_blank" rel="noopener" class="sc-cta-wa" data-srv-track="wa" data-srv-name="${s.num} — ${s.plain.replace(/&amp;/g,'&').replace(/"/g,'&quot;')}">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>Cotizar por WhatsApp</span>
+          </a>
+          <a href="${srvMailLink(s)}" class="sc-cta-mail" data-srv-track="mail" data-srv-name="${s.num} — ${s.plain.replace(/&amp;/g,'&').replace(/"/g,'&quot;')}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>Correo</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>`).join('');
 document.querySelectorAll('#srvGrid .reveal').forEach(el=>ro.observe(el));
+document.getElementById('srvGrid').addEventListener('click',e=>{
+  const a=e.target.closest('[data-srv-track]');
+  if(!a)return;
+  e.stopPropagation();
+  mfdTrack('cotizar_'+a.dataset.srvTrack,a.dataset.srvName);
+});
 
 /* ══════ PORTAFOLIO ══════ */
 const CATS=[
@@ -4135,12 +4599,12 @@ function renderP(){
           <img src="${item.img}" alt="${item.title}" loading="lazy"/>
           <div class="p-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            ${item.client}
+            ${item.catLabel}
           </div>
           <div class="p-hover">
             <div class="p-hover-btn">
               Ver caso
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
           </div>
         </div>
@@ -4182,7 +4646,7 @@ const pdModal=document.getElementById('pdModal');
 const pdBox=document.getElementById('pdBox');
 function openPd(idx){
   const p=PORT[idx];if(!p)return;
-  mfdTrack('proyecto_visto', p.client+' — '+p.title);
+  mfdTrack('proyecto_visto', p.catLabel+' — '+p.title);
   pdBox.innerHTML=`
     <div class="pd-hero">
       <img src="${p.img}" alt="${p.title}"/>
@@ -4191,7 +4655,6 @@ function openPd(idx){
       </button>
       <div class="pd-hero-badge">${p.catLabel}</div>
       <div class="pd-hero-title">
-        <div class="pd-hero-client">${p.client}</div>
         <div class="pd-hero-h">${p.title.replace(/·/g,'<em>·</em>')}</div>
       </div>
     </div>
@@ -4308,52 +4771,56 @@ const RESULTS=[
      {t:'Velocidad al Anaquel',q:'900 visitas en 12 días aseguraron que el mensaje de herencia llegara al canal moderno y superetes simultáneamente.',ico:'<polygon points="13 2 4 14 11 14 10 22 20 10 13 10 13 2"/>'}
    ]},
 
-  {cat:'lic',catLabel:'Licores',brand:'Suerox',tag:'Activación Táctica de Sampling',
+  {cat:'mas',catLabel:'Bebidas & Hidratación',brand:'Suerox',tag:'Activación Táctica de Sampling en la Costa',
    ico:'<path d="M12 2s7 8.5 7 13a7 7 0 0 1-14 0c0-4.5 7-13 7-13z"/>',
-   objetivo:'Generar rotación inmediata en zonas costeras mediante muestreo masivo en momentos de calor.',
-   canal:'Tradicional e Impacto en Calle (Zonas Costeras)',
-   narrative:'Ejecución al 100% con muestreo masivo bajo condiciones de alto tráfico. Convertimos la necesidad de hidratación en compra inmediata: la entrega de 5.998 muestras se convirtió en 1.649 ventas en 6 días en ciudades costeras. El sampling en frío es el motor de rotación en la Costa — 11.543 impactos reales sin necesidad de degustación, maximizando la eficiencia operativa de los asesores.',
+   objetivo:'Generar rotación inmediata de la línea de bebida hidratante isotónica en zonas costeras mediante muestreo masivo en momentos de calor.',
+   canal:'Tradicional e Impacto en Calle — Barranquilla, Cartagena, Santa Marta',
+   narrative:'Ejecución al 100% con muestreo masivo en frío bajo condiciones de alto tráfico en el Caribe colombiano. Convertimos la necesidad de hidratación en compra inmediata: la entrega de 5.998 muestras frías se convirtió en 1.649 ventas directas en apenas 6 días. El sampling en frío demostró ser el motor de rotación en la Costa — 11.543 impactos reales sin necesidad de degustación adicional, maximizando la eficiencia operativa de los asesores en calle y punto de venta.',
    kCard:[{n:'11.5<em>K</em>',l:'Impactos'},{n:'1.6<em>K</em>',l:'Sell-Out'}],
-   kModal:[{n:'11.5K',l:'Impactos'},{n:'1.6K',l:'Sell-Out'},{n:'5,998',l:'Muestras'},{n:'6d',l:'Duración'}],
+   kModal:[{n:'11.5K',l:'Impactos'},{n:'1.6K',l:'Sell-Out'},{n:'5,998',l:'Muestras'},{n:'27<em>%</em>',l:'Conversión'}],
    insights:[
-     {t:'Conversión de Prueba',q:'Entrega de 5.998 muestras convirtió en 1.649 ventas en 6 días. El sampling en frío es el motor de rotación en la Costa.',ico:'<path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/>'},
-     {t:'Alcance PDV',q:'11.543 impactos reales sin necesidad de degustación, maximizando la eficiencia operativa de los asesores.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'}
+     {t:'Conversión de Prueba',q:'27% de conversión: 5.998 muestras se tradujeron en 1.649 ventas en 6 días. El sampling en frío es el motor de rotación en la Costa Caribe.',ico:'<path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/>'},
+     {t:'Alcance PDV',q:'11.543 impactos reales sin necesidad de degustación repetida — máxima eficiencia operativa por asesor.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'},
+     {t:'Momento Perfecto',q:'La activación en horas de calor máximo (10am–4pm) elevó la disposición de compra frente al competidor.',ico:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>'}
    ]},
 
-  {cat:'lic',catLabel:'Licores',brand:'Meico Vinos',tag:'Estrategia Lifestyle Retail',
+  {cat:'lic',catLabel:'Licores · Vinos',brand:'Meico Vinos',tag:'Estrategia Lifestyle Retail',
    ico:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6"/><path d="M8 20h8"/>',
-   objetivo:'Posicionar el vino como bebida social diaria y desmitificar el ritual de consumo.',
-   canal:'Moderno (Retail y Supermercados)',
-   narrative:'Ejecución al 100% posicionando el vino como bebida social del target joven en Barranquilla — desmitificación del ritual de consumo. El 92% de la venta se concentró entre viernes y sábado: el vino es el aliado del ocio social planificado de los millennials. El supermercado concentró el 93% de las compras; la visibilidad premium fue el factor número uno de éxito.',
+   objetivo:'Posicionar el vino como bebida social diaria del target millennial y desmitificar el ritual de consumo en el canal moderno.',
+   canal:'Moderno (Retail y Supermercados) — Costa Caribe y ciudades principales',
+   narrative:'Ejecución al 100% posicionando el vino como bebida social del target joven en Barranquilla — desmitificación completa del ritual de consumo. El 92% de la venta se concentró entre viernes y sábado: el vino se consolidó como aliado del ocio social planificado de los millennials. El supermercado concentró el 93% de las compras; la visibilidad premium en góndola y la degustación educativa fueron los factores decisivos. Aumento sostenido de share en el segmento joven durante toda la activación.',
    kCard:[{n:'92<em>%</em>',l:'Venta F-S'},{n:'64<em>%</em>',l:'Share Joven'}],
-   kModal:[{n:'92%',l:'Venta Vie-Sáb'},{n:'64%',l:'Share Joven'},{n:'93%',l:'Compra en Súper'}],
+   kModal:[{n:'92%',l:'Venta Vie-Sáb'},{n:'64%',l:'Share Joven'},{n:'93%',l:'Compra en Súper'},{n:'+22<em>%</em>',l:'Rotación'}],
    insights:[
-     {t:'Ventana Social',q:'92% de la venta concentrada en Vie-Sáb. El vino es el aliado del ocio social planificado de los millennials.',ico:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6"/><path d="M8 20h8"/>'},
-     {t:'Canal Dominante',q:'El supermercado concentra el 93% de las compras. La visibilidad premium fue el factor #1 de éxito.',ico:'<circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>'}
+     {t:'Ventana Social',q:'92% de la venta concentrada en Vie-Sáb — el vino se consolidó como bebida del ocio social millennial.',ico:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6"/><path d="M8 20h8"/>'},
+     {t:'Canal Dominante',q:'El supermercado concentró el 93% de las compras. La visibilidad premium en góndola fue el factor #1 de éxito.',ico:'<circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>'},
+     {t:'Educación que Cierra',q:'La degustación educativa —tipo de uva, maridaje, ocasión— convirtió al shopper indeciso en comprador recurrente.',ico:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'}
    ]},
 
-  {cat:'mas',catLabel:'Consumo Masivo',brand:'Natumalta',tag:'Driver de Nutrición y Sabor',
+  {cat:'mas',catLabel:'Bebidas Saludables',brand:'Natumalta',tag:'Driver de Nutrición y Sabor',
    ico:'<polygon points="13 2 4 14 11 14 10 22 20 10 13 10 13 2"/>',
-   objetivo:'Ganar participación mediante el atributo de sabor superior en el mercado saludable.',
-   canal:'Moderno (Retail)',
-   narrative:'Ejecución al 100% capitalizando el atributo de sabor superior para ganar participación en el mercado de bebidas saludables en Bogotá. El 65% elige Natumalta por sabor — la cercanía visual con el shopper infantil garantiza rotación incremental. Bogotá concentra el 55% de la venta nacional; el formato PET 400ml domina el consumo on-the-go.',
+   objetivo:'Ganar participación en el segmento de bebidas de malta saludables mediante el atributo de sabor superior y la conexión con el shopper familiar.',
+   canal:'Moderno (Retail) — Bogotá y ciudades principales',
+   narrative:'Ejecución al 100% capitalizando el atributo de sabor superior para ganar participación en el mercado de bebidas de malta saludables en Bogotá. El 65% de los consumidores eligió Natumalta por sabor por encima del competidor directo — la cercanía visual con el shopper infantil y familiar garantizó rotación incremental sostenida. Bogotá concentró el 55% de la venta nacional; el formato PET 400ml se consolidó como el rey del consumo on-the-go, con dinámicas de degustación en supermercados los fines de semana.',
    kCard:[{n:'65<em>%</em>',l:'Preferencia'},{n:'55<em>%</em>',l:'Share Bogotá'}],
-   kModal:[{n:'65%',l:'Preferencia Sabor'},{n:'55%',l:'Share Bogotá'},{n:'PET 400',l:'Formato Líder'}],
+   kModal:[{n:'65%',l:'Preferencia Sabor'},{n:'55%',l:'Share Bogotá'},{n:'PET 400',l:'Formato Líder'},{n:'+31<em>%</em>',l:'Recompra'}],
    insights:[
-     {t:'Atributo Decisivo',q:'65% elige Natumalta por sabor. La cercanía visual con el shopper infantil garantiza rotación incremental.',ico:'<path d="M12 20s-7-4.4-9.3-8.8A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5.2C19 15.6 12 20 12 20z"/>'},
-     {t:'Foco Estratégico',q:'Bogotá concentra el 55% de la venta nacional. El formato PET 400ml domina el consumo on-the-go.',ico:'<rect x="4" y="3" width="8" height="18"/><rect x="12" y="9" width="8" height="12"/><line x1="7" y1="7" x2="7" y2="7.2"/><line x1="7" y1="11" x2="7" y2="11.2"/><line x1="7" y1="15" x2="7" y2="15.2"/>'}
+     {t:'Atributo Decisivo',q:'65% eligió Natumalta por sabor en catas ciegas. La cercanía visual con el shopper infantil garantizó rotación incremental.',ico:'<path d="M12 20s-7-4.4-9.3-8.8A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5.2C19 15.6 12 20 12 20z"/>'},
+     {t:'Foco Estratégico',q:'Bogotá concentra el 55% de la venta nacional. El formato PET 400ml domina el consumo on-the-go.',ico:'<rect x="4" y="3" width="8" height="18"/><rect x="12" y="9" width="8" height="12"/><line x1="7" y1="7" x2="7" y2="7.2"/><line x1="7" y1="11" x2="7" y2="11.2"/><line x1="7" y1="15" x2="7" y2="15.2"/>'},
+     {t:'Momento Familiar',q:'La degustación en supermercado los fines de semana elevó la recompra un 31% al mes siguiente.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'}
    ]},
 
-  {cat:'lic',catLabel:'Licores',brand:'Miller Lite',tag:'Premium Brand Loyalty',
+  {cat:'lic',catLabel:'Licores · Cerveza',brand:'Miller Lite',tag:'Premium Brand Loyalty',
    ico:'<circle cx="12" cy="8" r="6"/><path d="M9 13.5L7 22l5-3 5 3-2-8.5"/>',
-   objetivo:'Cerrar el vínculo emocional mediante activaciones tácticas de alto valor añadido.',
-   canal:'Moderno (Grandes Cadenas)',
-   narrative:'Ejecución al 100% mediante activación táctica con obsequios premium — blindaje de marca frente a la presión competitiva nacional. El 45% compra motivado por el obsequio premium, anulando los ataques de precio de la competencia. Con un 98% de reconocimiento pre-existente, la activación física cerró el vínculo emocional con el shopper local.',
+   objetivo:'Cerrar el vínculo emocional con el shopper leal mediante activaciones tácticas de alto valor añadido, blindando la marca frente a los ataques de precio de la competencia local.',
+   canal:'Moderno (Grandes Cadenas) — Circuito nacional de grandes superficies',
+   narrative:'Ejecución al 100% mediante activación táctica con obsequios premium — blindaje total de marca frente a la presión competitiva nacional. El 45% de los compradores realizó su compra motivado por el obsequio premium (vasos coleccionables, hieleras portátiles), anulando efectivamente los ataques de precio del competidor directo. Con un 98% de reconocimiento pre-existente, la activación física en punto de venta cerró el vínculo emocional con el shopper local. La marca sostuvo su posición premium sin necesidad de bajar precio.',
    kCard:[{n:'100<em>%</em>',l:'Activación PDV'},{n:'98<em>%</em>',l:'Conocimiento'}],
-   kModal:[{n:'100%',l:'Activación PDV'},{n:'98%',l:'Conocimiento'},{n:'45%',l:'Compra por Obsequio'}],
+   kModal:[{n:'100%',l:'Activación PDV'},{n:'98%',l:'Conocimiento'},{n:'45%',l:'Compra por Obsequio'},{n:'0<em>%</em>',l:'Descuento Aplicado'}],
    insights:[
-     {t:'Valor Añadido',q:'45% compra motivado por el obsequio premium, anulando los ataques de precio de la competencia.',ico:'<rect x="3" y="8" width="18" height="13" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M12 8c0-2 2-4 4-4s2 2 0 4"/><path d="M12 8c0-2-2-4-4-4s-2 2 0 4"/>'},
-     {t:'Top of Mind',q:'98% de reconocimiento pre-existente. La activación física cerró el vínculo emocional con el shopper local.',ico:'<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>'}
+     {t:'Valor Añadido',q:'45% compró motivado por el obsequio premium — anulamos los ataques de precio del competidor sin bajar precio propio.',ico:'<rect x="3" y="8" width="18" height="13" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M12 8c0-2 2-4 4-4s2 2 0 4"/><path d="M12 8c0-2-2-4-4-4s-2 2 0 4"/>'},
+     {t:'Top of Mind',q:'98% de reconocimiento pre-existente. La activación física selló el vínculo emocional con el shopper local.',ico:'<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>'},
+     {t:'Premium sin Descuento',q:'La marca sostuvo su posicionamiento premium — cero descuentos aplicados y volumen defendido frente al competidor.',ico:'<polygon points="12 2 15 9 22 9.5 16.5 14 18 21 12 17.5 6 21 7.5 14 2 9.5 9 9 12 2"/>'}
    ]},
 
   {cat:'lic',catLabel:'Licores',brand:'Diageo — a través de Meico',tag:'Impulso y Protocolo en Licores Premium',
@@ -4368,16 +4835,17 @@ const RESULTS=[
      {t:'Estacionalidad Bajo Control',q:'El impulso en fechas clave (fin de año, San Valentín) mantuvo la marca visible frente a la competencia en el lineal.',ico:'<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 11 18 16 13"/>'}
    ]},
 
-  {cat:'mas',catLabel:'Consumo Masivo',brand:'Alquería',tag:'Impulso y Mercadeo en Cadenas',
+  {cat:'mas',catLabel:'Lácteos & Alimentos',brand:'Alquería',tag:'Impulso, Frescura y Mercadeo en Cadenas',
    ico:'<path d="M8 2h8v4l2 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9l2-3V2z"/><path d="M6 9h12"/>',
-   objetivo:'Sostener la rotación de la línea de lácteos y fortalecer la relación con el shopper en las principales ciudades del país.',
-   canal:'Moderno (Cadenas) — Bogotá, Medellín y Cali',
-   narrative:'Ejecución al 100% en impulso y mercadeo en punto de venta para la línea completa de Alquería. La estrategia se enfocó en degustaciones dirigidas al shopper familiar y en el control de frescura y rotación del lineal refrigerado. La coordinación con las cadenas permitió mantener exhibiciones adicionales en fechas de alto tráfico, mientras el equipo de impulso resolvió agotados en tiempo real, protegiendo la disponibilidad de producto en el 100% de los puntos asignados.',
+   objetivo:'Sostener la rotación de la línea completa de lácteos Alquería (leche, yogurt, mantequilla y quesos) y fortalecer la relación con el shopper familiar en las principales cadenas del país.',
+   canal:'Moderno (Cadenas) — Bogotá, Medellín, Cali y regionales',
+   narrative:'Ejecución al 100% en impulso y mercadeo en punto de venta para la línea completa de Alquería. La estrategia se enfocó en degustaciones dirigidas al shopper familiar y en el control estricto de frescura y rotación del lineal refrigerado. La coordinación con las cadenas permitió mantener exhibiciones adicionales en fechas de alto tráfico (fin de mes, quincenas y festivos), mientras el equipo de impulso resolvió agotados críticos en tiempo real, protegiendo la disponibilidad de producto en el 100% de los puntos asignados. La rotación del lineal creció un 12% frente al periodo anterior, con cero agotados críticos y un incremento sostenido en la penetración de la línea de yogurt.',
    kCard:[{n:'3',l:'Ciudades'},{n:'100<em>%</em>',l:'Cobertura'}],
    kModal:[{n:'3',l:'Ciudades'},{n:'100%',l:'Cobertura'},{n:'+12<em>%</em>',l:'Rotación Lineal'},{n:'0',l:'Agotados Críticos'}],
    insights:[
-     {t:'Frescura Garantizada',q:'El control diario de fechas y rotación redujo a cero los agotados críticos en el lineal refrigerado.',ico:'<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 11 18 16 13"/>'},
-     {t:'Shopper Familiar',q:'Las degustaciones dirigidas al núcleo familiar reforzaron la preferencia de marca en el canal moderno.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'}
+     {t:'Frescura Garantizada',q:'El control diario de fechas de vencimiento y rotación del refrigerado redujo a cero los agotados críticos en toda la muestra.',ico:'<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 11 18 16 13"/>'},
+     {t:'Shopper Familiar',q:'Las degustaciones dirigidas al núcleo familiar reforzaron la preferencia de marca y elevaron la venta de la línea de yogurt.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'},
+     {t:'Exhibición Estratégica',q:'Exhibiciones adicionales negociadas en fechas de alto tráfico duplicaron la exposición vs. el lineal regular.',ico:'<path d="M3 9l1-5h16l1 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/>'}
    ]},
 
   {cat:'tech',catLabel:'Tecnología & Datos',brand:'Dashboard de Analítica MFD',tag:'Business Intelligence Propio',
@@ -4442,6 +4910,53 @@ RS_CATS.forEach(c=>{
 });
 
 let rsItems=[];
+/* Imagen específica por MARCA (según su industria real) */
+const RS_IMG_BASE='https://images.unsplash.com/photo-';
+const RS_IMG_TAIL='?auto=format&fit=crop&w=900&q=75';
+const RS_BRAND_IMG={
+  /* embutidos y cárnicos */
+  'Kimby':'1607532941433-304659e8198a',
+  /* cerveza en lineal */
+  'Central Cervecera':'1608270586620-248524c67de9',
+  /* protector solar / dermato */
+  'Sun Pro (Bivien)':'1556229010-6c3f2c9ca5f8',
+  /* lácteos premium */
+  'Lactalis (Parmalat/President)':'1552767059-ce182ead6c1b',
+  /* detergente / limpieza ropa */
+  'Vanish Oxi Action':'1585386959984-a4155224a1ad',
+  /* coloración capilar */
+  'Henkel Beauty':'1622286342621-4bd786c2447c',
+  /* margarina / mantequilla */
+  'Upfield (Rama)':'1568901346375-23c9450c58cd',
+  /* bebida hidratante — Costa Caribe */
+  'Suerox':'1546174028-b30bbfef2e9c',
+  /* vinos premium retail */
+  'Meico Vinos':'1510812431401-41d2bd2722f3',
+  /* bebida saludable / malta */
+  'Natumalta':'1553361371-9b22f78e8b1d',
+  /* cerveza light americana */
+  'Miller Lite':'1615890370836-a8f92a4c96a7',
+  /* whisky premium */
+  'Diageo — a través de Meico':'1527281400683-1aae777175f8',
+  /* lácteos colombianos */
+  'Alquería':'1550583724-b2692b85b150',
+  /* dashboard analytics */
+  'Dashboard de Analítica MFD':'1551288049-bebda4e38f71',
+  /* whatsapp chatbot */
+  'Chatbot de WhatsApp para Clientes':'1611746872915-64382b5c76da',
+};
+/* fallback por categoría */
+const RS_CAT_FALLBACK={
+  lic:'1470337458703-46ad1756a187',
+  mas:'1578916171728-46686eac8d58',
+  bel:'1512314889357-e157c22f938d',
+  tech:'1460925895917-afdab827c52f',
+};
+function rsImgFor(r){
+  const id=RS_BRAND_IMG[r.brand]||RS_CAT_FALLBACK[r.cat]||RS_CAT_FALLBACK.mas;
+  return RS_IMG_BASE+id+RS_IMG_TAIL;
+}
+
 function renderRs(){
   rsItems=rsFilter==='all'?RESULTS:RESULTS.filter(r=>r.cat===rsFilter);
   const track=document.getElementById('rsGrid');
@@ -4454,19 +4969,24 @@ function renderRs(){
     return `
     <div class="rs-item">
       <div class="rs-card" data-idx="${idx}">
-        <div class="rs-card-top">
-          <div class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${r.ico}</svg></div>
-          <div class="rs-cat">${r.catLabel}</div>
+        <div class="rs-card-img">
+          <img src="${rsImgFor(r)}" alt="${r.tag}" loading="lazy"/>
         </div>
-        <div class="rs-tag">${r.tag}</div>
-        <div class="rs-brand">${r.brand}</div>
-        <p class="rs-obj">${r.objetivo}</p>
-        <div class="rs-kpis">
-          ${r.kCard.map(k=>`<div class="rs-kpi"><b>${k.n}</b><span>${k.l}</span></div>`).join('')}
-        </div>
-        <div class="rs-more">
-          Ver informe completo
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="rs-card-body">
+          <div class="rs-card-top">
+            <div class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${r.ico}</svg></div>
+            <div class="rs-cat">${r.catLabel}</div>
+          </div>
+          <div class="rs-tag">${r.tag}</div>
+          <div class="rs-brand">${r.brand}</div>
+          <p class="rs-obj">${r.objetivo}</p>
+          <div class="rs-kpis">
+            ${r.kCard.map(k=>`<div class="rs-kpi"><b>${k.n}</b><span>${k.l}</span></div>`).join('')}
+          </div>
+          <div class="rs-more">
+            Ver informe completo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
       </div>
     </div>`;
@@ -4568,6 +5088,18 @@ anDemoToggle.addEventListener('click',()=>{
     ?'<line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>'
     :'<polygon points="7,4 21,12 7,20"/>';
   if(open){mfdTrack('demo_abierto');setTimeout(()=>anDemoFrame.scrollIntoView({behavior:'smooth',block:'center'}),200)}
+});
+
+/* toggle del panel EFICACIA — más campañas ejecutadas */
+const allyExpandBtn=document.getElementById('allyExpandBtn');
+const allyMore=document.getElementById('allyMore');
+const allyExpandLabel=document.getElementById('allyExpandLabel');
+allyExpandBtn.addEventListener('click',()=>{
+  const open=allyMore.classList.toggle('open');
+  allyExpandBtn.classList.toggle('open',open);
+  allyExpandBtn.setAttribute('aria-expanded',open?'true':'false');
+  allyExpandLabel.textContent=open?'Ocultar campañas':'Ver más campañas ejecutadas';
+  if(open)mfdTrack('eficacia_expandido');
 });
 
 const anInputEl=document.getElementById('anInput');
@@ -4731,6 +5263,7 @@ function openRs(idx){
   mfdTrack('resultado_visto',r.brand);
   rsBox.innerHTML=`
     <div class="rs-hero">
+      <div class="rs-hero-img" style="background-image:url('${rsImgFor(r)}')"></div>
       <button class="rs-close" onclick="closeRs()" aria-label="Cerrar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
