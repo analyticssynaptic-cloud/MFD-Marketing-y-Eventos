@@ -1221,6 +1221,11 @@ ul,ol{list-style:none}
 }
 .carr:hover{background:var(--r);border-color:var(--r);color:#fff;transform:scale(1.05)}
 .carr svg{width:19px;height:19px;stroke-width:2}
+.rs-count{
+  font-family:var(--cond);font-size:.74rem;font-weight:600;
+  letter-spacing:1.6px;color:rgba(255,255,255,.5);text-transform:uppercase;
+}
+.rs-count b{color:#fff;font-weight:700}
 .cdots{display:flex;gap:8px;align-items:center}
 .cdot{
   width:7px;height:7px;border-radius:50%;
@@ -1279,11 +1284,19 @@ ul,ol{list-style:none}
   text-transform:uppercase;margin-top:8px;
 }
 
-.rs-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;position:relative;z-index:2}
+.rs-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;position:relative;z-index:2}
 
-.rs-carousel{position:relative;overflow:hidden;z-index:2;border-radius:20px}
-.rs-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
-.rs-item{flex:0 0 calc(33.333% - 15px);margin-right:22px;min-width:0}
+.rs-count{
+  font-family:var(--cond);font-size:.76rem;font-weight:600;
+  letter-spacing:1.6px;color:rgba(255,255,255,.45);text-transform:uppercase;
+  margin-bottom:20px;position:relative;z-index:2;
+}
+.rs-count b{color:#fff;font-weight:700}
+
+.rs-grid{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
 .rs-card{
   height:100%;
   background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
@@ -1357,11 +1370,11 @@ ul,ol{list-style:none}
 @media(max-width:960px){
   .rs-head{grid-template-columns:1fr;gap:22px}
   .rs-summary{grid-template-columns:1fr 1fr}
-  .rs-item{flex:0 0 calc(50% - 11px)}
+  .rs-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:640px){
   .rs-summary{grid-template-columns:1fr 1fr}
-  .rs-item{flex:0 0 calc(100% - 11px)}
+  .rs-grid{grid-template-columns:1fr}
 }
 
 /* -- MODAL DE RESULTADOS -- */
@@ -3399,16 +3412,8 @@ body.ready .hl-line>span{transform:none}
 
     <div class="rs-filters reveal reveal-d1" id="rsFilters"></div>
 
-    <div class="rs-carousel reveal reveal-d2">
-      <div class="rs-track" id="rsGrid"></div>
-    </div>
-    <div class="c-nav" id="rsNav">
-      <div class="c-arrows">
-        <button class="carr" onclick="prevRs()" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <button class="carr" onclick="nextRs()" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></button>
-      </div>
-      <div class="cdots" id="rsDots"></div>
-    </div>
+    <div class="rs-count reveal reveal-d1" id="rsCount"></div>
+    <div class="rs-grid reveal reveal-d2" id="rsGrid"></div>
   </div>
 </section>
 
@@ -4648,6 +4653,71 @@ pdModal.addEventListener('click',e=>{if(e.target===pdModal)closePd()});
 
 /* ══════ RESULTADOS ══════ */
 const RESULTS=[
+  {cat:'mas',catLabel:'Lácteos & Alimentos',brand:'Alquería',tag:'Impulso, Frescura y Mercadeo en Cadenas',
+   ico:'<path d="M8 2h8v4l2 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9l2-3V2z"/><path d="M6 9h12"/>',
+   objetivo:'Sostener la rotación de la línea completa de lácteos Alquería (leche, yogurt, mantequilla y quesos) y fortalecer la relación con el shopper familiar en las principales cadenas del país.',
+   canal:'Moderno (Cadenas) — Bogotá, Medellín, Cali y regionales',
+   narrative:'Ejecución al 100% en impulso y mercadeo en punto de venta para la línea completa de Alquería. La estrategia se enfocó en degustaciones dirigidas al shopper familiar y en el control estricto de frescura y rotación del lineal refrigerado. La coordinación con las cadenas permitió mantener exhibiciones adicionales en fechas de alto tráfico (fin de mes, quincenas y festivos), mientras el equipo de impulso resolvió agotados críticos en tiempo real, protegiendo la disponibilidad de producto en el 100% de los puntos asignados. La rotación del lineal creció un 12% frente al periodo anterior, con cero agotados críticos y un incremento sostenido en la penetración de la línea de yogurt.',
+   kCard:[{n:'3',l:'Ciudades'},{n:'100<em>%</em>',l:'Cobertura'}],
+   kModal:[{n:'3',l:'Ciudades'},{n:'100%',l:'Cobertura'},{n:'+12<em>%</em>',l:'Rotación Lineal'},{n:'0',l:'Agotados Críticos'}],
+   insights:[
+     {t:'Frescura Garantizada',q:'El control diario de fechas de vencimiento y rotación del refrigerado redujo a cero los agotados críticos en toda la muestra.',ico:'<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 11 18 16 13"/>'},
+     {t:'Shopper Familiar',q:'Las degustaciones dirigidas al núcleo familiar reforzaron la preferencia de marca y elevaron la venta de la línea de yogurt.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'},
+     {t:'Exhibición Estratégica',q:'Exhibiciones adicionales negociadas en fechas de alto tráfico duplicaron la exposición vs. el lineal regular.',ico:'<path d="M3 9l1-5h16l1 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/>'}
+   ]},
+
+  {cat:'mas',catLabel:'Bebidas & Hidratación',brand:'Suerox',tag:'Activación Táctica de Sampling en la Costa',
+   ico:'<path d="M12 2s7 8.5 7 13a7 7 0 0 1-14 0c0-4.5 7-13 7-13z"/>',
+   objetivo:'Generar rotación inmediata de la línea de bebida hidratante isotónica en zonas costeras mediante muestreo masivo en momentos de calor.',
+   canal:'Tradicional e Impacto en Calle — Barranquilla, Cartagena, Santa Marta',
+   narrative:'Ejecución al 100% con muestreo masivo en frío bajo condiciones de alto tráfico en el Caribe colombiano. Convertimos la necesidad de hidratación en compra inmediata: la entrega de 5.998 muestras frías se convirtió en 1.649 ventas directas en apenas 6 días. El sampling en frío demostró ser el motor de rotación en la Costa — 11.543 impactos reales sin necesidad de degustación adicional, maximizando la eficiencia operativa de los asesores en calle y punto de venta.',
+   kCard:[{n:'11.5<em>K</em>',l:'Impactos'},{n:'1.6<em>K</em>',l:'Sell-Out'}],
+   kModal:[{n:'11.5K',l:'Impactos'},{n:'1.6K',l:'Sell-Out'},{n:'5,998',l:'Muestras'},{n:'27<em>%</em>',l:'Conversión'}],
+   insights:[
+     {t:'Conversión de Prueba',q:'27% de conversión: 5.998 muestras se tradujeron en 1.649 ventas en 6 días. El sampling en frío es el motor de rotación en la Costa Caribe.',ico:'<path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/>'},
+     {t:'Alcance PDV',q:'11.543 impactos reales sin necesidad de degustación repetida — máxima eficiencia operativa por asesor.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'},
+     {t:'Momento Perfecto',q:'La activación en horas de calor máximo (10am–4pm) elevó la disposición de compra frente al competidor.',ico:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>'}
+   ]},
+
+  {cat:'lic',catLabel:'Licores · Vinos',brand:'Meico Vinos',tag:'Estrategia Lifestyle Retail',
+   ico:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6"/><path d="M8 20h8"/>',
+   objetivo:'Posicionar el vino como bebida social diaria del target millennial y desmitificar el ritual de consumo en el canal moderno.',
+   canal:'Moderno (Retail y Supermercados) — Costa Caribe y ciudades principales',
+   narrative:'Ejecución al 100% posicionando el vino como bebida social del target joven en Barranquilla — desmitificación completa del ritual de consumo. El 92% de la venta se concentró entre viernes y sábado: el vino se consolidó como aliado del ocio social planificado de los millennials. El supermercado concentró el 93% de las compras; la visibilidad premium en góndola y la degustación educativa fueron los factores decisivos. Aumento sostenido de share en el segmento joven durante toda la activación.',
+   kCard:[{n:'92<em>%</em>',l:'Venta F-S'},{n:'64<em>%</em>',l:'Share Joven'}],
+   kModal:[{n:'92%',l:'Venta Vie-Sáb'},{n:'64%',l:'Share Joven'},{n:'93%',l:'Compra en Súper'},{n:'+22<em>%</em>',l:'Rotación'}],
+   insights:[
+     {t:'Ventana Social',q:'92% de la venta concentrada en Vie-Sáb — el vino se consolidó como bebida del ocio social millennial.',ico:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6"/><path d="M8 20h8"/>'},
+     {t:'Canal Dominante',q:'El supermercado concentró el 93% de las compras. La visibilidad premium en góndola fue el factor #1 de éxito.',ico:'<circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>'},
+     {t:'Educación que Cierra',q:'La degustación educativa —tipo de uva, maridaje, ocasión— convirtió al shopper indeciso en comprador recurrente.',ico:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'}
+   ]},
+
+  {cat:'mas',catLabel:'Bebidas Saludables',brand:'Natumalta',tag:'Driver de Nutrición y Sabor',
+   ico:'<polygon points="13 2 4 14 11 14 10 22 20 10 13 10 13 2"/>',
+   objetivo:'Ganar participación en el segmento de bebidas de malta saludables mediante el atributo de sabor superior y la conexión con el shopper familiar.',
+   canal:'Moderno (Retail) — Bogotá y ciudades principales',
+   narrative:'Ejecución al 100% capitalizando el atributo de sabor superior para ganar participación en el mercado de bebidas de malta saludables en Bogotá. El 65% de los consumidores eligió Natumalta por sabor por encima del competidor directo — la cercanía visual con el shopper infantil y familiar garantizó rotación incremental sostenida. Bogotá concentró el 55% de la venta nacional; el formato PET 400ml se consolidó como el rey del consumo on-the-go, con dinámicas de degustación en supermercados los fines de semana.',
+   kCard:[{n:'65<em>%</em>',l:'Preferencia'},{n:'55<em>%</em>',l:'Share Bogotá'}],
+   kModal:[{n:'65%',l:'Preferencia Sabor'},{n:'55%',l:'Share Bogotá'},{n:'PET 400',l:'Formato Líder'},{n:'+31<em>%</em>',l:'Recompra'}],
+   insights:[
+     {t:'Atributo Decisivo',q:'65% eligió Natumalta por sabor en catas ciegas. La cercanía visual con el shopper infantil garantizó rotación incremental.',ico:'<path d="M12 20s-7-4.4-9.3-8.8A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5.2C19 15.6 12 20 12 20z"/>'},
+     {t:'Foco Estratégico',q:'Bogotá concentra el 55% de la venta nacional. El formato PET 400ml domina el consumo on-the-go.',ico:'<rect x="4" y="3" width="8" height="18"/><rect x="12" y="9" width="8" height="12"/><line x1="7" y1="7" x2="7" y2="7.2"/><line x1="7" y1="11" x2="7" y2="11.2"/><line x1="7" y1="15" x2="7" y2="15.2"/>'},
+     {t:'Momento Familiar',q:'La degustación en supermercado los fines de semana elevó la recompra un 31% al mes siguiente.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'}
+   ]},
+
+  {cat:'lic',catLabel:'Licores · Cerveza',brand:'Miller Lite',tag:'Premium Brand Loyalty',
+   ico:'<circle cx="12" cy="8" r="6"/><path d="M9 13.5L7 22l5-3 5 3-2-8.5"/>',
+   objetivo:'Cerrar el vínculo emocional con el shopper leal mediante activaciones tácticas de alto valor añadido, blindando la marca frente a los ataques de precio de la competencia local.',
+   canal:'Moderno (Grandes Cadenas) — Circuito nacional de grandes superficies',
+   narrative:'Ejecución al 100% mediante activación táctica con obsequios premium — blindaje total de marca frente a la presión competitiva nacional. El 45% de los compradores realizó su compra motivado por el obsequio premium (vasos coleccionables, hieleras portátiles), anulando efectivamente los ataques de precio del competidor directo. Con un 98% de reconocimiento pre-existente, la activación física en punto de venta cerró el vínculo emocional con el shopper local. La marca sostuvo su posición premium sin necesidad de bajar precio.',
+   kCard:[{n:'100<em>%</em>',l:'Activación PDV'},{n:'98<em>%</em>',l:'Conocimiento'}],
+   kModal:[{n:'100%',l:'Activación PDV'},{n:'98%',l:'Conocimiento'},{n:'45%',l:'Compra por Obsequio'},{n:'0<em>%</em>',l:'Descuento Aplicado'}],
+   insights:[
+     {t:'Valor Añadido',q:'45% compró motivado por el obsequio premium — anulamos los ataques de precio del competidor sin bajar precio propio.',ico:'<rect x="3" y="8" width="18" height="13" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M12 8c0-2 2-4 4-4s2 2 0 4"/><path d="M12 8c0-2-2-4-4-4s-2 2 0 4"/>'},
+     {t:'Top of Mind',q:'98% de reconocimiento pre-existente. La activación física selló el vínculo emocional con el shopper local.',ico:'<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>'},
+     {t:'Premium sin Descuento',q:'La marca sostuvo su posicionamiento premium — cero descuentos aplicados y volumen defendido frente al competidor.',ico:'<polygon points="12 2 15 9 22 9.5 16.5 14 18 21 12 17.5 6 21 7.5 14 2 9.5 9 9 12 2"/>'}
+   ]},
+
   {cat:'mas',catLabel:'Consumo Masivo',brand:'Kimby',tag:'Estrategia de Cárnicos y Embutidos',
    ico:'<path d="M21 8L12 3 3 8l9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/>',
    objetivo:'Venta y posicionamiento a nivel nacional de toda la gama de productos de Kimby.',
@@ -4732,58 +4802,6 @@ const RESULTS=[
      {t:'Velocidad al Anaquel',q:'900 visitas en 12 días aseguraron que el mensaje de herencia llegara al canal moderno y superetes simultáneamente.',ico:'<polygon points="13 2 4 14 11 14 10 22 20 10 13 10 13 2"/>'}
    ]},
 
-  {cat:'mas',catLabel:'Bebidas & Hidratación',brand:'Suerox',tag:'Activación Táctica de Sampling en la Costa',
-   ico:'<path d="M12 2s7 8.5 7 13a7 7 0 0 1-14 0c0-4.5 7-13 7-13z"/>',
-   objetivo:'Generar rotación inmediata de la línea de bebida hidratante isotónica en zonas costeras mediante muestreo masivo en momentos de calor.',
-   canal:'Tradicional e Impacto en Calle — Barranquilla, Cartagena, Santa Marta',
-   narrative:'Ejecución al 100% con muestreo masivo en frío bajo condiciones de alto tráfico en el Caribe colombiano. Convertimos la necesidad de hidratación en compra inmediata: la entrega de 5.998 muestras frías se convirtió en 1.649 ventas directas en apenas 6 días. El sampling en frío demostró ser el motor de rotación en la Costa — 11.543 impactos reales sin necesidad de degustación adicional, maximizando la eficiencia operativa de los asesores en calle y punto de venta.',
-   kCard:[{n:'11.5<em>K</em>',l:'Impactos'},{n:'1.6<em>K</em>',l:'Sell-Out'}],
-   kModal:[{n:'11.5K',l:'Impactos'},{n:'1.6K',l:'Sell-Out'},{n:'5,998',l:'Muestras'},{n:'27<em>%</em>',l:'Conversión'}],
-   insights:[
-     {t:'Conversión de Prueba',q:'27% de conversión: 5.998 muestras se tradujeron en 1.649 ventas en 6 días. El sampling en frío es el motor de rotación en la Costa Caribe.',ico:'<path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/>'},
-     {t:'Alcance PDV',q:'11.543 impactos reales sin necesidad de degustación repetida — máxima eficiencia operativa por asesor.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'},
-     {t:'Momento Perfecto',q:'La activación en horas de calor máximo (10am–4pm) elevó la disposición de compra frente al competidor.',ico:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>'}
-   ]},
-
-  {cat:'lic',catLabel:'Licores · Vinos',brand:'Meico Vinos',tag:'Estrategia Lifestyle Retail',
-   ico:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6"/><path d="M8 20h8"/>',
-   objetivo:'Posicionar el vino como bebida social diaria del target millennial y desmitificar el ritual de consumo en el canal moderno.',
-   canal:'Moderno (Retail y Supermercados) — Costa Caribe y ciudades principales',
-   narrative:'Ejecución al 100% posicionando el vino como bebida social del target joven en Barranquilla — desmitificación completa del ritual de consumo. El 92% de la venta se concentró entre viernes y sábado: el vino se consolidó como aliado del ocio social planificado de los millennials. El supermercado concentró el 93% de las compras; la visibilidad premium en góndola y la degustación educativa fueron los factores decisivos. Aumento sostenido de share en el segmento joven durante toda la activación.',
-   kCard:[{n:'92<em>%</em>',l:'Venta F-S'},{n:'64<em>%</em>',l:'Share Joven'}],
-   kModal:[{n:'92%',l:'Venta Vie-Sáb'},{n:'64%',l:'Share Joven'},{n:'93%',l:'Compra en Súper'},{n:'+22<em>%</em>',l:'Rotación'}],
-   insights:[
-     {t:'Ventana Social',q:'92% de la venta concentrada en Vie-Sáb — el vino se consolidó como bebida del ocio social millennial.',ico:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6"/><path d="M8 20h8"/>'},
-     {t:'Canal Dominante',q:'El supermercado concentró el 93% de las compras. La visibilidad premium en góndola fue el factor #1 de éxito.',ico:'<circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>'},
-     {t:'Educación que Cierra',q:'La degustación educativa —tipo de uva, maridaje, ocasión— convirtió al shopper indeciso en comprador recurrente.',ico:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'}
-   ]},
-
-  {cat:'mas',catLabel:'Bebidas Saludables',brand:'Natumalta',tag:'Driver de Nutrición y Sabor',
-   ico:'<polygon points="13 2 4 14 11 14 10 22 20 10 13 10 13 2"/>',
-   objetivo:'Ganar participación en el segmento de bebidas de malta saludables mediante el atributo de sabor superior y la conexión con el shopper familiar.',
-   canal:'Moderno (Retail) — Bogotá y ciudades principales',
-   narrative:'Ejecución al 100% capitalizando el atributo de sabor superior para ganar participación en el mercado de bebidas de malta saludables en Bogotá. El 65% de los consumidores eligió Natumalta por sabor por encima del competidor directo — la cercanía visual con el shopper infantil y familiar garantizó rotación incremental sostenida. Bogotá concentró el 55% de la venta nacional; el formato PET 400ml se consolidó como el rey del consumo on-the-go, con dinámicas de degustación en supermercados los fines de semana.',
-   kCard:[{n:'65<em>%</em>',l:'Preferencia'},{n:'55<em>%</em>',l:'Share Bogotá'}],
-   kModal:[{n:'65%',l:'Preferencia Sabor'},{n:'55%',l:'Share Bogotá'},{n:'PET 400',l:'Formato Líder'},{n:'+31<em>%</em>',l:'Recompra'}],
-   insights:[
-     {t:'Atributo Decisivo',q:'65% eligió Natumalta por sabor en catas ciegas. La cercanía visual con el shopper infantil garantizó rotación incremental.',ico:'<path d="M12 20s-7-4.4-9.3-8.8A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5.2C19 15.6 12 20 12 20z"/>'},
-     {t:'Foco Estratégico',q:'Bogotá concentra el 55% de la venta nacional. El formato PET 400ml domina el consumo on-the-go.',ico:'<rect x="4" y="3" width="8" height="18"/><rect x="12" y="9" width="8" height="12"/><line x1="7" y1="7" x2="7" y2="7.2"/><line x1="7" y1="11" x2="7" y2="11.2"/><line x1="7" y1="15" x2="7" y2="15.2"/>'},
-     {t:'Momento Familiar',q:'La degustación en supermercado los fines de semana elevó la recompra un 31% al mes siguiente.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'}
-   ]},
-
-  {cat:'lic',catLabel:'Licores · Cerveza',brand:'Miller Lite',tag:'Premium Brand Loyalty',
-   ico:'<circle cx="12" cy="8" r="6"/><path d="M9 13.5L7 22l5-3 5 3-2-8.5"/>',
-   objetivo:'Cerrar el vínculo emocional con el shopper leal mediante activaciones tácticas de alto valor añadido, blindando la marca frente a los ataques de precio de la competencia local.',
-   canal:'Moderno (Grandes Cadenas) — Circuito nacional de grandes superficies',
-   narrative:'Ejecución al 100% mediante activación táctica con obsequios premium — blindaje total de marca frente a la presión competitiva nacional. El 45% de los compradores realizó su compra motivado por el obsequio premium (vasos coleccionables, hieleras portátiles), anulando efectivamente los ataques de precio del competidor directo. Con un 98% de reconocimiento pre-existente, la activación física en punto de venta cerró el vínculo emocional con el shopper local. La marca sostuvo su posición premium sin necesidad de bajar precio.',
-   kCard:[{n:'100<em>%</em>',l:'Activación PDV'},{n:'98<em>%</em>',l:'Conocimiento'}],
-   kModal:[{n:'100%',l:'Activación PDV'},{n:'98%',l:'Conocimiento'},{n:'45%',l:'Compra por Obsequio'},{n:'0<em>%</em>',l:'Descuento Aplicado'}],
-   insights:[
-     {t:'Valor Añadido',q:'45% compró motivado por el obsequio premium — anulamos los ataques de precio del competidor sin bajar precio propio.',ico:'<rect x="3" y="8" width="18" height="13" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M12 8c0-2 2-4 4-4s2 2 0 4"/><path d="M12 8c0-2-2-4-4-4s-2 2 0 4"/>'},
-     {t:'Top of Mind',q:'98% de reconocimiento pre-existente. La activación física selló el vínculo emocional con el shopper local.',ico:'<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>'},
-     {t:'Premium sin Descuento',q:'La marca sostuvo su posicionamiento premium — cero descuentos aplicados y volumen defendido frente al competidor.',ico:'<polygon points="12 2 15 9 22 9.5 16.5 14 18 21 12 17.5 6 21 7.5 14 2 9.5 9 9 12 2"/>'}
-   ]},
-
   {cat:'lic',catLabel:'Licores',brand:'Diageo — a través de Meico',tag:'Impulso y Protocolo en Licores Premium',
    ico:'<path d="M12 2L21 9L12 22L3 9Z"/><path d="M3 9h18"/><path d="M9 2l3 7 3-7"/>',
    objetivo:'Fortalecer el recall de marca y cerrar ventas en el canal on-trade y off-trade mediante personal capacitado en protocolo de whisky y vodka premium.',
@@ -4794,19 +4812,6 @@ const RESULTS=[
    insights:[
      {t:'Protocolo que Vende',q:'La capacitación en servicio y maridaje elevó la percepción premium en el 92% de los bares visitados.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'},
      {t:'Estacionalidad Bajo Control',q:'El impulso en fechas clave (fin de año, San Valentín) mantuvo la marca visible frente a la competencia en el lineal.',ico:'<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 11 18 16 13"/>'}
-   ]},
-
-  {cat:'mas',catLabel:'Lácteos & Alimentos',brand:'Alquería',tag:'Impulso, Frescura y Mercadeo en Cadenas',
-   ico:'<path d="M8 2h8v4l2 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9l2-3V2z"/><path d="M6 9h12"/>',
-   objetivo:'Sostener la rotación de la línea completa de lácteos Alquería (leche, yogurt, mantequilla y quesos) y fortalecer la relación con el shopper familiar en las principales cadenas del país.',
-   canal:'Moderno (Cadenas) — Bogotá, Medellín, Cali y regionales',
-   narrative:'Ejecución al 100% en impulso y mercadeo en punto de venta para la línea completa de Alquería. La estrategia se enfocó en degustaciones dirigidas al shopper familiar y en el control estricto de frescura y rotación del lineal refrigerado. La coordinación con las cadenas permitió mantener exhibiciones adicionales en fechas de alto tráfico (fin de mes, quincenas y festivos), mientras el equipo de impulso resolvió agotados críticos en tiempo real, protegiendo la disponibilidad de producto en el 100% de los puntos asignados. La rotación del lineal creció un 12% frente al periodo anterior, con cero agotados críticos y un incremento sostenido en la penetración de la línea de yogurt.',
-   kCard:[{n:'3',l:'Ciudades'},{n:'100<em>%</em>',l:'Cobertura'}],
-   kModal:[{n:'3',l:'Ciudades'},{n:'100%',l:'Cobertura'},{n:'+12<em>%</em>',l:'Rotación Lineal'},{n:'0',l:'Agotados Críticos'}],
-   insights:[
-     {t:'Frescura Garantizada',q:'El control diario de fechas de vencimiento y rotación del refrigerado redujo a cero los agotados críticos en toda la muestra.',ico:'<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 11 18 16 13"/>'},
-     {t:'Shopper Familiar',q:'Las degustaciones dirigidas al núcleo familiar reforzaron la preferencia de marca y elevaron la venta de la línea de yogurt.',ico:'<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14c2.7.4 4.5 2.6 4.5 6"/>'},
-     {t:'Exhibición Estratégica',q:'Exhibiciones adicionales negociadas en fechas de alto tráfico duplicaron la exposición vs. el lineal regular.',ico:'<path d="M3 9l1-5h16l1 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/>'}
    ]},
 
   {cat:'tech',catLabel:'Tecnología & Datos',brand:'Dashboard de Analítica MFD',tag:'Business Intelligence Propio',
@@ -4855,8 +4860,7 @@ document.getElementById('rsSummary').innerHTML=`
   <div class="rs-stat"><div class="rs-stat-n"><em>100%</em></div><div class="rs-stat-l">Ejecución garantizada</div></div>`;
 
 const rsFiltersEl=document.getElementById('rsFilters');
-let rsFilter='all',rsSlide=0,rsMoved=false;
-function rsIpp(){return window.innerWidth<=640?1:window.innerWidth<=960?2:3}
+let rsFilter='all';
 
 RS_CATS.forEach(c=>{
   const btn=document.createElement('button');
@@ -4865,7 +4869,7 @@ RS_CATS.forEach(c=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('#rsFilters .pf').forEach(b=>b.classList.remove('on'));
     btn.classList.add('on');
-    rsFilter=c.id;rsSlide=0;renderRs();
+    rsFilter=c.id;renderRs();
   });
   rsFiltersEl.appendChild(btn);
 });
@@ -4890,13 +4894,13 @@ const RS_BRAND_IMG={
   /* margarina / mantequilla */
   'Upfield (Rama)':'1568901346375-23c9450c58cd',
   /* bebida hidratante — Costa Caribe */
-  'Suerox':'1546174028-b30bbfef2e9c',
+  'Suerox':'1648313021325-d81f28d57824',
   /* vinos premium retail */
   'Meico Vinos':'1510812431401-41d2bd2722f3',
   /* bebida saludable / malta */
   'Natumalta':'1553361371-9b22f78e8b1d',
   /* cerveza light americana */
-  'Miller Lite':'1615890370836-a8f92a4c96a7',
+  'Miller Lite':'1526307346098-09c33e090be4',
   /* whisky premium */
   'Diageo — a través de Meico':'1527281400683-1aae777175f8',
   /* lácteos colombianos */
@@ -4920,15 +4924,10 @@ function rsImgFor(r){
 
 function renderRs(){
   rsItems=rsFilter==='all'?RESULTS:RESULTS.filter(r=>r.cat===rsFilter);
-  const track=document.getElementById('rsGrid');
-  const nav=document.getElementById('rsNav');
-  const dots=document.getElementById('rsDots');
-  const pp=rsIpp(),pages=Math.ceil(rsItems.length/pp);
-  if(rsSlide>=pages)rsSlide=0;
-  track.innerHTML=rsItems.map(r=>{
+  const grid=document.getElementById('rsGrid');
+  grid.innerHTML=rsItems.map(r=>{
     const idx=RESULTS.indexOf(r);
     return `
-    <div class="rs-item">
       <div class="rs-card" data-idx="${idx}">
         <div class="rs-card-img">
           <img src="${rsImgFor(r)}" alt="${r.tag}" loading="lazy"/>
@@ -4949,47 +4948,12 @@ function renderRs(){
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
         </div>
-      </div>
-    </div>`;
+      </div>`;
   }).join('');
-  document.querySelectorAll('#rsGrid .rs-card').forEach(c=>c.addEventListener('click',()=>{if(rsMoved)return;openRs(+c.dataset.idx)}));
-  nav.style.display=rsItems.length?'flex':'none';
-  dots.innerHTML=Array.from({length:pages},(_,i)=>
-    `<button class="cdot${i===rsSlide?' on':''}" onclick="goRs(${i})" aria-label="Página ${i+1}"></button>`
-  ).join('');
-  updRs();
+  document.querySelectorAll('#rsGrid .rs-card').forEach(c=>c.addEventListener('click',()=>openRs(+c.dataset.idx)));
+  document.getElementById('rsCount').innerHTML=`Mostrando <b>${rsItems.length}</b> de ${RESULTS.length} casos de éxito`;
 }
-function updRs(){
-  const pp=rsIpp();
-  document.getElementById('rsGrid').style.transform=`translateX(-${(100/pp)*rsSlide}%)`;
-}
-function goRs(n){
-  const pages=Math.ceil(rsItems.length/rsIpp());
-  rsSlide=Math.max(0,Math.min(n,pages-1));
-  document.querySelectorAll('#rsDots .cdot').forEach((d,i)=>d.classList.toggle('on',i===rsSlide));
-  updRs();
-}
-function nextRs(){const p=Math.ceil(rsItems.length/rsIpp());goRs(rsSlide+1>=p?0:rsSlide+1)}
-function prevRs(){const p=Math.ceil(rsItems.length/rsIpp());goRs(rsSlide-1<0?p-1:rsSlide-1)}
 renderRs();
-window.addEventListener('resize',()=>{rsSlide=0;renderRs()});
-
-/* auto-advance + drag, igual que el carrusel de Portafolio */
-let rsAuto=setInterval(()=>nextRs(),6800);
-let rsDragX=null;
-const rsCarEl=document.querySelector('.rs-carousel');
-rsCarEl.addEventListener('mouseenter',()=>clearInterval(rsAuto));
-rsCarEl.addEventListener('mouseleave',()=>{clearInterval(rsAuto);rsAuto=setInterval(()=>nextRs(),6800)});
-rsCarEl.addEventListener('pointerdown',e=>{rsDragX=e.clientX});
-rsCarEl.addEventListener('pointerup',e=>{
-  if(rsDragX===null)return;
-  const dx=e.clientX-rsDragX;rsDragX=null;
-  if(Math.abs(dx)>55){
-    rsMoved=true;
-    dx<0?nextRs():prevRs();
-    setTimeout(()=>rsMoved=false,120);
-  }
-});
 
 /* ══════ ANALÍTICA — demo interactiva en vivo ══════ */
 const AN_OPTIONS=[
