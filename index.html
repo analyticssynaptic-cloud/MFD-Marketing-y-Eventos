@@ -1357,6 +1357,25 @@ ul,ol{list-style:none}
   font-family:var(--cond);font-size:.6rem;font-weight:600;
   letter-spacing:1.2px;color:rgba(255,255,255,.48);text-transform:uppercase;
 }
+/* muestra de trabajo / galería */
+.rs-sample{margin:26px 0;padding:20px;border:1px solid rgba(192,20,26,.35);border-radius:16px;background:rgba(192,20,26,.07)}
+.rs-sample-q{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rs-sample-q h4{margin:0 0 4px;font-size:1.05rem;color:#fff}
+.rs-sample-q p{margin:0;font-size:.85rem;opacity:.7}
+.rs-sample-btn{cursor:pointer;border:0;border-radius:999px;padding:12px 24px;background:var(--r-v,#c0141a);color:#fff;font:inherit;font-weight:700;letter-spacing:.04em;transition:transform .2s,filter .2s}
+.rs-sample-btn:hover{transform:translateY(-2px);filter:brightness(1.15)}
+.rs-gal{display:none;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:18px}
+.rs-gal.open{display:grid}
+.rs-gal-it{padding:0;border:0;border-radius:10px;overflow:hidden;cursor:zoom-in;aspect-ratio:3/4;background:#1a0f11}
+.rs-gal-it img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.rs-gal-it:hover img{transform:scale(1.07)}
+.lb{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.92)}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:88vh;border-radius:10px;object-fit:contain}
+.lb-x,.lb-n{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;border-radius:50%;width:46px;height:46px;font-size:28px;line-height:1}
+.lb-x{top:18px;right:18px}.lb-p{left:14px;top:50%}.lb-nx{right:14px;top:50%}
+.lb-n:hover,.lb-x:hover{background:var(--r-v,#c0141a)}
+.lb-c{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#fff;opacity:.7;font-size:.85rem}
 .rs-more{
   display:inline-flex;align-items:center;gap:8px;margin-top:auto;
   font-family:var(--cond);font-size:.76rem;font-weight:700;
@@ -4654,6 +4673,8 @@ pdModal.addEventListener('click',e=>{if(e.target===pdModal)closePd()});
 /* ══════ RESULTADOS ══════ */
 const RESULTS=[
   {cat:'mas',catLabel:'Lácteos & Alimentos',brand:'Alquería',tag:'Impulso, Frescura y Mercadeo en Cadenas',
+   img:'img/alqueria/Alqueria-1024x597.webp',
+   gallery:Array.from({length:20},(_,i)=>'img/alqueria/muestra-'+String(i+1).padStart(2,'0')+'.webp'),
    ico:'<path d="M8 2h8v4l2 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9l2-3V2z"/><path d="M6 9h12"/>',
    objetivo:'Sostener la rotación de la línea completa de lácteos Alquería (leche, yogurt, mantequilla y quesos) y fortalecer la relación con el shopper familiar en las principales cadenas del país.',
    canal:'Moderno (Cadenas) — Bogotá, Medellín, Cali y regionales',
@@ -4918,6 +4939,7 @@ const RS_CAT_FALLBACK={
   tech:'1460925895917-afdab827c52f',
 };
 function rsImgFor(r){
+  if(r.img)return r.img;
   const id=RS_BRAND_IMG[r.brand]||RS_CAT_FALLBACK[r.cat]||RS_CAT_FALLBACK.mas;
   return RS_IMG_BASE+id+RS_IMG_TAIL;
 }
@@ -5232,6 +5254,16 @@ function openRs(idx){
           <div class="rs-phone-cap">Flujo real · WhatsApp Business</div>
         </div>
       </div>`:''}
+      ${r.gallery?`
+      <div class="rs-sample">
+        <div class="rs-sample-q">
+          <div><h4>¿Quieres ver una muestra del trabajo?</h4><p>${r.gallery.length} piezas y registros reales de la campaña ${r.brand}.</p></div>
+          <button type="button" class="rs-sample-btn" id="rsSampleBtn" aria-expanded="false">Ver muestra</button>
+        </div>
+        <div class="rs-gal" id="rsGal">
+          ${r.gallery.map((g,i)=>`<button type="button" class="rs-gal-it" data-i="${i}" aria-label="Ampliar imagen ${i+1}"><img src="${g}" alt="${r.brand} — muestra ${i+1}" loading="lazy"/></button>`).join('')}
+        </div>
+      </div>`:''}
       ${r.insights.map(ins=>`
         <div class="rs-insight">
           <div class="rs-insight-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${ins.ico}</svg></div>
@@ -5242,8 +5274,33 @@ function openRs(idx){
         Quiero resultados así para mi marca
       </a>
     </div>`;
+  const sb=document.getElementById('rsSampleBtn');
+  if(sb){
+    const gal=document.getElementById('rsGal');
+    sb.addEventListener('click',()=>{
+      const open=gal.classList.toggle('open');
+      sb.setAttribute('aria-expanded',open);
+      sb.textContent=open?'Ocultar muestra':'Ver muestra';
+      if(open){mfdTrack('muestra_vista',r.brand);setTimeout(()=>gal.scrollIntoView({behavior:'smooth',block:'nearest'}),150)}
+    });
+    gal.querySelectorAll('.rs-gal-it').forEach(b=>b.addEventListener('click',()=>openLb(r.gallery,+b.dataset.i)));
+  }
   rsModal.classList.add('open');document.body.style.overflow='hidden';
 }
+/* lightbox galería */
+let lbList=[],lbIdx=0;
+const lb=document.createElement('div');lb.className='lb';
+lb.innerHTML='<button class="lb-x" aria-label="Cerrar">&times;</button><button class="lb-n lb-p" aria-label="Anterior">&#8249;</button><img alt=""/><button class="lb-n lb-nx" aria-label="Siguiente">&#8250;</button><div class="lb-c"></div>';
+document.body.appendChild(lb);
+function lbShow(){lb.querySelector('img').src=lbList[lbIdx];lb.querySelector('.lb-c').textContent=(lbIdx+1)+' / '+lbList.length}
+function openLb(list,i){lbList=list;lbIdx=i;lbShow();lb.classList.add('open')}
+function closeLb(){lb.classList.remove('open')}
+function stepLb(d){lbIdx=(lbIdx+d+lbList.length)%lbList.length;lbShow()}
+lb.querySelector('.lb-x').onclick=closeLb;
+lb.querySelector('.lb-p').onclick=()=>stepLb(-1);
+lb.querySelector('.lb-nx').onclick=()=>stepLb(1);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape'){e.stopImmediatePropagation();closeLb()}else if(e.key==='ArrowLeft')stepLb(-1);else if(e.key==='ArrowRight')stepLb(1)},true);
 function closeRs(){rsModal.classList.remove('open');document.body.style.overflow=''}
 rsModal.addEventListener('click',e=>{if(e.target===rsModal)closeRs()});
 
