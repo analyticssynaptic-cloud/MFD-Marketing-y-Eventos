@@ -4216,6 +4216,12 @@ document.addEventListener('click',e=>{
   const a=e.target.closest('a[href]');
   if(!a)return;
   const h=a.href;
+  /* Google Analytics 4: contactos (WhatsApp, llamada, correo) */
+  const gaEv = h.includes('wa.me') ? 'click_whatsapp' : h.startsWith('tel:') ? 'click_llamada' : h.startsWith('mailto:') ? 'click_email' : h.includes('linkedin.com') ? 'click_linkedin' : '';
+  if(gaEv && typeof gtag==='function'){
+    gtag('event', gaEv, {link_url: h.split('?')[0]});
+    if(gaEv!=='click_linkedin') gtag('event', 'generate_lead', {method: gaEv});
+  }
   if(h.includes('wa.me'))            mfdTrack('click_whatsapp');
   else if(h.startsWith('tel:'))      mfdTrack('click_llamada');
   else if(h.startsWith('mailto:'))   mfdTrack('click_email');
