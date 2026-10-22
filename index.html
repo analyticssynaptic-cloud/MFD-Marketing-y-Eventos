@@ -1423,6 +1423,14 @@ ul,ol{list-style:none}
 .rs-bench-g span{font-size:.78rem;opacity:.7}
 .rs-bench-n{margin:12px 0 0;font-size:.74rem;opacity:.6}
 .rs-bench-n a{color:inherit;text-decoration:underline}
+.rs-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:6px 0 26px}
+.rs-cat{text-align:left;text-transform:none;letter-spacing:0;font-family:'Barlow',sans-serif;font-weight:400;padding:18px 20px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.04)}
+.rs-cat-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rs-cat-h svg{width:20px;height:20px;color:#e0262c;flex:none}
+.rs-cat-h h4{margin:0;font-size:1.05rem;color:#fff;text-transform:none;letter-spacing:0;font-family:'Barlow',sans-serif;font-weight:700}
+.rs-cat p{margin:0 0 10px;font-size:.84rem;line-height:1.55;color:rgba(255,255,255,.7)}
+.rs-cat ul{margin:0;padding-left:18px;font-size:.86rem;line-height:1.6;color:rgba(255,255,255,.78)}
+.rs-cat li{margin-bottom:4px}
 .rs-more{
   display:inline-flex;align-items:center;gap:8px;margin-top:auto;
   font-family:var(--cond);font-size:.76rem;font-weight:700;
@@ -4749,13 +4757,22 @@ const RESULTS=[
      {t:'Momento Perfecto',q:'La activación en horas de calor máximo (10am–4pm) elevó la disposición de compra frente al competidor.',ico:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>'}
    ]},
 
-  {cat:'lic',catLabel:'Licores · Vinos',brand:'Meico Vinos',tag:'Estrategia Lifestyle Retail',
+  {cat:'lic',catLabel:'Licores · Vinos · Consumo Masivo',brand:'Distribuidora Meico',tag:'Activaciones Nacionales en Canal Moderno',
    img:'img/meico/meico-vinos.webp',
    gallery:Array.from({length:35},(_,i)=>'img/meico/muestra-'+String(i+1).padStart(2,'0')+'.webp'),
    ico:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6"/><path d="M8 20h8"/>',
-   objetivo:'Posicionar el vino como bebida social diaria del target millennial y desmitificar el ritual de consumo en el canal moderno.',
-   canal:'Moderno (Retail y Supermercados) — Costa Caribe y ciudades principales',
-   narrative:'Ejecución al 100% posicionando el vino como bebida social del target joven en Barranquilla — desmitificación completa del ritual de consumo. El 92% de la venta se concentró entre viernes y sábado: el vino se consolidó como aliado del ocio social planificado de los millennials. El supermercado concentró el 93% de las compras; la visibilidad premium en góndola y la degustación educativa fueron los factores decisivos. Aumento sostenido de share en el segmento joven durante toda la activación.',
+   objetivo:'Impulsar las marcas de Distribuidora Meico con activaciones en punto de venta, ferias y eventos, y posicionar el vino como bebida social diaria del target millennial.',
+   canal:'Moderno (Retail, Supermercados y Droguerías) — Activaciones a nivel nacional',
+   narrative:'Hemos realizado activaciones a nivel nacional en supermercados y canal moderno para las categorías de vinos, licores y consumo masivo de Distribuidora Meico. En vinos, la activación en Barranquilla alcanzó una ejecución del 100% posicionando el vino como bebida social del target joven: el 92% de la venta se concentró entre viernes y sábado y el supermercado concentró el 93% de las compras; la visibilidad premium en góndola y la degustación educativa fueron los factores decisivos, con aumento sostenido de share en el segmento joven durante toda la activación.',
+   sections:[
+     {title:'Vinos',ico:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6"/><path d="M8 20h8"/>',
+      items:['Activaciones en canal moderno (supermercados y retail)','Expovinos 2026','Eventos privados: relanzamiento de Casa de Moda en Cartagena','Eventos privados: Puerta del Sol, Barranquilla','Eventos privados: Cámara de Comercio de Barranquilla','Próximamente: evento en Bogotá']},
+     {title:'Licores',ico:'<path d="M12 2L21 9L12 22L3 9Z"/><path d="M3 9h18"/><path d="M9 2l3 7 3-7"/>',
+      intro:'Activaciones de marca para Old Parr, Buchanan\'s, Costeño y Smirnoff en puntos de venta del canal moderno y droguerías, durante las principales festividades de la Costa y del país:',
+      items:['Carnaval de Barranquilla','Festival Vallenato, Valledupar','Fiestas del Mar, Santa Marta','Feria Nacional de la Ganadería, Montería']},
+     {title:'Consumo masivo',ico:'<circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>',
+      items:['Productos de consumo masivo como Heinz']}
+   ],
    kCard:[{n:'92<em>%</em>',l:'Venta F-S'},{n:'64<em>%</em>',l:'Share Joven'}],
    kModal:[{n:'92%',l:'Venta Vie-Sáb'},{n:'64%',l:'Share Joven'},{n:'93%',l:'Compra en Súper'},{n:'+22<em>%</em>',l:'Rotación'}],
    insights:[
@@ -5114,7 +5131,7 @@ const RS_BRAND_IMG={
   /* bebida hidratante — Costa Caribe */
   'Suerox':'1648313021325-d81f28d57824',
   /* vinos premium retail */
-  'Meico Vinos':'1510812431401-41d2bd2722f3',
+  'Distribuidora Meico':'1510812431401-41d2bd2722f3',
   /* bebida saludable / malta */
   'Natumalta':'1553361371-9b22f78e8b1d',
   /* cerveza light americana */
@@ -5430,6 +5447,14 @@ function openRs(idx){
       <div class="rs-kpi-grid">
         ${r.kModal.map(k=>`<div class="rs-kpi-lg"><b>${k.n}</b><span>${k.l}</span></div>`).join('')}
       </div>
+      ${r.sections?`
+      <div class="rs-cats">
+        ${r.sections.map(c=>`<div class="rs-cat">
+          <div class="rs-cat-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${c.ico}</svg><h4>${c.title}</h4></div>
+          ${c.intro?`<p>${c.intro}</p>`:''}
+          <ul>${c.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+        </div>`).join('')}
+      </div>`:''}
       ${r.device?`
       <div class="rs-device-wrap">
         <div>
